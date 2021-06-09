@@ -4,12 +4,15 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User
+from .models import HawkerStall, User
 
 
 def index(request):
     if request.method == "POST":
-        return render(request, "project/index.html")
+        hawker = HawkerStall.objects.all()
+        return render(request, "project/index.html",{
+            "hawkers": hawker
+        })
     return render(request, "project/index.html")
 
 

@@ -6,4 +6,28 @@
     <input type = "text" name = "postalcode">
     <input type = "submit">
 </form> 
+<div class="container" id = "container">
+    {%  for hawker in hawkers  %}
+    {% if forloop.revcounter0 > 361%}
+        {% if forloop.counter0|divisibleby:3 %} <div class="row text-center"> {% endif %}
+          <div class="col-md-4" style="cursor: pointer">
+              <div class="card text-dark bg-warning mb-3">
+                  <div class = "card-header">Hawker {{ forloop.counter }}</div>
+                  <div class="card-content">
+                      <br>
+                       <h4>{{ hawker.name }}</h4>
+                       <p>- {{ hawker.address }}</p>
+                       <p>- {{ hawker.hours }}</p>
+                       <p>- {{ hawker.reco }}</p>
+                       <p>- {{ hawker.details }}</p>
+                       <p>- {{ hawker.contributor }}</p>
+                      <br>
+                  </div><!-- card content -->
+              </div><!-- card -->
+          </div><!-- col-md-4 -->
+          
+    {%  if forloop.counter|divisibleby:3 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
+    {% endif %}
+    {%  endfor %}
+ </div><!-- container -->
 {% endblock %}
