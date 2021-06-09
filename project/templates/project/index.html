@@ -6,28 +6,64 @@
     <input type = "text" name = "postalcode">
     <input type = "submit">
 </form> 
-<div class="container" id = "container">
-    {%  for hawker in hawkers  %}
-    {% if forloop.revcounter0 > 361%}
-        {% if forloop.counter0|divisibleby:3 %} <div class="row text-center"> {% endif %}
-          <div class="col-md-4" style="cursor: pointer">
-              <div class="card text-dark bg-warning mb-3">
-                  <div class = "card-header">Hawker {{ forloop.counter }}</div>
-                  <div class="card-content">
-                      <br>
-                       <h4>{{ hawker.name }}</h4>
-                       <p>- {{ hawker.address }}</p>
-                       <p>- {{ hawker.hours }}</p>
-                       <p>- {{ hawker.reco }}</p>
-                       <p>- {{ hawker.details }}</p>
-                       <p>- {{ hawker.contributor }}</p>
-                      <br>
-                  </div><!-- card content -->
-              </div><!-- card -->
-          </div><!-- col-md-4 -->
-          
-    {%  if forloop.counter|divisibleby:3 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
-    {% endif %}
-    {%  endfor %}
- </div><!-- container -->
+<dt>{{message}}</dt>
+<table class = "table table-dark">
+    <thead>
+    <tr>
+        {% for name in names %} {% if forloop.revcounter0 > 360 %}
+        <th>{{name}}</th>
+        {%endif%}
+        {%empty%}
+        <th>No results.</th>
+        {%endfor%}
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        {% for lat,long,latitude,longtitude in latandlong %} {% if forloop.revcounter0 > 360 %}
+        <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}
+        {%empty%}<td>No results.</td>
+        {%endfor%}
+    </tr>
+    <tr>
+        {% for address in addresses %} {% if forloop.revcounter0 > 360 %}
+        <td>{{address}}</td>
+        {%endif%}
+        {%empty%}<td>No results.</td>
+        {%endfor%}
+    </tr>
+    <tr>
+        {% for hour in hours %} {% if forloop.revcounter0 > 360 %}
+        <td>{{hour}}</td>
+        {%endif%}
+        {%empty%}<td>No results.</td>
+        {%endfor%}
+    </tr>
+    <tr>
+        {% for rec in recos %} {% if forloop.revcounter0 > 360 %}
+        <td>{{rec}}</td>
+        {%endif%}
+        {%empty%}<td>No results.</td>
+        {%endfor%}
+    </tr>
+    <tr>
+        {% for detail in details %} {% if forloop.revcounter0 > 360 %}
+        <td>{{detail}}</td>
+        {%endif%}
+        {%empty%}<td>No results.</td>
+        {%endfor%}
+    </tr>
+    <tr>
+        {% for contrib in contributors %} {% if forloop.revcounter0 > 360 %}
+        <td>{{contrib}}</td>
+        {%endif%}
+        {%empty%}<td>No results.</td>
+        {%endfor%}
+    </tr>
+        
+    
+    </tbody>
+</table>
+
 {% endblock %}

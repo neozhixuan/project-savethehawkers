@@ -23,7 +23,7 @@ class HawkerStall(models.Model):
     longtitude = models.FloatField(null = True)
     name = models.CharField(blank = True, max_length = 200)
     address = models.CharField(blank = True, max_length = 200)
-    hours = models.CharField(blank = True, null=True, max_length = 10)
+    hours = models.CharField(blank = True, null=True, max_length = 300)
     reco = models.CharField(blank = True, max_length = 100)
     details = models.CharField(blank = True, max_length = 1000)
     contributor = models.CharField(blank = True, max_length = 100)

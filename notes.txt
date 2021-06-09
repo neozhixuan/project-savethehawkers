@@ -1,0 +1,46 @@
+<div class="container" id = "container">
+          <div class="col-md-4" style="cursor: pointer">
+              <div class="card text-dark bg-warning mb-3">
+                  <div class = "card-header">Hawker {{ forloop.counter }}</div> 
+                  <div class="card-content">
+                      <br>
+                      {% for lat,long,latitude,longtitude in latandlong %} {% if forloop.revcounter0 > 360 %}
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe>
+                        {%endif%}
+                        {%empty%}No results.{%endfor%}
+                        {%for name in names%}{% if forloop.revcounter0 > 360 %}
+                       <h4>{{ name }}</h4>
+                        {%endif%}
+                        {%empty%} No results. {%endfor%}
+                        {%for number in numbers%}{% if forloop.revcounter0 > 360 %}
+                       <p>- {{ number }}</p>
+                       {%endif%}
+                        {%empty%} No results. {%endfor%}
+                       {%for address in addresses%}{% if forloop.revcounter0 > 360 %}
+                       <p>- {{ address }}</p>
+                       {%endif%}
+                        {%empty%} No results. {%endfor%}
+                       {%for hour in hours%}{% if forloop.revcounter0 > 360 %}
+                       <p>- {{ hour }}</p>
+                       {%endif%}
+                        {%empty%} No results. {%endfor%}
+                       {%for rec in reco%}{% if forloop.revcounter0 > 360 %}
+                       <p>- {{ rec }}</p>
+                       {%endif%}
+                        {%empty%} No results. {%endfor%}
+                       {%for detail in details%}{% if forloop.revcounter0 > 360 %}
+                       <p>- {{ detail }}</p>
+                       {%endif%}
+                        {%empty%} No results. {%endfor%}
+                       {%for contrib in contributor%}{% if forloop.revcounter0 > 360 %}
+                       <p>- {{ contrib }}</p>
+                       {%endif%}
+                        {%empty%} No results. {%endfor%}
+                      <br>
+                  </div><!-- card content -->
+              </div><!-- card -->
+          </div><!-- col-md-4 -->
+          
+    {%  if forloop.counter|divisibleby:3 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
+    
+ </div><!-- container -->
