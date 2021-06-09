@@ -27,6 +27,13 @@
         {%endfor%}
     </tr>
     <tr>
+        {% for number in numbers %} {% if forloop.revcounter0 > 360 %}
+        <td>{{number}} metres away.</td>
+        {%endif%}
+        {%empty%}<td>No results.</td>
+        {%endfor%}
+    </tr>
+    <tr>
         {% for address in addresses %} {% if forloop.revcounter0 > 360 %}
         <td>{{address}}</td>
         {%endif%}
@@ -61,6 +68,7 @@
         {%empty%}<td>No results.</td>
         {%endfor%}
     </tr>
+    
         
     
     </tbody>
