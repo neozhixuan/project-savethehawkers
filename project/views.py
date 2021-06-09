@@ -8,6 +8,8 @@ from .models import User
 
 
 def index(request):
+    if request.method == "POST":
+        return render(request, "project/index.html")
     return render(request, "project/index.html")
 
 

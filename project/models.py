@@ -8,6 +8,7 @@ class User(AbstractUser):
 class HawkerStall(models.Model):
     latitude = models.FloatField(null = True)
     longtitude = models.FloatField(null = True)
+    name = models.CharField(blank = True, max_length = 200)
     address = models.CharField(blank = True, max_length = 200)
     hours = models.CharField(blank = True, null=True, max_length = 10)
     reco = models.CharField(blank = True, max_length = 100)
@@ -15,4 +16,4 @@ class HawkerStall(models.Model):
     contributor = models.CharField(blank = True, max_length = 100)
 
     def __str__ (self):
-        return f"{self.postal}, {self.building}"
+        return f"{self.address}, {self.name}, {self.reco}"
