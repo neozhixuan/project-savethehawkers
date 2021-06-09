@@ -1,0 +1,9 @@
+{% extends "project/layout.html" %}
+
+{% block body %}
+<form action = "{%url 'index'%}" method = "POST">
+    {%csrf_token%}
+    <input type = "text" name = "postalcode">
+    <input type = "submit">
+</form> 
+{% endblock %}
