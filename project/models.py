@@ -22,6 +22,7 @@ class HawkerStall(models.Model):
     latitude = models.FloatField(null = True)
     longtitude = models.FloatField(null = True)
     name = models.CharField(blank = True, max_length = 200)
+    stalltype = models.CharField(blank = True, max_length = 50)
     address = models.CharField(blank = True, max_length = 200)
     hours = models.CharField(blank = True, null=True, max_length = 300)
     reco = models.CharField(blank = True, max_length = 100)

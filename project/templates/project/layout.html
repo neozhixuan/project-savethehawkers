@@ -8,7 +8,7 @@
         <link href="{% static 'project/styles.css' %}" rel="stylesheet">
     </head>
     <body>
-        <h1>Hawkers</h1>
+        <h1>Save the Hawkers</h1>
         <div>
             {% if user.is_authenticated %}
                 Signed in as <strong>{{ user.username }}</strong>.
@@ -18,7 +18,7 @@
         </div>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'index' %}">Active Listings</a>
+                <a class="nav-link" href="{% url 'index' %}">Main Page</a>
             </li>
             {% if user.is_authenticated %}
                 <li class="nav-item">
