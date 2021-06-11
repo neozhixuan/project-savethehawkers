@@ -1,0 +1,42 @@
+{% extends "project/layout.html" %}
+
+{% block body %}
+
+<!-- Edit -->
+
+  
+<dt>Page {{pagenumber}}, Search: {{search}}, Postal code: {{postalcode}}</dt>
+<form action = "{%url 'savethehawkers:index'%}" method = "POST">
+    {%csrf_token%}
+    <input type = "text" name = "postalcode">
+    <input type = "submit">
+</form> 
+<dt>{{message}}</dt>
+<form action = "{%url 'savethehawkers:search'%}" method = "POST">
+    {%csrf_token%}
+    {{form}}
+    <input type = "submit">
+</form> 
+<dt>{{searchmessage}}</dt>
+<form action = "{%url 'savethehawkers:stalltype'%}" method = "POST">
+    {%csrf_token%}
+    <select name = "stalltype">
+        <option value = "Chinese">Chinese</option>
+        <option value = "Malay">Malay</option>
+        <option value = "Indian">Indian</option>
+        <option value = "Western">Western</option>
+        <option value = "Dessert">Dessert</option>
+        <option value = "Drinks">Drinks</option>
+        <option value = "Snacks">Snacks</option>
+        <option value = "Vegetarian">Vegetarian</option>
+        <option value = "Others">Others</option>
+    </select>
+    <input type = "text" name = "postalcode">
+    <input type = "submit">
+</form> 
+<form action = "{%url 'savethehawkers:creations'%}" method = "POST">
+    {%csrf_token%}
+    {{form3}}
+    <input type = "submit" value = "Create">
+</form>
+{% endblock %}

@@ -2,19 +2,19 @@
 
 {% block body %}
 <dt>Page {{pagenumber}}, Search: {{search}}, Postal code: {{postalcode}}</dt>
-<form action = "{%url 'index'%}" method = "POST">
+<form action = "{%url 'savethehawkers:index'%}" method = "POST">
     {%csrf_token%}
     <input type = "text" name = "postalcode">
     <input type = "submit">
 </form> 
 <dt>{{message}}</dt>
-<form action = "{%url 'search'%}" method = "POST">
+<form action = "{%url 'savethehawkers:search'%}" method = "POST">
     {%csrf_token%}
     {{form}}
     <input type = "submit">
 </form> 
 <dt>{{searchmessage}}</dt>
-<form action = "{%url 'stalltype'%}" method = "POST">
+<form action = "{%url 'savethehawkers:stalltype'%}" method = "POST">
     {%csrf_token%}
     <select name = "stalltype">
         <option value = "Chinese">Chinese</option>
@@ -36,7 +36,7 @@
     <thead>
     <tr>
         {% for name in names %} {% if forloop.counter <= 6 %}
-        <th>{{name}}</th>
+        <th><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></th>
         {%endif%}
         {%empty%}
         <th>No results.</th>
@@ -98,7 +98,7 @@
     
     </tbody>
 </table>
-<form action = "{%url 'nextstall' pagenumber%} " method = "POST">
+<form action = "{%url 'savethehawkers:nextstall' pagenumber%} " method = "POST">
     {%csrf_token%}
     <input type = "hidden" name = "stalltype" value = "{{stalltypes}}">
     <input type = "hidden" name = "postalcode" value = "{{postalcode}}">

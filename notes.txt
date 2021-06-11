@@ -44,3 +44,27 @@
     {%  if forloop.counter|divisibleby:3 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
     
  </div><!-- container -->
+
+ def edit(request, name):
+    if request.method == "POST":
+        latitude = request.POST["latitude"]
+        longtitude = request.POST["longtitude"]
+        stalltype = request.POST["stalltype"]
+        address = request.POST["address"]
+        hours = request.POST["hours"]
+        reco = request.POST["reco"]
+        details = request.POST["details"]
+        #contributor = request.POST["contributor"]
+        f = HawkerStall.objects.get(name = name)
+        f.latitude = latitude
+        f.longtitude = longtitude
+        f.stalltype = stalltype
+        f.address = address
+        f.hours = hours
+        f.reco = reco
+        f.details = details
+        f.save()
+        return HttpResponseRedirect(reverse("info", args = (name,)))
+
+
+            path("<str:name>/edit", views.edit, name="edit"),

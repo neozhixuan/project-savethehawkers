@@ -10,6 +10,19 @@ from django import forms
 from ipstack import GeoLookup
 import requests
 import json
+# NoReverseMatch: edity is not a name - probably didnt indicate app name in some html
+# NoReverseMatch: argument (",") does not match.... - didnt include argument when your path requires one <str:...>
+# NoReverseMatch: path does not exist - name you put is diff from "name" in urls
+class CreateForm(forms.Form):
+    latitude = forms.FloatField(label = "Latitude")
+    longtitude = forms.FloatField(label = "longtitude")
+    name = forms.CharField(label = "name", max_length = 200)
+    stalltype = forms.CharField(label = "stalltype", max_length = 50)
+    address = forms.CharField(label = "address", max_length = 200)
+    hours = forms.CharField(label = "hours", max_length = 300)
+    reco = forms.CharField(label = "reco", max_length = 100)
+    details = forms.CharField(label = "details", max_length = 1000)
+    contributor = forms.CharField(label = "contributor", max_length = 100)
 
 class NewTaskForm (forms.Form):
     search = forms.CharField(label = "Search the food you want:", min_length = 1, max_length = 50)
@@ -38,21 +51,30 @@ def index(request):
         if not postalcode:
             return render(request, "project/index.html",{
                 "message": "Enter a postal code.",
-                "form": NewTaskForm()
+                "form": NewTaskForm(),
+                "postalcode": postalcode,
+                "pagenumber": pagenumber,
+                "no": "no",
             })
         try:
             val = int(postalcode)
         except ValueError:
             return render(request, "project/index.html",{
                 "message": "Please insert a number.",
-                "form": NewTaskForm()
+                "form": NewTaskForm(),
+                "postalcode": postalcode,
+                "pagenumber": pagenumber,
+                "no": "no",
             })
         try:
             post = Zipcode.objects.get(postal = postalcode)
         except Zipcode.DoesNotExist:
             return render(request, "project/index.html",{
                 "message": "Postal Code does not exist in the database!",
-                "form": NewTaskForm()
+                "form": NewTaskForm(),
+                "postalcode": postalcode,
+                "pagenumber": pagenumber,
+                "no": "no",
             })
         place = Zipcode.objects.filter(postal = postalcode)
         latorigin = place.first().latitude
@@ -117,9 +139,11 @@ def index(request):
             "latandlong": latandlong,
             "form": NewTaskForm()
         })
+    history = History.objects.filter(id__in=[1,2,3,4,5,6])
     return render(request, "project/index.html",{
         "no": "no",
         "form": NewTaskForm(),
+        "history": history,
     })
 
 def nextindex(request, pagenumber):
@@ -382,8 +406,11 @@ def search(request):
             results = HawkerStall.objects.filter(reco__contains = search)
             if not results:
                 return render(request, "project/index.html", {
-                    "searchmessage": "That shit doesnt exist lmao",
-                    "form": NewTaskForm()
+                    "searchmessage": "No related results.",
+                    "form": NewTaskForm(),
+                    "postalcode": postalcode,
+                    "pagenumber": pagenumber,
+                    "no": "no",
                 })
             number = [0] * len(results)
             count = 0
@@ -532,13 +559,71 @@ def next(request, pagenumber):
 
 def info(request, name):
     stall = HawkerStall.objects.filter(name = name)
-    
     return render(request, "project/info.html",{
-        "stalls": stall.first()
+        "stalls": stall.first(),
+        "form": NewTaskForm(),
     })
 
+def edity(request, name):
+    if request.method == "POST":
+        latitude = request.POST["latitude"]
+        longtitude = request.POST["longtitude"]
+        stalltype = request.POST["stalltype"]
+        address = request.POST["address"]
+        hours = request.POST["hours"]
+        reco = request.POST["reco"]
+        details = request.POST["details"]
+        #contributor = request.POST["contributor"]
+        f = HawkerStall.objects.get(name = name)
+        f.latitude = latitude
+        f.longtitude = longtitude
+        f.stalltype = stalltype
+        f.address = address
+        f.hours = hours
+        f.reco = reco
+        f.details = details
+        f.save()
+        return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
+    else:
+        return render(request, "project/index.html")
 
+def delete(request, name):
+    g = HawkerStall.objects.filter(name = name).first()
+    g.latitude = 0
+    g.longtitude = 0
+    g.stalltype = ""
+    g.address = ""
+    g.hours = ""
+    g.reco = ""
+    g.details = ""
+    g.name = ""
+    g.contributor = ""
+    g.save()
+    return HttpResponseRedirect(reverse("savethehawkers:index"))
 
+def creations(request):
+    if request.method == "POST":
+        form = CreateForm(request.POST)
+        if form.is_valid():
+            latitude = form.cleaned_data["latitude"]
+            longtitude = form.cleaned_data["longtitude"]
+            name = form.cleaned_data["name"]
+            stalltype = form.cleaned_data["stalltype"]
+            address = form.cleaned_data["address"]
+            hours = form.cleaned_data["hours"]
+            reco = form.cleaned_data["reco"]
+            details = form.cleaned_data["details"]
+            contributor = form.cleaned_data["contributor"]
+            h = HawkerStall(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address, hours = hours, reco = reco, details = details, contributor = contributor)
+            i = History(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address, hours = hours, reco = reco, details = details, contributor = contributor)
+            h.save()
+            i.save()
+            return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
+    else:
+        return render(request, "project/create.html",{
+            "form": NewTaskForm(),
+            "form3": CreateForm(),
+            })
 
 ###########################
 def login_view(request):
@@ -552,7 +637,7 @@ def login_view(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("index"))
+            return HttpResponseRedirect(reverse("savethehawkers:index"))
         else:
             return render(request, "project/login.html", {
                 "message": "Invalid username and/or password."
@@ -562,7 +647,7 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse("index"))
+    return HttpResponseRedirect(reverse("savethehawkers:index"))
 
 
 def register(request):
@@ -587,6 +672,6 @@ def register(request):
                 "message": "Username already taken."
             })
         login(request, user)
-        return HttpResponseRedirect(reverse("index"))
+        return HttpResponseRedirect(reverse("savethehawkers:index"))
     else:
         return render(request, "project/register.html")

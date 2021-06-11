@@ -1,20 +1,67 @@
 {% extends "project/layout.html" %}
 
 {% block body %}
+<script>
+    function openDelete(){
+  document.getElementById("delete").style.display = "block";
+}
+function closeDelete(){
+  document.getElementById("delete").style.display = "none";
+}
+  function openFeedback(){
+  document.getElementById("feedbacktotal").style.display = "block";
+}
+function closeFeedback(){
+  document.getElementById("feedbacktotal").style.display = "none";
+}
+</script>
+<!-- Edit -->
+<div id = "feedbacktotal" style="display:none;">
+    <div class = "background-fade">
+    </div>
+    <div class = "feedback">
+      <button onclick="closeFeedback()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
+      <form action = "{% url 'savethehawkers:editing' stalls.name %}" method = "POST" style = "text-align: left;">
+        {%csrf_token%}
+        Latitude:<input type = "float" name = "latitude" value = "{{stalls.latitude}}"><br>
+        Longitude:<input type = "float" name = "longtitude" value = "{{stalls.longtitude}}"><br>
+        Name:<input type = "hidden" name = "name" value = "{{stalls.name}}">{{stalls.name}}<br>
+        Stalltype:<input type = "text" name = "stalltype" value = "{{stalls.stalltype}}"><br>
+        Address:<input type = "text" name = "address" value = "{{stalls.address}}"><br>
+        Hours:<input type = "text" name = "hours" value = "{{stalls.hours}}"><br>
+        Recommendation:<input type = "text" name = "reco" value = "{{stalls.reco}}"><br>
+        Details:<input type = "text" name = "details" value = "{{stalls.details}}"><br>
+        Contributor:<input type = "hidden" name = "contributor" value = "{{stalls.contributor}}">{{stalls.contributor}}<br>
+        <input type = "submit" value = "Submit" style = "background-color: #b2ab8c; width: 33vw; height: 60px; border: 3px solid black;">
+      </form>
+    </div>
+  </div>
+  <div id = "delete" style="display:none;">
+    <div class = "background-fade">
+    </div>
+    <div class = "feedback">
+      <button onclick="closeDelete()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
+      <form action = "{%url 'savethehawkers:delete' stalls.name%}" method = "POST" style = "text-align: left;">
+        {%csrf_token%}
+        Are you sure?
+        <input type = "submit" value = "Yes" style = "background-color: #b2ab8c; width: 33vw; height: 60px; border: 3px solid black;">
+      </form>
+    </div>
+  </div>
 <dt>Page {{pagenumber}}, Search: {{search}}, Postal code: {{postalcode}}</dt>
-<form action = "{%url 'index'%}" method = "POST">
+<form action = "{%url 'savethehawkers:index'%}" method = "POST">
     {%csrf_token%}
     <input type = "text" name = "postalcode">
     <input type = "submit">
 </form> 
 <dt>{{message}}</dt>
-<form action = "{%url 'search'%}" method = "POST">
+<form action = "{%url 'savethehawkers:search'%}" method = "POST">
     {%csrf_token%}
     {{form}}
     <input type = "submit">
 </form> 
 <dt>{{searchmessage}}</dt>
-<form action = "{%url 'stalltype'%}" method = "POST">
+<form action = "{%url 'savethehawkers:stalltype'%}" method = "POST">
     {%csrf_token%}
     <select name = "stalltype">
         <option value = "Chinese">Chinese</option>
@@ -30,16 +77,17 @@
     <input type = "text" name = "postalcode">
     <input type = "submit">
 </form> 
+<button onclick = "openDelete()">Delete</button>
+<dd>Name: {{stalls.name}}</dd>
+<hr>
+<dd>Stall type:{{stalls.stalltype}}</dd>
+<hr>
+Address: {{stalls.address}}
+<hr>
+Hours: {{stalls.hours}}<hr>
+Recommendations: {{stalls.reco}}<hr>
+Details: {{stalls.details}}<hr>
+Contributor: {{stalls.contributor}}<hr>
 
-{{stalls.name}}
-<hr>
-{{stalls.stalltype}}
-<hr>
-{{stalls.address}}
-<hr>
-{{stalls.hours}}<hr>
-{{stalls.reco}}<hr>
-{{stalls.details}}<hr>
-{{stalls.contributor}}<hr>
-
+<button onclick="openFeedback()">Edit</button>
 {% endblock %}

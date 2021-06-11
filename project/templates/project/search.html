@@ -2,19 +2,19 @@
 
 {% block body %}
 <dt>Page {{pagenumber}}, Search: {{search}}, Postal code: {{postalcode}}</dt>
-<form action = "{%url 'index'%}" method = "POST">
+<form action = "{%url 'savethehawkers:index'%}" method = "POST">
     {%csrf_token%}
     <input type = "text" name = "postalcode">
     <input type = "submit">
 </form> 
 <dt>{{message}}</dt>
-<form action = "{%url 'search'%}" method = "POST">
+<form action = "{%url 'savethehawkers:search'%}" method = "POST">
     {%csrf_token%}
     {{form}}
     <input type = "submit">
 </form> 
 <dt>{{searchmessage}}</dt>
-<form action = "{%url 'stalltype'%}" method = "POST">
+<form action = "{%url 'savethehawkers:stalltype'%}" method = "POST">
     {%csrf_token%}
     <select name = "stalltype">
         <option value = "Chinese">Chinese</option>
@@ -36,7 +36,7 @@
     <thead>
     <tr>
         {% for name in names %} {% if forloop.counter <= 6 %}
-        <th>{{name}}</th>
+        <th><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></th>
         {%endif%}
         {%empty%}
         <th>No results.</th>
@@ -79,26 +79,9 @@
         {%empty%}<td>No results.</td>
         {%endfor%}
     </tr>
-    <tr>
-        {% for detail in details %} {% if forloop.counter <= 6 %}
-        <td>{{detail}}</td>
-        {%endif%}
-        {%empty%}<td>No results.</td>
-        {%endfor%}
-    </tr>
-    <tr>
-        {% for contrib in contributors %} {% if forloop.counter <= 6 %}
-        <td>{{contrib}}</td>
-        {%endif%}
-        {%empty%}<td>No results.</td>
-        {%endfor%}
-    </tr>
-    
-        
-    
     </tbody>
 </table>
-<form action = "{%url 'next' pagenumber%} " method = "POST">
+<form action = "{%url 'savethehawkers:next' pagenumber%} " method = "POST">
     {%csrf_token%}
     <input type = "hidden" name = "search" value = "{{search}}">
     <input type = "hidden" name = "postalcode" value = "{{postalcode}}">
