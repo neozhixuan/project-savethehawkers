@@ -1,6 +1,9 @@
 {% extends "project/layout.html" %}
 
+
+
 {% block body %}
+
 <script>
     function openDelete(){
   document.getElementById("delete").style.display = "block";
@@ -15,27 +18,28 @@ function closeFeedback(){
   document.getElementById("feedbacktotal").style.display = "none";
 }
 </script>
-<!-- Edit -->
 <div id = "feedbacktotal" style="display:none;">
-    <div class = "background-fade">
-    </div>
-    <div class = "feedback">
-      <button onclick="closeFeedback()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
-      <form action = "{% url 'savethehawkers:editing' stalls.name %}" method = "POST" style = "text-align: left;">
-        {%csrf_token%}
-        Latitude:<input type = "float" name = "latitude" value = "{{stalls.latitude}}"><br>
-        Longitude:<input type = "float" name = "longtitude" value = "{{stalls.longtitude}}"><br>
-        Name:<input type = "hidden" name = "name" value = "{{stalls.name}}">{{stalls.name}}<br>
-        Stalltype:<input type = "text" name = "stalltype" value = "{{stalls.stalltype}}"><br>
-        Address:<input type = "text" name = "address" value = "{{stalls.address}}"><br>
-        Hours:<input type = "text" name = "hours" value = "{{stalls.hours}}"><br>
-        Recommendation:<input type = "text" name = "reco" value = "{{stalls.reco}}"><br>
-        Details:<input type = "text" name = "details" value = "{{stalls.details}}"><br>
-        Contributor:<input type = "hidden" name = "contributor" value = "{{stalls.contributor}}">{{stalls.contributor}}<br>
-        <input type = "submit" value = "Submit" style = "background-color: #b2ab8c; width: 33vw; height: 60px; border: 3px solid black;">
-      </form>
-    </div>
+  <div class = "background-fade">
   </div>
+  <div class = "feedback">
+    <button onclick="closeFeedback()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
+    <form action = "{% url 'savethehawkers:editing' stalls.name %}" method = "POST" style = "text-align: left;">
+      {%csrf_token%}
+      Latitude:<input type = "float" name = "latitude" value = "{{stalls.latitude}}"><br>
+      Longitude:<input type = "float" name = "longtitude" value = "{{stalls.longtitude}}"><br>
+      Name:<input type = "hidden" name = "name" value = "{{stalls.name}}">{{stalls.name}}<br>
+      Stalltype:<input type = "text" name = "stalltype" value = "{{stalls.stalltype}}"><br>
+      Address:<input type = "text" name = "address" value = "{{stalls.address}}"><br>
+      Hours:<input type = "text" name = "hours" value = "{{stalls.hours}}"><br>
+      Recommendation:<input type = "text" name = "reco" value = "{{stalls.reco}}"><br>
+      Details:<input type = "text" name = "details" value = "{{stalls.details}}"><br>
+      Contributor:<input type = "hidden" name = "contributor" value = "{{stalls.contributor}}">{{stalls.contributor}}<br>
+      <input type = "submit" value = "Submit" style = "background-color: #b2ab8c; width: 33vw; height: 60px; border: 3px solid black;">
+    </form>
+  </div>
+</div>
+<!-- Edit -->
+
   <div id = "delete" style="display:none;">
     <div class = "background-fade">
     </div>
@@ -48,46 +52,39 @@ function closeFeedback(){
       </form>
     </div>
   </div>
-<dt>Page {{pagenumber}}, Search: {{search}}, Postal code: {{postalcode}}</dt>
-<form action = "{%url 'savethehawkers:index'%}" method = "POST">
-    {%csrf_token%}
-    <input type = "text" name = "postalcode">
-    <input type = "submit">
-</form> 
-<dt>{{message}}</dt>
-<form action = "{%url 'savethehawkers:search'%}" method = "POST">
-    {%csrf_token%}
-    {{form}}
-    <input type = "submit">
-</form> 
-<dt>{{searchmessage}}</dt>
-<form action = "{%url 'savethehawkers:stalltype'%}" method = "POST">
-    {%csrf_token%}
-    <select name = "stalltype">
-        <option value = "Chinese">Chinese</option>
-        <option value = "Malay">Malay</option>
-        <option value = "Indian">Indian</option>
-        <option value = "Western">Western</option>
-        <option value = "Dessert">Dessert</option>
-        <option value = "Drinks">Drinks</option>
-        <option value = "Snacks">Snacks</option>
-        <option value = "Vegetarian">Vegetarian</option>
-        <option value = "Others">Others</option>
-    </select>
-    <input type = "text" name = "postalcode">
-    <input type = "submit">
-</form> 
-<button onclick = "openDelete()">Delete</button>
-<dd>Name: {{stalls.name}}</dd>
-<hr>
-<dd>Stall type:{{stalls.stalltype}}</dd>
-<hr>
-Address: {{stalls.address}}
-<hr>
-Hours: {{stalls.hours}}<hr>
-Recommendations: {{stalls.reco}}<hr>
-Details: {{stalls.details}}<hr>
-Contributor: {{stalls.contributor}}<hr>
 
-<button onclick="openFeedback()">Edit</button>
+<button onclick = "openDelete()">Delete</button> <button onclick="openFeedback()">Edit</button>
+<h2 style = "text-align: center;">Stall Information</h2>
+<div style = "display: flex;">
+<div style = "flex: 1 15%">
+</div>
+<div style = "flex: 1 70%">
+  <table class = "place table table-dark">
+    <tr>
+      <td><span style = "color: gray">Name: </span>{{stalls.name}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Stall type: </span>{{stalls.stalltype}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Address: </span> {{stalls.address}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Hours: </span> {{stalls.hours}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Recommendation: </span>{{stalls.reco}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Details: </span> {{stalls.details}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Contributor: </span> {{stalls.contributor}}</td>
+    </tr>
+    </table>
+</div>
+</div>
+
+
+
 {% endblock %}

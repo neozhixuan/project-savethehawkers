@@ -3,41 +3,112 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>{% block title %}Hawkers{% endblock %}</title>
+        <title>{% block title %}Save The Hawkers{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="{% static 'project/styles.css' %}" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     </head>
     <body>
-        <h1>Save the Hawkers</h1>
-        <div>
-            {% if user.is_authenticated %}
-                Signed in as <strong>{{ user.username }}</strong>.
-            {% else %}
-                Not signed in.
-            {% endif %}
-        </div>
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'savethehawkers:index' %}">Main Page</a>
-            </li>
-            {% if user.is_authenticated %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'savethehawkers:logout' %}">Log Out</a>
+        <ul>
+                <li>
+                    <a style = "color:white">Save The Hawkers</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'savethehawkers:creations' %}">Create Entry</a>
+                <li>
+                    <a href="{% url 'savethehawkers:index' %}">Main Page</a>
+                </li>
+            {% if user.is_authenticated %}
+                <li>
+                    <a style = "color:white">Signed in as <strong>{{ user.username }}</strong>.</a>
+                </li>
+                <li>
+                    <a href="{% url 'savethehawkers:logout' %}">Log Out</a>
+                </li>
+                <li>
+                    <a  href="{% url 'savethehawkers:creations' %}">Create Entry</a>
                 </li>
             {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'savethehawkers:login' %}">Log In</a>
+                <li>
+                    <a style = "color:white">Not signed in.</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'savethehawkers:register' %}">Register</a>
+                <li>
+                    <a  href="{% url 'savethehawkers:login' %}">Log In</a>
+                </li>
+                <li>
+                    <a  href="{% url 'savethehawkers:register' %}">Register</a>
                 </li>
                 
             {% endif %}
         </ul>
-        <hr>
+        
+        <div class = "flexbox" style = "display: flex;">
+            <div style = "flex: 1 100%; padding: 10px; box-sizing: border-box">
+                <iframe class = "box" src="https://www.google.com/maps/d/embed?mid=1XcpTiJpt_O-Rw6Wu8qrtCm_Ek9VUgIDF" ></iframe>
+            </div>
+        <div style = "display: flex; flex: 1 100%;">
+            <div class = "box2" style = "flex: 1 10%; display: flex; flex-direction: column;padding: 20px;">
+            <div style = "flex: 1 100%">
+                1
+                <br>
+                Nearby stalls
+            </div>
+            <div style = "flex: 1 100% ">
+                2
+                <br>
+                Search by recommendations
+            </div>
+            <div style = "flex: 1 100%">
+                3
+                <br>
+                Search by type of stall
+            </div>
+            </div>
+            <div class = "box2" style = "flex: 1 100%; display: flex; flex-direction: column; padding: 20px;">
+            <div style = "flex: 1 100%; background-color:pink; ">
+                <dt>{%if not no%}Page {{pagenumber}},{%endif%} Postal code: {{postalcode}}</dt>
+                <form action = "{%url 'savethehawkers:index'%}" method = "POST">
+                    {%csrf_token%}
+                    <input type = "text" name = "postalcode" placeholder = "Postal Code">
+                    <dt>{{message}}</dt>
+                    <input type = "submit">
+                </form> 
+            </div>
+            <hr>
+            <div style = "flex: 1 100%; background-color: lightblue;">
+                <form action = "{%url 'savethehawkers:search'%}" method = "POST">
+                    {%csrf_token%}
+                    {{form}}
+                    <br>
+                    <input type = "submit">
+                </form> 
+                <dt>{{searchmessage}}</dt>
+            </div>
+            <hr>
+            <div style = "flex: 1 100%; background-color: lightgreen;">
+                <form action = "{%url 'savethehawkers:stalltype'%}" method = "POST">
+                    {%csrf_token%}
+                    <dd>Stall Type:</dd>
+                    <select name = "stalltype">
+                        <option value = "Chinese">Chinese</option>
+                        <option value = "Malay">Malay</option>
+                        <option value = "Indian">Indian</option>
+                        <option value = "Western">Western</option>
+                        <option value = "Dessert">Dessert</option>
+                        <option value = "Drinks">Drinks</option>
+                        <option value = "Snacks">Snacks</option>
+                        <option value = "Vegetarian">Vegetarian</option>
+                        <option value = "Others">Others</option>
+                    </select>
+                    <br>
+                    <br>
+                    <dd>Postal Code:</dd>
+                    <input type = "text" name = "postalcode" placeholder = "Postal Code">
+                    <input type = "submit">
+                </form> 
+                </div>
+            </div>
+        </div>
+        </div>
         {% block body %}
         {% endblock %}
     </body>

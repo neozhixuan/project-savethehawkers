@@ -25,7 +25,7 @@ class CreateForm(forms.Form):
     contributor = forms.CharField(label = "contributor", max_length = 100)
 
 class NewTaskForm (forms.Form):
-    search = forms.CharField(label = "Search the food you want:", min_length = 1, max_length = 50)
+    search = forms.CharField(label = "Food Recommendation:", min_length = 1, max_length = 50)
     postalcode = forms.IntegerField(label = "Postal Code:", min_value=1, max_value = 999999)
 
 def distance(origin, destination):
@@ -124,6 +124,11 @@ def index(request):
         myhouselat = [latorigin] * len(hawk)
         myhouselong = [longorigin] * len(hawk)
         latandlong = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong2 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong3 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong4 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong5 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong6 = zip(myhouselat, myhouselong, latitudes, longtitudes)
         return render(request, "project/index.html",{
             "postalcode": postalcode,
             "pagenumber": pagenumber,
@@ -137,6 +142,11 @@ def index(request):
             "contributors": contributors,
             "numbers": number,
             "latandlong": latandlong,
+            "latandlong2": latandlong2,
+            "latandlong3": latandlong3,
+            "latandlong4": latandlong4,
+            "latandlong5": latandlong5,
+            "latandlong6": latandlong6,
             "form": NewTaskForm()
         })
     history = History.objects.filter(id__in=[1,2,3,4,5,6])
@@ -217,6 +227,11 @@ def nextindex(request, pagenumber):
         myhouselat = [latorigin] * (len(hawk) - (6*(page-1)))
         myhouselong = [longorigin] * (len(hawk) - (6*(page-1)))
         latandlong = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong2 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong3 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong4 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong5 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong6 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
         return render(request, "project/index.html",{
             "pagenumber": page,
             "postalcode": postalcode,
@@ -230,6 +245,11 @@ def nextindex(request, pagenumber):
             "contributors": contributors[(6*(page-1)):],
             "numbers": number[(6*(page-1)):],
             "latandlong": latandlong,
+            "latandlong2": latandlong2,
+            "latandlong3": latandlong3,
+            "latandlong4": latandlong4,
+            "latandlong5": latandlong5,
+            "latandlong6": latandlong6,
             "form": NewTaskForm()
         })
 
@@ -292,6 +312,11 @@ def stalltype(request):
         myhouselat = [latorigin] * len(results)
         myhouselong = [longorigin] * len(results)
         latandlong = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong2 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong3 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong4 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong5 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong6 = zip(myhouselat, myhouselong, latitudes, longtitudes)
         return render(request, "project/stall.html",{
             "pagenumber": pagenumber,
             "stalltypes": stalltypes,
@@ -306,6 +331,11 @@ def stalltype(request):
             "contributors": contributors,
             "numbers": number,
             "latandlong": latandlong,
+            "latandlong2": latandlong2,
+            "latandlong3": latandlong3,
+            "latandlong4": latandlong4,
+            "latandlong5": latandlong5,
+            "latandlong6": latandlong6,
             "form": NewTaskForm()
         })
     return render(request, "project/index.html",{
@@ -371,6 +401,11 @@ def nextstall(request, pagenumber):
         myhouselat = [latorigin] * (len(results) - (6*(page-1)))
         myhouselong = [longorigin] * (len(results) - (6*(page-1)))
         latandlong = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong2 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong3 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong4 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong5 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong6 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
         return render(request, "project/search.html",{
             "pagenumber": page,
             "stalltypes": stalltypes,
@@ -386,6 +421,11 @@ def nextstall(request, pagenumber):
             "contributors": contributors[(6*(page-1)):],
             "numbers": number[(6*(page-1)):],
             "latandlong": latandlong,
+            "latandlong2": latandlong2,
+            "latandlong3": latandlong3,
+            "latandlong4": latandlong4,
+            "latandlong5": latandlong5,
+            "latandlong6": latandlong6,
             "form": NewTaskForm()
         })
     return render(request, "project/index.html",{
@@ -457,6 +497,11 @@ def search(request):
             myhouselat = [latorigin] * len(results)
             myhouselong = [longorigin] * len(results)
             latandlong = zip(myhouselat, myhouselong, latitudes, longtitudes)
+            latandlong2 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+            latandlong3 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+            latandlong4 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+            latandlong5 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+            latandlong6 = zip(myhouselat, myhouselong, latitudes, longtitudes)
             return render(request, "project/search.html",{
                 "pagenumber": pagenumber,
                 "search": search,
@@ -471,6 +516,11 @@ def search(request):
                 "contributors": contributors,
                 "numbers": number,
                 "latandlong": latandlong,
+                "latandlong2": latandlong2,
+                "latandlong3": latandlong3,
+                "latandlong4": latandlong4,
+                "latandlong5": latandlong5,
+                "latandlong6": latandlong6,
                 "form": NewTaskForm()
             })
     return render(request, "project/index.html",{
@@ -536,6 +586,11 @@ def next(request, pagenumber):
         myhouselat = [latorigin] * (len(results) - (6*(page-1)))
         myhouselong = [longorigin] * (len(results) - (6*(page-1)))
         latandlong = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong2 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong3 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong4 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong5 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
+        latandlong6 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
         return render(request, "project/search.html",{
             "pagenumber": page,
             "search": search,
@@ -551,6 +606,11 @@ def next(request, pagenumber):
             "contributors": contributors[(6*(page-1)):],
             "numbers": number[(6*(page-1)):],
             "latandlong": latandlong,
+            "latandlong2": latandlong2,
+            "latandlong3": latandlong3,
+            "latandlong4": latandlong4,
+            "latandlong5": latandlong5,
+            "latandlong6": latandlong6,
             "form": NewTaskForm()
         })
     return render(request, "project/index.html",{
