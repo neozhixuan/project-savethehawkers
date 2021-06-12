@@ -7693,3 +7693,4 @@ Traceback (most recent call last):
     raise NoReverseMatch(msg)
 django.urls.exceptions.NoReverseMatch: Reverse for 'editing' with arguments '('',)' not found. 1 pattern(s) tried: ['(?P<name>[^/]+)/editing$']
 2021-06-12 13:26:45,821 [WARNING] django.request: Not Found: /favicon.ico
+2021-06-12 13:54:38,019 [WARNING] django.request: Not Found: /favicon.ico

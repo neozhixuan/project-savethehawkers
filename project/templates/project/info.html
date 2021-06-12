@@ -52,8 +52,11 @@ function closeFeedback(){
       </form>
     </div>
   </div>
-
+  {% if user.is_authenticated %}
 <button onclick = "openDelete()">Delete</button> <button onclick="openFeedback()">Edit</button>
+{%else%}
+<dt> Sign in to make changes.</dt>
+{%endif%}
 <h2 style = "text-align: center;">Stall Information</h2>
 <div style = "display: flex;">
 <div style = "flex: 1 15%">
