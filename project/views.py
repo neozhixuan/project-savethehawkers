@@ -46,6 +46,7 @@ def distance(origin, destination):
 
 def index(request):
     if request.method == "POST":
+        history = History.objects.filter(id__in=[1,2,3,4,5,6])
         pagenumber = 1
         postalcode = request.POST["postalcode"]
         if not postalcode:
@@ -55,6 +56,7 @@ def index(request):
                 "postalcode": postalcode,
                 "pagenumber": pagenumber,
                 "no": "no",
+                "history": history
             })
         try:
             val = int(postalcode)
@@ -65,20 +67,30 @@ def index(request):
                 "postalcode": postalcode,
                 "pagenumber": pagenumber,
                 "no": "no",
+                "history": history
             })
         try:
-            post = Zipcode.objects.get(postal = postalcode)
-        except Zipcode.DoesNotExist:
+            address = f"https://developers.onemap.sg/commonapi/search?searchVal={postalcode}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+            response = requests.get(address)
+            data = response.text
+            parse_json = json.loads(data)
+            latorigin = float(parse_json['results'][0]['LATITUDE'])
+        except IndexError:
             return render(request, "project/index.html",{
-                "message": "Postal Code does not exist in the database!",
+                "message": "Postal Code does not exist!",
                 "form": NewTaskForm(),
                 "postalcode": postalcode,
                 "pagenumber": pagenumber,
                 "no": "no",
-            })
-        place = Zipcode.objects.filter(postal = postalcode)
-        latorigin = place.first().latitude
-        longorigin = place.first().longtitude
+                "history": history
+            })    
+        address = f"https://developers.onemap.sg/commonapi/search?searchVal={postalcode}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+        response = requests.get(address)
+        data = response.text
+        parse_json = json.loads(data)
+        latorigin = float(parse_json['results'][0]['LATITUDE'])
+        longorigin = float(parse_json['results'][0]['LONGITUDE'])
+        place = parse_json['results'][0]['ADDRESS']
     #
         hawk = HawkerStall.objects.all()
         number = [0] * len(hawk)
@@ -258,9 +270,29 @@ def stalltype(request):
         pagenumber = 1
         stalltypes = request.POST["stalltype"]
         postalcode = request.POST["postalcode"]
-        place = Zipcode.objects.filter(postal = postalcode)
-        latorigin = place.first().latitude
-        longorigin = place.first().longtitude
+        history = History.objects.filter(id__in=[1,2,3,4,5,6])
+        try:
+            address = f"https://developers.onemap.sg/commonapi/search?searchVal={postalcode}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+            response = requests.get(address)
+            data = response.text
+            parse_json = json.loads(data)
+            latorigin = float(parse_json['results'][0]['LATITUDE'])
+        except IndexError:
+            return render(request, "project/index.html",{
+                "message": "Postal Code does not exist!",
+                "form": NewTaskForm(),
+                "postalcode": postalcode,
+                "pagenumber": pagenumber,
+                "no": "no",
+                "history": history
+            })    
+        address = f"https://developers.onemap.sg/commonapi/search?searchVal={postalcode}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+        response = requests.get(address)
+        data = response.text
+        parse_json = json.loads(data)
+        latorigin = float(parse_json['results'][0]['LATITUDE'])
+        longorigin = float(parse_json['results'][0]['LONGITUDE'])
+        place = parse_json['results'][0]['ADDRESS']
         results = HawkerStall.objects.filter(stalltype = stalltypes)
         if not results:
             return render(request, "project/index.html", {
@@ -440,89 +472,109 @@ def search(request):
             pagenumber = 1
             search = form.cleaned_data["search"]
             postalcode = form.cleaned_data["postalcode"]
-            place = Zipcode.objects.filter(postal = postalcode)
-            latorigin = place.first().latitude
-            longorigin = place.first().longtitude
-            results = HawkerStall.objects.filter(reco__contains = search)
-            if not results:
-                return render(request, "project/index.html", {
-                    "searchmessage": "No related results.",
-                    "form": NewTaskForm(),
-                    "postalcode": postalcode,
-                    "pagenumber": pagenumber,
-                    "no": "no",
-                })
-            number = [0] * len(results)
-            count = 0
-            for res in results.iterator():
-                lat = res.latitude
-                long = res.longtitude
-                origin = (latorigin, longorigin)
-                destination = (lat, long)
-                km = distance(origin, destination)
-                km = km * 1000
-                number[count] = round(km)
-                count += 1
-            #an array of the indexes after sorting
-            s = numpy.array(number)
-            sort_index = numpy.argsort(s)
-            #original number = [2022, 3104, 1012...]
-            #number = [1012, 2022, 3104...]
-            #new_list = [3, 1, 2...]
-            number.sort()
-            latitudes = [0] * len(results)
-            longtitudes = [0] * len(results)
-            names = [0] * len(results)
-            addresses = [0] * len(results)
-            recos = [0] * len(results)
-            hours = [0] * len(results)
-            details = [0] * len(results)
-            contributors = [0] * len(results)
-            # this will start from the numbers 4, then to 1, then to 6....
-            for i in sort_index:
-                for j in range(len(addresses)):
-                    if addresses[j] != 0:
-                        j = j+1
-                    else:
-                        ha = results[int(i)]
-                        latitudes[j] = ha.latitude
-                        longtitudes[j] = ha.longtitude
-                        names[j] = ha.name
-                        addresses[j] = ha.address
-                        recos[j] = ha.reco
-                        hours[j] = ha.hours
-                        details[j] = ha.details
-                        contributors[j] = ha.contributor
-                        break
-            myhouselat = [latorigin] * len(results)
-            myhouselong = [longorigin] * len(results)
-            latandlong = zip(myhouselat, myhouselong, latitudes, longtitudes)
-            latandlong2 = zip(myhouselat, myhouselong, latitudes, longtitudes)
-            latandlong3 = zip(myhouselat, myhouselong, latitudes, longtitudes)
-            latandlong4 = zip(myhouselat, myhouselong, latitudes, longtitudes)
-            latandlong5 = zip(myhouselat, myhouselong, latitudes, longtitudes)
-            latandlong6 = zip(myhouselat, myhouselong, latitudes, longtitudes)
-            return render(request, "project/search.html",{
-                "pagenumber": pagenumber,
-                "search": search,
+            history = History.objects.filter(id__in=[1,2,3,4,5,6])
+        try:
+            address = f"https://developers.onemap.sg/commonapi/search?searchVal={postalcode}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+            response = requests.get(address)
+            data = response.text
+            parse_json = json.loads(data)
+            latorigin = float(parse_json['results'][0]['LATITUDE'])
+        except IndexError:
+            return render(request, "project/index.html",{
+                "message": "Postal Code does not exist!",
+                "form": NewTaskForm(),
                 "postalcode": postalcode,
-                "latitudes": latitudes,
-                "longtitudes": longtitudes,
-                "names": names,
-                "addresses": addresses,
-                "recos": recos,
-                "hours": hours,
-                "details": details,
-                "contributors": contributors,
-                "numbers": number,
-                "latandlong": latandlong,
-                "latandlong2": latandlong2,
-                "latandlong3": latandlong3,
-                "latandlong4": latandlong4,
-                "latandlong5": latandlong5,
-                "latandlong6": latandlong6,
-                "form": NewTaskForm()
+                "pagenumber": pagenumber,
+                "no": "no",
+                "history": history
+            })    
+        address = f"https://developers.onemap.sg/commonapi/search?searchVal={postalcode}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+        response = requests.get(address)
+        data = response.text
+        parse_json = json.loads(data)
+        latorigin = float(parse_json['results'][0]['LATITUDE'])
+        longorigin = float(parse_json['results'][0]['LONGITUDE'])
+        place = parse_json['results'][0]['ADDRESS']
+        results = HawkerStall.objects.filter(reco__contains = search)
+        if not results:
+            return render(request, "project/index.html", {
+                "searchmessage": "No related results.",
+                "form": NewTaskForm(),
+                "postalcode": postalcode,
+                "pagenumber": pagenumber,
+                "no": "no",
             })
+        number = [0] * len(results)
+        count = 0
+        for res in results.iterator():
+            lat = res.latitude
+            long = res.longtitude
+            origin = (latorigin, longorigin)
+            destination = (lat, long)
+            km = distance(origin, destination)
+            km = km * 1000
+            number[count] = round(km)
+            count += 1
+        #an array of the indexes after sorting
+        s = numpy.array(number)
+        sort_index = numpy.argsort(s)
+        #original number = [2022, 3104, 1012...]
+        #number = [1012, 2022, 3104...]
+        #new_list = [3, 1, 2...]
+        number.sort()
+        latitudes = [0] * len(results)
+        longtitudes = [0] * len(results)
+        names = [0] * len(results)
+        addresses = [0] * len(results)
+        recos = [0] * len(results)
+        hours = [0] * len(results)
+        details = [0] * len(results)
+        contributors = [0] * len(results)
+        # this will start from the numbers 4, then to 1, then to 6....
+        for i in sort_index:
+            for j in range(len(addresses)):
+                if addresses[j] != 0:
+                    j = j+1
+                else:
+                    ha = results[int(i)]
+                    latitudes[j] = ha.latitude
+                    longtitudes[j] = ha.longtitude
+                    names[j] = ha.name
+                    addresses[j] = ha.address
+                    recos[j] = ha.reco
+                    hours[j] = ha.hours
+                    details[j] = ha.details
+                    contributors[j] = ha.contributor
+                    break
+        myhouselat = [latorigin] * len(results)
+        myhouselong = [longorigin] * len(results)
+        latandlong = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong2 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong3 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong4 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong5 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        latandlong6 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+        return render(request, "project/search.html",{
+            "pagenumber": pagenumber,
+            "search": search,
+            "postalcode": postalcode,
+            "latitudes": latitudes,
+            "longtitudes": longtitudes,
+            "names": names,
+            "addresses": addresses,
+            "recos": recos,
+            "hours": hours,
+            "details": details,
+            "contributors": contributors,
+            "numbers": number,
+            "latandlong": latandlong,
+            "latandlong2": latandlong2,
+            "latandlong3": latandlong3,
+            "latandlong4": latandlong4,
+            "latandlong5": latandlong5,
+            "latandlong6": latandlong6,
+            "form": NewTaskForm()
+        })
     return render(request, "project/index.html",{
         "form": NewTaskForm()
     })
