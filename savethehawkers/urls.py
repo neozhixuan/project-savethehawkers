@@ -19,9 +19,11 @@ from django.conf.urls import url
 from django.views.static import serve
 from django.conf import settings
 
+from django.conf.urls.static import static
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("project.urls")),
-    url(r'^media/(?P<path>.*)$', serve,{'document_root':       settings.MEDIA_ROOT}), 
+    #127.0.0.1:8000/media/9_grid_profile.png
+    url(r'^images/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]

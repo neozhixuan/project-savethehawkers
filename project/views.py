@@ -685,6 +685,7 @@ def edity(request, name):
         hours = request.POST["hours"]
         reco = request.POST["reco"]
         details = request.POST["details"]
+        image = request.FILES.get('image')
         #contributor = request.POST["contributor"]
         f = HawkerStall.objects.get(name = name)
         f.latitude = latitude
@@ -694,6 +695,7 @@ def edity(request, name):
         f.hours = hours
         f.reco = reco
         f.details = details
+        f.image = image
         f.save()
         return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
     else:

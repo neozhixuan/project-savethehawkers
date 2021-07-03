@@ -1,5 +1,5 @@
 {% extends "project/layout.html" %}
-
+{%load static%}
 
 
 {% block body %}
@@ -23,18 +23,21 @@ function closeFeedback(){
   </div>
   <div class = "feedback">
     <button onclick="closeFeedback()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
-    <form action = "{% url 'savethehawkers:editing' stalls.name %}" method = "POST" style = "text-align: left;">
+    <form action = "{% url 'savethehawkers:editing' stalls.name %}" method = "POST" style = "text-align: left;" enctype="multipart/form-data">
       {%csrf_token%}
-      Latitude:<input type = "float" name = "latitude" value = "{{stalls.latitude}}"><br>
-      Longitude:<input type = "float" name = "longtitude" value = "{{stalls.longtitude}}"><br>
-      Name:<input type = "hidden" name = "name" value = "{{stalls.name}}">{{stalls.name}}<br>
-      Stalltype:<input type = "text" name = "stalltype" value = "{{stalls.stalltype}}"><br>
-      Address:<input type = "text" name = "address" value = "{{stalls.address}}"><br>
-      Hours:<input type = "text" name = "hours" value = "{{stalls.hours}}"><br>
-      Recommendation:<input type = "text" name = "reco" value = "{{stalls.reco}}"><br>
-      Details:<input type = "text" name = "details" value = "{{stalls.details}}"><br>
-      Contributor:<input type = "hidden" name = "contributor" value = "{{stalls.contributor}}">{{stalls.contributor}}<br>
-      <input type = "submit" value = "Submit" style = "background-color: #b2ab8c; width: 33vw; height: 60px; border: 3px solid black;">
+      <div class = "form-group m-3">
+      Image:<input  type = "file" name = "image" class = "form-control-file">
+      </div>
+      Latitude:<input type = "float" name = "latitude" value = "{{stalls.latitude}}" class = "form-control"><br>
+      Longitude:<input type = "float" name = "longtitude" value = "{{stalls.longtitude}}" class = "form-control"><br>
+      Name:<input type = "hidden" name = "name" value = "{{stalls.name}}" class = "form-control">{{stalls.name}}<br>
+      Stalltype:<input type = "text" name = "stalltype" value = "{{stalls.stalltype}}" class = "form-control"><br>
+      Address:<input type = "text" name = "address" value = "{{stalls.address}}" class = "form-control"><br>
+      Hours:<input type = "text" name = "hours" value = "{{stalls.hours}}" class = "form-control"><br>
+      Recommendation:<input type = "text" name = "reco" value = "{{stalls.reco}}" class = "form-control"><br>
+      Details:<input type = "text" name = "details" value = "{{stalls.details}}" class = "form-control"><br>
+      Contributor:<input type = "hidden" name = "contributor" value = "{{stalls.contributor}}" class = "form-control">{{stalls.contributor}}<br>
+      <input type = "submit" value = "Submit" class = "btn btn-primary">
     </form>
   </div>
 </div>
@@ -63,6 +66,16 @@ function closeFeedback(){
 </div>
 <div style = "flex: 1 70%">
   <table class = "place table table-dark">
+    
+    <tr>
+      {%block stalls.image%}
+      {%if stalls.image%}
+      <td><span style = "color: gray">Image: </span><img src="{{stalls.image.url}}" width= "500" height= "500">{{stalls.image}}</td>
+      {%else%}
+      <td><span style = "color: gray">Image: </span>-</td>
+      {%endif%}
+      {%endblock%}
+    </tr>
     <tr>
       <td><span style = "color: gray">Name: </span>{{stalls.name}}</td>
     </tr>

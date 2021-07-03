@@ -28,6 +28,7 @@ class HawkerStall(models.Model):
     reco = models.CharField(blank = True, max_length = 100)
     details = models.CharField(blank = True, max_length = 1000)
     contributor = models.CharField(blank = True, max_length = 100)
+    image = models.ImageField(null = True, blank = True)
 
     def __str__ (self):
         return f"{self.address}, {self.name}, {self.reco}"
