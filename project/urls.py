@@ -16,4 +16,5 @@ urlpatterns = [
     path("<str:name>/editing", views.edity, name="editing"),
     path("<str:name>/delete", views.delete, name="delete"),
     path("creations", views.creations, name="creations"),
+    path("<str:name>/comment", views.comment, name="comment"),
 ]

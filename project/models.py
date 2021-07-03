@@ -17,6 +17,11 @@ class Zipcode(models.Model):
 
     def __str__ (self):
         return f"{self.postal}, {self.building}"
+class Comments(models.Model):
+    comment = models.CharField(blank = True, max_length = 500)
+    image = models.ImageField(null = True, blank = True)
+    def __str__ (self):
+        return f"{self.comment}"
 
 class HawkerStall(models.Model):
     latitude = models.FloatField(null = True)
@@ -29,9 +34,10 @@ class HawkerStall(models.Model):
     details = models.CharField(blank = True, max_length = 1000)
     contributor = models.CharField(blank = True, max_length = 100)
     image = models.ImageField(null = True, blank = True)
-
+    comments = models.ManyToManyField(Comments, blank = True, null = True)
     def __str__ (self):
         return f"{self.address}, {self.name}, {self.reco}"
+
 
 class History(models.Model):
     latitude = models.FloatField(null = True)

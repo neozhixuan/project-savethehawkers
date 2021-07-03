@@ -132,6 +132,10 @@ STATICFILES_DIRS = (
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
+TELEGRAM = {
+    'bot_token': '1703032999:AAEodHK8JgdY877bZ5RkleAMKxb9TccC628',
+    'channel_name': 'SaveTheHawkers',
+}
 
 LOGGING = {
     'version': 1,

@@ -353,4 +353,10 @@
 </table>
 {%endif%}
 
+{%for comment in comments%}
+{%if forloop.revcounter <= 5%}
+{{comment.comment}}
+<img src="{{comment.image.url}}" width= "100" height= "100">
+{%endif%}
+{%endfor%}
 {% endblock %}

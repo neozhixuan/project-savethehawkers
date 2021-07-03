@@ -100,7 +100,28 @@ function closeFeedback(){
     </table>
 </div>
 </div>
+<form action = "{% url 'savethehawkers:comment' stalls.name %}" method = "POST" enctype="multipart/form-data">
+  {%csrf_token%}
+  <h2> Comments </h2>
+  <input required type = "text" name = "description" class = "form-control" placeholder = "Comment">
+  <label>Image</label>
+  <div class = "form-group m-3">
+    Image:<input  type = "file" name = "foodimage" class = "form-control-file">
+    </div>
+  <input type = "submit" value = "Submit">
+</form>
+<h2> under neath are comments </h2>
+{%for commen in comments%}
+x
+{{commen.comment}}
+<img src="{{commen.image.url}}" width= "100" height= "100">
+x
+{%endfor%}
+<h2> under neath are names </h2>
+{%for nam in name%}
+x
+{{nam}}
 
-
-
+x
+{%endfor%}
 {% endblock %}

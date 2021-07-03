@@ -10,6 +10,9 @@ from django import forms
 from ipstack import GeoLookup
 import requests
 import json
+
+import telegram
+from django.conf import settings
 # NoReverseMatch: edity is not a name - probably didnt indicate app name in some html
 # NoReverseMatch: argument (",") does not match.... - didnt include argument when your path requires one <str:...>
 # NoReverseMatch: path does not exist - name you put is diff from "name" in urls
@@ -161,11 +164,13 @@ def index(request):
             "latandlong6": latandlong6,
             "form": NewTaskForm()
         })
+    comments = Comments.objects.all()
     history = History.objects.filter(id__in=[1,2,3,4,5,6])
     return render(request, "project/index.html",{
         "no": "no",
         "form": NewTaskForm(),
         "history": history,
+        "comments":comments
     })
 
 def nextindex(request, pagenumber):
@@ -670,10 +675,35 @@ def next(request, pagenumber):
     })
 
 def info(request, name):
-    stall = HawkerStall.objects.filter(name = name)
+    stall = HawkerStall.objects.filter(name = name).first()
     return render(request, "project/info.html",{
-        "stalls": stall.first(),
+        "stalls": stall,
         "form": NewTaskForm(),
+        "comments": stall.comments.all()
+    })
+
+def comment(request, name):
+    if request.method == "POST":
+        description = request.POST["description"]
+        foodimage = request.FILES.get('foodimage')
+        hawk = HawkerStall.objects.filter(name = name).first()
+        f = Comments(comment = description, image = foodimage)
+        f.save()
+        hawk.comments.add(f)
+        telegram_settings = settings.TELEGRAM
+        bot = telegram.Bot(token=telegram_settings['bot_token'])
+        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=description, parse_mode=telegram.ParseMode.HTML)
+        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"http://127.0.0.1:8000/images/{foodimage}", disable_web_page_preview=None)
+        return render(request, "project/info.html",{
+            "stalls": hawk,
+            "form": NewTaskForm(),
+            "comments": hawk.comments.all(),
+        })
+    hawk = HawkerStall.objects.filter(name = name).first()
+    return render(request, "project/info.html",{
+        "stalls": hawk,
+        "form": NewTaskForm(),
+        "comments": hawk.comments.all()
     })
 
 def edity(request, name):
