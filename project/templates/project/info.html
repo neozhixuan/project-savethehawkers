@@ -68,21 +68,8 @@ function closeFeedback(){
 <dt> Sign in to make changes.</dt>
 {%endif%}
 <h2 style = "text-align: center;">Stall Information</h2>
-<div style = "display: flex;">
-<div style = "flex: 1 15%">
-</div>
-<div style = "flex: 1 70%">
-  <table class = "place table table-dark">
-    
-    <tr>
-      {%block stalls.image%}
-      {%if stalls.image%}
-      <td><span style = "color: gray">Image: </span><img src="{{stalls.image.url}}" width= "500" height= "500">{{stalls.image}}</td>
-      {%else%}
-      <td><span style = "color: gray">Image: </span>-</td>
-      {%endif%}
-      {%endblock%}
-    </tr>
+<div class = "d-flex flex-row flex-wrap">
+    <table class = "place table table-dark">
     <tr>
       <td><span style = "color: gray">Orders: </span>{%for item in items%}{{item}}{%endfor%}</td>
     </tr>
@@ -129,26 +116,53 @@ function closeFeedback(){
       <td><span style = "color: gray">Awards: </span> {{stalls.awards}}</td>
     </tr>
     </table>
+    <div class = "float-left d-flex">
+      {%block stalls.image%}
+      {%if stalls.image%}
+      <td><span style = "color: gray"></span><img src="{{stalls.image.url}}" style = "width: 100vw"></td>
+      {%else%}
+      <td><span style = "color: gray">Image: </span>-</td>
+      {%endif%}
+      {%endblock%}
+    </div>
 </div>
-</div>
+    <hr>
+<div class = "m-3 rounded shadow-lg" style = "background-color: lightgray;">
 <form action = "{% url 'savethehawkers:comment' stalls.name %}" method = "POST" enctype="multipart/form-data">
   {%csrf_token%}
-  <h2> Comments </h2>
+  <h2 class = "m-3"> Comments </h2>
+  <div class = "form-group m-3">
   <input required type = "text" name = "description" class = "form-control" placeholder = "Comment">
+</div>
+<div class = "form-group m-3">
   <input required type = "text" name = "ordered" class = "form-control" placeholder = "What did you order?">
+</div>
   <div class = "form-group m-3">
     Image:<input required type = "file" name = "foodimage" class = "form-control-file">
     </div>
-  <input type = "submit" value = "Submit">
+  <input type = "submit" value = "Submit" class = "m-3 btn btn-primary">
 </form>
-<h2> under neath are comments </h2>
-{%for commen in comments%}
-x
-{{commen.comment}}
-<img src="{{commen.image.url}}" width= "100" height= "100">
-{{commen.ordered}}
-<a href = "{%url 'savethehawkers:info' commen.stallname %}">{{commen.stallname}}</a>
-{{commen.address}}
-x
-{%endfor%}
+</div>
+<table class = "table table-hover table-sm" style = "width:fit-content; margin-left: 20px">
+  <thead class = "thead-dark">
+      <tr>
+          <th>Comment</th>
+          <th>Image</th>
+          <th>Order</th>
+          <th>Stall Name</th>
+          <th>Address</th>
+      </tr>
+  </thead>
+  <tbody>
+    {%for comment in comments%}
+      <tr>
+          <td>{{comment.comment}}</td>
+          <td><img src="{{comment.image.url}}" width= "100" height= "100"></td>
+          <td>{{comment.ordered}}</td>
+          <td><a href = "{%url 'savethehawkers:info' comment.stallname %}">{{comment.stallname}}</a></td>
+          <td>{{comment.address}}</td>
+      </tr>
+      {%endfor%}
+  </tbody>
+</table>
 {% endblock %}
