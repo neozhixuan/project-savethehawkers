@@ -5,6 +5,8 @@ from django.shortcuts import render
 from django.urls import reverse
 import numpy
 import math
+
+import telegram
 from .models import *
 from django import forms
 from ipstack import GeoLookup
