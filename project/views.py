@@ -11,7 +11,7 @@ from ipstack import GeoLookup
 import requests
 import json
 
-import telegram
+from telegram import *
 from django.conf import settings
 # NoReverseMatch: edity is not a name - probably didnt indicate app name in some html
 # NoReverseMatch: argument (",") does not match.... - didnt include argument when your path requires one <str:...>
