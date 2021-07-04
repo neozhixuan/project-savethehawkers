@@ -676,24 +676,30 @@ def next(request, pagenumber):
 
 def info(request, name):
     stall = HawkerStall.objects.filter(name = name).first()
+    orders = stall.comments.all().values('ordered')
+    items = [0] * len(orders)
+    for i in range(len(orders)):
+        items[i] = orders[i]['ordered']
     return render(request, "project/info.html",{
         "stalls": stall,
         "form": NewTaskForm(),
-        "comments": stall.comments.all()
+        "comments": stall.comments.all(),
+        "items": items
     })
 
 def comment(request, name):
     if request.method == "POST":
         description = request.POST["description"]
+        ordered = request.POST["ordered"]
         foodimage = request.FILES.get('foodimage')
         hawk = HawkerStall.objects.filter(name = name).first()
-        f = Comments(comment = description, image = foodimage)
+        f = Comments(comment = description, image = foodimage, ordered = ordered, stallname = name, address = hawk.address)
         f.save()
         hawk.comments.add(f)
         telegram_settings = settings.TELEGRAM
         bot = telegram.Bot(token=telegram_settings['bot_token'])
-        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=description, parse_mode=telegram.ParseMode.HTML)
-        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"http://127.0.0.1:8000/images/{foodimage}", disable_web_page_preview=None)
+        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"{description} - Stall:{name} - Address: {hawk.address}", parse_mode=telegram.ParseMode.HTML)
+        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"http://savethehawkers.herokuapp.com/images/{foodimage}")
         return render(request, "project/info.html",{
             "stalls": hawk,
             "form": NewTaskForm(),
@@ -708,6 +714,7 @@ def comment(request, name):
 
 def edity(request, name):
     if request.method == "POST":
+        f = HawkerStall.objects.get(name = name)
         latitude = request.POST["latitude"]
         longtitude = request.POST["longtitude"]
         stalltype = request.POST["stalltype"]
@@ -715,9 +722,25 @@ def edity(request, name):
         hours = request.POST["hours"]
         reco = request.POST["reco"]
         details = request.POST["details"]
+        message = request.POST["message"]
+        number = request.POST["number"]
+        deals = request.POST["deals"]
+        awards = request.POST["awards"]
+        if request.POST.get('fooddelivery'):
+            f.fooddelivery = True
+        else:
+            f.fooddelivery = False
+        if request.POST.get('phonedelivery'):
+            f.phonedelivery = True
+        else:
+            f.phonedelivery = False
+        if request.POST.get('freelance'):
+            f.freelance = True
+        else:
+            f.freelance = False
         image = request.FILES.get('image')
         #contributor = request.POST["contributor"]
-        f = HawkerStall.objects.get(name = name)
+        
         f.latitude = latitude
         f.longtitude = longtitude
         f.stalltype = stalltype
@@ -725,7 +748,10 @@ def edity(request, name):
         f.hours = hours
         f.reco = reco
         f.details = details
-        f.image = image
+        f.message = message
+        f.number = number
+        f.deals = deals
+        f.awards = awards
         f.save()
         return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
     else:

@@ -37,6 +37,13 @@ function closeFeedback(){
       Recommendation:<input type = "text" name = "reco" value = "{{stalls.reco}}" class = "form-control"><br>
       Details:<input type = "text" name = "details" value = "{{stalls.details}}" class = "form-control"><br>
       Contributor:<input type = "hidden" name = "contributor" value = "{{stalls.contributor}}" class = "form-control">{{stalls.contributor}}<br>
+      Hawker's Message:<input type = "text" name = "message" value = "{{stalls.message}}" class = "form-control"><br>
+      Number:<input required type = "number" name = "number" value = "{{stalls.number}}" class = "form-control"><br>
+      Online Delivery Needed:<input type = "checkbox" name = "fooddelivery" value = "{{stalls.fooddelivery}}" class = "form-control"><br>
+      Has Phone Delivery:<input type = "checkbox" name = "phonedelivery" value = "{{stalls.phonedelivery}}" class = "form-control"><br>
+      Needs Freelance Deliverers:<input type = "checkbox" name = "freelance" value = "{{stalls.freelance}}" class = "form-control"><br>
+      Deals:<input type = "text" name = "deals" value = "{{stalls.deals}}" class = "form-control"><br>
+      Awards:<input type = "text" name = "awards" value = "{{stalls.awards}}" class = "form-control"><br>
       <input type = "submit" value = "Submit" class = "btn btn-primary">
     </form>
   </div>
@@ -77,6 +84,9 @@ function closeFeedback(){
       {%endblock%}
     </tr>
     <tr>
+      <td><span style = "color: gray">Orders: </span>{%for item in items%}{{item}}{%endfor%}</td>
+    </tr>
+    <tr>
       <td><span style = "color: gray">Name: </span>{{stalls.name}}</td>
     </tr>
     <tr>
@@ -97,6 +107,27 @@ function closeFeedback(){
     <tr>
       <td><span style = "color: gray">Contributor: </span> {{stalls.contributor}}</td>
     </tr>
+    <tr>
+      <td><span style = "color: gray">Message: </span> {{stalls.message}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Number: </span> {{stalls.number}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Online Delivery: </span> {{stalls.fooddelivery}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Phone Delivery: </span> {{stalls.phonedelivery}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Freelance Delivery Needed: </span> {{stalls.freelance}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Deals: </span> {{stalls.deals}}</td>
+    </tr>
+    <tr>
+      <td><span style = "color: gray">Awards: </span> {{stalls.awards}}</td>
+    </tr>
     </table>
 </div>
 </div>
@@ -104,9 +135,9 @@ function closeFeedback(){
   {%csrf_token%}
   <h2> Comments </h2>
   <input required type = "text" name = "description" class = "form-control" placeholder = "Comment">
-  <label>Image</label>
+  <input required type = "text" name = "ordered" class = "form-control" placeholder = "What did you order?">
   <div class = "form-group m-3">
-    Image:<input  type = "file" name = "foodimage" class = "form-control-file">
+    Image:<input required type = "file" name = "foodimage" class = "form-control-file">
     </div>
   <input type = "submit" value = "Submit">
 </form>
@@ -115,13 +146,9 @@ function closeFeedback(){
 x
 {{commen.comment}}
 <img src="{{commen.image.url}}" width= "100" height= "100">
-x
-{%endfor%}
-<h2> under neath are names </h2>
-{%for nam in name%}
-x
-{{nam}}
-
+{{commen.ordered}}
+<a href = "{%url 'savethehawkers:info' commen.stallname %}">{{commen.stallname}}</a>
+{{commen.address}}
 x
 {%endfor%}
 {% endblock %}

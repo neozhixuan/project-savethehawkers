@@ -357,6 +357,9 @@
 {%if forloop.revcounter <= 5%}
 {{comment.comment}}
 <img src="{{comment.image.url}}" width= "100" height= "100">
+{{comment.ordered}}
+<a href = "{%url 'savethehawkers:info' comment.stallname %}">{{comment.stallname}}</a>
+{{comment.address}}
 {%endif%}
 {%endfor%}
 {% endblock %}

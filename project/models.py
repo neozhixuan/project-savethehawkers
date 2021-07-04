@@ -20,8 +20,14 @@ class Zipcode(models.Model):
 class Comments(models.Model):
     comment = models.CharField(blank = True, max_length = 500)
     image = models.ImageField(null = True, blank = True)
+    ordered = models.CharField(blank = True, null=True, max_length = 100)
+    stallname = models.CharField(blank = True, null=True, max_length = 100)
+    address = models.CharField(blank = True, null=True, max_length = 100)
     def __str__ (self):
         return f"{self.comment}"
+
+class Menu(models.Model):
+    image = models.ImageField(null = True, blank = True)
 
 class HawkerStall(models.Model):
     latitude = models.FloatField(null = True)
@@ -35,6 +41,14 @@ class HawkerStall(models.Model):
     contributor = models.CharField(blank = True, max_length = 100)
     image = models.ImageField(null = True, blank = True)
     comments = models.ManyToManyField(Comments, blank = True, null = True)
+    message = models.CharField(blank = True, null=True, max_length = 300)
+    number = models.IntegerField(blank = True, null = True)
+    fooddelivery = models.BooleanField(blank = True, null = True)
+    phonedelivery = models.BooleanField(blank = True, null = True)
+    freelance = models.BooleanField(blank = True, null = True)
+    deals = models.CharField(blank = True, null=True, max_length = 100)
+    menu = models.ManyToManyField(Menu, blank = True, null = True)
+    awards = models.CharField(blank = True, null=True, max_length = 500)
     def __str__ (self):
         return f"{self.address}, {self.name}, {self.reco}"
 
