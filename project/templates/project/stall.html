@@ -1,318 +1,186 @@
 {% extends "project/layout.html" %}
 
 {% block body %}
-<div style = "display:flex;" class = "directory">
-    <div style = "flex: 1" class = "directory-box">
-        <table class = "place table table-dark" style = "text-align: center; margin: 10px;">
-            <thead>
-            <tr>
-                {% for name in names %} {% if forloop.counter == 1 %}
-                <th style = "text-align: center"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></th>
-                {%endif%}
-                {%empty%}
-                <th>No results.</th>
-                {%endfor%}
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                {% for lat,long,latitude,longtitude in latandlong %} {% if forloop.counter == 1 %}
-                <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for number in numbers %} {% if forloop.counter == 1 %}
-                <td><span style = "color: lightslategray"> Distance: </span>{{number}} metres away.</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for address in addresses %} {% if forloop.counter == 1 %}
-                <td><span style = "color: lightslategray"> Address: </span>{{address}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for hour in hours %} {% if forloop.counter == 1 %}
-                <td><span style = "color: lightslategray"> Opening Hours: </span>{{hour}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for rec in recos %} {% if forloop.counter == 1 %}
-                <td><span style = "color: lightslategray"> Recommendation: </span>{{rec}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            </tbody>
-        </table>
+<div class="filter-results">
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 1 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong %} {% if forloop.counter == 1 %}
+        <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 1 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 1 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 1 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 1 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
     </div>
-    
-    <div style = "flex: 1" class = "directory-box">
-        <table class = "place table table-dark" style = "text-align: center; margin: 10px;">
-            <thead>
-            <tr>
-                {% for name in names %} {% if forloop.counter == 2 %}
-                <th style = "text-align: center"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></th>
-                {%endif%}
-                {%empty%}
-                <th>No results.</th>
-                {%endfor%}
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                {% for lat,long,latitude,longtitude in latandlong2 %} {% if forloop.counter == 2 %}
-                <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-                {%endif%}
-                {%empty%}
-                <td>No results</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for number in numbers %} {% if forloop.counter == 2 %}
-                <td><span style = "color: lightslategray"> Distance: </span>{{number}} metres away.</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for address in addresses %} {% if forloop.counter == 2 %}
-                <td><span style = "color: lightslategray"> Address: </span>{{address}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for hour in hours %} {% if forloop.counter == 2 %}
-                <td><span style = "color: lightslategray"> Opening Hours: </span>{{hour}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for rec in recos %} {% if forloop.counter == 2 %}
-                <td><span style = "color: lightslategray"> Recommendation: </span>{{rec}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            </tbody>
-        </table>
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 2 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong2 %} {% if forloop.counter == 2 %}
+        <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 2 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 2 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 2 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 2 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
     </div>
-    <div style = "flex: 1" class = "directory-box">
-        <table class = "place table table-dark" style = "text-align: center; margin: 10px;">
-            <thead>
-            <tr>
-                {% for name in names %} {% if forloop.counter == 3 %}
-                <th style = "text-align: center"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></th>
-                {%endif%}
-                {%empty%}
-                <th>No results.</th>
-                {%endfor%}
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                {% for lat,long,latitude,longtitude in latandlong3 %} {% if forloop.counter == 3 %}
-                <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-                {%endif%}
-                {%empty%}
-                <td>No results</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for number in numbers %} {% if forloop.counter == 3 %}
-                <td><span style = "color: lightslategray"> Distance: </span>{{number}} metres away.</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for address in addresses %} {% if forloop.counter == 3 %}
-                <td><span style = "color: lightslategray"> Address: </span>{{address}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for hour in hours %} {% if forloop.counter == 3 %}
-                <td><span style = "color: lightslategray"> Opening Hours: </span>{{hour}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for rec in recos %} {% if forloop.counter == 3 %}
-                <td><span style = "color: lightslategray"> Recommendation: </span>{{rec}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            </tbody>
-        </table>
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 3 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong3 %} {% if forloop.counter == 3 %}
+        <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 3 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 3 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 3 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 3 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
     </div>
-    <div style = "flex: 1" class = "directory-box">
-        <table class = "place table table-dark" style = "text-align: center; margin: 10px;">
-            <thead>
-            <tr>
-                {% for name in names %} {% if forloop.counter == 4 %}
-                <th style = "text-align: center"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></th>
-                {%endif%}
-                {%empty%}
-                <th>No results.</th>
-                {%endfor%}
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                {% for lat,long,latitude,longtitude in latandlong4 %} {% if forloop.counter == 4 %}
-                <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-                {%endif%}
-                {%empty%}
-                <td>No results</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for number in numbers %} {% if forloop.counter == 4 %}
-                <td><span style = "color: lightslategray"> Distance: </span>{{number}} metres away.</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for address in addresses %} {% if forloop.counter == 4 %}
-                <td><span style = "color: lightslategray"> Address: </span>{{address}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for hour in hours %} {% if forloop.counter == 4 %}
-                <td><span style = "color: lightslategray"> Opening Hours: </span>{{hour}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for rec in recos %} {% if forloop.counter == 4 %}
-                <td><span style = "color: lightslategray"> Recommendation: </span>{{rec}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            </tbody>
-        </table>
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 4 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong4 %} {% if forloop.counter == 4 %}
+        <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 4 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 4 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 4 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 4 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
     </div>
-    <div style = "flex: 1" class = "directory-box">
-        <table class = "place table table-dark" style = "text-align: center; margin: 10px;">
-            <thead>
-            <tr>
-                {% for name in names %} {% if forloop.counter == 5 %}
-                <th style = "text-align: center"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></th>
-                {%endif%}
-                {%empty%}
-                <th>No results.</th>
-                {%endfor%}
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                {% for lat,long,latitude,longtitude in latandlong5 %} {% if forloop.counter == 5 %}
-                <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-                {%endif%}
-                {%empty%}
-                <td>No results</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for number in numbers %} {% if forloop.counter == 5 %}
-                <td><span style = "color: lightslategray"> Distance: </span>{{number}} metres away.</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for address in addresses %} {% if forloop.counter == 5 %}
-                <td><span style = "color: lightslategray"> Address: </span>{{address}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for hour in hours %} {% if forloop.counter == 5 %}
-                <td><span style = "color: lightslategray"> Opening Hours: </span>{{hour}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for rec in recos %} {% if forloop.counter == 5 %}
-                <td><span style = "color: lightslategray"> Recommendation: </span>{{rec}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            </tbody>
-        </table>
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 5 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong5 %} {% if forloop.counter == 5 %}
+        <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 5 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 5 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 5 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 5 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
     </div>
-    <div style = "flex: 1" class = "directory-box">
-        <table class = "place table table-dark" style = "text-align: center; margin: 10px;">
-            <thead>
-            <tr>
-                {% for name in names %} {% if forloop.counter == 6 %}
-                <th style = "text-align: center"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></th>
-                {%endif%}
-                {%empty%}
-                <th>No results.</th>
-                {%endfor%}
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                {% for lat,long,latitude,longtitude in latandlong6 %} {% if forloop.counter == 6 %}
-                <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-                {%endif%}
-                {%empty%}
-                <td>No results</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for number in numbers %} {% if forloop.counter == 6 %}
-                <td><span style = "color: lightslategray"> Distance: </span>{{number}} metres away.</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for address in addresses %} {% if forloop.counter == 6 %}
-                <td><span style = "color: lightslategray"> Address: </span>{{address}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for hour in hours %} {% if forloop.counter == 6 %}
-                <td><span style = "color: lightslategray"> Opening Hours: </span>{{hour}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            <tr>
-                {% for rec in recos %} {% if forloop.counter == 6 %}
-                <td><span style = "color: lightslategray"> Recommendation: </span>{{rec}}</td>
-                {%endif%}
-                {%empty%}<td>No results.</td>
-                {%endfor%}
-            </tr>
-            </tbody>
-        </table>
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 6 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong6 %} {% if forloop.counter == 6 %}
+        <td><iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 6 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 6 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 6 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 6 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
     </div>
 </div>
 <form action = "{%url 'savethehawkers:nextstall' pagenumber%} " method = "POST">

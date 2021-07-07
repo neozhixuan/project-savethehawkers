@@ -2,31 +2,36 @@
 
 {% block body %}
 
-    <h2>Register</h2>
-
-    {% if message %}
-        <div>{{ message }}</div>
-    {% endif %}
+<div class="register">
 
     <form action="{% url 'savethehawkers:register' %}" method="post">
         {% csrf_token %}
-        <div class="form-group">
-            <input class="form-control" autofocus type="text" name="username" placeholder="Username">
+        <h2>Register</h2>
+        <label for="username"><b>Username</b></label>
+        <input type="text" placeholder="Username" name="username" required>
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Email Address" name="email" id="email" required>
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Password" name="password" id="password" required>
+
+        <label for="password-confirm"><b>Confirm Password</b></label>
+        <input type="password" placeholder="Confirm Password" name="confirmation" id="password-confirm"
+            required>
+        <br>
+        <div class = "agreement" style = "display: flex;">
+            <p style = "flex: 1"><input type = "checkbox" required></p>
+            <p style="font-size: small;flex: 1;flex-grow: 8;">By signing up, you agree not to abuse the database for any purposes and agree
+                that all actions are to
+                include more information representing digitally illiterate hawker stalls.</p>
         </div>
-        <div class="form-group">
-            <input class="form-control" type="email" name="email" placeholder="Email Address">
+        <input type="submit" value="Register">
+        <div class="register-signin">
+            <p>Already have an account? <a href="login.html" style="color:blue">Sign in</a>.</p>
         </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="password" placeholder="Password">
-        </div>
-        <div class="form-group">
-            <input class="form-control" type="password" name="confirmation" placeholder="Confirm Password">
-        </div>
-        <input class="btn btn-primary" type="submit" value="Register">
+        <h4 style = "color:red">{% if message %}{{ message }}{% endif %}</h4>
     </form>
-    <dt><strong>By signing up, you agree not to abuse the database for any purposes and agree that all actions are to include more information representing digitally illiterate hawker stalls.</strong></dt>
-    Already have an account? <a href="{% url 'savethehawkers:login' %}">Log In here.</a>
-<br>
-<br>
-<br>
+</div>
+<footer>
+    <a href="#">GitHub</a>
+</footer>
 {% endblock %}

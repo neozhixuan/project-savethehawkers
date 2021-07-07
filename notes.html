@@ -1,0 +1,26 @@
+{%for comment in comments%}
+    {%if forloop.revcounter <= 5%}
+<table class = "table table-hover table-sm" style = "width:fit-content; margin-left: 20px">
+    <thead class = "thead-dark">
+        <tr>
+            <th>Comment</th>
+            <th>Image</th>
+            <th>Order</th>
+            <th>Stall Name</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{comment.comment}}</td>
+            <td><img src="{{comment.image.url}}" width= "100" height= "100"></td>
+            <td>{{comment.ordered}}</td>
+            <td><a href = "{%url 'savethehawkers:info' comment.stallname %}">{{comment.stallname}}</a></td>
+            <td>{{comment.address}}</td>
+        </tr>
+    </tbody>
+</table>
+<!---->
+</div>
+    {%endif%}
+{%endfor%}

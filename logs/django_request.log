@@ -10765,3 +10765,480 @@ Traceback (most recent call last):
   File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 662, in __init__
     raise TemplateSyntaxError("Could not parse the remainder: '%s' "
 django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: ''project/hawker.jpg' from ''project/hawker.jpg'
+2021-07-07 20:05:58,740 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 171, in index
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\cached.py", line 58, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 278, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 216, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 522, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 413: 'endblock', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+2021-07-07 20:06:35,560 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: "'url"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 171, in index
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 127, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 124, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 103, in find_template
+    template, origin = context.template.engine.find_template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\cached.py", line 58, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 531, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 21: ''url'. Did you forget to register or load this tag?
+2021-07-07 20:07:04,768 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: "'url"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 171, in index
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 127, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 124, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 103, in find_template
+    template, origin = context.template.engine.find_template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\cached.py", line 58, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 531, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 21: ''url'. Did you forget to register or load this tag?
+2021-07-07 20:07:23,014 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: "'url"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 171, in index
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 127, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 124, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 103, in find_template
+    template, origin = context.template.engine.find_template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\cached.py", line 58, in get_template
+    template = super().get_template(template_name, skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 531, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 21: ''url'. Did you forget to register or load this tag?
+2021-07-07 20:08:16,746 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: "'url"
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 171, in index
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 127, in render
+    compiled_parent = self.get_parent(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 124, in get_parent
+    return self.find_template(parent, context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 103, in find_template
+    template, origin = context.template.engine.find_template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 531, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 21: ''url'. Did you forget to register or load this tag?
+2021-07-07 20:08:36,252 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:08:49,614 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:09:53,783 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:10:13,497 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:10:20,754 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:11:55,084 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:14:09,654 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:14:39,507 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:14:56,462 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:15:30,992 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:15:33,714 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:15:34,496 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:15:35,187 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:15:54,092 [WARNING] django.request: Not Found: /listing-example.html
+2021-07-07 20:16:50,100 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:17:36,658 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:17:37,613 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-07 20:17:48,232 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:18:14,189 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:18:25,351 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:19:05,525 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:19:14,342 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:19:27,604 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:19:44,158 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:20:41,404 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:21:02,490 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:21:07,181 [WARNING] django.request: Not Found: /Sheng He Fishball Minced Meat Noodle/styles.css
+2021-07-07 20:21:15,873 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-07 20:21:26,832 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:29:20,504 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 20:29:21,651 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-07 20:29:41,335 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-07 20:30:01,935 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-07 20:30:08,006 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-07 20:30:19,861 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-07 20:30:26,824 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-07 20:30:36,148 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:19:29,695 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:20:16,239 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:20:43,393 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:20:46,980 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:20:51,602 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:20:53,978 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:20:55,400 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:20:56,327 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:20:58,572 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:21:14,447 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:21:33,010 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:21:40,577 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:22:48,509 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:23:06,124 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:23:36,928 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:23:38,833 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:25:25,547 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:25:33,237 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:25:51,603 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:26:21,733 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:26:23,897 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:27:05,959 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:27:30,022 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:27:48,095 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:28:27,590 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:28:34,714 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:29:06,262 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:29:16,452 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:29:33,752 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:30:21,749 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:30:29,479 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:31:00,780 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:33:45,270 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endfor'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 171, in index
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 278, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 216, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 814, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 522, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 72: 'endfor', expected 'elif', 'else' or 'endif'. Did you forget to register or load this tag?
+2021-07-07 21:33:56,966 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:34:05,403 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:34:39,069 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:34:49,615 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:35:54,143 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:36:18,841 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:36:23,743 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:36:32,369 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-07 21:36:37,618 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:36:42,518 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:36:45,232 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:36:47,692 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-07 21:36:49,146 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-07 21:36:49,794 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:36:54,500 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:45:01,591 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:46:49,891 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:47:03,087 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-07 21:47:43,505 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:47:43,985 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:47:48,261 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:47:49,867 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:48:26,061 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:48:28,613 [ERROR] django.request: Internal Server Error: /stalltype
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'stalltype'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 278, in stalltype
+    stalltypes = request.POST["stalltype"]
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'stalltype'
+2021-07-07 21:49:34,324 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:49:44,230 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:49:46,711 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:50:55,890 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:51:03,107 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:51:03,780 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:51:06,644 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:51:19,391 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:51:31,427 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:51:59,701 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:52:58,779 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:53:04,061 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:53:10,486 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:53:49,261 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:53:52,157 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:54:25,285 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:55:28,457 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:55:39,022 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:55:41,312 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:55:42,664 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:55:43,491 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:55:45,813 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:56:13,672 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:56:25,880 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:56:27,878 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:56:29,764 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:56:33,724 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:58:36,185 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:59:19,073 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 21:59:44,285 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:00:27,871 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:00:40,027 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:01:20,224 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:01:26,647 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:01:27,729 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:01:29,891 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:01:38,587 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:01:39,442 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:01:39,842 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:01:40,307 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:02:25,429 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:02:25,946 [WARNING] django.request: Not Found: /styles.css
+2021-07-07 22:02:26,861 [WARNING] django.request: Not Found: /styles.css
