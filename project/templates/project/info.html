@@ -68,8 +68,8 @@ function closeFeedback(){
 <dt> Sign in to make changes.</dt>
 {%endif%}
 <h2 style = "text-align: center;">Stall Information</h2>
-<div class = "d-flex flex-row flex-wrap">
-    <table class = "place table table-dark">
+<div class = "d-flex flex-row">
+    <table class = "place table table-dark"s>
     <tr>
       <td><span style = "color: gray">Orders: </span>{%for item in items%}{{item}}{%endfor%}</td>
     </tr>
@@ -119,7 +119,7 @@ function closeFeedback(){
     <div class = "float-left d-flex">
       {%block stalls.image%}
       {%if stalls.image%}
-      <td><span style = "color: gray"></span><img src="{{stalls.image.url}}" style = "width: 100vw"></td>
+      <td><span style = "color: gray"></span><img src="{{stalls.image.url}}" style = "width: 200px"></td>
       {%else%}
       <td><span style = "color: gray">Image: </span>-</td>
       {%endif%}

@@ -41,74 +41,7 @@
             {% endif %}
         </ul>
         
-        <div class = "flexbox" style = "display: flex;">
-            <div style = "flex: 1 100%; padding: 10px; box-sizing: border-box">
-                <iframe class = "box" src="https://www.google.com/maps/d/embed?mid=1XcpTiJpt_O-Rw6Wu8qrtCm_Ek9VUgIDF" ></iframe>
-            </div>
-        <div style = "display: flex; flex: 1 100%;">
-            <div class = "box2" style = "flex: 1 10%; display: flex; flex-direction: column;padding: 20px;">
-            <div style = "flex: 1 100%">
-                1
-                <br>
-                Nearby stalls
-            </div>
-            <div style = "flex: 1 100% ">
-                2
-                <br>
-                Search by recommendations
-            </div>
-            <div style = "flex: 1 100%">
-                3
-                <br>
-                Search by type of stall
-            </div>
-            </div>
-            <div class = "box2" style = "flex: 1 100%; display: flex; flex-direction: column; padding: 20px;">
-            <div style = "flex: 1 100%; background-color:pink; ">
-                <dt>{%if not no%}Page {{pagenumber}},{%endif%} Postal code: {{postalcode}}</dt>
-                <form action = "{%url 'savethehawkers:index'%}" method = "POST">
-                    {%csrf_token%}
-                    <input type = "text" name = "postalcode" placeholder = "Postal Code">
-                    <dt>{{message}}</dt>
-                    <input type = "submit">
-                </form> 
-            </div>
-            <hr>
-            <div style = "flex: 1 100%; background-color: lightblue;">
-                <form action = "{%url 'savethehawkers:search'%}" method = "POST">
-                    {%csrf_token%}
-                    {{form}}
-                    <br>
-                    <input type = "submit">
-                </form> 
-                <dt>{{searchmessage}}</dt>
-            </div>
-            <hr>
-            <div style = "flex: 1 100%; background-color: lightgreen;">
-                <form action = "{%url 'savethehawkers:stalltype'%}" method = "POST">
-                    {%csrf_token%}
-                    <dd>Stall Type:</dd>
-                    <select name = "stalltype">
-                        <option value = "Chinese">Chinese</option>
-                        <option value = "Malay">Malay</option>
-                        <option value = "Indian">Indian</option>
-                        <option value = "Western">Western</option>
-                        <option value = "Dessert">Dessert</option>
-                        <option value = "Drinks">Drinks</option>
-                        <option value = "Snacks">Snacks</option>
-                        <option value = "Vegetarian">Vegetarian</option>
-                        <option value = "Others">Others</option>
-                    </select>
-                    <br>
-                    <br>
-                    <dd>Postal Code:</dd>
-                    <input type = "text" name = "postalcode" placeholder = "Postal Code">
-                    <input type = "submit">
-                </form> 
-                </div>
-            </div>
-        </div>
-        </div>
+        
         {% block body %}
         {% endblock %}
     </body>

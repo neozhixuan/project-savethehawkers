@@ -1,6 +1,152 @@
 {% extends "project/layout.html" %}
-
+{% load static %}
 {% block body %}
+
+
+
+{% if no %}
+<div class = "display: flex; flex-direction: column">
+<!-- Map and Searchbox-->
+
+<div class = "flexbox" style = "display: flex; flex: 1;  width: 100vw; height: 90vh">
+    <!-- Map -->
+    <div style = "flex: 1 100%; padding: 20px; box-sizing: border-box; ">
+        <div style = "display: flex; flex-direction: column;">
+            <div style = "flex: 1; font-size: 45px; font-weight: bolder;">
+                An initiative to help digitally illiterate hawkers promote their stalls
+            </div>
+            <br>
+            <br>
+            <div style = "flex: 1">
+                Find the nearest stall to you. Add a photo - this advertises the stall on Telegram. Help hawkers convey a message.
+            </div>
+            <br>
+            <br>
+            <div style = "flex: 1">
+                <iframe class = "box" src="https://www.google.com/maps/d/embed?mid=1XcpTiJpt_O-Rw6Wu8qrtCm_Ek9VUgIDF" ></iframe>
+            </div>
+        </div>
+        
+    </div>
+    <!-- Search boxes -->
+    <div style = "display: flex; flex: 1 100%;">
+        <div class = "box2" style = "flex: 1 10%; display: flex; flex-direction: column;padding: 20px;">
+            <div style = "flex: 1 100%">
+            1
+            <br>
+            Nearby stalls
+            </div>
+            <div style = "flex: 1 100% ">
+            2
+            <br>
+            Search by recommendations
+            </div>
+            <div style = "flex: 1 100%">
+            3
+            <br>
+            Search by type of stall
+            </div>
+        </div>
+        <div class = "box2" style = "flex: 1 100%; display: flex; flex-direction: column; padding: 20px;">
+            <div style = "flex: 1 100%; background-color:pink; ">
+            <dt>{%if not no%}Page {{pagenumber}},{%endif%} Postal code: {{postalcode}}</dt>
+                <form action = "{%url 'savethehawkers:index'%}" method = "POST">
+                    {%csrf_token%}
+                    <input type = "text" name = "postalcode" placeholder = "Postal Code">
+                    <dt>{{message}}</dt>
+                    <input type = "submit">
+                </form> 
+            </div>
+        <hr>
+            <div style = "flex: 1 100%; background-color: lightblue;">
+                <form action = "{%url 'savethehawkers:search'%}" method = "POST">
+                    {%csrf_token%}
+                    {{form}}
+                    <br>
+                    <input type = "submit">
+                </form> 
+                <dt>{{searchmessage}}</dt>
+            </div>
+        <hr>
+        <div style = "flex: 1 100%; background-color: lightgreen;">
+            <form action = "{%url 'savethehawkers:stalltype'%}" method = "POST">
+                {%csrf_token%}
+                <dd>Stall Type:</dd>
+                <select name = "stalltype">
+                    <option value = "Chinese">Chinese</option>
+                    <option value = "Malay">Malay</option>
+                    <option value = "Indian">Indian</option>
+                    <option value = "Western">Western</option>
+                    <option value = "Dessert">Dessert</option>
+                    <option value = "Drinks">Drinks</option>
+                    <option value = "Snacks">Snacks</option>
+                    <option value = "Vegetarian">Vegetarian</option>
+                    <option value = "Others">Others</option>
+                </select>
+            <br>
+            <br>
+                <dd>Postal Code:</dd>
+                <input type = "text" name = "postalcode" placeholder = "Postal Code">
+                <input type = "submit">
+            </form> 
+        </div>
+    </div>
+</div>
+</div>
+<!---->
+
+<!-- History -->
+<h4 style = "margin-left: 20px; flex: 1">History of created listings</h4>
+<table class = "table table-dark rounded shadow-lg" style = "width: fit-content; margin-left: 20px">
+    {%for hist in history%}
+    <thead>
+    <tr>
+        <th><a href = "{%url 'savethehawkers:info' hist.name%}">{{hist.name}}</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        
+        <td>{{hist.contributor}}</td>
+    </tr>
+    <tr>
+        <td>{{hist.address}}</td>
+    </tr>
+    </tbody>
+    {%endfor%}
+</table>
+<!---->
+
+<!-- Comments -->
+<hr>
+<h4 style = "margin-left: 20px;flex: 1">Comments</h4>
+{%for comment in comments%}
+    {%if forloop.revcounter <= 5%}
+<table class = "table table-hover table-sm" style = "width:fit-content; margin-left: 20px">
+    <thead class = "thead-dark">
+        <tr>
+            <th>Comment</th>
+            <th>Image</th>
+            <th>Order</th>
+            <th>Stall Name</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{comment.comment}}</td>
+            <td><img src="{{comment.image.url}}" width= "100" height= "100"></td>
+            <td>{{comment.ordered}}</td>
+            <td><a href = "{%url 'savethehawkers:info' comment.stallname %}">{{comment.stallname}}</a></td>
+            <td>{{comment.address}}</td>
+        </tr>
+    </tbody>
+</table>
+<!---->
+</div>
+    {%endif%}
+{%endfor%}
+{%endif%}
 
 
 
@@ -331,52 +477,26 @@
 </form>
 {%endif%}
 <!-- History -->
-{% if no %}
-<h4 style = "margin-left: 20px;">History of created listings</h4>
-<table class = "table table-dark rounded shadow-lg" style = "width: fit-content; margin-left: 20px">
-    {%for hist in history%}
-    <thead>
-    <tr>
-        <th><a href = "{%url 'savethehawkers:info' hist.name%}">{{hist.name}}</a></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        
-        <td>{{hist.contributor}}</td>
-    </tr>
-    <tr>
-        <td>{{hist.address}}</td>
-    </tr>
-    </tbody>
-    {%endfor%}
-</table>
-<hr>
-<h4 style = "margin-left: 20px;">Comments</h4>
-{%for comment in comments%}
-    {%if forloop.revcounter <= 5%}
-<table class = "table table-hover table-sm" style = "width:fit-content; margin-left: 20px">
-    <thead class = "thead-dark">
-        <tr>
-            <th>Comment</th>
-            <th>Image</th>
-            <th>Order</th>
-            <th>Stall Name</th>
-            <th>Address</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{comment.comment}}</td>
-            <td><img src="{{comment.image.url}}" width= "100" height= "100"></td>
-            <td>{{comment.ordered}}</td>
-            <td><a href = "{%url 'savethehawkers:info' comment.stallname %}">{{comment.stallname}}</a></td>
-            <td>{{comment.address}}</td>
-        </tr>
-    </tbody>
-</table>
-    {%endif%}
-{%endfor%}
-{%endif%}
 
+<footer style = "bottom: 0; position: fixed; width: 100%; height: 50px; background-color: cadetblue;" id = "footer">
+    <div style = "display: flex; margin-top: 10px; margin-inline: 10px ">
+        <div style = "flex: 1; text-align: center; font-weight: bolder;  ">
+            Promote the hawkers
+        </div>
+        <div style = "flex: 1; text-align: center; font-weight: bolder;">
+            Earn points
+        </div>
+        <div style = "align-self: flex-end;">
+            <button class = "btn-sm btn-secondary" onclick = closeFooter()>
+                x
+            </button>
+        </div>
+    </div>
+</footer>
+<script>
+    function closeFooter()
+    {
+        document.getElementById("footer").style.display = 'none'
+    }
+</script>
 {% endblock %}
