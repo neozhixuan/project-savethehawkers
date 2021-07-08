@@ -3,7 +3,7 @@
 {% block body %}
 
 <!-- Edit -->
-
+{% if user.is_authenticated %}
 {{message}}
 <div class = "login">
 <form action = "{%url 'savethehawkers:creations'%}" method = "POST">
@@ -13,7 +13,19 @@
     Name:{{form3.name}} <br>
     Address:{{form3.address}} <br>
     Recommendation:{{form3.reco}} <br>
-    Stalltype:{{form3.stalltype}} <br>
+    <label for="stalltype">Stall Type:</label> <br>
+    <select name="stalltype" id="stalltype">
+        <option disabled selected value> Stall Type </option>
+        <option value="Chinese">Chinese</option>
+        <option value="Malay">Malay</option>
+        <option value="Indian">Indian</option>
+        <option value="Western">Western</option>
+        <option value="Dessert">Dessert</option>
+        <option value="Drinks">Drinks</option>
+        <option value="Snacks">Snacks</option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="Others">Others</option>
+    </select>
     Hours: {{form3.hours}}
     Detail: {{form3.details}}
     Contributor: You :)
@@ -21,4 +33,9 @@
     <input type = "submit" value = "Create">
 </form>
 </div>
+{%else%}
+<div class = "login">
+    You are  <a href = "{% url 'savethehawkers:register'%}" style = "color: red">not registered.</a>
+</div>
+{%endif%}
 {% endblock %}

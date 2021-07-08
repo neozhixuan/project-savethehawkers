@@ -61,6 +61,8 @@
                 <p>{{hist.address}}</p>
                 <p><span style = "font-weight: bolder;">2</span> comments</p>
             </div>
+            {%empty%}
+            Be the first to help a hawker.
             {%endfor%}
         </div>
         <div class="recent-listing">
@@ -72,12 +74,18 @@
                 <p><img src="{{comment.image.url}}" width= "100" height= "100"></span></p>
                 <p><span style = "font-weight: bolder;">Order:</span> {{comment.ordered}}</p>
                 <p><span style = "font-weight: bolder;">Stall:</span><a href = "{%url 'savethehawkers:info' comment.stallname %}"> {{comment.stallname}}</a></p>
+                <p><span style = "font-weight: bolder;">Written by:</span> {{comment.contributor}}</p>
             </div>
             {%endif%}
+            {%empty%}
+            Be the first to help a hawker advertise.
             {%endfor%}
     </div>
 </div>
 </div>
+<footer>
+    <a href="{% url 'savethehawkers:creations'%}">{{numberoflistings}}/1000 listings - help us reach our goal!</a>
+  </footer>
 <footer>
     <a href="#">GitHub</a>
 </footer>

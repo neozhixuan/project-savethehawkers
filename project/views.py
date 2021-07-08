@@ -61,7 +61,8 @@ def index(request):
                 "postalcode": postalcode,
                 "pagenumber": pagenumber,
                 "no": "no",
-                "history": history
+                "history": history,
+                
             })
         try:
             val = int(postalcode)
@@ -168,11 +169,14 @@ def index(request):
         })
     comments = Comments.objects.all()
     history = History.objects.filter(id__in=[1,2,3,4,5,6])
+    hawk = HawkerStall.objects.all()
+    numberoflistings = len(hawk)
     return render(request, "project/index.html",{
         "no": "no",
         "form": NewTaskForm(),
         "history": history,
-        "comments":comments
+        "comments":comments,
+        "numberoflistings": numberoflistings
     })
 
 def nextindex(request, pagenumber):
@@ -693,9 +697,10 @@ def comment(request, name):
     if request.method == "POST":
         description = request.POST["description"]
         ordered = request.POST["ordered"]
+        contributor = request.POST["contributor"]
         foodimage = request.FILES.get('foodimage')
         hawk = HawkerStall.objects.filter(name = name).first()
-        f = Comments(comment = description, image = foodimage, ordered = ordered, stallname = name, address = hawk.address)
+        f = Comments(comment = description, image = foodimage, ordered = ordered, stallname = name, address = hawk.address, contributor = contributor)
         f.save()
         hawk.comments.add(f)
         telegram_settings = settings.TELEGRAM
@@ -786,7 +791,7 @@ def creations(request):
             latitude = form.cleaned_data["latitude"]
             longtitude = form.cleaned_data["longtitude"]
             name = form.cleaned_data["name"]
-            stalltype = form.cleaned_data["stalltype"]
+            stalltype = request.POST["stalltype"]
             address = form.cleaned_data["address"]
             hours = form.cleaned_data["hours"]
             reco = form.cleaned_data["reco"]

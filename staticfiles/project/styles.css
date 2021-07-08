@@ -63,7 +63,7 @@ li {
     background-color: #cfcfcb;
     height: 60vh;
     width: 100vw;
-
+    object-fit: cover;
 }
 
 .wrapper {

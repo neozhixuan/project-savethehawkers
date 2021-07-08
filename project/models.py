@@ -23,6 +23,7 @@ class Comments(models.Model):
     ordered = models.CharField(blank = True, null=True, max_length = 100)
     stallname = models.CharField(blank = True, null=True, max_length = 100)
     address = models.CharField(blank = True, null=True, max_length = 100)
+    contributor = models.CharField(blank = True, null = True,  max_length = 100)
     def __str__ (self):
         return f"{self.comment}"
 
@@ -32,13 +33,14 @@ class Menu(models.Model):
 class HawkerStall(models.Model):
     latitude = models.FloatField(null = True)
     longtitude = models.FloatField(null = True)
-    name = models.CharField(blank = True, max_length = 200)
-    stalltype = models.CharField(blank = True, max_length = 50)
-    address = models.CharField(blank = True, max_length = 200)
+    name = models.CharField(blank = True, null = True,  max_length = 200)
+    stalltype = models.CharField(blank = True, null = True,  max_length = 50)
+    address = models.CharField(blank = True, null = True,  max_length = 200)
     hours = models.CharField(blank = True, null=True, max_length = 300)
-    reco = models.CharField(blank = True, max_length = 100)
-    details = models.CharField(blank = True, max_length = 1000)
-    contributor = models.CharField(blank = True, max_length = 100)
+    reco = models.CharField(blank = True, null = True, max_length = 100)
+    details = models.CharField(blank = True, null = True,  max_length = 1000)
+    contributor = models.CharField(blank = True, null = True,  max_length = 100)
+    user = models.ForeignKey(User, blank = True, null = True, on_delete = models.CASCADE, default = "")
     image = models.ImageField(null = True, blank = True)
     comments = models.ManyToManyField(Comments, blank = True, null = True)
     message = models.CharField(blank = True, null=True, max_length = 300)
@@ -51,7 +53,8 @@ class HawkerStall(models.Model):
     menu = models.ManyToManyField(Menu, blank = True, null = True)
     awards = models.CharField(blank = True, null=True, max_length = 500)
     pricerange = models.CharField(blank = True, null=True, max_length = 100)
-
+    facebook = models.CharField(blank = True, null=True, max_length = 100)
+    twitter = models.CharField(blank = True, null=True, max_length = 100)
     def __str__ (self):
         return f"{self.address}, {self.name}, {self.reco}"
 

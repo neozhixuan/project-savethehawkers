@@ -21,7 +21,7 @@
                 <ul>
                     <li><a class="active" href="{% url 'savethehawkers:index' %}">Home</a></li>
                     {% if user.is_authenticated %}
-                    <li><a style = "color:black">Signed in as <strong>{{ user.username }}</strong>.</a></li>
+                    <li style = "float:right;"><a style = "color:black;">Signed in as <strong>{{ user.username }}</strong>.</a></li>
                     <li><a href="{% url 'savethehawkers:logout' %}">Log Out</a></li>
                     <li><a  href="{% url 'savethehawkers:creations' %}">Create Entry</a></li>
 
