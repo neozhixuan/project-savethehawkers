@@ -46,9 +46,12 @@ class HawkerStall(models.Model):
     fooddelivery = models.BooleanField(blank = True, null = True)
     phonedelivery = models.BooleanField(blank = True, null = True)
     freelance = models.BooleanField(blank = True, null = True)
+    halal = models.BooleanField(blank = True, null = True)
     deals = models.CharField(blank = True, null=True, max_length = 100)
     menu = models.ManyToManyField(Menu, blank = True, null = True)
     awards = models.CharField(blank = True, null=True, max_length = 500)
+    pricerange = models.CharField(blank = True, null=True, max_length = 100)
+
     def __str__ (self):
         return f"{self.address}, {self.name}, {self.reco}"
 

@@ -60,7 +60,7 @@ li {
 }
 
 .map, .listing-example-img {
-    background-color: aqua;
+    background-color: #cfcfcb;
     height: 60vh;
     width: 100vw;
 
@@ -195,7 +195,7 @@ footer {
 }
 
 
-@media only screen and (min-width: 280px) and (max-width: 500px) {
+@media only screen and (min-width: 280px) and (max-width: 700px) {
 
 
 

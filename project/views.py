@@ -728,6 +728,7 @@ def edity(request, name):
         number = request.POST["number"]
         deals = request.POST["deals"]
         awards = request.POST["awards"]
+        pricerange = request.POST["pricerange"]
         if request.POST.get('fooddelivery'):
             f.fooddelivery = True
         else:
@@ -740,6 +741,10 @@ def edity(request, name):
             f.freelance = True
         else:
             f.freelance = False
+        if request.POST.get('halal'):
+            f.halal = True
+        else:
+            f.halal = False
         image = request.FILES.get('image')
         #contributor = request.POST["contributor"]
         
@@ -754,6 +759,7 @@ def edity(request, name):
         f.number = number
         f.deals = deals
         f.awards = awards
+        f.pricerange = pricerange
         f.save()
         return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
     else:
@@ -785,15 +791,20 @@ def creations(request):
             hours = form.cleaned_data["hours"]
             reco = form.cleaned_data["reco"]
             details = form.cleaned_data["details"]
-            contributor = form.cleaned_data["contributor"]
+            contributor = request.POST["contributor"]
             h = HawkerStall(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address, hours = hours, reco = reco, details = details, contributor = contributor)
             i = History(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address, hours = hours, reco = reco, details = details, contributor = contributor)
             h.save()
             i.save()
             return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
+        else:
+            message = "Error"
+            return render(request, "project/create.html", {
+            "form3": CreateForm(),
+            "message": message,
+            })
     else:
         return render(request, "project/create.html",{
-            "form": NewTaskForm(),
             "form3": CreateForm(),
             })
 
