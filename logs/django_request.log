@@ -11751,3 +11751,5 @@ django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 131: '
 2021-07-08 17:48:13,178 [WARNING] django.request: Not Found: /styles.css
 2021-07-10 13:07:32,669 [WARNING] django.request: Not Found: /styles.css
 2021-07-10 13:07:34,291 [WARNING] django.request: Not Found: /favicon.ico
+2021-07-10 13:45:37,263 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 13:47:10,755 [WARNING] django.request: Not Found: /styles.css

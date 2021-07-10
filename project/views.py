@@ -9,12 +9,15 @@ import math
 import telegram
 from .models import *
 from django import forms
+
 from ipstack import GeoLookup
 import requests
 import json
 
 from telegram import *
 from django.conf import settings
+
+import ipapi
 
 from ip2geotools.databases.noncommercial import DbIpCity
 
@@ -174,10 +177,14 @@ def index(request):
     history = History.objects.filter(id__in=[1,2,3,4,5,6])
     hawk = HawkerStall.objects.all()
     numberoflistings = len(hawk)
-    response = DbIpCity.get('147.229.2.90', api_key='free')
-    ah = [0] * 2
-    ah[0] = response.latitude
-    ah[1] = response.longitude
+    geolookup = GeoLookup('ef3f74732deb49df0cd4f2c315338aaa')
+    location = geolookup.get_own_location()
+    lati = location['latitude']
+    longi = location['longitude']
+    ah = [0,0,0]
+    ah[0] = lati
+    ah[1] = longi
+    ah[2] = location['ip']
     return render(request, "project/index.html",{
         "no": "no",
         "form": NewTaskForm(),
