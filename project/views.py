@@ -18,7 +18,6 @@ from telegram import *
 from django.conf import settings
 
 import urllib
-import urllib3
 
 from ip2geotools.databases.noncommercial import DbIpCity
 
@@ -716,10 +715,10 @@ def comment(request, name):
             'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
             'response': recaptcha_response
         }
-        data = urllib.urlencode(values)
-        req = urllib3.Request(url, data)
-        response = urllib3.urlopen(req)
-        result = json.load(response)
+        data = urllib.parse.urlencode(values).encode()
+        req =  urllib.request.Request(url, data=data)
+        response = urllib.request.urlopen(req)
+        result = json.loads(response.read().decode())
         ''' End reCAPTCHA validation '''
 
         if result['success']:
@@ -727,6 +726,12 @@ def comment(request, name):
             message = "Success"
         else:
             message = 'Invalid reCAPTCHA. Please try again.'
+            return render(request, "project/info.html",{
+                "stalls": hawk,
+                "form": NewTaskForm(),
+                "comments": hawk.comments.all(),
+                "message": message
+            })
         hawk.comments.add(f)
         telegram_settings = settings.TELEGRAM
         bot = telegram.Bot(token=telegram_settings['bot_token'])

@@ -11826,3 +11826,90 @@ NameError: name 'ah' is not defined
 2021-07-10 15:48:27,204 [WARNING] django.request: Not Found: /Sheng He Fishball Minced Meat Noodle/styles.css
 2021-07-10 15:48:47,560 [WARNING] django.request: Not Found: /Sheng He Fishball Minced Meat Noodle/styles.css
 2021-07-10 15:48:48,677 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 15:52:04,712 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 15:52:07,651 [WARNING] django.request: Not Found: /Sheng He Fishball Minced Meat Noodle/styles.css
+2021-07-10 15:52:25,435 [WARNING] django.request: Not Found: /Sheng He Fishball Minced Meat Noodle/styles.css
+2021-07-10 15:54:57,603 [WARNING] django.request: Not Found: /Sheng He Fishball Minced Meat Noodle/styles.css
+2021-07-10 15:55:17,846 [WARNING] django.request: Not Found: /Sheng He Fishball Minced Meat Noodle/styles.css
+2021-07-10 15:55:25,460 [ERROR] django.request: Internal Server Error: /Sheng He Fishball Minced Meat Noodle/comment
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 719, in comment
+    data = urllib.urlencode(values)
+AttributeError: module 'urllib' has no attribute 'urlencode'
+2021-07-10 15:56:41,693 [ERROR] django.request: Internal Server Error: /Sheng He Fishball Minced Meat Noodle/comment
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 720, in comment
+    req = urllib3.Request(url, data)
+AttributeError: module 'urllib3' has no attribute 'Request'
+2021-07-10 15:57:58,068 [ERROR] django.request: Internal Server Error: /Sheng He Fishball Minced Meat Noodle/comment
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 721, in comment
+    req = urllib.request(url, data)
+TypeError: 'module' object is not callable
+2021-07-10 15:59:28,325 [ERROR] django.request: Internal Server Error: /Sheng He Fishball Minced Meat Noodle/comment
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 729, in comment
+    hawk.comments.add(f)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\related_descriptors.py", line 950, in add
+    self._add_items(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\related_descriptors.py", line 1126, in _add_items
+    target_ids = self._get_target_ids(target_field_name, objs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\related_descriptors.py", line 1055, in _get_target_ids
+    raise ValueError(
+ValueError: Cannot add "<Comments: hi>": instance is on database "default", value is on database "None"
+2021-07-10 16:32:37,800 [ERROR] django.request: Internal Server Error: /Sheng He Fishball Minced Meat Noodle/comment
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 729, in comment
+    hawk.comments.add(f)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\related_descriptors.py", line 950, in add
+    self._add_items(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\related_descriptors.py", line 1126, in _add_items
+    target_ids = self._get_target_ids(target_field_name, objs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\related_descriptors.py", line 1055, in _get_target_ids
+    raise ValueError(
+ValueError: Cannot add "<Comments: hi>": instance is on database "default", value is on database "None"
+2021-07-10 16:34:16,197 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:34:19,466 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:34:20,517 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:34:31,609 [ERROR] django.request: Internal Server Error: /Miami Bistro/comment
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 729, in comment
+    hawk.comments.add(f)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\related_descriptors.py", line 950, in add
+    self._add_items(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\related_descriptors.py", line 1126, in _add_items
+    target_ids = self._get_target_ids(target_field_name, objs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\related_descriptors.py", line 1055, in _get_target_ids
+    raise ValueError(
+ValueError: Cannot add "<Comments: hi>": instance is on database "default", value is on database "None"
+2021-07-10 16:34:43,053 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:35:32,267 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:35:40,059 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:35:54,251 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:36:57,986 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:37:14,830 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:37:20,999 [WARNING] django.request: Not Found: /Miami Bistro/styles.css

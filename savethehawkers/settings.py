@@ -15,7 +15,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-GOOGLE_RECAPTCHA_SECRET_KEY = '6LdXNYgbAAAAAGE3XGqFCVQbWrYBo7u-0agSadSa'
+GOOGLE_RECAPTCHA_SECRET_KEY = '6Lf9VYgbAAAAAPTJxw7AsG5x-_PHEoc_PZ6DctMC'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -24,7 +24,7 @@ GOOGLE_RECAPTCHA_SECRET_KEY = '6LdXNYgbAAAAAGE3XGqFCVQbWrYBo7u-0agSadSa'
 SECRET_KEY = '6ps8j!crjgrxt34cqbqn7x&b3y%(fny8k8nh21+qa)%ws3fh!q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'savethehawkers.herokuapp.com']
 
