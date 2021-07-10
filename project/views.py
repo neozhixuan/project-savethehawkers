@@ -15,6 +15,9 @@ import json
 
 from telegram import *
 from django.conf import settings
+
+from ip2geotools.databases.noncommercial import DbIpCity
+
 # NoReverseMatch: edity is not a name - probably didnt indicate app name in some html
 # NoReverseMatch: argument (",") does not match.... - didnt include argument when your path requires one <str:...>
 # NoReverseMatch: path does not exist - name you put is diff from "name" in urls
@@ -171,12 +174,17 @@ def index(request):
     history = History.objects.filter(id__in=[1,2,3,4,5,6])
     hawk = HawkerStall.objects.all()
     numberoflistings = len(hawk)
+    response = DbIpCity.get('147.229.2.90', api_key='free')
+    ah = [0] * 2
+    ah[0] = response.latitude
+    ah[1] = response.longitude
     return render(request, "project/index.html",{
         "no": "no",
         "form": NewTaskForm(),
         "history": history,
         "comments":comments,
-        "numberoflistings": numberoflistings
+        "numberoflistings": numberoflistings,
+        "message": ah
     })
 
 def nextindex(request, pagenumber):
