@@ -89,7 +89,8 @@
 <footer>
     <a href="#">GitHub</a>
 </footer>
-
+<script src='https://www.google.com/recaptcha/api.js'></script>
+  <div class="g-recaptcha" data-sitekey="6LdXNYgbAAAAAOsEZVE3yKopeRSa8FcBQwaXKNCT"></div>
 <!-- <div id = "below" style = "bottom: 0; position: fixed; width: 100%; height: 50px; background-color: cadetblue;display: flex; padding: 10px;" id = "footer ">
     <div style = "flex: 1; text-align: center; text-decoration: none;">
         <a href = "{% url 'savethehawkers:creations' %}">Create An Account</a>
@@ -308,7 +309,86 @@ function closeFooter()
     <input type = "submit" value = "Next" style = "width: 100%; background-color: gray; color: whitesmoke; font-size: 20px">
 </form>
 {%endif%}
+<button onclick="getLocation()">Try It</button>
 
+<p id="demo"></p>
 
+<script>
+    var youAreHere = getLocation(true);
+    var x = document.getElementById("demo");
+    function getLocation(enableHighAccuracy) {
+    if (navigator.geolocation) {
+        var obj = {};
+        navigator.geolocation.getCurrentPosition(function(position) {
 
+            // Accuracy in meters, latitude and longitude
+            obj.ACCURACY = position.coords.accuracy;
+            obj.LATITUDE = position.coords.latitude;
+            obj.LONGITUDE = position.coords.longitude;
+
+            // Get address from geolocation
+            try {
+                $.ajax({
+                    url: 'https://maps.googleapis.com/maps/api/geocode/json',
+                    data: {
+                        latlng: position.coords.latitude + ',' + position.coords.longitude,
+                        sensor: true
+                    },
+                    success: function(data) {
+                        if (data.status == 'OK') {
+                            var strt = $.grep(data.results, function(e) {
+                                return e.types == 'street_address';
+                            });
+                            if (strt.length === 1) {
+                                var route = $.grep(strt[0].address_components, function(e) {
+                                    return e.types == 'route';
+                                });
+                                if (route.length === 1) {
+                                    obj.STREET = route[0].long_name;
+                                }
+                                var no = $.grep(strt[0].address_components, function(e) {
+                                    return e.types == 'street_number';
+                                });
+                                if (no.length === 1) {
+                                    obj.STREET_NUMBER = no[0].long_name;
+                                }
+                                var zipcode = $.grep(strt[0].address_components, function(e) {
+                                    return e.types == 'postal_code';
+                                });
+                                if (zipcode.length === 1) {
+                                    obj.POSTAL_CODE = zipcode[0].long_name;
+                                }
+                                var town = $.grep(strt[0].address_components, function(e) {
+                                    return e.types == 'postal_town';
+                                });
+                                if (town.length === 1) {
+                                    obj.CITY = town[0].long_name;
+                                    x.innerHTML = obj.CITY
+                                }
+                            }
+                        }
+                    }
+                }).then(
+                    function() {
+                        console.log(position.coords.latitude, position.coords.longitude);
+                    });
+            } catch (error) {
+                console.warn(error);
+            }
+
+        }, function(error) {
+            console.warn(error.code + ' ' + error.message);
+        }, {
+            enableHighAccuracy: enableHighAccuracy
+        });
+        return obj;
+    }
+}
+    
+    // function showPosition(position) {
+    //   x.innerHTML = "Latitude: " + position.coords.latitude +
+    //   "<br>Longitude: " + position.coords.longitude;
+    // }
+</script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 {% endblock %}

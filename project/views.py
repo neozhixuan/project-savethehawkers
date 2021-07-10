@@ -17,7 +17,8 @@ import json
 from telegram import *
 from django.conf import settings
 
-import geocoder
+import urllib
+import urllib3
 
 from ip2geotools.databases.noncommercial import DbIpCity
 
@@ -177,21 +178,13 @@ def index(request):
     history = History.objects.filter(id__in=[1,2,3,4,5,6])
     hawk = HawkerStall.objects.all()
     numberoflistings = len(hawk)
-    send_url = "http://api.ipstack.com/check?access_key=ef3f74732deb49df0cd4f2c315338aaa"
-    geo_req = requests.get(send_url)
-    geo_json = json.loads(geo_req.text)
-    latitude = geo_json['latitude']
-    longitude = geo_json['longitude']
-    ah = [0,0]
-    ah[0] = latitude
-    ah[1] = longitude
+    
     return render(request, "project/index.html",{
         "no": "no",
         "form": NewTaskForm(),
         "history": history,
         "comments":comments,
         "numberoflistings": numberoflistings,
-        "message": ah
     })
 
 def nextindex(request, pagenumber):
@@ -716,7 +709,24 @@ def comment(request, name):
         foodimage = request.FILES.get('foodimage')
         hawk = HawkerStall.objects.filter(name = name).first()
         f = Comments(comment = description, image = foodimage, ordered = ordered, stallname = name, address = hawk.address, contributor = contributor)
-        f.save()
+        ''' Begin reCAPTCHA validation '''
+        recaptcha_response = request.POST.get('g-recaptcha-response')
+        url = 'https://www.google.com/recaptcha/api/siteverify'
+        values = {
+            'secret': settings.GOOGLE_RECAPTCHA_SECRET_KEY,
+            'response': recaptcha_response
+        }
+        data = urllib.urlencode(values)
+        req = urllib3.Request(url, data)
+        response = urllib3.urlopen(req)
+        result = json.load(response)
+        ''' End reCAPTCHA validation '''
+
+        if result['success']:
+            f.save()
+            message = "Success"
+        else:
+            message = 'Invalid reCAPTCHA. Please try again.'
         hawk.comments.add(f)
         telegram_settings = settings.TELEGRAM
         bot = telegram.Bot(token=telegram_settings['bot_token'])
@@ -726,6 +736,7 @@ def comment(request, name):
             "stalls": hawk,
             "form": NewTaskForm(),
             "comments": hawk.comments.all(),
+            "message": message
         })
     hawk = HawkerStall.objects.filter(name = name).first()
     return render(request, "project/info.html",{
