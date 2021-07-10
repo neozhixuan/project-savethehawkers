@@ -17,7 +17,7 @@ import json
 from telegram import *
 from django.conf import settings
 
-import ipapi
+import geocoder
 
 from ip2geotools.databases.noncommercial import DbIpCity
 
@@ -177,14 +177,8 @@ def index(request):
     history = History.objects.filter(id__in=[1,2,3,4,5,6])
     hawk = HawkerStall.objects.all()
     numberoflistings = len(hawk)
-    geolookup = GeoLookup('ef3f74732deb49df0cd4f2c315338aaa')
-    location = geolookup.get_own_location()
-    lati = location['latitude']
-    longi = location['longitude']
-    ah = [0,0,0]
-    ah[0] = lati
-    ah[1] = longi
-    ah[2] = location['ip']
+    g = geocoder.ip('me')
+    ah = g.latlng
     return render(request, "project/index.html",{
         "no": "no",
         "form": NewTaskForm(),
