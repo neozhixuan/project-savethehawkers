@@ -19,7 +19,7 @@ from django.conf import settings
 
 import urllib
 
-from ip2geotools.databases.noncommercial import DbIpCity
+from datetime import date, datetime
 
 # NoReverseMatch: edity is not a name - probably didnt indicate app name in some html
 # NoReverseMatch: argument (",") does not match.... - didnt include argument when your path requires one <str:...>
@@ -767,6 +767,9 @@ def edity(request, name):
         deals = request.POST["deals"]
         awards = request.POST["awards"]
         pricerange = request.POST["pricerange"]
+        email = request.POST["email"]
+        g = Email(email = email, datetime = datetime.now())
+        g.save()
         if request.POST.get('fooddelivery'):
             f.fooddelivery = True
         else:
@@ -799,6 +802,7 @@ def edity(request, name):
         f.awards = awards
         f.pricerange = pricerange
         f.save()
+        f.email.add(g)
         return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
     else:
         return render(request, "project/index.html")
@@ -807,12 +811,22 @@ def report(request, name):
     if request.method == "POST":
         reason = request.POST['reason']
         user = request.POST['user']
-        f = Report(user = user, reason = reason)
+        stallname = name
+        f = Report(user = user, reason = reason, stallname = name)
         f.save()
         hawk = HawkerStall.objects.filter(name = name).first()
         hawk.report.add(f)
         return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
     
+def user(request, name):
+    hawk = HawkerStall.objects.filter(contributor = name)
+    report = Report.objects.filter(user = name)
+    comments = Comments.objects.filter(contributor = name)
+    return render(request, "project/user.html",{
+        "hawker": hawk,
+        "report": report,
+        "comment": comments
+    })
 
 # def delete(request, name):
     # g = HawkerStall.objects.filter(name = name).first()

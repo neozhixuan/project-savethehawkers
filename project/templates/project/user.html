@@ -1,0 +1,27 @@
+{% extends "project/layout.html" %}
+
+{% block body %}
+
+{{user.username}}<br>
+<hr>
+{%for hawk in hawker%}
+{{hawk.name}}<br>
+{%empty%}
+No stalls created.<br>
+{%endfor%}
+<hr>
+
+{%for com in comment%}
+{{com.comment}}<br>
+{{com.stallname}}
+{%empty%}
+No comments created.<br>
+{%endfor%}
+<hr>
+{%for rep in report%}
+Report 1:{{rep.reason}} ({{rep.stallname}})<br>
+{%empty%}
+No reports created.<br>
+{%endfor%}
+
+{% endblock %}

@@ -33,8 +33,15 @@ class Menu(models.Model):
 class Report(models.Model):
     user = models.CharField(blank = True, null=True, max_length = 100)
     reason = models.CharField(blank = True, null=True, max_length = 100)
+    stallname = models.CharField(blank = True, null=True, max_length = 100)
     def __str__ (self):
         return f"{self.reason}"
+
+class Email (models.Model):
+    email = models.CharField(blank = True, max_length = 100)
+    datetime = models.DateTimeField(auto_now=False, auto_now_add=False)
+    def __str__ (self):
+        return f"{self.email}, {self.datetime}"
 
 class HawkerStall(models.Model):
     latitude = models.FloatField(null = True)
@@ -62,6 +69,7 @@ class HawkerStall(models.Model):
     facebook = models.CharField(blank = True, null=True, max_length = 100)
     twitter = models.CharField(blank = True, null=True, max_length = 100)
     report = models.ManyToManyField(Report, blank = True, null = True)
+    email = models.ManyToManyField(Email, blank = True, null = True )
     def __str__ (self):
         return f"{self.address}, {self.name}, {self.reco}"
 
@@ -79,3 +87,4 @@ class History(models.Model):
 
     def __str__ (self):
         return f"{self.address}, {self.name}, {self.reco}"
+

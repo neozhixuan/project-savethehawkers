@@ -38,23 +38,47 @@ function closeFeedback(){
       Details:<input type = "text" name = "details" value = "{{stalls.details}}" class = "form-control"><br>
       Contributor:<input type = "hidden" name = "contributor" value = "{{stalls.contributor}}" class = "form-control">{{stalls.contributor}}<br>
       Hawker's Message:<input type = "text" name = "message" value = "{{stalls.message}}" class = "form-control"><br>
-      Number:<input  type = "number" name = "number" value = "{{stalls.number}}" class = "form-control"><br>
+      Number:<input required type = "number" name = "number" value = "{{stalls.number}}" class = "form-control"><br>
       Online Delivery Needed:<input type = "checkbox" name = "fooddelivery" value = "{{stalls.fooddelivery}}" class = "form-control"><br>
       Has Phone Delivery:<input type = "checkbox" name = "phonedelivery" value = "{{stalls.phonedelivery}}" class = "form-control"><br>
       Needs Freelance Deliverers:<input type = "checkbox" name = "freelance" value = "{{stalls.freelance}}" class = "form-control"><br>
       Halal:<input type = "checkbox" name = "halal" value = "{{stalls.halal}}" class = "form-control"><br>
       Deals:<input type = "text" name = "deals" value = "{{stalls.deals}}" class = "form-control"><br>
       Awards:<input type = "text" name = "awards" value = "{{stalls.awards}}" class = "form-control"><br>
-      Price Range:<input type = "text" name = "pricerange" value = "{{stalls.pricerange}}" class = "form-control"><br>
+      Price Range:<input type = "text" name = "pricerange" value = "{{stalls.pricerange}}" class = "form-control">
+      <hr>
+      Your email (for contact purposes):<input required type = "text" name = "email" value = "{{stalls.pricerange}}" class = "form-control"><br>
       <input type = "submit" value = "Submit" class = "btn btn-primary">
     </form>
   </div>
 </div>
-This stall was reported {{count}} times - exercise judgement of the information.</br>
-{%for rep in report%}
-{{rep.user}} reported this for {{rep.reason}}.
+{%if report%}
+<button class="accordion">This stall was reported {{count}} times - exercise judgement of the information.</button>
+<div class="panel">
+  {%for rep in report%}
+  <p>{{rep.user}} reported this for {{rep.reason}}.</p>
+  {%endfor%}
+</div>
+{%endif%}
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+  
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+  </script>
+  
 </br>
-{%endfor%}
+
 <!-- Edit -->
   <div id = "report" style="display:none;">
     <div class = "background-fade">
@@ -69,6 +93,7 @@ This stall was reported {{count}} times - exercise judgement of the information.
         <input type = "hidden" name = "user" value = "{{user.username}}">
         {%else%}
         <input type = "hidden" name = "user" value = "Anonymous">
+        
         {%endif%}
         <input type = "submit" value = "Yes" style = "background-color: #b2ab8c; width: 33vw; height: 60px; border: 3px solid black;">
       </form>
