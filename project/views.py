@@ -697,7 +697,9 @@ def info(request, name):
         "stalls": stall,
         "form": NewTaskForm(),
         "comments": stall.comments.all(),
-        "items": items
+        "items": items,
+        "report": stall.report.all(),
+        "count": stall.report.all().count(),
     })
 
 def comment(request, name):
@@ -801,19 +803,30 @@ def edity(request, name):
     else:
         return render(request, "project/index.html")
 
-def delete(request, name):
-    g = HawkerStall.objects.filter(name = name).first()
-    g.latitude = 0
-    g.longtitude = 0
-    g.stalltype = ""
-    g.address = ""
-    g.hours = ""
-    g.reco = ""
-    g.details = ""
-    g.name = ""
-    g.contributor = ""
-    g.save()
-    return HttpResponseRedirect(reverse("savethehawkers:index"))
+def report(request, name):
+    if request.method == "POST":
+        reason = request.POST['reason']
+        user = request.POST['user']
+        f = Report(user = user, reason = reason)
+        f.save()
+        hawk = HawkerStall.objects.filter(name = name).first()
+        hawk.report.add(f)
+        return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
+    
+
+# def delete(request, name):
+    # g = HawkerStall.objects.filter(name = name).first()
+    # g.latitude = 0
+    # g.longtitude = 0
+    # g.stalltype = ""
+    # g.address = ""
+    # g.hours = ""
+    # g.reco = ""
+    # g.details = ""
+    # g.name = ""
+    # g.contributor = ""
+    # g.save()
+    # return HttpResponseRedirect(reverse("savethehawkers:index"))
 
 def creations(request):
     if request.method == "POST":

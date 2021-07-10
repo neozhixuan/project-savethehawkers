@@ -5,11 +5,11 @@
 {% block body %}
 
 <script>
-    function openDelete(){
-  document.getElementById("delete").style.display = "block";
+    function openReport(){
+  document.getElementById("report").style.display = "block";
 }
-function closeDelete(){
-  document.getElementById("delete").style.display = "none";
+function closeReport(){
+  document.getElementById("report").style.display = "none";
 }
   function openFeedback(){
   document.getElementById("feedbacktotal").style.display = "block";
@@ -38,7 +38,7 @@ function closeFeedback(){
       Details:<input type = "text" name = "details" value = "{{stalls.details}}" class = "form-control"><br>
       Contributor:<input type = "hidden" name = "contributor" value = "{{stalls.contributor}}" class = "form-control">{{stalls.contributor}}<br>
       Hawker's Message:<input type = "text" name = "message" value = "{{stalls.message}}" class = "form-control"><br>
-      Number:<input required type = "number" name = "number" value = "{{stalls.number}}" class = "form-control"><br>
+      Number:<input  type = "number" name = "number" value = "{{stalls.number}}" class = "form-control"><br>
       Online Delivery Needed:<input type = "checkbox" name = "fooddelivery" value = "{{stalls.fooddelivery}}" class = "form-control"><br>
       Has Phone Delivery:<input type = "checkbox" name = "phonedelivery" value = "{{stalls.phonedelivery}}" class = "form-control"><br>
       Needs Freelance Deliverers:<input type = "checkbox" name = "freelance" value = "{{stalls.freelance}}" class = "form-control"><br>
@@ -50,22 +50,33 @@ function closeFeedback(){
     </form>
   </div>
 </div>
+This stall was reported {{count}} times - exercise judgement of the information.</br>
+{%for rep in report%}
+{{rep.user}} reported this for {{rep.reason}}.
+</br>
+{%endfor%}
 <!-- Edit -->
-  <div id = "delete" style="display:none;">
+  <div id = "report" style="display:none;">
     <div class = "background-fade">
     </div>
     <div class = "feedback">
-      <button onclick="closeDelete()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
-      <form action = "{%url 'savethehawkers:delete' stalls.name%}" method = "POST" style = "text-align: left;">
+      <button onclick="closeReport()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
+      <form action = "{%url 'savethehawkers:report' stalls.name%}" method = "POST" style = "text-align: left;">
         {%csrf_token%}
         Are you sure?
+        <input type = "text" placeholder="reason" name = "reason">
+        {%if user.is_authenticated%}
+        <input type = "hidden" name = "user" value = "{{user.username}}">
+        {%else%}
+        <input type = "hidden" name = "user" value = "Anonymous">
+        {%endif%}
         <input type = "submit" value = "Yes" style = "background-color: #b2ab8c; width: 33vw; height: 60px; border: 3px solid black;">
       </form>
     </div>
   </div>
-  {% if user.is_authenticated %}
-<button onclick = "openDelete()">Delete</button> <button onclick="openFeedback()">Edit</button>
-{%else%}s
+{% if user.is_authenticated %}
+<button onclick = "openReport()">Report</button> <button onclick="openFeedback()">Edit</button>
+{%else%}
 <dt> Sign in to make changes.</dt>
 {%endif%}
 
@@ -78,7 +89,7 @@ function closeFeedback(){
   {%block stalls.image%}{%if stalls.image%}
   <div class="listing-example-img"><img src="{{stalls.image.url}}" style="position: relative; height: 100%; width: 100%;"></div>
   {%else%}
-  <div class="listing-example-img">Be the first to insert an image.</div>
+  <div class="listing-example-img"><img src="{% static 'project/hawk.png'%}" style="position: relative; height: 100%; width: 100%;"></div>
   {%endif%}
   {%endblock%}
   <p class="listing-example-info">
@@ -116,7 +127,7 @@ function closeFeedback(){
     Image:<input required type = "file" name = "foodimage" class = "form-control-file">
   </div>
   <script src='https://www.google.com/recaptcha/api.js'></script>
-  <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+  <div class="g-recaptcha" data-sitekey="6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW"></div>
   <!-- 6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW -->
   <!-- 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI -->
   <input type = "submit" value = "Submit" class = "m-3 btn btn-primary">

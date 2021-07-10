@@ -30,6 +30,12 @@ class Comments(models.Model):
 class Menu(models.Model):
     image = models.ImageField(null = True, blank = True)
 
+class Report(models.Model):
+    user = models.CharField(blank = True, null=True, max_length = 100)
+    reason = models.CharField(blank = True, null=True, max_length = 100)
+    def __str__ (self):
+        return f"{self.reason}"
+
 class HawkerStall(models.Model):
     latitude = models.FloatField(null = True)
     longtitude = models.FloatField(null = True)
@@ -55,6 +61,7 @@ class HawkerStall(models.Model):
     pricerange = models.CharField(blank = True, null=True, max_length = 100)
     facebook = models.CharField(blank = True, null=True, max_length = 100)
     twitter = models.CharField(blank = True, null=True, max_length = 100)
+    report = models.ManyToManyField(Report, blank = True, null = True)
     def __str__ (self):
         return f"{self.address}, {self.name}, {self.reco}"
 

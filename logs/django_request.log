@@ -11913,3 +11913,121 @@ ValueError: Cannot add "<Comments: hi>": instance is on database "default", valu
 2021-07-10 16:36:57,986 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
 2021-07-10 16:37:14,830 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
 2021-07-10 16:37:20,999 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:44:31,182 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:45:00,974 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:45:03,977 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:45:04,805 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:45:18,292 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:45:22,252 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:45:38,333 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:46:02,330 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:46:59,761 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:47:04,977 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:47:07,761 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:47:10,756 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:47:11,612 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:47:13,646 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:47:17,715 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:47:21,275 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:47:22,168 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:47:25,642 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:49:52,751 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:49:55,251 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:49:56,226 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:50:00,323 [ERROR] django.request: Internal Server Error: /Miami Bistro/report
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\sqlite3\base.py", line 423, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: project_report
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 809, in report
+    f.save()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 868, in _save_table
+    results = self._do_insert(cls._base_manager, using, fields, returning_fields, raw)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 906, in _do_insert
+    return manager._insert(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 1270, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\compiler.py", line 1416, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\sqlite3\base.py", line 423, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: project_report
+2021-07-10 16:50:29,287 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:52:38,936 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:53:02,172 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:53:12,268 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:53:15,076 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:53:15,866 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:53:30,128 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:55:51,288 [WARNING] django.request: Not Found: /Miami Bistro
+2021-07-10 16:55:55,888 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:55:58,716 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:55:59,634 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:56:08,491 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:56:30,456 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:57:27,286 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 16:57:28,947 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:57:33,188 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:57:34,039 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-10 16:57:41,262 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-10 16:57:55,725 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-10 16:58:09,332 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-10 16:58:15,549 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-10 16:58:42,760 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-10 16:58:45,692 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-10 16:58:49,279 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:59:58,377 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 16:59:59,291 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 17:22:10,202 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 17:22:49,940 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 17:23:36,649 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:23:39,623 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:23:40,555 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-10 17:24:10,719 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-10 17:24:17,799 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:24:35,952 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:24:37,083 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:25:47,142 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:29:24,549 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:29:25,348 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 17:29:31,420 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 17:29:33,772 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:29:51,044 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:29:54,142 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:29:55,008 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 17:30:09,438 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 17:30:18,868 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 17:30:24,173 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:35:25,328 [WARNING] django.request: Not Found: /styles.css
+2021-07-10 17:35:26,333 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 17:35:53,081 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 17:36:03,619 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-10 17:36:41,480 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
