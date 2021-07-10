@@ -177,8 +177,14 @@ def index(request):
     history = History.objects.filter(id__in=[1,2,3,4,5,6])
     hawk = HawkerStall.objects.all()
     numberoflistings = len(hawk)
-    g = geocoder.ip('me')
-    ah = g.latlng
+    send_url = "http://api.ipstack.com/check?access_key=ef3f74732deb49df0cd4f2c315338aaa"
+    geo_req = requests.get(send_url)
+    geo_json = json.loads(geo_req.text)
+    latitude = geo_json['latitude']
+    longitude = geo_json['longitude']
+    ah = [0,0]
+    ah[0] = latitude
+    ah[1] = longitude
     return render(request, "project/index.html",{
         "no": "no",
         "form": NewTaskForm(),
