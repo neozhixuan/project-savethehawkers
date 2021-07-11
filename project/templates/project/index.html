@@ -308,86 +308,54 @@ function closeFooter()
     <input type = "submit" value = "Next" style = "width: 100%; background-color: gray; color: whitesmoke; font-size: 20px">
 </form>
 {%endif%}
-<button onclick="getLocation()">Try It</button>
-
-<p id="demo"></p>
-
+<!-- <div id="result">
+   
+</div>
+<button type="button" onclick="showPosition();">Show Position</button>
 <script>
-    var youAreHere = getLocation(true);
-    var x = document.getElementById("demo");
-    function getLocation(enableHighAccuracy) {
-    if (navigator.geolocation) {
-        var obj = {};
-        navigator.geolocation.getCurrentPosition(function(position) {
-
-            // Accuracy in meters, latitude and longitude
-            obj.ACCURACY = position.coords.accuracy;
-            obj.LATITUDE = position.coords.latitude;
-            obj.LONGITUDE = position.coords.longitude;
-
-            // Get address from geolocation
-            try {
-                $.ajax({
-                    url: 'https://maps.googleapis.com/maps/api/geocode/json',
-                    data: {
-                        latlng: position.coords.latitude + ',' + position.coords.longitude,
-                        sensor: true
-                    },
-                    success: function(data) {
-                        if (data.status == 'OK') {
-                            var strt = $.grep(data.results, function(e) {
-                                return e.types == 'street_address';
-                            });
-                            if (strt.length === 1) {
-                                var route = $.grep(strt[0].address_components, function(e) {
-                                    return e.types == 'route';
-                                });
-                                if (route.length === 1) {
-                                    obj.STREET = route[0].long_name;
-                                }
-                                var no = $.grep(strt[0].address_components, function(e) {
-                                    return e.types == 'street_number';
-                                });
-                                if (no.length === 1) {
-                                    obj.STREET_NUMBER = no[0].long_name;
-                                }
-                                var zipcode = $.grep(strt[0].address_components, function(e) {
-                                    return e.types == 'postal_code';
-                                });
-                                if (zipcode.length === 1) {
-                                    obj.POSTAL_CODE = zipcode[0].long_name;
-                                }
-                                var town = $.grep(strt[0].address_components, function(e) {
-                                    return e.types == 'postal_town';
-                                });
-                                if (town.length === 1) {
-                                    obj.CITY = town[0].long_name;
-                                    x.innerHTML = obj.CITY
-                                }
-                            }
-                        }
-                    }
-                }).then(
-                    function() {
-                        console.log(position.coords.latitude, position.coords.longitude);
-                    });
-            } catch (error) {
-                console.warn(error);
-            }
-
-        }, function(error) {
-            console.warn(error.code + ' ' + error.message);
-        }, {
-            enableHighAccuracy: enableHighAccuracy
-        });
-        return obj;
+    function showPosition() {
+        if(navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
+                document.getElementById("result").innerHTML = positionInfo;
+            });
+        } else {
+            alert("Sorry, your browser does not support HTML5 geolocation.");
+        }
     }
-}
-    
-    // function showPosition(position) {
-    //   x.innerHTML = "Latitude: " + position.coords.latitude +
-    //   "<br>Longitude: " + position.coords.longitude;
-    // }
+</script> -->
+<div id="result">
+   
+</div>
+<div id="result2">
+   
+</div>
+<button type="button" onclick="getReverseGeocodingData();">Show Position</button>
+<script>
+function getReverseGeocodingData() {
+    if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+    // This is making the Geocode request
+    var geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+        if (status !== google.maps.GeocoderStatus.OK) {
+            alert(status);
+        }
+        // This is checking to see if the Geoeode Status is OK before proceeding
+        if (status == google.maps.GeocoderStatus.OK) {
+            console.log(results);
+            var address = (results[0].formatted_address);
+            document.getElementById("result2").innerHTML = address;
+        }
+    });
+});
+}else {
+            alert("Sorry, your browser does not support HTML5 geolocation.");
+        }
+    }
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD619Ty1vAfxV4rJ2P7n-SQLXp0Z19s0A"></script>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 {% endblock %}
