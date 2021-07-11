@@ -324,7 +324,7 @@ function closeFooter()
         }
     }
 </script> -->
-<div id="result">
+<!-- <div id="result">
    
 </div>
 <div id="result2">
@@ -357,7 +357,44 @@ function getReverseGeocodingData() {
 </script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD619Ty1vAfxV4rJ2P7n-SQLXp0Z19s0A&callback=initMap"
-  type="text/javascript"></script>
-
+  type="text/javascript"></script> -->
+<script>
+    const KEY = "AIzaSyCxd02Tz4IIVnhDlmUQiaBJE34qAuE9p-0";
+    const LAT = 1.3886188998528823;
+      const LNG = 103.91027116828485;
+    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${LAT},${LNG}&key=${KEY}`;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          let parts = data.results[0].address_components;
+          document.body.insertAdjacentHTML(
+            "beforeend",
+            `<p>Formatted: ${data.results[0].formatted_address}</p>`
+          );
+          parts.forEach(part => {
+            if (part.types.includes("country")) {
+              //we found "country" inside the data.results[0].address_components[x].types array
+              document.body.insertAdjacentHTML(
+                "beforeend",
+                `<p>COUNTRY: ${part.long_name}</p>`
+              );
+            }
+            if (part.types.includes("administrative_area_level_1")) {
+              document.body.insertAdjacentHTML(
+                "beforeend",
+                `<p>PROVINCE: ${part.long_name}</p>`
+              );
+            }
+            if (part.types.includes("administrative_area_level_3")) {
+              document.body.insertAdjacentHTML(
+                "beforeend",
+                `<p>LEVEL 3: ${part.long_name}</p>`
+              );
+            }
+          });
+        })
+        .catch(err => console.warn(err.message));
+    </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 {% endblock %}
