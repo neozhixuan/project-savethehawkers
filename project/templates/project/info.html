@@ -28,9 +28,7 @@ window.onclick = function(event) {
     <button onclick="closeFeedback()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
     <form action = "{% url 'savethehawkers:editing' stalls.name %}" method = "POST" style = "text-align: left;" enctype="multipart/form-data">
       {%csrf_token%}
-      <div class = "form-group m-3">
-      Image:<input  type = "file" name = "image" class = "form-control-file">
-      </div>
+      Image:<input  type = "file" name = "image" class = "form-control-file"><br>
       Latitude:<input type = "float" name = "latitude" value = "{{stalls.latitude}}" class = "form-control"><br>
       Longitude:<input type = "float" name = "longtitude" value = "{{stalls.longtitude}}" class = "form-control"><br>
       Name:<input type = "hidden" name = "name" value = "{{stalls.name}}" class = "form-control">{{stalls.name}}<br>
@@ -100,11 +98,9 @@ window.onclick = function(event) {
       </form>
     </div>
   </div>
-{% if user.is_authenticated %}
-<button onclick = "openReport()">Report</button> <button onclick="openFeedback()">Edit</button>
-{%else%}
-<dt> Sign in to make changes.</dt>
-{%endif%}
+
+<button onclick = "openReport()">Report</button>
+<button onclick="openFeedback()">Edit</button>
 
 
 
@@ -119,25 +115,37 @@ window.onclick = function(event) {
   {%endif%}
   {%endblock%}
   <p class="listing-example-info">
-      Name: {{stalls.name}} <br>
-      Orders: {%for item in items%}{{item}}{%endfor%} <br>
-      Stall type: {{stalls.stalltype}} <br>
+    <span style = "font-size: 3rem; font-weight: bold;">"{{stalls.details}}"</span><br>
+    - Written by {{stalls.contributor}}<br>
+    <hr>
+    <br>
+    <div style = "width: 30vw; background-color: bisque;">
+      <span style = "font-weight: bold; color: brown">Details</span><br>
       Address: {{stalls.address}} <br>
       Hours: {{stalls.hours}} <br>
       Recommendation: {{stalls.reco}} <br>
-      Details: {{stalls.details}} <br>
-      Contributor: {{stalls.contributor}}<br>
-      Message: {{stalls.message}} <br>
+      Price Range: {{stalls.pricerange}}<br>
+    </div>
+    <br>
+    <div style = "width: 400px; background-color: bisque;">
+      <span style = "font-weight: bold; color: brown">Presence</span><br>
       Number: {{stalls.number}} <br>
-      Online Delivery: {{stalls.fooddelivery}} <br>
-      Phone Delivery: {{stalls.phonedelivery}} <br>
-      Freelance Delivery Needed: {{stalls.freelance}} <br>
+      Is it on online delivery platforms: {%if stalls.fooddelivery%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
+      Do they have phone delivery: {%if stalls.phonedelivery%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
+      Do they need freelance deliverers: {%if stalls.freelance%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
+    </div>
+    <br>
+    <div style = "width: 400px; background-color: bisque;">
+      <span style = "font-weight: bold; color: brown">Judgement</span><br>
+      Is it Halal: {{stalls.halal}} <br>
+      Stall type: {{stalls.stalltype}} <br>
       Deals: {{stalls.deals}} <br>
       Awards: {{stalls.awards}} <br>
-      Halal: {{stalls.halal}} <br>
-      Price Range: {{stalls.pricerange}}<br>
-      <a href = "{{stalls.facebook}}">Share On Facebook</a><br>
-      <a href = "{{stalls.twitter}}">Share On Twitter</a>
+    </div>     
+    <br>
+      Recent Orders: {%for item in items%}{{item}}{%empty%}None. Add a comment and help foodies know which item is the best!{%endfor%} <br>
+      <a class="fa fa-facebook" href = "{{stalls.facebook}}" style = "background-color: blue; color: white; width: 30px; height: 30px; padding: 10px; box-sizing: border-box;"></a><br>
+      <a class="fa fa-twitter" href = "{{stalls.twitter}}" style = "background-color: blue; color: white; width: 30px; height: 30px; padding: 10px; box-sizing: border-box;"></a>
   </p>
 </div>
 
@@ -155,7 +163,7 @@ window.onclick = function(event) {
     Image:<input required type = "file" name = "foodimage" class = "form-control-file">
   </div>
   <script src='https://www.google.com/recaptcha/api.js'></script>
-  <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+  <div class="g-recaptcha" data-sitekey="6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW"></div>
   <!-- 6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW -->
   <!-- 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI -->
   <input type = "submit" value = "Submit" class = "m-3 btn btn-primary">

@@ -12507,3 +12507,126 @@ project.models.Point.DoesNotExist: Point matching query does not exist.
 2021-07-13 17:58:09,181 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
 2021-07-13 17:58:31,276 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
 2021-07-13 17:58:45,661 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 22:21:33,262 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:21:42,990 [WARNING] django.request: Not Found: /favicon.ico
+2021-07-13 22:21:47,346 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:22:15,806 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 22:22:46,626 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 22:22:52,066 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:22:54,127 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:22:55,475 [WARNING] django.request: Not Found: /neozhixuan/styles.css
+2021-07-13 22:23:02,079 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:23:04,155 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:25:17,813 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:25:19,334 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:25:52,769 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:25:55,624 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:25:57,520 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:25:58,656 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:26:01,963 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:26:03,042 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 22:27:58,270 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 22:28:33,350 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 22:29:53,006 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 22:30:00,444 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 22:30:29,756 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 22:31:03,668 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:32:22,162 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:32:51,992 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:33:18,865 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:33:32,511 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:34:15,956 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:34:30,902 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:34:49,275 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:35:09,550 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:35:25,885 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:35:49,056 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:36:05,347 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:37:55,665 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:37:59,105 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:38:07,195 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:38:16,693 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:39:15,520 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:40:51,659 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:41:09,573 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:41:24,250 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:42:40,442 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:42:49,283 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:43:10,059 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:43:14,851 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:43:16,601 [WARNING] django.request: Not Found: /Old Bugis Kway Chap/styles.css
+2021-07-13 22:43:22,951 [WARNING] django.request: Not Found: /Sheng He Fishball Minced Meat Noodle/styles.css
+2021-07-13 22:43:58,600 [WARNING] django.request: Not Found: /Sheng He Fishball Minced Meat Noodle/styles.css
+2021-07-13 22:44:06,789 [WARNING] django.request: Not Found: /Sheng He Fishball Minced Meat Noodle/styles.css
+2021-07-13 22:44:56,049 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:45:34,820 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:45:49,925 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:46:29,495 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:46:32,929 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:46:34,109 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:46:45,752 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:47:13,138 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:47:24,127 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:48:35,242 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:49:16,047 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:49:54,934 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:51:46,379 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:51:50,851 [ERROR] django.request: Internal Server Error: /Kwek Seng Huat Eating House/editing
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 808, in edity
+    f.save()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 726, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 763, in save_base
+    updated = self._save_table(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 845, in _save_table
+    updated = self._do_update(base_qs, using, pk_val, values, update_fields,
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 899, in _do_update
+    return filtered._update(values) > 0
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 802, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\compiler.py", line 1559, in execute_sql
+    cursor = super().execute_sql(result_type)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\compiler.py", line 1162, in execute_sql
+    sql, params = self.as_sql()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\compiler.py", line 1525, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\__init__.py", line 842, in get_db_prep_save
+    return self.get_db_prep_value(value, connection=connection, prepared=False)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\__init__.py", line 837, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\__init__.py", line 986, in get_prep_value
+    return self.to_python(value)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\__init__.py", line 976, in to_python
+    raise exceptions.ValidationError(
+django.core.exceptions.ValidationError: ['“Yes” value must be either True, False, or None.']
+2021-07-13 22:52:04,125 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:52:53,866 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:53:19,275 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:54:18,810 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:54:26,016 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:54:30,986 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:55:30,599 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:55:49,292 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:55:52,644 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 22:55:56,657 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 22:56:02,953 [WARNING] django.request: Not Found: /Kwek Seng Huat Eating House/styles.css
+2021-07-13 23:00:37,425 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 23:00:44,865 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 23:01:11,403 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 23:02:19,203 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 23:02:29,944 [WARNING] django.request: Not Found: /Jalan Benaan Kapal Food Centre/styles.css
+2021-07-13 23:05:16,016 [WARNING] django.request: Not Found: /Jalan Benaan Kapal Food Centre/styles.css
+2021-07-13 23:05:28,191 [WARNING] django.request: Not Found: /Jalan Benaan Kapal Food Centre/styles.css
+2021-07-13 23:06:19,606 [WARNING] django.request: Not Found: /Jalan Benaan Kapal Food Centre/styles.css
+2021-07-13 23:06:25,871 [WARNING] django.request: Not Found: /Jalan Benaan Kapal Food Centre/styles.css
+2021-07-13 23:06:35,244 [WARNING] django.request: Not Found: /Jalan Benaan Kapal Food Centre/styles.css
+2021-07-13 23:07:42,602 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 23:07:49,896 [WARNING] django.request: Not Found: /neozhixuan/styles.css
+2021-07-13 23:08:10,900 [WARNING] django.request: Not Found: /neozhixuan/styles.css
+2021-07-13 23:08:15,433 [WARNING] django.request: Not Found: /neozhixuan/styles.css
+2021-07-13 23:10:42,630 [WARNING] django.request: Not Found: /styles.css

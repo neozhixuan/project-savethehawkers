@@ -792,7 +792,7 @@ def edity(request, name):
             f.halal = False
         image = request.FILES.get('image')
         #contributor = request.POST["contributor"]
-        
+        f.image = image
         f.latitude = latitude
         f.longtitude = longtitude
         f.stalltype = stalltype
