@@ -17,5 +17,5 @@ urlpatterns = [
     path("<str:name>/report", views.report, name="report"),
     path("creations", views.creations, name="creations"),
     path("<str:name>/comment", views.comment, name="comment"),
-    path("<str:name>", views.user, name="user"),
+    path("<str:name>/profile", views.user, name="user"),
 ]

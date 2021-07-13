@@ -308,57 +308,8 @@ function closeFooter()
     <input type = "submit" value = "Next" style = "width: 100%; background-color: gray; color: whitesmoke; font-size: 20px">
 </form>
 {%endif%}
-<!-- <div id="result">
-   
-</div>
-<button type="button" onclick="showPosition();">Show Position</button>
-<script>
-    function showPosition() {
-        if(navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var positionInfo = "Your current position is (" + "Latitude: " + position.coords.latitude + ", " + "Longitude: " + position.coords.longitude + ")";
-                document.getElementById("result").innerHTML = positionInfo;
-            });
-        } else {
-            alert("Sorry, your browser does not support HTML5 geolocation.");
-        }
-    }
-</script> -->
-<!-- <div id="result">
-   
-</div>
-<div id="result2">
-   
-</div>
-<button type="button" onclick="getReverseGeocodingData();">Show Position</button>
-<script>
-function getReverseGeocodingData() {
-    if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-    // This is making the Geocode request
-    var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-        if (status !== google.maps.GeocoderStatus.OK) {
-            alert(status);
-        }
-        // This is checking to see if the Geoeode Status is OK before proceeding
-        if (status == google.maps.GeocoderStatus.OK) {
-            console.log(results);
-            var address = (results[0].formatted_address);
-            document.getElementById("result2").innerHTML = address;
-        }
-    });
-});
-}else {
-            alert("Sorry, your browser does not support HTML5 geolocation.");
-        }
-    }
-</script>
 
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD619Ty1vAfxV4rJ2P7n-SQLXp0Z19s0A&callback=initMap"
-  type="text/javascript"></script> -->
-<script>
+<!-- <script>
     const KEY = "AIzaSyCxd02Tz4IIVnhDlmUQiaBJE34qAuE9p-0";
     const LAT = 1.3886188998528823;
       const LNG = 103.91027116828485;
@@ -395,6 +346,6 @@ function getReverseGeocodingData() {
           });
         })
         .catch(err => console.warn(err.message));
-    </script>
+    </script> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 {% endblock %}

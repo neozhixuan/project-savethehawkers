@@ -88,3 +88,8 @@ class History(models.Model):
     def __str__ (self):
         return f"{self.address}, {self.name}, {self.reco}"
 
+class Point(models.Model):
+    user = models.CharField(blank = True, null=True, max_length = 100)
+    points = models.IntegerField(blank = True, null = True)
+    def __str__ (self):
+        return f"{self.user}: {self.points} points"

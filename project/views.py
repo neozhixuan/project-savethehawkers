@@ -8,7 +8,7 @@ import math
 
 import telegram
 from .models import *
-from django import forms
+from django import contrib, forms
 
 from ipstack import GeoLookup
 import requests
@@ -739,6 +739,8 @@ def comment(request, name):
         bot = telegram.Bot(token=telegram_settings['bot_token'])
         bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"{description} - Stall:{name} - Address: {hawk.address}", parse_mode=telegram.ParseMode.HTML)
         bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"http://savethehawkers.herokuapp.com/images/{foodimage}")
+        point = Point.objects.get(user = contributor)
+        point.points = point.points + 5
         return render(request, "project/info.html",{
             "stalls": hawk,
             "form": NewTaskForm(),
@@ -822,10 +824,12 @@ def user(request, name):
     hawk = HawkerStall.objects.filter(contributor = name)
     report = Report.objects.filter(user = name)
     comments = Comments.objects.filter(contributor = name)
+    points = Point.objects.get(user = name)
     return render(request, "project/user.html",{
         "hawker": hawk,
         "report": report,
-        "comment": comments
+        "comment": comments,
+        "points" : points.points
     })
 
 # def delete(request, name):
@@ -917,6 +921,8 @@ def register(request):
             return render(request, "project/register.html", {
                 "message": "Username already taken."
             })
+        f = Point(user = username, points = 0)
+        f.save()
         login(request, user)
         return HttpResponseRedirect(reverse("savethehawkers:index"))
     else:

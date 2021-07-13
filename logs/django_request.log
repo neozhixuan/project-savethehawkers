@@ -12432,3 +12432,41 @@ Traceback (most recent call last):
   File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 522, in invalid_block_tag
     raise self.error(
 django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 11: 'endif', expected 'endfor'. Did you forget to register or load this tag?
+2021-07-11 23:09:54,529 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 11:13:37,116 [WARNING] django.request: Not Found: /favicon.ico
+2021-07-13 11:17:21,217 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 11:17:26,112 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 11:17:28,662 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 11:18:09,372 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 11:19:25,385 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 11:19:29,238 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 11:19:30,405 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 11:19:38,346 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 11:20:43,698 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 11:21:03,468 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 11:21:11,852 [WARNING] django.request: Not Found: /neozhixuan/styles.css
+2021-07-13 11:31:12,754 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 11:31:14,118 [WARNING] django.request: Not Found: /neozhixuan/styles.css
+2021-07-13 11:32:44,718 [ERROR] django.request: Internal Server Error: /neozhixuan/profile
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 825, in user
+    points = Point.objects.get(user = name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 435, in get
+    raise self.model.DoesNotExist(
+project.models.Point.DoesNotExist: Point matching query does not exist.
+2021-07-13 11:33:27,238 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 11:33:28,897 [WARNING] django.request: Not Found: /neozhixuan/styles.css
+2021-07-13 11:33:38,647 [WARNING] django.request: Not Found: /neozhixuan/styles.css
+2021-07-13 11:33:40,039 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 11:39:05,613 [WARNING] django.request: Not Found: /neozhixuan/styles.css
+2021-07-13 11:39:07,189 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 11:39:10,826 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 11:42:24,404 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 11:42:25,041 [WARNING] django.request: Not Found: /neozhixuan/styles.css
+2021-07-13 11:42:28,078 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
