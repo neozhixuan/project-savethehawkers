@@ -725,7 +725,9 @@ def comment(request, name):
 
         if result['success']:
             f.save()
-            message = "Success"
+            point = Point.objects.get(user = contributor)
+            point.points = point.points + 5
+            point.save()
         else:
             message = 'Invalid reCAPTCHA. Please try again.'
             return render(request, "project/info.html",{
@@ -739,8 +741,7 @@ def comment(request, name):
         bot = telegram.Bot(token=telegram_settings['bot_token'])
         bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"{description} - Stall:{name} - Address: {hawk.address}", parse_mode=telegram.ParseMode.HTML)
         bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"http://savethehawkers.herokuapp.com/images/{foodimage}")
-        point = Point.objects.get(user = contributor)
-        point.points = point.points + 5
+        
         return render(request, "project/info.html",{
             "stalls": hawk,
             "form": NewTaskForm(),
