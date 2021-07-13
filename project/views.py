@@ -725,6 +725,7 @@ def comment(request, name):
 
         if result['success']:
             f.save()
+            message = 'success'
             point = Point.objects.get(user = contributor)
             point.points = point.points + 5
             point.save()

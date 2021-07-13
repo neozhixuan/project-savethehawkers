@@ -12470,3 +12470,4 @@ project.models.Point.DoesNotExist: Point matching query does not exist.
 2021-07-13 11:42:24,404 [WARNING] django.request: Not Found: /styles.css
 2021-07-13 11:42:25,041 [WARNING] django.request: Not Found: /neozhixuan/styles.css
 2021-07-13 11:42:28,078 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 12:05:33,579 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
