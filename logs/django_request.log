@@ -12471,3 +12471,39 @@ project.models.Point.DoesNotExist: Point matching query does not exist.
 2021-07-13 11:42:25,041 [WARNING] django.request: Not Found: /neozhixuan/styles.css
 2021-07-13 11:42:28,078 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
 2021-07-13 12:05:33,579 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:33:45,686 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:33:54,215 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:33:55,338 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:34:27,932 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:36:19,804 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:36:31,438 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:36:34,575 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:36:40,075 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:36:56,492 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:44:24,496 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:44:28,156 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:44:29,344 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:44:51,277 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:44:54,964 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:45:24,166 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:45:27,652 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:45:28,767 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:46:07,022 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:46:34,991 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:48:19,572 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:48:46,601 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:48:48,578 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:54:07,070 [WARNING] django.request: Not Found: /neozhixuan/styles.css
+2021-07-13 17:54:11,286 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:54:18,303 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:54:21,607 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:54:23,804 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:55:13,386 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:55:22,477 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:57:21,135 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:57:58,494 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:58:03,935 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:58:07,775 [WARNING] django.request: Not Found: /styles.css
+2021-07-13 17:58:09,181 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:58:31,276 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-13 17:58:45,661 [WARNING] django.request: Not Found: /Miami Bistro/styles.css

@@ -12,16 +12,19 @@ function closeReport(){
   document.getElementById("report").style.display = "none";
 }
   function openFeedback(){
-  document.getElementById("feedbacktotal").style.display = "block";
+  document.getElementById("modal").style.display = "block";
 }
 function closeFeedback(){
-  document.getElementById("feedbacktotal").style.display = "none";
+  document.getElementById("modal").style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == document.getElementById("modal")) {
+    document.getElementById("modal").style.display = "none";
+  }
 }
 </script>
-<div id = "feedbacktotal" style="display:none;">
-  <div class = "background-fade">
-  </div>
-  <div class = "feedback">
+<div id = "modal" style="display:none;">
+  <div id = "modal-content">
     <button onclick="closeFeedback()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
     <form action = "{% url 'savethehawkers:editing' stalls.name %}" method = "POST" style = "text-align: left;" enctype="multipart/form-data">
       {%csrf_token%}
@@ -81,9 +84,7 @@ function closeFeedback(){
 
 <!-- Edit -->
   <div id = "report" style="display:none;">
-    <div class = "background-fade">
-    </div>
-    <div class = "feedback">
+    <div class = "report-content">
       <button onclick="closeReport()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
       <form action = "{%url 'savethehawkers:report' stalls.name%}" method = "POST" style = "text-align: left;">
         {%csrf_token%}
@@ -145,7 +146,7 @@ function closeFeedback(){
   {%csrf_token%}
   <h2 class = "m-3"> Comments </h2>
   <div class = "form-group m-3">
-    <textarea required type = "text" name = "description" class = "form-control" placeholder = "Comment"></textarea>
+    <textarea required type = "text" name = "description" class = "form-control" placeholder = "Comment" minlength="50" maxlength = "1000"></textarea>
   </div>
   <div class = "form-group m-3">
     <input style = "outline: none; resize: none; overflow: auto;" cols = '30' rows = '6' required type = "text" name = "ordered" class = "form-control" placeholder = "What did you order?"></textarea>
@@ -154,7 +155,7 @@ function closeFeedback(){
     Image:<input required type = "file" name = "foodimage" class = "form-control-file">
   </div>
   <script src='https://www.google.com/recaptcha/api.js'></script>
-  <div class="g-recaptcha" data-sitekey="6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW"></div>
+  <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
   <!-- 6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW -->
   <!-- 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI -->
   <input type = "submit" value = "Submit" class = "m-3 btn btn-primary">
