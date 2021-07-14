@@ -13131,3 +13131,5 @@ django.utils.datastructures.MultiValueDictKeyError: 'reco'
 2021-07-14 14:37:17,620 [WARNING] django.request: Not Found: /styles.css
 2021-07-14 14:37:47,946 [WARNING] django.request: Not Found: /styles.css
 2021-07-14 14:38:12,266 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 14:54:50,702 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 14:54:53,980 [WARNING] django.request: Not Found: /styles.css
