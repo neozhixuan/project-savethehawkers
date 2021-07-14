@@ -24,6 +24,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("project.urls")),
     #127.0.0.1:8000/media/9_grid_profile.png
+    #127.0.0.1:8000/static/(project/hawk.png)
     url(r'^images/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
     url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]

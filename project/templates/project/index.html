@@ -1,10 +1,26 @@
 {% extends "project/layout.html" %}
 {% load static %}
 {% block body %}
-
+{{number}}
 {% if no %}
 <div>
-    <h1 style="padding: 0.5rem;">Help Singapore's Favourite Stalls</h1>
+    <div class="type-wrap">Help the hawkers
+      <span id="typed" style="white-space:pre;" class="typed"></span>
+    </div>
+    <script>
+        $('document').ready(function(){
+            var typed = new Typed('#typed',{
+                strings: ["build their database.", "edit information.", "advertise."],
+                typeSpeed: 100,
+                startDelay: 0,
+                backSpeed: 60,
+                backDelay: 2000,
+                loop: true,
+                cursorChar: "|",
+                contentType: 'html'
+            })
+        });
+    </script>
     <div class="map">
         <iframe src="https://www.google.com/maps/d/embed?mid=1XcpTiJpt_O-Rw6Wu8qrtCm_Ek9VUgIDF" scrolling="no" frameborder="0"
         style="position: relative; height: 100%; width: 100%;" ></iframe>
@@ -17,16 +33,9 @@
                     {%csrf_token%}
                     <label for="postalcode">Postal Code:</label><br>
                     <input type="text" id="postalcode" name="postalcode" placeholder="Postal Code"><br>
-                    <dt>{{message}}</dt>
-                    <input type="submit" value="Submit">
-                    <br>
-                </form>
-                <form action="{% url 'savethehawkers:stalltype' %}" method = "POST">
-                    {%csrf_token%}
-                    <label for="postalcode">Postal Code:</label><br>
-                    <input type="text" id="postalcode" name="postalcode" placeholder="Postal Code"><br>
                     <label for="stalltype">Stall Type:</label> <br>
                     <select name="stalltype" id="stalltype" >
+                        <option disabled selected value="None"> Stall Type </option>
                         <option value="Chinese">Chinese</option>
                         <option value="Malay">Malay</option>
                         <option value="Indian">Indian</option>
@@ -36,19 +45,12 @@
                         <option value="Snacks">Snacks</option>
                         <option value="Vegetarian">Vegetarian</option>
                         <option value="Others">Others</option>
-                    </select>
-                    <br>
-                    <input type="submit" value="Submit"> <br>
-                </form>
-                <form action="{%url 'savethehawkers:search'%}" method = "POST">  
-                    {%csrf_token%}
-                    <label for="postalcode">Recommendation:</label><br>
-                    <span id = "postalcode">{{form.search}}</span>
-                    <br>
-                    <label for="postalcode">Postal Code:</label><br>
-                    <span id = "postalcode">{{form.postalcode}}</span>
-                    <br>
+                    </select><br>
+                    <label for = "search"> Recommendations: </label><br>
+                    <input id = "search" name = "search" type = "text" placeholder="Search...">
+                    <dt>{{message}}</dt>
                     <input type="submit" value="Submit">
+                    <br>
                 </form>
             </div>
         </div>
@@ -118,6 +120,36 @@ function closeFooter()
 <!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
 
 {%if not no%}
+<div>
+    <form action="{% url 'savethehawkers:index' %}" method = "POST">
+        {%csrf_token%}
+
+        <label for="postalcode">Postal Code:</label><br>
+        <input type="text" id="postalcode" name="postalcode" placeholder="Postal Code"><br>
+
+
+        <label for="stalltype">Stall Type:</label> <br>
+        <select name="stalltype" id="stalltype" >
+            <option disabled selected value="None"> Stall Type </option>
+            <option value="Chinese">Chinese</option>
+            <option value="Malay">Malay</option>
+            <option value="Indian">Indian</option>
+            <option value="Western">Western</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Drinks">Drinks</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Others">Others</option>
+        </select><br>
+
+        
+        <label for = "search"> Recommendations: </label><br>
+        <input id = "search" name = "search" type = "text" placeholder="Search...">
+        <dt>{{message}}</dt>
+        <input type="submit" value="Submit">
+        <br>
+    </form>
+</div>
 <div class="filter-results">
     <div class="filter-results-listing">
         {% for name in names %} {% if forloop.counter == 1 %}
@@ -305,6 +337,8 @@ function closeFooter()
     {%csrf_token%}
     <input type = "hidden" name = "postalcode" value = "{{postalcode}}">
     <input type = "hidden" name = "pagenumber" value = "{{pagenumber}}">
+    <input type = "hidden" name = "stalltype" value = "{{stalltype}}">
+    <input type = "hidden" name = "reco" value = "{{reco}}">
     <input type = "submit" value = "Next" style = "width: 100%; background-color: gray; color: whitesmoke; font-size: 20px">
 </form>
 {%endif%}

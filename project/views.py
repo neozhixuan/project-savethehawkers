@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
+from django.db.utils import Error
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
@@ -60,6 +61,8 @@ def index(request):
         history = History.objects.filter(id__in=[1,2,3,4,5,6])
         pagenumber = 1
         postalcode = request.POST["postalcode"]
+
+        # Error Tests
         if not postalcode:
             return render(request, "project/index.html",{
                 "message": "Enter a postal code.",
@@ -96,6 +99,8 @@ def index(request):
                 "no": "no",
                 "history": history
             })    
+            
+        # Get values from API
         address = f"https://developers.onemap.sg/commonapi/search?searchVal={postalcode}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
         response = requests.get(address)
         data = response.text
@@ -103,8 +108,26 @@ def index(request):
         latorigin = float(parse_json['results'][0]['LATITUDE'])
         longorigin = float(parse_json['results'][0]['LONGITUDE'])
         place = parse_json['results'][0]['ADDRESS']
-    #
-        hawk = HawkerStall.objects.all()
+
+        # Calculate and sort distances to hawker stalls
+        reco = request.POST['search']
+        try:
+            stalltypes = request.POST['stalltype']
+            if not reco:
+                hawk = HawkerStall.objects.filter(stalltype = stalltypes)
+            else:
+                hawk = HawkerStall.objects.filter(stalltype = stalltypes, reco__contains = reco)
+        except KeyError:
+            if not reco:
+                hawk = HawkerStall.objects.all()
+                stalltypes = 'Sup bitch'
+            else:
+                hawk = HawkerStall.objects.filter(reco__contains = reco)
+                stalltypes = 'Sup bitch'
+            
+        
+
+
         number = [0] * len(hawk)
         count = 0
         for haw in hawk.iterator():
@@ -117,10 +140,13 @@ def index(request):
             number[count] = round(km)
             count += 1
         #an array of the indexes after sorting
+        
         s = numpy.array(number)
         sort_index = numpy.argsort(s)
         new_list = [x+1 for x in sort_index]
         number.sort()
+        #number = [1093,2765,4021...]
+        #new_list = [104,210,57...]
         latitudes = [0] * len(hawk)
         longtitudes = [0] * len(hawk)
         names = [0] * len(hawk)
@@ -130,21 +156,38 @@ def index(request):
         details = [0] * len(hawk)
         contributors = [0] * len(hawk)
         # this will start from the numbers 4, then to 1, then to 6....
-        for i in new_list:
-            for j in range(len(addresses)):
-                if addresses[j] != 0:
-                    j = j+1
-                else:
-                    ha = HawkerStall.objects.get(id = i)
-                    latitudes[j] = ha.latitude
-                    longtitudes[j] = ha.longtitude
-                    names[j] = ha.name
-                    addresses[j] = ha.address
-                    recos[j] = ha.reco
-                    hours[j] = ha.hours
-                    details[j] = ha.details
-                    contributors[j] = ha.contributor
-                    break
+        if hawk == HawkerStall.objects.all():
+            for i in new_list:
+                for j in range(len(addresses)):
+                    if addresses[j] != 0:
+                        j = j+1
+                    else:
+                        ha = HawkerStall.objects.get(id = i)
+                        latitudes[j] = ha.latitude
+                        longtitudes[j] = ha.longtitude
+                        names[j] = ha.name
+                        addresses[j] = ha.address
+                        recos[j] = ha.reco
+                        hours[j] = ha.hours
+                        details[j] = ha.details
+                        contributors[j] = ha.contributor
+                        break
+        else:
+            for i in sort_index:
+                for j in range(len(addresses)):
+                    if addresses[j] != 0:
+                        j = j+1
+                    else:
+                        ha = hawk[int(i)]
+                        latitudes[j] = ha.latitude
+                        longtitudes[j] = ha.longtitude
+                        names[j] = ha.name
+                        addresses[j] = ha.address
+                        recos[j] = ha.reco
+                        hours[j] = ha.hours
+                        details[j] = ha.details
+                        contributors[j] = ha.contributor
+                        break
         myhouselat = [latorigin] * len(hawk)
         myhouselong = [longorigin] * len(hawk)
         latandlong = zip(myhouselat, myhouselong, latitudes, longtitudes)
@@ -154,6 +197,8 @@ def index(request):
         latandlong5 = zip(myhouselat, myhouselong, latitudes, longtitudes)
         latandlong6 = zip(myhouselat, myhouselong, latitudes, longtitudes)
         return render(request, "project/index.html",{
+            "reco": reco,
+            "stalltype": stalltypes,
             "postalcode": postalcode,
             "pagenumber": pagenumber,
             "latitudes": latitudes,
@@ -179,6 +224,7 @@ def index(request):
     numberoflistings = len(hawk)
     
     return render(request, "project/index.html",{
+        
         "no": "no",
         "form": NewTaskForm(),
         "history": history,
@@ -190,30 +236,31 @@ def nextindex(request, pagenumber):
     if request.method == "POST":
         page = int(pagenumber) + 1
         postalcode = request.POST["postalcode"]
-        if not postalcode:
-            return render(request, "project/index.html",{
-                "message": "Enter a postal code.",
-                "form": NewTaskForm()
-            })
-        try:
-            val = int(postalcode)
-        except ValueError:
-            return render(request, "project/index.html",{
-                "message": "Please insert a number.",
-                "form": NewTaskForm()
-            })
-        try:
-            post = Zipcode.objects.get(postal = postalcode)
-        except Zipcode.DoesNotExist:
-            return render(request, "project/index.html",{
-                "message": "Postal Code does not exist in the database!",
-                "form": NewTaskForm()
-            })
-        place = Zipcode.objects.filter(postal = postalcode)
-        latorigin = place.first().latitude
-        longorigin = place.first().longtitude
-    #
-        hawk = HawkerStall.objects.all()
+            
+        # Get values from API
+        address = f"https://developers.onemap.sg/commonapi/search?searchVal={postalcode}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+        response = requests.get(address)
+        data = response.text
+        parse_json = json.loads(data)
+        latorigin = float(parse_json['results'][0]['LATITUDE'])
+        longorigin = float(parse_json['results'][0]['LONGITUDE'])
+        place = parse_json['results'][0]['ADDRESS']
+
+        stalltypes = request.POST['stalltype']
+        reco = request.POST['reco']
+        # Calculate and sort distances to hawker stalls
+        if stalltypes == 'Sup bitch' and not reco:
+            hawk = HawkerStall.objects.all()
+        elif stalltypes == 'Sup bitch' and reco:
+            hawk = HawkerStall.objects.filter(reco__contains = reco)
+        elif reco:
+            hawk = HawkerStall.objects.filter(stalltype = stalltypes, reco__contains = reco)
+        else:
+            hawk = HawkerStall.objects.filter(stalltype = stalltypes)
+        
+            
+        
+
         number = [0] * len(hawk)
         count = 0
         for haw in hawk.iterator():
@@ -226,10 +273,13 @@ def nextindex(request, pagenumber):
             number[count] = round(km)
             count += 1
         #an array of the indexes after sorting
+        
         s = numpy.array(number)
         sort_index = numpy.argsort(s)
         new_list = [x+1 for x in sort_index]
         number.sort()
+        #number = [1093,2765,4021...]
+        #new_list = [104,210,57...]
         latitudes = [0] * len(hawk)
         longtitudes = [0] * len(hawk)
         names = [0] * len(hawk)
@@ -239,21 +289,38 @@ def nextindex(request, pagenumber):
         details = [0] * len(hawk)
         contributors = [0] * len(hawk)
         # this will start from the numbers 4, then to 1, then to 6....
-        for i in new_list:
-            for j in range(len(addresses)):
-                if addresses[j] != 0:
-                    j = j+1
-                else:
-                    ha = HawkerStall.objects.get(id = i)
-                    latitudes[j] = ha.latitude
-                    longtitudes[j] = ha.longtitude
-                    names[j] = ha.name
-                    addresses[j] = ha.address
-                    recos[j] = ha.reco
-                    hours[j] = ha.hours
-                    details[j] = ha.details
-                    contributors[j] = ha.contributor
-                    break
+        if hawk == HawkerStall.objects.all():
+            for i in new_list:
+                for j in range(len(addresses)):
+                    if addresses[j] != 0:
+                        j = j+1
+                    else:
+                        ha = HawkerStall.objects.get(id = i)
+                        latitudes[j] = ha.latitude
+                        longtitudes[j] = ha.longtitude
+                        names[j] = ha.name
+                        addresses[j] = ha.address
+                        recos[j] = ha.reco
+                        hours[j] = ha.hours
+                        details[j] = ha.details
+                        contributors[j] = ha.contributor
+                        break
+        else:
+            for i in sort_index:
+                for j in range(len(addresses)):
+                    if addresses[j] != 0:
+                        j = j+1
+                    else:
+                        ha = hawk[int(i)]
+                        latitudes[j] = ha.latitude
+                        longtitudes[j] = ha.longtitude
+                        names[j] = ha.name
+                        addresses[j] = ha.address
+                        recos[j] = ha.reco
+                        hours[j] = ha.hours
+                        details[j] = ha.details
+                        contributors[j] = ha.contributor
+                        break
         myhouselat = [latorigin] * (len(hawk) - (6*(page-1)))
         myhouselong = [longorigin] * (len(hawk) - (6*(page-1)))
         latandlong = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
@@ -263,6 +330,9 @@ def nextindex(request, pagenumber):
         latandlong5 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
         latandlong6 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
         return render(request, "project/index.html",{
+            "reco": reco,
+            "number": stalltypes,
+            "stalltype": stalltypes,
             "pagenumber": page,
             "postalcode": postalcode,
             "latitudes": latitudes[(6*(page-1)):],

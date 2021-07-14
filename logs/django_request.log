@@ -12630,3 +12630,498 @@ django.core.exceptions.ValidationError: ['“Yes” value must be either True, False
 2021-07-13 23:08:10,900 [WARNING] django.request: Not Found: /neozhixuan/styles.css
 2021-07-13 23:08:15,433 [WARNING] django.request: Not Found: /neozhixuan/styles.css
 2021-07-13 23:10:42,630 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:30:25,638 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:30:34,292 [WARNING] django.request: Not Found: /favicon.ico
+2021-07-14 11:31:04,930 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:35:26,570 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:35:30,359 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:35:32,143 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:35:36,018 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:35:43,236 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:35:45,647 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:35:53,398 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:35:59,697 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:36:06,976 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:36:16,818 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:36:21,809 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:36:31,360 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:36:33,864 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:36:42,472 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:36:59,062 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:37:03,483 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'stalltype'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 112, in index
+    stalltypes = request.POST['stalltype']
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'stalltype'
+2021-07-14 11:38:57,953 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'stalltype'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 112, in index
+    stalltypes = request.POST['stalltype']
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'stalltype'
+2021-07-14 11:39:21,151 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'stalltype'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 113, in index
+    stalltypes = request.POST['stalltype']
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'stalltype'
+2021-07-14 11:40:54,613 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 119, in index
+    hawk = HawkerStall.objects.filter(stalltype = stalltypes)
+UnboundLocalError: local variable 'stalltypes' referenced before assignment
+2021-07-14 11:41:27,064 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:41:29,837 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:41:34,405 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:41:36,612 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:41:44,490 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:41:52,478 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:41:57,413 [WARNING] django.request: Not Found: /Prawn Mee/styles.css
+2021-07-14 11:42:07,976 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:42:15,132 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:42:48,010 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:44:00,923 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:45:29,227 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:45:34,922 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:45:43,518 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:45:53,000 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:46:02,016 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:46:07,041 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:46:13,367 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:46:19,498 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:50:12,987 [WARNING] django.request: Not Found: /Ah Tee Ko Ko Mee/styles.css
+2021-07-14 11:52:29,209 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:57:13,057 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:57:18,448 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:59:39,520 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:59:46,114 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:59:52,046 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 11:59:59,671 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:00:13,876 [WARNING] django.request: Not Found: /Dhaba 1376 North Indian Cuisine/styles.css
+2021-07-14 12:04:37,450 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:04:46,857 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:04:52,701 [ERROR] django.request: Internal Server Error: /0/info
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 723, in info
+    orders = stall.comments.all().values('ordered')
+AttributeError: 'NoneType' object has no attribute 'comments'
+2021-07-14 12:06:19,017 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:06:33,151 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:07:16,071 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:07:51,181 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:07:58,302 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 163, in index
+    elif hawk == HawkerStall.objects.filter(stalltype = stalltypes):
+UnboundLocalError: local variable 'stalltypes' referenced before assignment
+2021-07-14 12:08:34,939 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:08:41,714 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:08:46,991 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:08:54,617 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:09:03,670 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:09:18,834 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:09:34,969 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:09:39,592 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:09:57,551 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:10:02,124 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:10:05,964 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:10:13,123 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:10:17,509 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:13:47,193 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:13:49,489 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:16:13,731 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:16:16,959 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:16:20,155 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:16:27,477 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 189, in index
+    "stalltype": stalltypes,
+UnboundLocalError: local variable 'stalltypes' referenced before assignment
+2021-07-14 12:18:25,708 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:18:28,099 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:19:02,050 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:19:09,005 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:19:11,746 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:19:14,290 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:19:22,491 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:19:24,351 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:19:27,613 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:19:31,894 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:19:34,400 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:19:36,990 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 12:20:15,972 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 12:20:17,769 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:20:21,890 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:21:53,082 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:21:59,694 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:22:24,857 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:22:29,201 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:22:32,536 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:22:37,363 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 12:23:14,762 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:23:17,296 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 12:23:21,310 [ERROR] django.request: Internal Server Error: /3/nextin
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 352, in nextindex
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 211, in render
+    nodelist.append(node.render_annotated(context))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 694, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'info' with arguments '('Hai Kee Sauce Chicken Rice/ Noodle',)' not found. 1 pattern(s) tried: ['(?P<name>[^/]+)/info$']
+2021-07-14 12:23:47,700 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:23:56,422 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:24:01,014 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:24:30,029 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:24:49,317 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:24:50,966 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:25:40,416 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:25:44,364 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:25:49,845 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:25:53,914 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:26:00,751 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 12:28:00,103 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 12:28:01,202 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:28:05,785 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:28:07,472 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:28:20,970 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:30:10,043 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:30:12,283 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:30:15,457 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:30:17,202 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:30:20,321 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:30:43,320 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:30:45,805 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:32:53,049 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:33:10,540 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:33:24,797 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:37:03,586 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:37:07,227 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:37:17,122 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:37:24,795 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:37:28,396 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:37:31,888 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:37:42,636 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:38:21,257 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:38:27,249 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:39:25,906 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:39:26,622 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:39:33,184 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:39:35,115 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:39:40,985 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:39:43,402 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:41:42,088 [ERROR] django.request: Internal Server Error: /1/nextin
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'reco'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 245, in nextindex
+    reco = request.POST['reco']
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'reco'
+2021-07-14 12:41:50,485 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:41:56,594 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:41:58,912 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:42:03,636 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:42:05,734 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:42:37,111 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:42:59,069 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:43:12,671 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:44:30,161 [WARNING] django.request: Not Found: /Hock Kee Western Food/styles.css
+2021-07-14 12:44:36,756 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:44:41,872 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:44:46,113 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:44:51,040 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:44:58,264 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:45:04,237 [WARNING] django.request: Not Found: /Hock Kee Western Food/styles.css
+2021-07-14 12:45:26,990 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:45:30,539 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:45:43,490 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:45:44,876 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:45:46,209 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:45:49,031 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:45:51,104 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:46:15,656 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:46:20,875 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:46:25,192 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:46:28,769 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:47:30,801 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:47:36,110 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:47:38,519 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 12:47:42,514 [WARNING] django.request: Not Found: /Ricky Satay/styles.css
+2021-07-14 12:47:52,355 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:47:57,346 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:47:58,394 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:48:01,955 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:48:03,234 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:48:27,221 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:49:04,481 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:49:05,541 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:49:11,603 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:49:16,028 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:49:18,142 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:49:19,874 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:49:24,572 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:49:26,297 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:49:48,041 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:49:53,181 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:49:59,616 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:50:07,266 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:50:12,278 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:50:21,378 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:50:27,437 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:50:30,543 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:50:36,867 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:50:39,849 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:51:20,812 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:51:22,721 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:51:35,792 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:51:41,939 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:51:42,781 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:51:51,352 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:51:52,676 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:52:30,805 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:52:32,134 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:52:35,096 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:52:36,174 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:53:27,987 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:53:28,891 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:53:35,023 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:53:36,183 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:53:43,270 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 12:54:02,387 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:54:06,141 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 12:54:08,217 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:54:34,559 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:54:40,848 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:54:43,389 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:54:45,133 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:54:49,808 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:57:12,975 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:57:15,240 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:57:19,866 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:57:23,375 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:57:43,529 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:57:52,257 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:57:56,687 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:58:57,247 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:59:01,512 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:59:08,858 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:59:11,713 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:59:13,462 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:59:18,106 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 12:59:19,568 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 12:59:21,462 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:01:07,057 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:01:12,336 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:01:16,494 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 13:01:32,054 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:01:36,281 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:01:47,020 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 13:01:55,341 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 13:02:12,760 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 13:02:15,886 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:02:20,124 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:02:22,800 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 13:02:29,985 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 13:02:35,186 [WARNING] django.request: Not Found: /2/styles.css
+2021-07-14 13:02:43,815 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:02:52,144 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:02:55,101 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 13:03:02,800 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:03:42,054 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:03:44,801 [WARNING] django.request: Not Found: /1/styles.css
+2021-07-14 13:03:46,704 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:05:03,647 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:05:04,777 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:05:06,711 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:09:15,188 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:10:01,327 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:10:21,549 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:11:35,432 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:11:49,228 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:12:14,760 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:13:00,126 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:13:38,580 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:13:46,405 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:14:07,310 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:14:25,147 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:14:38,803 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:15:00,763 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:16:28,776 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:16:31,814 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:16:51,608 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:18:08,849 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:18:44,392 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:19:14,333 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:19:29,625 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:21:09,192 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:21:18,815 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:21:19,969 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-14 13:22:43,465 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-14 13:22:47,524 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:24:13,182 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:24:14,078 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-14 13:24:20,112 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-14 13:25:18,484 [WARNING] django.request: Not Found: /Miami Bistro/styles.css
+2021-07-14 13:25:19,996 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:25:26,698 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:25:30,729 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:25:34,147 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:25:36,179 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:25:36,775 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:25:49,768 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:26:00,285 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:26:36,868 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:26:39,071 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:28:11,590 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:28:21,284 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:28:24,844 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:28:46,272 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:29:18,592 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:29:28,530 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:29:43,261 [WARNING] django.request: Not Found: /images/
+2021-07-14 13:32:43,032 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:33:11,369 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:33:36,175 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:34:34,188 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:34:40,101 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:35:40,658 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:36:13,093 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:37:17,176 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:38:27,137 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:39:07,531 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:40:05,619 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:43:10,229 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:44:26,289 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:44:34,832 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:50:20,198 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:50:28,642 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:51:00,174 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:51:17,100 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:51:36,773 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:52:10,948 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:52:54,480 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:53:03,540 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:55:15,281 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:55:20,406 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:55:42,750 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:55:51,274 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:55:53,893 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:55:56,653 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:56:27,762 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:56:33,206 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:57:11,110 [WARNING] django.request: Not Found: /styles.css
+2021-07-14 13:57:15,015 [WARNING] django.request: Not Found: /styles.css
