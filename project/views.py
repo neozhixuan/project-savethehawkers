@@ -63,22 +63,24 @@ def index(request):
         history = History.objects.filter(id__in=[1,2,3,4,5,6])
         pagenumber = 1
         postalcode = request.POST["postalcode"]
-
+        number = randrange(1,368)
+        haw = HawkerStall.objects.filter(pk=number).first()
         # Error Tests
         if not postalcode:
             return render(request, "project/index.html",{
+                "haw": haw,
                 "message": "Enter a postal code.",
                 "form": NewTaskForm(),
                 "postalcode": postalcode,
                 "pagenumber": pagenumber,
                 "no": "no",
                 "history": history,
-                
             })
         try:
             val = int(postalcode)
         except ValueError:
             return render(request, "project/index.html",{
+                "haw": haw,
                 "message": "Please insert a number.",
                 "form": NewTaskForm(),
                 "postalcode": postalcode,
@@ -94,6 +96,7 @@ def index(request):
             latorigin = float(parse_json['results'][0]['LATITUDE'])
         except IndexError:
             return render(request, "project/index.html",{
+                "haw": haw,
                 "message": "Postal Code does not exist!",
                 "form": NewTaskForm(),
                 "postalcode": postalcode,

@@ -4,7 +4,7 @@
 {{number}}
 {% if no %}
 <div>
-    <div class="type-wrap">Help the hawkers
+    <div class="type-wrap">Help disadvantaged hawkers
       <span id="typed" style="white-space:pre;" class="typed"></span>
     </div>
     <script>
@@ -27,10 +27,11 @@
             style="position: relative; height: 100%; width: 100%;" ></iframe>
         </div>
         <div class="map">
+            <h4>Feature of the Day</h4>
             {%block haw.image%}{%if haw.image%}
-            <img src="{{haw.image.url}}" style="position: relative; height: 90%; width: 90%;">
+            <img src="{{haw.image.url}}" style="position: relative; height: 80%; width: 80%;">
             {%else%}
-            <img src="{% static 'project/hawk.png'%}" style="position: relative;left:5%; height: 90%; width: 90%;">
+            <img src="{% static 'project/hawk.png'%}" style="position: relative;left:10%; height: 90%; width: 90%;">
             {%endif%}{%endblock%}<br>
             <a href = "{%url 'savethehawkers:info' haw.name %}">{{haw.name}}</a><br>
             {{haw.address}}
