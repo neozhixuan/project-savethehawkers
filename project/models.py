@@ -51,7 +51,7 @@ class HawkerStall(models.Model):
     address = models.CharField(blank = True, null = True,  max_length = 200)
     hours = models.CharField(blank = True, null=True, max_length = 300)
     reco = models.CharField(blank = True, null = True, max_length = 100)
-    details = models.CharField(blank = True, null = True,  max_length = 1000)
+    details = models.CharField(blank = True, null = True,  max_length = 10000)
     contributor = models.CharField(blank = True, null = True,  max_length = 100)
     user = models.ForeignKey(User, blank = True, null = True, on_delete = models.CASCADE, default = "")
     image = models.ImageField(null = True, blank = True)

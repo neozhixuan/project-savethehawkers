@@ -937,7 +937,7 @@ def creations(request):
             i.save()
             return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
         else:
-            message = "Error"
+            message = "Form invalid"
             return render(request, "project/create.html", {
             "form3": CreateForm(),
             "message": message,
