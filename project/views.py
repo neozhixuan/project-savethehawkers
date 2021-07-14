@@ -22,6 +22,8 @@ import urllib
 
 from datetime import date, datetime
 
+from random import randrange
+
 # NoReverseMatch: edity is not a name - probably didnt indicate app name in some html
 # NoReverseMatch: argument (",") does not match.... - didnt include argument when your path requires one <str:...>
 # NoReverseMatch: path does not exist - name you put is diff from "name" in urls
@@ -220,11 +222,13 @@ def index(request):
         })
     comments = Comments.objects.all()
     history = History.objects.filter(id__in=[1,2,3,4,5,6])
+    number = randrange(1,368)
+    haw = HawkerStall.objects.filter(pk=number).first()
     hawk = HawkerStall.objects.all()
     numberoflistings = len(hawk)
     
     return render(request, "project/index.html",{
-        
+        "haw": haw,
         "no": "no",
         "form": NewTaskForm(),
         "history": history,
