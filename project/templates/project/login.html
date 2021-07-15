@@ -11,10 +11,11 @@
             <input type="password" placeholder="Password" name="password" required>
             <input type="submit" value="Login">
             <h4 style = "color:red">{% if message %}{{ message }}{% endif %}</h4>
+            Don't have an account? <a style = "color: brown" href="{% url 'savethehawkers:register' %}">Register here.</a>
         </form>
 
     </div>
-    Don't have an account? <a href="{% url 'savethehawkers:register' %}">Register here.</a>
+    
 
     <footer>
         <a href="#">GitHub</a>

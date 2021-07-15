@@ -28,7 +28,7 @@ window.onclick = function(event) {
     <button onclick="closeFeedback()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
     <form action = "{% url 'savethehawkers:editing' stalls.name %}" method = "POST" style = "text-align: left;" enctype="multipart/form-data">
       {%csrf_token%}
-      Image:<input  type = "file" name = "image" class = "form-control-file"><br>
+      Image URL:<input  type = "url" name = "image1" value = "{{stalls.image1}}"class = "form-control"><br>
       Latitude:<input type = "float" name = "latitude" value = "{{stalls.latitude}}" class = "form-control"><br>
       Longitude:<input type = "float" name = "longtitude" value = "{{stalls.longtitude}}" class = "form-control"><br>
       Name:<input type = "hidden" name = "name" value = "{{stalls.name}}" class = "form-control">{{stalls.name}}<br>
@@ -108,18 +108,18 @@ window.onclick = function(event) {
 <!-- Stall Information -->
 <div class="listing-example">
   <h1 style="padding: 0.5rem;">{{stalls.name}} </h1>
-  {%block stalls.image%}{%if stalls.image%}
-  <div class="listing-example-img"><img src="{{stalls.image.url}}" style="position: relative; height: 100%; width: 100%;"></div>
+  {%block stalls.image1%}{%if stalls.image1%}
+  <div class="listing-example-img"><img src="{{stalls.image1}}" style="position: relative; height: 100%; width: 100%;"></div>
   {%else%}
   <div class="listing-example-img"><img src="{% static 'project/hawk.png'%}" style="position: relative; height: 100%; width: 100%;"></div>
   {%endif%}
   {%endblock%}
   <p class="listing-example-info">
-    <span style = "font-size: 3rem; font-weight: bold;">"{{stalls.details}}"</span><br>
+    <span style = "font-size: 2rem; font-weight: bold;">"{{stalls.details}}"</span><br>
     - Written by {{stalls.contributor}}<br>
     <hr>
     <br>
-    <div style = "width: 30vw; background-color: bisque;">
+    <div style = "width: 400px; background-color: bisque;">
       <span style = "font-weight: bold; color: brown">Details</span><br>
       Address: {{stalls.address}} <br>
       Hours: {{stalls.hours}} <br>
@@ -147,6 +147,7 @@ window.onclick = function(event) {
       <a class="fa fa-facebook" href = "{{stalls.facebook}}" style = "background-color: blue; color: white; width: 30px; height: 30px; padding: 10px; box-sizing: border-box;"></a><br>
       <a class="fa fa-twitter" href = "{{stalls.twitter}}" style = "background-color: blue; color: white; width: 30px; height: 30px; padding: 10px; box-sizing: border-box;"></a>
   </p>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d498.59396031146974!2d{{stalls.longtitude}}!3d{{stalls.latitude}}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ssg!4v1626333072249!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 </div>
 
 

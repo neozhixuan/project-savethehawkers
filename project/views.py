@@ -28,15 +28,12 @@ from random import randrange
 # NoReverseMatch: argument (",") does not match.... - didnt include argument when your path requires one <str:...>
 # NoReverseMatch: path does not exist - name you put is diff from "name" in urls
 class CreateForm(forms.Form):
-    latitude = forms.FloatField(label = "Latitude")
-    longtitude = forms.FloatField(label = "longtitude")
+    postalcode = forms.IntegerField(label = "postalcode")
+    image1 = forms.URLField(label = "image1", max_length = 200)
     name = forms.CharField(label = "name", max_length = 200)
-    stalltype = forms.CharField(label = "stalltype", max_length = 50)
-    address = forms.CharField(label = "address", max_length = 200)
     hours = forms.CharField(label = "hours", max_length = 300)
     reco = forms.CharField(label = "reco", max_length = 100)
     details = forms.CharField(label = "details", max_length = 1000)
-    contributor = forms.CharField(label = "contributor", max_length = 100)
 
 class NewTaskForm (forms.Form):
     search = forms.CharField(label = "Food Recommendation:", min_length = 1, max_length = 50)
@@ -867,9 +864,9 @@ def edity(request, name):
             f.halal = True
         else:
             f.halal = False
-        image = request.FILES.get('image')
+        image = request.POST['image1']
         #contributor = request.POST["contributor"]
-        f.image = image
+        f.image1 = image
         f.latitude = latitude
         f.longtitude = longtitude
         f.stalltype = stalltype
@@ -929,17 +926,38 @@ def creations(request):
     if request.method == "POST":
         form = CreateForm(request.POST)
         if form.is_valid():
-            latitude = form.cleaned_data["latitude"]
-            longtitude = form.cleaned_data["longtitude"]
+            image1 = form.cleaned_data["image1"] 
+            postalcode = form.cleaned_data["postalcode"] 
             name = form.cleaned_data["name"]
-            stalltype = request.POST["stalltype"]
-            address = form.cleaned_data["address"]
             hours = form.cleaned_data["hours"]
             reco = form.cleaned_data["reco"]
             details = form.cleaned_data["details"]
             contributor = request.POST["contributor"]
-            h = HawkerStall(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address, hours = hours, reco = reco, details = details, contributor = contributor)
-            i = History(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address, hours = hours, reco = reco, details = details, contributor = contributor)
+            stalltype = request.POST["stalltype"]
+            try:
+                address2 = f"https://developers.onemap.sg/commonapi/search?searchVal={postalcode}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+                response = requests.get(address2)
+                data = response.text
+                parse_json = json.loads(data)
+                latitude = float(parse_json['results'][0]['LATITUDE'])
+            except IndexError:
+                message = "Form invalid"
+                return render(request, "project/create.html", {
+                "form3": CreateForm(),
+                "message": message,
+                })   
+            
+            # Get values from API
+            address2 = f"https://developers.onemap.sg/commonapi/search?searchVal={postalcode}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+            response = requests.get(address2)
+            data = response.text
+            parse_json = json.loads(data)
+            latitude = float(parse_json['results'][0]['LATITUDE'])
+            longtitude = float(parse_json['results'][0]['LONGITUDE'])
+            address3 = parse_json['results'][0]['ADDRESS']
+
+            h = HawkerStall(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor, image1 = image1)
+            i = History(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor)
             h.save()
             i.save()
             return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))

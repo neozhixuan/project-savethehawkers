@@ -7,11 +7,10 @@
 <div class = "login">
 <form action = "{%url 'savethehawkers:creations'%}" method = "POST">
     {%csrf_token%}
-    Latitude:{{form3.latitude}} <br>
-    Longitude:{{form3.longtitude}} <br>
+    Postal Code:{{form3.postalcode}} <br>
     Name:{{form3.name}} <br>
-    Address:{{form3.address}} <br>
     Recommendation:{{form3.reco}} <br>
+    Image URL from online:{{form3.image1}}
     <label for="stalltype">Stall Type:</label> <br>
     <select name="stalltype" id="stalltype">
         <option disabled selected value> Stall Type </option>
@@ -28,7 +27,11 @@
     Hours: {{form3.hours}}
     Detail: {{form3.details}}
     Contributor: You :)
+    {%if user.is_authenticated%}
     <input type = "hidden" name = "contributor" value = "{{ user.username }}">
+    {%else%}
+    <input type = "hidden" name = "contributor" value = "Anonymous">
+    {%endif%}
     <input type = "submit" value = "Create">
 </form>
 </div>

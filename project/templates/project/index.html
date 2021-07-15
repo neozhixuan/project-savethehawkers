@@ -26,15 +26,16 @@
             <iframe src="https://www.google.com/maps/d/embed?mid=1XcpTiJpt_O-Rw6Wu8qrtCm_Ek9VUgIDF" scrolling="no" frameborder="0"
             style="position: relative; height: 100%; width: 100%;" ></iframe>
         </div>
-        <div class="map">
-            <h4>Feature of the Day</h4>
+        <div class="map" style = "padding: 10px; box-sizing: border-box;">
+            <h4>Feature Stall</h4>
             {%block haw.image%}{%if haw.image%}
             <img src="{{haw.image.url}}" style="position: relative; height: 80%; width: 80%;">
             {%else%}
-            <img src="{% static 'project/hawk.png'%}" style="position: relative;left:10%; height: 90%; width: 90%;">
+            <img src="{% static 'project/hawk.png'%}" style="position: relative;left:10%; height: 80%; width: 80%;">
             {%endif%}{%endblock%}<br>
-            <a href = "{%url 'savethehawkers:info' haw.name %}">{{haw.name}}</a><br>
-            {{haw.address}}
+            <a style = "font-weight: bold;"href = "{%url 'savethehawkers:info' haw.name %}">{{haw.name}}</a><br>
+            Address: {{haw.address}}<br>
+            
         </div>
     </div>
     

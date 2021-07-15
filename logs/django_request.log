@@ -13491,3 +13491,275 @@ Traceback (most recent call last):
 django.urls.exceptions.NoReverseMatch: Reverse for 'info' with arguments '('',)' not found. 1 pattern(s) tried: ['(?P<name>[^/]+)/info$']
 2021-07-14 22:35:37,408 [WARNING] django.request: Not Found: /styles.css
 2021-07-14 22:35:40,092 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:52:49,039 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:53:30,382 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:53:38,504 [WARNING] django.request: Not Found: /favicon.ico
+2021-07-15 13:54:09,624 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:54:14,685 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:54:25,111 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:54:35,379 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:54:57,960 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:55:08,496 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:55:17,071 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:55:21,884 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:57:02,445 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:57:23,722 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 233, in index
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 694, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'info' with arguments '('Hai Kee Sauce Chicken Rice/ Noodle',)' not found. 1 pattern(s) tried: ['(?P<name>[^/]+)/info$']
+2021-07-15 13:59:21,593 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:59:26,750 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:59:30,988 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:59:34,671 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 13:59:39,949 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:00:22,423 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:00:40,077 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:00:44,440 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:00:52,418 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:01:04,492 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:01:20,145 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:03:49,580 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:03:51,779 [WARNING] django.request: Not Found: /Handmade Yong Tau Foo/styles.css
+2021-07-15 14:06:30,237 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:06:32,597 [WARNING] django.request: Not Found: /Hock Kee Western Food/styles.css
+2021-07-15 14:14:15,616 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\sqlite3\base.py", line 423, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such column: project_hawkerstall.postalcode
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 228, in index
+    haw = HawkerStall.objects.filter(pk=number).first()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 674, in first
+    for obj in (self if self.ordered else self.order_by('pk'))[:1]:
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 280, in __iter__
+    self._fetch_all()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\sqlite3\base.py", line 423, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such column: project_hawkerstall.postalcode
+2021-07-15 14:14:54,178 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 232, in index
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 694, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'info' with arguments '('Hong Hong Laksa / Pok Ribs Prawn Noodle',)' not found. 1 pattern(s) tried: ['(?P<name>[^/]+)/info$']
+2021-07-15 14:14:58,399 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:15:08,285 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:18:40,239 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:22:29,266 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:23:29,418 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:24:17,970 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:28:55,456 [WARNING] django.request: Not Found: /Nyonya Taste/styles.css
+2021-07-15 14:29:36,023 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:29:47,594 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:31:25,430 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:31:26,062 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:31:45,020 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:43:49,097 [ERROR] django.request: Internal Server Error: /creations
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 955, in creations
+    address3 = float(parse_json['results'][0]['ADDRESS'])
+ValueError: could not convert string to float: '1 WHOLESALE CENTRE FC SINGAPORE 110001'
+2021-07-15 14:44:19,410 [ERROR] django.request: Internal Server Error: /creations
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 958, in creations
+    i = History(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address, hours = hours, reco = reco, details = details, contributor = contributor)
+NameError: name 'address' is not defined
+2021-07-15 14:44:35,188 [WARNING] django.request: Not Found: /Sin Thor Eunos Bak Kut Teh/styles.css
+2021-07-15 14:45:23,723 [WARNING] django.request: Not Found: /Sin Thor Eunos Bak Kut Teh/styles.css
+2021-07-15 14:45:37,031 [WARNING] django.request: Not Found: /Sin Thor Eunos Bak Kut Teh/styles.css
+2021-07-15 14:46:51,910 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:46:58,648 [WARNING] django.request: Not Found: /Pastry For Life/styles.css
+2021-07-15 14:47:05,121 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:47:16,783 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:47:22,044 [WARNING] django.request: Not Found: /Sin Thor Eunos Bak Kut Teh/styles.css
+2021-07-15 14:47:41,270 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:48:01,448 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:49:31,464 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:49:37,765 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:49:50,335 [WARNING] django.request: Not Found: /Nyonya Taste/styles.css
+2021-07-15 14:49:53,548 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:51:43,585 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:51:46,294 [WARNING] django.request: Not Found: /Zhangji Noodles/styles.css
+2021-07-15 14:54:13,713 [WARNING] django.request: Not Found: /Zhangji Noodles/styles.css
+2021-07-15 14:54:15,010 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:55:05,065 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:55:58,744 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:56:05,225 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 14:57:10,550 [ERROR] django.request: Internal Server Error: /creations
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 76, in __getitem__
+    list_ = super().__getitem__(key)
+KeyError: 'stalltype'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 936, in creations
+    stalltype = request.POST["stalltype"]
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\datastructures.py", line 78, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'stalltype'
+2021-07-15 14:57:30,237 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 14:57:46,702 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 14:57:49,858 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 14:57:59,876 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 14:58:03,592 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 15:00:37,337 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 15:00:57,191 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 15:01:13,300 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 15:01:32,293 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 15:01:35,428 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 15:01:50,244 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 15:01:56,515 [WARNING] django.request: Not Found: /Ah Kiat Frozen Food/styles.css
+2021-07-15 15:02:11,755 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:02:14,225 [WARNING] django.request: Not Found: /Huat Kee Kway Chap/styles.css
+2021-07-15 15:02:24,850 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:02:46,903 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:02:47,585 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:03:03,231 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:03:19,083 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:03:22,064 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:03:23,446 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:03:47,400 [WARNING] django.request: Not Found: /Nyonya Taste/styles.css
+2021-07-15 15:04:10,262 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:04:17,329 [WARNING] django.request: Not Found: /Nyonya Taste/styles.css
+2021-07-15 15:04:28,061 [WARNING] django.request: Not Found: /Nyonya Taste/styles.css
+2021-07-15 15:04:38,834 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:04:47,524 [WARNING] django.request: Not Found: /Nyonya Taste/styles.css
+2021-07-15 15:05:00,844 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:05:07,418 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:05:34,146 [WARNING] django.request: Not Found: /Teochew Braised Duck Rice And Noodle/styles.css
+2021-07-15 15:09:54,828 [WARNING] django.request: Not Found: /Teochew Braised Duck Rice And Noodle/styles.css
+2021-07-15 15:10:30,593 [WARNING] django.request: Not Found: /Teochew Braised Duck Rice And Noodle/styles.css
+2021-07-15 15:11:49,995 [WARNING] django.request: Not Found: /Teochew Braised Duck Rice And Noodle/styles.css
+2021-07-15 15:12:01,818 [WARNING] django.request: Not Found: /Teochew Braised Duck Rice And Noodle/styles.css
+2021-07-15 15:13:11,930 [WARNING] django.request: Not Found: /styles.css
+2021-07-15 15:13:14,527 [WARNING] django.request: Not Found: /Choa Chu Kang Bbq Chicken Wings/styles.css
