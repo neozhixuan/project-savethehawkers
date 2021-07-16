@@ -24,7 +24,7 @@
   <div class="main-bd">
     <div class="left-side">
       <div class="profile-side">
-        <p class="mobile-no"><i class="fa fa-phone"></i> +XX </p>
+        <p class="mobile-no"><i class="fa fa-telegram"></i> @xxxxxxx </p>
         <p class="user-mail"><i class="fa fa-envelope"></i> XXX@gmail.com</p>
         <div class="user-bio">
           <h3>Bio</h3>
@@ -37,18 +37,18 @@
           <button class="createbtn" id="Create-post"><i class="fa fa-plus"></i> Create</button>
         </div>
         <div class="user-rating">
-          <h3 class="rating">4.5</h3>
+          <h3 class="rating">1</h3>
           <div class="rate">
             <div class="star-outer">
               <div class="star-inner">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
+                <i class="fa fa-cutlery"></i>
+                <i class="fa fa-cutlery"></i>
+                <i class="fa fa-cutlery"></i>
+                <i class="fa fa-cutlery"></i>
+                <i class="fa fa-cutlery"></i>
               </div>
             </div>
-            <span class="no-of-user-rate"><span>123</span>&nbsp;&nbsp;reviews</span>
+            <span class="no-of-user-rate"><span>{{points}} points accumulated.</span>&nbsp;&nbsp;</span>
           </div>
 
         </div>
@@ -61,7 +61,7 @@
         <ul>
           <li onclick="tabs(0)" class="user-post active">Posts</li>
           <li onclick="tabs(1)" class="user-review">Reviews</li>
-          <li onclick="tabs(2)" class="user-setting"> Settings</li>
+          <li onclick="tabs(2)" class="user-setting"> Reports</li>
         </ul>
       </div>
       <div class="profile-body">
@@ -92,17 +92,19 @@
           <h1>User reviews</h1>
           <p>{%for com in comment%}
             {{com.comment}}<br>
-            {{com.stallname}}<br>
+            <a href = "{%url 'savethehawkers:info' com.stallname%}">{{com.stallname}}</a><br>
             {%empty%}
             No comments created.<br>
             {%endfor%}</p>
         </div>
         <div class="profile-settings tab">
           <div class="account-setting">
-            <h1>Acount Setting</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit omnis eaque, expedita nostrum, facere libero provident laudantium. Quis, hic doloribus! Laboriosam nemo tempora praesentium. Culpa quo velit omnis, debitis maxime, sequi
-              animi dolores commodi odio placeat, magnam, cupiditate facilis impedit veniam? Soluta aliquam excepturi illum natus adipisci ipsum quo, voluptatem, nemo, commodi, molestiae doloribus magni et. Cum, saepe enim quam voluptatum vel debitis
-              nihil, recusandae, omnis officiis tenetur, ullam rerum.</p>
+            <h1>User Reports</h1>
+          <p>{%for rep in report%}
+            Report:{{rep.reason}} ({{rep.stallname}})<br>
+            {%empty%}
+            No reports created.<br>
+            {%endfor%}</p>
           </div>
         </div>
       </div>
@@ -154,28 +156,6 @@ if (document.querySelector(".alert-message").innerText > 9) {
 }
 
   </script>
-{{user.username}}<br>
-<hr>
-Points: {{points}}<br>
-<hr>
-{%for hawk in hawker%}
-{{hawk.name}}<br>
-{%empty%}
-No stalls created.<br>
-{%endfor%}
-<hr>
 
-{%for com in comment%}
-{{com.comment}}<br>
-{{com.stallname}}<br>
-{%empty%}
-No comments created.<br>
-{%endfor%}
-<hr>
-{%for rep in report%}
-Report:{{rep.reason}} ({{rep.stallname}})<br>
-{%empty%}
-No reports created.<br>
-{%endfor%}
 
 {% endblock %}

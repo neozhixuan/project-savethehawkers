@@ -23,6 +23,7 @@
             <nav>
                 <ul>
                     <li><a class="active" href="{% url 'savethehawkers:index' %}">Home</a></li>
+                    <li><a href="{% url 'savethehawkers:community' %}">Community</a></li>
                     {% if user.is_authenticated %}
                     <li style = "float:right;"><a href = "{% url 'savethehawkers:user' user.username%}"style = "color:black;">Signed in as <strong>{{ user.username }}</strong>.</a></li>
                     <li><a href="{% url 'savethehawkers:logout' %}">Log Out</a></li>

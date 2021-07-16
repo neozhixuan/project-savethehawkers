@@ -1,0 +1,326 @@
+{% extends "project/layout.html" %}
+{% load static %}
+{% block body %}
+<!-- https://codepen.io/RajRajeshDn/pen/EBoVEN -->
+<div class = "community" style = "display:flex">
+<div class="wrapper" style = "flex: 1">
+    <div class="leaderboard">
+        <div class="banner">
+          <img src="https://i.imgur.com/yuMaYc3.png" alt="banner_image">
+      </div>
+        <div class="content">
+            <div class="tabs">
+              <ul>
+                <li class="tab_a">This Week</li>
+                <li class="tab_b">This Month</li>
+                <li class="tab_c">This Year</li>
+              </ul>
+            </div>
+            <div class="week">
+               <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">1</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/Ctwf8HA.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Alex Eson</p>
+                    <span>1210 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+                   <img src="https://i.imgur.com/Z95bFgB.png" alt="gold_medal" width="25" height="25"> 
+               </div> 
+              </div>
+              <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">2</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/JzUIF4o.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Rose Lala</p>
+                    <span>1004 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+                   <img src="https://i.imgur.com/sL6ew4c.png" alt="gold_medal" width="25" height="25"> 
+               </div> 
+              </div>
+              <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">3</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/2pGPLrl.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Emmerson</p>
+                    <span>958 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+                   <img src="https://i.imgur.com/Yx1u2NB.png" alt="medal" width="25" height="25"> 
+               </div> 
+              </div>
+              <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">4</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/jQj1I8E.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Jasmine</p>
+                    <span>740 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+               </div> 
+              </div>
+            </div>
+            <div class="month">
+              <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">1</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/JzUIF4o.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Rose Lala</p>
+                    <span>5210 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+                   <img src="https://i.imgur.com/Z95bFgB.png" alt="gold_medal" width="25" height="25"> 
+               </div> 
+              </div>
+              <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">2</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/fktUcEz.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Watson Jones</p>
+                    <span>5004 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+                   <img src="https://i.imgur.com/sL6ew4c.png" alt="gold_medal" width="25" height="25"> 
+               </div> 
+              </div>
+              <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">3</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/2Necikc.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Jason Wood</p>
+                    <span>4958 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+                   <img src="https://i.imgur.com/Yx1u2NB.png" alt="medal" width="25" height="25"> 
+               </div> 
+              </div>
+              <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">4</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/h2EFLO9.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Scarlet Heart</p>
+                    <span>3740 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+               </div> 
+              </div>
+          </div>
+            <div class="year">
+              <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">1</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/fktUcEz.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Watson Jones</p>
+                    <span>9910 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+                   <img src="https://i.imgur.com/Z95bFgB.png" alt="gold_medal" width="25" height="25"> 
+               </div> 
+              </div>
+              <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">2</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/kDLvuKf.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Peterson</p>
+                    <span>9304 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+                   <img src="https://i.imgur.com/sL6ew4c.png" alt="gold_medal" width="25" height="25"> 
+               </div> 
+              </div>
+              <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">3</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/mqjLeS3.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Meg Rosen</p>
+                    <span>8958 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+                   <img src="https://i.imgur.com/Yx1u2NB.png" alt="medal" width="25" height="25"> 
+               </div> 
+              </div>
+              <div class="item_container">
+                 <div class="item">
+                    <div class="item_num">4</div>  
+                    <div class="item_img">
+                      <img src="https://i.imgur.com/d91yVjE.png" alt="winner_image" width="50" height="50">
+                 </div>
+                 <div class="item_info">
+                    <p>Megan Schutt</p>
+                    <span>7740 Points</span>
+                 </div>
+               </div> 
+               <div class="item_medal">
+               </div> 
+              </div>
+          </div>
+        </div>
+    </div>
+</div>
+<div class = "embedtelegram" style=  "flex: 1 30%">
+    <iframe id="preview" style="border:0px;height:500px;width:90%;margin:5px;box-shadow: 0 0 16px 3px rgba(0,0,0,.2);" src="https://xn--r1a.website/s/savethehawkers"></iframe>
+</div>
+</div>
+<script>
+    $(".month, .year").hide();
+$(".tab_a").addClass("active");
+
+$(".tab_b").click(function(){
+  $(this).addClass("active");
+  $(".tab_a, .tab_c").removeClass("active");
+  $(".month").show();
+   $(".week, .year").hide();
+})
+
+$(".tab_c").click(function(){
+  $(this).addClass("active");
+  $(".tab_a, .tab_b").removeClass("active");
+  $(".year").show();
+   $(".week, .month").hide();
+})
+
+$(".tab_a").click(function(){
+  $(this).addClass("active");
+  $(".tab_b, .tab_c").removeClass("active");
+  $(".week").show();
+   $(".month, .year").hide();
+})
+
+</script>
+<!-- https://codepen.io/skadoodle619/pen/baEvgZ -->
+<!-- <div class="mainContainer">
+    <div class="left">
+      <div class="logoHold center">
+        <img src="https://www.formula1.com/etc/designs/fom-website/images/f1_logo.svg" alt="">
+      </div>
+      <div class="place">
+        <div class="placeName">
+          <div class="first vcenter">ABU</div>
+          <div class="second vcenter">DHABI</div>
+          <div class="third vcenter">YAS MARINA CIRCUIT</div>
+        </div>
+        <div class="flag center">
+          <img src="https://rlv.zcache.co.uk/united_arab_emirates_flag_classic_round_sticker-rf593e9eb2f2e4f8d8fa254290a49fe5e_v9wth_8byvr_324.jpg" alt="">
+        </div>
+      </div>
+      <div class="stats">
+        <div class="statsInfo">
+          <h5>NUMBER OF LAPS</h5>
+          <div>55</div>
+        </div>
+        <div class="statsInfo">
+          <h5>CIRCUIT LENGTH</h5>
+          <div>5.554 KM</div>
+        </div>
+        <div class="statsInfo">
+          <h5>RACE DISTANCE</h5>
+          <div>305.355 KM</div>
+        </div>
+      </div>
+      <div class="social center">
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+        <i class="fa fa-youtube-play" aria-hidden="true"></i>
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="right">
+      <div class="header vcenter">PLAYER STANDINGS</div>
+      <div class="playerContainer">
+        <div class="player">
+          <div class="playerImg" id="first"></div>
+          <div class="playerInfo">
+            <div class="num">
+              <img src="#" alt="">
+              <span>5p</span>
+            </div>
+            <div class="name">
+              <h4>1st Position</h4>
+              <div>neozhixuan</div>
+            </div>
+            <div class="helmet center">
+              <img src="#" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="player">
+          <div class="playerImg" id="second"></div>
+          <div class="playerInfo">
+            <div class="num">
+              <img src="#" alt="">
+              <span>0</span>
+            </div>
+            <div class="name">
+              <h4>2nd Position</h4>
+              <div></div>
+            </div>
+            <div class="helmet center">
+              <img src="#" alt="">
+            </div>
+          </div>
+        </div>
+        <div class="player">
+          <div class="playerImg" id="third"></div>
+          <div class="playerInfo">
+            <div class="num">
+              <img src="{%static 'project/logo.html' %}" alt="">
+              <span>0</span>
+            </div>
+            <div class="name">
+              <h4>3rd Position</h4>
+              <div></div>
+            </div>
+            <div class="helmet center" style="background:#e74c3c;">
+              <img src="#" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+{% endblock %}

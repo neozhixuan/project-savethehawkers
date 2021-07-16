@@ -908,6 +908,8 @@ def user(request, name):
         "points" : points.points
     })
 
+def community(request):
+    return render(request, "project/community.html")
 # def delete(request, name):
     # g = HawkerStall.objects.filter(name = name).first()
     # g.latitude = 0

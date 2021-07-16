@@ -18,4 +18,5 @@ urlpatterns = [
     path("creations", views.creations, name="creations"),
     path("<str:name>/comment", views.comment, name="comment"),
     path("<str:name>/profile", views.user, name="user"),
+    path("community", views.community, name="community"),
 ]
