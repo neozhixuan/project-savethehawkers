@@ -164,7 +164,8 @@ function closeFooter()
         <br>
     </form>
 </div>
-<div class="filter-results">
+
+<div class="filter-results" >
     <div class="filter-results-listing">
         {% for name in names %} {% if forloop.counter == 1 %}
         <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
@@ -345,8 +346,58 @@ function closeFooter()
         Recommendation:{{rec}}
         {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
     </div>
+    <div class="filter-results-listing">
+        <dt>Leaflet.JS</dt>
+        <div id = "mapid" style = "width: 250px;height:300px" ></div>
+    </div>
 </div>
 
+
+<script type="text/javascript">
+    var latorigin = "{{latorigin}}";
+    var longorigin = "{{longorigin}}";
+    var mymap = L.map('mapid').setView([latorigin, longorigin], 13);
+    var latitudes = JSON.parse("{{latitudes}}");
+    var longtitudes = JSON.parse("{{longtitudes}}");
+    var names = {{namesjson|safe}};
+    console.log(names)
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibmVvemhpeHVhbiIsImEiOiJja3I2Z2UyeXoyc3U4MnZxdTIyM21sdjZlIn0.9-6d54z8bMHK5oaDpNWtyQ'
+    }).addTo(mymap);
+    
+    var marker = L.marker([latorigin, longorigin]).addTo(mymap);
+    marker.bindPopup("<b>Hello world!</b><br>Is this your postal code.").openPopup();
+
+    var shop1 = L.marker([latitudes[0], longtitudes[0]]).addTo(mymap);
+    shop1.bindPopup(`${names[0]}`).openPopup();
+    var shop2 = L.marker([latitudes[1], longtitudes[1]]).addTo(mymap);
+    shop2.bindPopup(`${names[1]}`).openPopup();
+    var shop3 = L.marker([latitudes[2], longtitudes[2]]).addTo(mymap);
+    shop3.bindPopup(`${names[2]}`).openPopup();
+    var shop4 = L.marker([latitudes[3], longtitudes[3]]).addTo(mymap);
+    shop4.bindPopup(`${names[3]}`).openPopup();
+    var shop5 = L.marker([latitudes[4], longtitudes[4]]).addTo(mymap);
+    shop5.bindPopup(`${names[4]}`).openPopup();
+    var shop6 = L.marker([latitudes[5], longtitudes[5]]).addTo(mymap);
+    shop6.bindPopup(`${names[5]}`).openPopup();
+
+    var popup = L.popup();
+    
+
+    // function onMapClick(e) {
+    //     popup
+    //         .setLatLng(e.latlng)
+    //         .setContent(e.latlng.toString())
+    //         .openOn(mymap);
+    // }
+
+    // mymap.on('click', onMapClick);
+</script>
 <form action = "{%url 'savethehawkers:nextindex' pagenumber%} " method = "POST" >
     {%csrf_token%}
     <input type = "hidden" name = "postalcode" value = "{{postalcode}}">
@@ -395,5 +446,6 @@ function closeFooter()
         })
         .catch(err => console.warn(err.message));
     </script> -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 {% endblock %}

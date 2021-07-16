@@ -86,16 +86,24 @@
             {%empty%}
             Add your first listing <a href = "{% url 'savethehawkers:creations' %}"> here </a>
             {%endfor%}
-        </div>
+          </div>
         </div>
         <div class="profile-reviews tab">
           <h1>User reviews</h1>
-          <p>{%for com in comment%}
-            {{com.comment}}<br>
-            <a href = "{%url 'savethehawkers:info' com.stallname%}">{{com.stallname}}</a><br>
+          <div class="filter-results-listing">
+            {%for com in comment%}
+            
+            <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' com.stallname%}">{{com.stallname}}</a></h3>
+    
+            <div class="listing-map">
+           </div>
+    
+            <p class="listing-address">
+            Review: {{com.comment}}</p>
             {%empty%}
-            No comments created.<br>
-            {%endfor%}</p>
+            Add your first review <a href = "{% url 'savethehawkers:index' %}"> here </a>
+            {%endfor%}
+          </div>
         </div>
         <div class="profile-settings tab">
           <div class="account-setting">

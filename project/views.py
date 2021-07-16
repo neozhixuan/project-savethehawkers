@@ -198,7 +198,11 @@ def index(request):
         latandlong4 = zip(myhouselat, myhouselong, latitudes, longtitudes)
         latandlong5 = zip(myhouselat, myhouselong, latitudes, longtitudes)
         latandlong6 = zip(myhouselat, myhouselong, latitudes, longtitudes)
+
+
         return render(request, "project/index.html",{
+            "latorigin": latorigin,
+            "longorigin": longorigin,
             "reco": reco,
             "stalltype": stalltypes,
             "postalcode": postalcode,
@@ -206,6 +210,7 @@ def index(request):
             "latitudes": latitudes,
             "longtitudes": longtitudes,
             "names": names,
+            "namesjson": json.dumps(names),
             "addresses": addresses,
             "recos": recos,
             "hours": hours,
@@ -334,6 +339,8 @@ def nextindex(request, pagenumber):
         latandlong5 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
         latandlong6 = zip(myhouselat, myhouselong, latitudes[(6*(page-1)):], longtitudes[(6*(page-1)):])
         return render(request, "project/index.html",{
+            "latorigin": latorigin,
+            "longorigin": longorigin,
             "reco": reco,
             "number": stalltypes,
             "stalltype": stalltypes,
@@ -342,6 +349,7 @@ def nextindex(request, pagenumber):
             "latitudes": latitudes[(6*(page-1)):],
             "longtitudes": longtitudes[(6*(page-1)):],
             "names": names[(6*(page-1)):],
+            "namesjson": json.dumps(names[(6*(page-1)):]),
             "addresses": addresses[(6*(page-1)):],
             "recos": recos[(6*(page-1)):],
             "hours": hours[(6*(page-1)):],
