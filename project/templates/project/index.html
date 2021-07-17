@@ -66,6 +66,7 @@
                     <input type="submit" value="Submit">
                     <br>
                 </form>
+                <h2>Find By Name</h2>
                 <form action="{% url 'savethehawkers:name' %}" method = "POST">
                     {%csrf_token%}
                     <label for = "name"> Name: </label><br>
