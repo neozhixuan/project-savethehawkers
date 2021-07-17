@@ -217,7 +217,7 @@ footer {
       align-items: center; 
   justify-content: center; 
   }
-  .wrapper > * { padding-bottom: 2rem; }
+  .wrapper > * { padding-bottom: 5rem; }
 
   .filter-results {
       min-height: 100vh;
