@@ -9,6 +9,7 @@ import math
 
 import telegram
 from .models import *
+from .models import User as UserProfile
 from django import contrib, forms
 
 from ipstack import GeoLookup
@@ -225,13 +226,13 @@ def index(request):
             "latandlong6": latandlong6,
             "form": NewTaskForm()
         })
+    
     comments = Comments.objects.all()
     history = History.objects.filter(id__in=[1,2,3,4,5,6])
     number = randrange(1,368)
     haw = HawkerStall.objects.filter(pk=number).first()
     hawk = HawkerStall.objects.all()
     numberoflistings = len(hawk)
-    
     return render(request, "project/index.html",{
         "haw": haw,
         "no": "no",
@@ -240,6 +241,14 @@ def index(request):
         "comments":comments,
         "numberoflistings": numberoflistings,
     })
+
+def name(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        hawk = HawkerStall.objects.filter(name__contains = name)
+        return render(request, "project/name.html", {
+            "stalls": hawk,
+        })
 
 def nextindex(request, pagenumber):
     if request.method == "POST":
@@ -771,15 +780,21 @@ def next(request, pagenumber):
 
 def info(request, name):
     stall = HawkerStall.objects.filter(name = name).first()
+    numberofstalls = len(stall.comments.all())
     orders = stall.comments.all().values('ordered')
+    reco = stall.comments.all().values('recommend')
     items = [0] * len(orders)
+    recommend = [0] * len(reco)
     for i in range(len(orders)):
         items[i] = orders[i]['ordered']
+        recommend[i] = reco[i]['recommend']
     return render(request, "project/info.html",{
         "stalls": stall,
         "form": NewTaskForm(),
+        "numberofstalls": numberofstalls,
         "comments": stall.comments.all(),
         "items": items,
+        "recommend": recommend,
         "report": stall.report.all(),
         "count": stall.report.all().count(),
     })
@@ -790,8 +805,13 @@ def comment(request, name):
         ordered = request.POST["ordered"]
         contributor = request.POST["contributor"]
         foodimage = request.FILES.get('foodimage')
+        recommend = False
+        if request.POST.get('recommend'):
+            recommend = True
+        else:
+            recommend = False
         hawk = HawkerStall.objects.filter(name = name).first()
-        f = Comments(comment = description, image = foodimage, ordered = ordered, stallname = name, address = hawk.address, contributor = contributor)
+        f = Comments(comment = description, image = foodimage, ordered = ordered, stallname = name, address = hawk.address, contributor = contributor, recommend = recommend)
         ''' Begin reCAPTCHA validation '''
         recaptcha_response = request.POST.get('g-recaptcha-response')
         url = 'https://www.google.com/recaptcha/api/siteverify'
@@ -904,20 +924,35 @@ def report(request, name):
         hawk.report.add(f)
         return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
     
-def user(request, name):
+def userprofile(request, name):
     hawk = HawkerStall.objects.filter(contributor = name)
     report = Report.objects.filter(user = name)
     comments = Comments.objects.filter(contributor = name)
     points = Point.objects.get(user = name)
+    user1 = UserProfile.objects.get(username = name)
+    bookmarks = HawkerStall.objects.filter(bookmarks = user1)
     return render(request, "project/user.html",{
+        "name": name,
         "hawker": hawk,
         "report": report,
         "comment": comments,
-        "points" : points.points
+        "points" : points.points,
+        "bookmarks": bookmarks,
     })
 
+def bookmark(request, name):
+    username = request.POST['username']
+    user = UserProfile.objects.filter(username=username).first()
+    hawk = HawkerStall.objects.get(name = name)
+    hawk.bookmarks.add(user)
+    return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
+
 def community(request):
-    return render(request, "project/community.html")
+    users = UserProfile.objects.all()
+    return render(request, "project/community.html", {
+        "users" : users,
+    })
+
 # def delete(request, name):
     # g = HawkerStall.objects.filter(name = name).first()
     # g.latitude = 0
@@ -1022,7 +1057,7 @@ def register(request):
 
         # Attempt to create new user
         try:
-            user = User.objects.create_user(username, email, password)
+            user = UserProfile.objects.create_user(username, email, password)
             user.save()
         except IntegrityError:
             return render(request, "project/register.html", {

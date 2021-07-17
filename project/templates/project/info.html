@@ -61,6 +61,13 @@ window.onclick = function(event) {
   {%endfor%}
 </div>
 {%endif%}
+{%if user.is_authenticated%}
+<form action = "{% url 'savethehawkers:bookmark' stalls.name%}" method = "POST">
+  {%csrf_token%}
+  <input type = "hidden" name = "username" value = "{{user.username}}">
+  <input type = "submit" value = "Bookmark">
+</form>
+{%endif%}
 <script>
   var acc = document.getElementsByClassName("accordion");
   var i;
@@ -114,6 +121,8 @@ window.onclick = function(event) {
   <div class="listing-example-img"><img src="{% static 'project/hawk.png'%}" style="position: relative; height: 100%; width: 100%;"></div>
   {%endif%}
   {%endblock%}
+  Tags: <button>{{stalls.stalltype}}</button><button>{% if stalls.district %}{{stalls.district}}{%else%}Add a district{%endif%}</button>
+  
   <p class="listing-example-info">
     <span style = "font-size: 2rem; font-weight: bold;">"{{stalls.details}}"</span><br>
     - Written by {{stalls.contributor}}<br>
@@ -143,11 +152,32 @@ window.onclick = function(event) {
       Awards: {{stalls.awards}} <br>
     </div>     
     <br>
-      Recent Orders: {%for item in items%}{{item}}{%empty%}None. Add a comment and help foodies know which item is the best!{%endfor%} <br>
+      Recent Orders: {%for item in items%}{{item}}{%empty%}None. Add a comment and help foodies know which item is the best!{%endfor%}
+      {%for rec in recommend%}{{rec}}{%endfor%}<br>
       <a class="fa fa-facebook" href = "{{stalls.facebook}}" style = "background-color: blue; color: white; width: 30px; height: 30px; padding: 10px; box-sizing: border-box;"></a><br>
       <a class="fa fa-twitter" href = "{{stalls.twitter}}" style = "background-color: blue; color: white; width: 30px; height: 30px; padding: 10px; box-sizing: border-box;"></a>
   </p>
-  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d498.59396031146974!2d{{stalls.longtitude}}!3d{{stalls.latitude}}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2ssg!4v1626333072249!5m2!1sen!2ssg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  <div id = "mapid" style = "width: 250px;height:300px" ></div>
+  <script type="text/javascript">
+    var lat = "{{stalls.latitude}}";
+    var long = "{{stalls.longtitude}}";
+    var name = "{{stalls.name}}";
+    var address = "{{stalls.address}}";
+    var mymap = L.map('mapid').setView([lat, long], 13);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibmVvemhpeHVhbiIsImEiOiJja3I2Z2UyeXoyc3U4MnZxdTIyM21sdjZlIn0.9-6d54z8bMHK5oaDpNWtyQ'
+    }).addTo(mymap);
+    
+    var marker = L.marker([lat, long]).addTo(mymap);
+    marker.bindPopup(`<b>${name}</b><br>${address}`).openPopup();
+
+</script>
 </div>
 
 
@@ -160,13 +190,17 @@ window.onclick = function(event) {
   <div class = "form-group m-3">
     <input style = "outline: none; resize: none; overflow: auto;" cols = '30' rows = '6' required type = "text" name = "ordered" class = "form-control" placeholder = "What did you order?"></textarea>
   </div>
+  Do you recommend this to others?<input type = "checkbox" name = "recommend" class = "form-control"><br>
+  
   <div class = "form-group m-3">
     Image:<input required type = "file" name = "foodimage" class = "form-control-file">
   </div>
+  
   <script src='https://www.google.com/recaptcha/api.js'></script>
   <div class="g-recaptcha" data-sitekey="6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW"></div>
   <!-- 6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW -->
   <!-- 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI -->
+  
   <input type = "submit" value = "Submit" class = "m-3 btn btn-primary">
   <input type = "hidden" value = "{{user.username}}" name = "contributor">
 
@@ -174,7 +208,7 @@ window.onclick = function(event) {
 {{message}}
 <div style = "margin-left: 15px">
   
-  <h2>Comments</h2>
+  <h2>Comments ({{numberofstalls}} comments)</h2>
   {%for comment in comments%}
   {%if forloop.revcounter <= 5%}
   <p>{{comment.comment}}</p>

@@ -14026,3 +14026,749 @@ Traceback (most recent call last):
   File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 213, in index
     "namesjson": json.dumps(names2),
 NameError: name 'names2' is not defined
+2021-07-17 12:43:04,633 [WARNING] django.request: Not Found: /favicon.ico
+2021-07-17 13:32:32,758 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\sqlite3\base.py", line 423, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such column: project_comments.recommend
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 235, in index
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 168, in render
+    len_values = len(values)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 262, in __len__
+    self._fetch_all()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 1324, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 51, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch, chunk_size=self.chunk_size)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\compiler.py", line 1175, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 98, in execute
+    return super().execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 66, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 75, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\utils.py", line 90, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\sqlite3\base.py", line 423, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such column: project_comments.recommend
+2021-07-17 13:59:47,147 [ERROR] django.request: Internal Server Error: /Sin Thor Eunos Bak Kut Teh/info
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 781, in info
+    return render(request, "project/info.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 694, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'bookmark' with arguments '('Sin Thor Eunos Bak Kut Teh',)' not found. 1 pattern(s) tried: ['bookmark$']
+2021-07-17 14:03:53,866 [ERROR] django.request: Internal Server Error: /bookmark/Grandma'S Mee Siam
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 932, in bookmark
+    user = User.objects.get(username = username)
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 14:05:52,172 [ERROR] django.request: Internal Server Error: /bookmark/Grandma'S Mee Siam
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 932, in bookmark
+    user = User.objects.filter(pk=username).first()
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 14:05:54,559 [ERROR] django.request: Internal Server Error: /bookmark/Grandma'S Mee Siam
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 932, in bookmark
+    user = User.objects.filter(pk=username).first()
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 14:08:07,721 [ERROR] django.request: Internal Server Error: /bookmark/Grandma'S Mee Siam
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 932, in bookmark
+    user = User.objects.filter(pk=username).first()
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 14:08:14,607 [ERROR] django.request: Internal Server Error: /bookmark/Sin Thor Eunos Bak Kut Teh
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 932, in bookmark
+    user = User.objects.filter(pk=username).first()
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 15:52:39,027 [ERROR] django.request: Internal Server Error: /neozhixuan/profile
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'neozhixuan'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 921, in user
+    bookmarks = HawkerStall.objects.filter(bookmarks = name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\query.py", line 1391, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\query.py", line 1410, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\query.py", line 1345, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\query.py", line 1191, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\related_lookups.py", line 117, in get_prep_lookup
+    self.rhs = target_field.get_prep_value(self.rhs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\__init__.py", line 1825, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'neozhixuan'.
+2021-07-17 15:53:26,720 [ERROR] django.request: Internal Server Error: /neozhixuan/profile
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 921, in user
+    user = User.objects.get(username = name)
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 15:55:57,623 [ERROR] django.request: Internal Server Error: /neozhixuan/profile
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 921, in users
+    user = User.objects.get(username = name)
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 15:56:25,549 [ERROR] django.request: Internal Server Error: /neozhixuan/profile
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 921, in users
+    user1 = User.objects.get(username = name)
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 15:57:30,745 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 235, in index
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 694, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'user' not found. 'user' is not a valid view function or pattern name.
+2021-07-17 15:57:52,583 [ERROR] django.request: Internal Server Error: /neozhixuan/profile
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 921, in users
+    user1 = User.objects.get(username = name)
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 16:08:08,593 [ERROR] django.request: Internal Server Error: /
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 235, in index
+    return render(request, "project/index.html",{
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 61, in render
+    return self.template.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 170, in render
+    return self._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 150, in render
+    return compiled_parent._render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 162, in _render
+    return self.nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 312, in render
+    return nodelist.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 938, in render
+    bit = node.render_annotated(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 905, in render_annotated
+    return self.render(context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 446, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\base.py", line 86, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\urls\resolvers.py", line 694, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'user' not found. 'user' is not a valid view function or pattern name.
+2021-07-17 16:08:21,209 [ERROR] django.request: Internal Server Error: /neozhixuan/profile
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 921, in users
+    user = User.objects.get(username = name)
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 16:08:51,424 [ERROR] django.request: Internal Server Error: /neozhixuan/profile
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 921, in users
+    user1 = User.objects.get(username = name)
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 16:10:24,731 [ERROR] django.request: Internal Server Error: /neozhixuan/profile
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 921, in userprofile
+    user1 = User.objects.get(username = name)
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 16:11:51,714 [ERROR] django.request: Internal Server Error: /bookmark/Sin Thor Eunos Bak Kut Teh
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\__init__.py", line 1823, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: 'neozhixuan'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 934, in bookmark
+    user = UserProfile.objects.filter(pk=username).first()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 941, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 961, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\query.py", line 968, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\query.py", line 1391, in add_q
+    clause, _ = self._add_q(q_object, self.used_aliases)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\query.py", line 1410, in _add_q
+    child_clause, needed_inner = self.build_filter(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\query.py", line 1345, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\sql\query.py", line 1191, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\lookups.py", line 25, in __init__
+    self.rhs = self.get_prep_lookup()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\lookups.py", line 77, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\fields\__init__.py", line 1825, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got 'neozhixuan'.
+2021-07-17 16:18:57,538 [ERROR] django.request: Internal Server Error: /community
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 941, in community
+    return render(request, "project/community.html", {
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 278, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 216, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 814, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 522, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 327: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2021-07-17 16:19:30,211 [ERROR] django.request: Internal Server Error: /community
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 941, in community
+    return render(request, "project/community.html", {
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 278, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 216, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 814, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 522, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 36: 'endblock', expected 'empty' or 'endfor'. Did you forget to register or load this tag?
+2021-07-17 16:20:02,072 [ERROR] django.request: Internal Server Error: /register
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 1049, in register
+    user = User.objects.create_user(username, email, password)
+AttributeError: type object 'User' has no attribute 'objects'
+2021-07-17 17:24:35,333 [WARNING] django.request: Not Found: /favicon.ico
+2021-07-17 17:46:43,763 [ERROR] django.request: Internal Server Error: /admin/project/district/add/
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 616, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\views\decorators\cache.py", line 44, in _wrapped_view_func
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\sites.py", line 232, in inner
+    return view(request, *args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1657, in add_view
+    return self.changeform_view(request, None, form_url, extra_context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 43, in _wrapper
+    return bound_method(*args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\utils\decorators.py", line 130, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1540, in changeform_view
+    return self._changeform_view(request, object_id, form_url, extra_context)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 1590, in _changeform_view
+    self.log_addition(request, new_object, change_message)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\contrib\admin\options.py", line 815, in log_addition
+    object_repr=str(object),
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\models.py", line 50, in __str__
+    return f"{self.email}, {self.datetime}"
+AttributeError: 'District' object has no attribute 'datetime'
+2021-07-17 18:02:34,091 [ERROR] django.request: Internal Server Error: /name
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 249, in name
+    return render(request, "project/name.html", {
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 278, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 216, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 814, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 216, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 979, in do_if
+    nodelist = parser.parse(('endif',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 522, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 52: 'static', expected 'endif'. Did you forget to register or load this tag?
+2021-07-17 18:02:46,543 [ERROR] django.request: Internal Server Error: /name
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 470, in parse
+    compile_func = self.tags[command]
+KeyError: 'endif'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 249, in name
+    return render(request, "project/name.html", {
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 278, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 216, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 814, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 216, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 472, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 522, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 66: 'endif', expected 'endblock'. Did you forget to register or load this tag?
+2021-07-17 18:03:57,447 [ERROR] django.request: Internal Server Error: /name
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 249, in name
+    return render(request, "project/name.html", {
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\shortcuts.py", line 19, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\backends\django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loaders\base.py", line 29, in get_template
+    return Template(
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 155, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 193, in compile_nodelist
+    return parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 278, in do_extends
+    nodelist = parser.parse()
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 216, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 814, in do_for
+    nodelist_loop = parser.parse(('empty', 'endfor',))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\defaulttags.py", line 965, in do_if
+    nodelist = parser.parse(('elif', 'else', 'endif'))
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 478, in parse
+    raise self.error(token, e)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 212, in do_block
+    raise TemplateSyntaxError("'%s' tag with name '%s' appears more than once" % (bits[0], block_name))
+django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'stalls.image' appears more than once

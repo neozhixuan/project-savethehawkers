@@ -22,6 +22,7 @@ class Comments(models.Model):
     image = models.ImageField(null = True, blank = True)
     ordered = models.CharField(blank = True, null=True, max_length = 100)
     stallname = models.CharField(blank = True, null=True, max_length = 100)
+    recommend = models.BooleanField(blank = True, null = True)
     address = models.CharField(blank = True, null=True, max_length = 100)
     contributor = models.CharField(blank = True, null = True,  max_length = 100)
     def __str__ (self):
@@ -43,6 +44,11 @@ class Email (models.Model):
     def __str__ (self):
         return f"{self.email}, {self.datetime}"
 
+class District (models.Model):
+    email = models.CharField(blank = True, max_length = 100)
+    def __str__ (self):
+        return f"{self.email}"
+
 class HawkerStall(models.Model):
     latitude = models.FloatField(null = True)
     longtitude = models.FloatField(null = True)
@@ -54,7 +60,6 @@ class HawkerStall(models.Model):
     reco = models.CharField(blank = True, null = True, max_length = 100)
     details = models.CharField(blank = True, null = True,  max_length = 10000)
     contributor = models.CharField(blank = True, null = True,  max_length = 100)
-    user = models.ForeignKey(User, blank = True, null = True, on_delete = models.CASCADE, default = "")
     image1 = models.CharField(blank = True, null = True,  max_length = 2000)
     image2 = models.CharField(blank = True, null = True,  max_length = 2000)
     image3 = models.CharField(blank = True, null = True,  max_length = 2000)
@@ -75,6 +80,9 @@ class HawkerStall(models.Model):
     twitter = models.CharField(blank = True, null=True, max_length = 100)
     report = models.ManyToManyField(Report, blank = True, null = True)
     email = models.ManyToManyField(Email, blank = True, null = True )
+    bookmarks = models.ManyToManyField(User, blank = True, null = True )
+    district = models.ForeignKey(District, blank = True, null = True, on_delete=models.CASCADE)
+
     def __str__ (self):
         return f"{self.address}, {self.name}, {self.reco}"
 

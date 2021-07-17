@@ -11,28 +11,30 @@
         <div class="content">
             <div class="tabs">
               <ul>
-                <li class="tab_a">This Week</li>
-                <li class="tab_b">This Month</li>
-                <li class="tab_c">This Year</li>
+                <li class="tab_a">Users</li>
+                <li class="tab_b">Doesn't work</li>
+                <li class="tab_c">Doesn't work</li>
               </ul>
             </div>
             <div class="week">
+              {%for usernames in users%}
                <div class="item_container">
                  <div class="item">
-                    <div class="item_num">1</div>  
+                    <div class="item_num"><a href = "{% url 'savethehawkers:users' usernames.username %}">{{usernames.id}}</a></div>  
                     <div class="item_img">
-                      <img src="https://i.imgur.com/Ctwf8HA.png" alt="winner_image" width="50" height="50">
+                      <img src="https://image.shutterstock.com/image-vector/blank-avatar-photo-icon-design-260nw-1682415103.jpg" alt="winner_image" width="50" height="50">
                  </div>
                  <div class="item_info">
-                    <p>Alex Eson</p>
-                    <span>1210 Points</span>
-                 </div>
-               </div> 
-               <div class="item_medal">
+                    <p><a href = "{% url 'savethehawkers:users' usernames.username %}">{{usernames.username}}</a></p>
+                    <span>XXXX Points</span>
+                  </div>
+                  </div> 
+                <div class="item_medal">
                    <img src="https://i.imgur.com/Z95bFgB.png" alt="gold_medal" width="25" height="25"> 
-               </div> 
+                </div> 
               </div>
-              <div class="item_container">
+              {%endfor%}
+              <!-- <div class="item_container">
                  <div class="item">
                     <div class="item_num">2</div>  
                     <div class="item_img">
@@ -75,7 +77,7 @@
                </div> 
                <div class="item_medal">
                </div> 
-              </div>
+              </div> -->
             </div>
             <div class="month">
               <div class="item_container">

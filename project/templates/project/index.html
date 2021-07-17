@@ -66,6 +66,14 @@
                     <input type="submit" value="Submit">
                     <br>
                 </form>
+                <form action="{% url 'savethehawkers:name' %}" method = "POST">
+                    {%csrf_token%}
+                    <label for = "name"> Name: </label><br>
+                    <input id = "name" name = "name" type = "text" placeholder="Search...">
+                    <dt>{{message2}}</dt>
+                    <input type="submit" value="Submit">
+                    <br>
+                </form>
             </div>
         </div>
         <div class="recent-listing">
@@ -163,6 +171,7 @@ function closeFooter()
         <input type="submit" value="Submit">
         <br>
     </form>
+   
 </div>
 
 <div class="filter-results" >
@@ -356,6 +365,7 @@ function closeFooter()
 <script type="text/javascript">
     var latorigin = "{{latorigin}}";
     var longorigin = "{{longorigin}}";
+    var postalcode = "{{postalcode}}";
     var mymap = L.map('mapid').setView([latorigin, longorigin], 13);
     var latitudes = JSON.parse("{{latitudes}}");
     var longtitudes = JSON.parse("{{longtitudes}}");
@@ -371,7 +381,7 @@ function closeFooter()
     }).addTo(mymap);
     
     var marker = L.marker([latorigin, longorigin]).addTo(mymap);
-    marker.bindPopup("<b>Hello world!</b><br>Is this your postal code.").openPopup();
+    marker.bindPopup(`<b>Your location.</b><br>${postalcode}`).openPopup();
 
     var shop1 = L.marker([latitudes[0], longtitudes[0]]).addTo(mymap);
     shop1.bindPopup(`${names[0]}`).openPopup();

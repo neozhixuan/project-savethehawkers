@@ -6,7 +6,11 @@
       <img src="{% static 'project/avatar.png' %}" width="200" alt="Profile Image">
     </div>
     <div class="profile-nav-info">
+      {%if user.is_authenticated%}
       <h3 class="user-name">{{user.username}}</h3>
+      {%else%}
+      <h3 class="user-name">{{name}}</h3>
+      {%endif%}
       <div class="address">
         <p id="state" class="state">XX,</p>
         <span id="country" class="country">Singapore.</span>
@@ -62,6 +66,7 @@
           <li onclick="tabs(0)" class="user-post active">Posts</li>
           <li onclick="tabs(1)" class="user-review">Reviews</li>
           <li onclick="tabs(2)" class="user-setting"> Reports</li>
+          <li onclick="tabs(3)" class="user-setting"> Bookmarks</li>
         </ul>
       </div>
       <div class="profile-body">
@@ -114,6 +119,30 @@
             No reports created.<br>
             {%endfor%}</p>
           </div>
+        </div>
+        <div class="profile-bookmarks tab">
+          <h1>Bookmarks</h1>
+          {%for hawk in bookmarks%}
+            
+            
+            <a href = "{%url 'savethehawkers:info' hawk.name%}">{{hawk.name}}</a> //
+    
+
+    
+
+            Address: {{hawk.address}} //
+    
+
+            Opening Hours:{{hawk.hours}} //
+    
+
+            Recommendation:{{hawk.reco}}
+            {%empty%}
+            Add your first bookmark <a href = "{% url 'savethehawkers:creations' %}"> here </a>
+           <br>
+           <hr>
+          </div>
+          {%endfor%}
         </div>
       </div>
     </div>

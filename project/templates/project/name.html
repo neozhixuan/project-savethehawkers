@@ -1,0 +1,201 @@
+{% extends "project/layout.html" %}
+{%load static%}
+{% block body %}
+<div>
+    <form action="{% url 'savethehawkers:index' %}" method = "POST">
+        {%csrf_token%}
+
+        <label for="postalcode">Postal Code:</label><br>
+        <input type="text" id="postalcode" name="postalcode" placeholder="Postal Code"><br>
+
+
+        <label for="stalltype">Stall Type:</label> <br>
+        <select name="stalltype" id="stalltype" >
+            <option disabled selected value="None"> Stall Type </option>
+            <option value="Chinese">Chinese</option>
+            <option value="Malay">Malay</option>
+            <option value="Indian">Indian</option>
+            <option value="Western">Western</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Drinks">Drinks</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Others">Others</option>
+        </select><br>
+
+        
+        <label for = "search"> Recommendations: </label><br>
+        <input id = "search" name = "search" type = "text" placeholder="Search...">
+        <dt>{{message}}</dt>
+        <input type="submit" value="Submit">
+        <br>
+    </form>
+    <form action="{% url 'savethehawkers:name' %}" method = "POST">
+        {%csrf_token%}
+        <label for = "name"> Name: </label><br>
+        <input id = "name" name = "name" type = "text" placeholder="Search...">
+        <dt>{{message2}}</dt>
+        <input type="submit" value="Submit">
+        <br>
+    </form>
+</div>
+
+<div class="filter-results" >
+    <div class="filter-results-listing">
+        {% for stall in stalls %} {% if forloop.counter == 1 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' stall.name%}">{{stall.name}}</a></h3>
+        
+
+        <div class="listing-map">
+        {%block stalls.image%}{%if stall.image%}
+        <td><img src = "{{stall.image.url}}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%else%}
+        <td><img src = "{% static 'project/hawk.png'%}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%endif%}{%endblock%}
+        </div>
+
+        <p class="listing-address">
+        Address: {{stall.address}}</p>
+
+        <p class="listing-opening-hours">
+        
+        Opening Hours:{{stall.hour}}</p>
+
+        <p class="listing-recommendation">
+       
+        Recommendation:{{stall.reco}}</p>
+        {%endif%}{%empty%}<dt>No results.</dt>
+        {%endfor%}
+    </div>
+    <div class="filter-results-listing">
+        {% for stall in stalls %} {% if forloop.counter == 2 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' stall.name%}">{{stall.name}}</a></h3>
+        
+
+        <div class="listing-map">
+        {%block stalls.image2%}{%if stall.image%}
+        <td><img src = "{{stall.image.url}}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%else%}
+        <td><img src = "{% static 'project/hawk.png'%}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%endif%}{%endblock%}
+        </div>
+
+        <p class="listing-address">
+        Address: {{stall.address}}</p>
+
+        <p class="listing-opening-hours">
+        
+        Opening Hours:{{stall.hour}}</p>
+
+        <p class="listing-recommendation">
+       
+        Recommendation:{{stall.reco}}</p>
+        {%endif%}{%empty%}<dt>No results.</dt>
+        {%endfor%}
+    </div>
+    <div class="filter-results-listing">
+        {% for stall in stalls %} {% if forloop.counter == 3 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' stall.name%}">{{stall.name}}</a></h3>
+        
+
+        <div class="listing-map">
+        {%block stalls.image3%}{%if stall.image%}
+        <td><img src = "{{stall.image.url}}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%else%}
+        <td><img src = "{% static 'project/hawk.png'%}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%endif%}{%endblock%}
+        </div>
+
+        <p class="listing-address">
+        Address: {{stall.address}}</p>
+
+        <p class="listing-opening-hours">
+        
+        Opening Hours:{{stall.hour}}</p>
+
+        <p class="listing-recommendation">
+       
+        Recommendation:{{stall.reco}}</p>
+        {%endif%}{%empty%}<dt>No results.</dt>
+        {%endfor%}
+    </div>
+    <div class="filter-results-listing">
+        {% for stall in stalls %} {% if forloop.counter == 4 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' stall.name%}">{{stall.name}}</a></h3>
+        
+
+        <div class="listing-map">
+        {%block stalls.image4%}{%if stall.image%}
+        <td><img src = "{{stall.image.url}}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%else%}
+        <td><img src = "{% static 'project/hawk.png'%}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%endif%}{%endblock%}
+        </div>
+
+        <p class="listing-address">
+        Address: {{stall.address}}</p>
+
+        <p class="listing-opening-hours">
+        
+        Opening Hours:{{stall.hour}}</p>
+
+        <p class="listing-recommendation">
+       
+        Recommendation:{{stall.reco}}</p>
+        {%endif%}{%empty%}<dt>No results.</dt>
+        {%endfor%}
+    </div>
+    <div class="filter-results-listing">
+        {% for stall in stalls %} {% if forloop.counter == 5 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' stall.name%}">{{stall.name}}</a></h3>
+        
+
+        <div class="listing-map">
+        {%block stalls.image5%}{%if stall.image%}
+        <td><img src = "{{stall.image.url}}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%else%}
+        <td><img src = "{% static 'project/hawk.png'%}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%endif%}{%endblock%}
+        </div>
+
+        <p class="listing-address">
+        Address: {{stall.address}}</p>
+
+        <p class="listing-opening-hours">
+        
+        Opening Hours:{{stall.hour}}</p>
+
+        <p class="listing-recommendation">
+       
+        Recommendation:{{stall.reco}}</p>
+        {%endif%}{%empty%}<dt>No results.</dt>
+        {%endfor%}
+    </div>
+    <div class="filter-results-listing">
+        {% for stall in stalls %} {% if forloop.counter == 6 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' stall.name%}">{{stall.name}}</a></h3>
+        
+
+        <div class="listing-map">
+        {%block stalls.image6%}{%if stall.image%}
+        <td><img src = "{{stall.image.url}}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%else%}
+        <td><img src = "{% static 'project/hawk.png'%}" style="position: relative; height: 100%; width: 100%;"  width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></td>
+        {%endif%}{%endblock%}
+        </div>
+
+        <p class="listing-address">
+        Address: {{stall.address}}</p>
+
+        <p class="listing-opening-hours">
+        
+        Opening Hours:{{stall.hour}}</p>
+
+        <p class="listing-recommendation">
+       
+        Recommendation:{{stall.reco}}</p>
+        {%endif%}{%empty%}<dt>No results.</dt>
+        {%endfor%}
+    </div>
+    
+{% endblock %}

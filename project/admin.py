@@ -5,6 +5,6 @@ from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 # Register your models here.
 
-@admin.register(HawkerStall, Zipcode, History, Comments, Menu, Report, Email, Point, User)
+@admin.register(HawkerStall, Zipcode, History, Comments, Menu, Report, Email, Point, User, District)
 class ViewAdmin(ImportExportModelAdmin):
     pass
