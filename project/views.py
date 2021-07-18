@@ -780,7 +780,7 @@ def next(request, pagenumber):
 
 def info(request, name):
     stall = HawkerStall.objects.filter(name = name).first()
-    numberofstalls = len(stall.comments.all())
+    numberofcomments = len(stall.comments.all())
     orders = stall.comments.all().values('ordered')
     reco = stall.comments.all().values('recommend')
     items = [0] * len(orders)
@@ -791,7 +791,7 @@ def info(request, name):
     return render(request, "project/info.html",{
         "stalls": stall,
         "form": NewTaskForm(),
-        "numberofstalls": numberofstalls,
+        "numberofcomments": numberofcomments,
         "comments": stall.comments.all(),
         "items": items,
         "recommend": recommend,

@@ -14772,3 +14772,4 @@ Traceback (most recent call last):
   File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\template\loader_tags.py", line 212, in do_block
     raise TemplateSyntaxError("'%s' tag with name '%s' appears more than once" % (bits[0], block_name))
 django.template.exceptions.TemplateSyntaxError: 'block' tag with name 'stalls.image' appears more than once
+2021-07-18 14:41:18,676 [WARNING] django.request: Not Found: /favicon.ico

@@ -23,6 +23,38 @@ window.onclick = function(event) {
   }
 }
 </script>
+<script>
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+  
+  for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var panel = this.nextElementSibling;
+      if (panel.style.display === "block") {
+        panel.style.display = "none";
+      } else {
+        panel.style.display = "block";
+      }
+    });
+  }
+</script>
+
+
+
+<!-- Reports -->
+{%if report%}
+<button class="accordion">This stall was reported {{count}} times - exercise judgement of the information.</button>
+<div class="panel">
+  {%for rep in report%}
+  <p>{{rep.user}} reported this for {{rep.reason}}.</p>
+  {%endfor%}
+</div>
+{%endif%}
+
+
+
+<!-- Edit Panel -->
 <div id = "modal" style="display:none;">
   <div id = "modal-content">
     <button onclick="closeFeedback()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
@@ -53,134 +85,125 @@ window.onclick = function(event) {
     </form>
   </div>
 </div>
-{%if report%}
-<button class="accordion">This stall was reported {{count}} times - exercise judgement of the information.</button>
-<div class="panel">
-  {%for rep in report%}
-  <p>{{rep.user}} reported this for {{rep.reason}}.</p>
-  {%endfor%}
-</div>
-{%endif%}
-{%if user.is_authenticated%}
-<form action = "{% url 'savethehawkers:bookmark' stalls.name%}" method = "POST">
-  {%csrf_token%}
-  <input type = "hidden" name = "username" value = "{{user.username}}">
-  <input type = "submit" value = "Bookmark">
-</form>
-{%endif%}
-<script>
-  var acc = document.getElementsByClassName("accordion");
-  var i;
-  
-  for (i = 0; i < acc.length; i++) {
-    acc[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var panel = this.nextElementSibling;
-      if (panel.style.display === "block") {
-        panel.style.display = "none";
-      } else {
-        panel.style.display = "block";
-      }
-    });
-  }
-  </script>
-  
-</br>
 
-<!-- Edit -->
-  <div id = "report" style="display:none;">
-    <div class = "report-content">
-      <button onclick="closeReport()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
-      <form action = "{%url 'savethehawkers:report' stalls.name%}" method = "POST" style = "text-align: left;">
-        {%csrf_token%}
-        Are you sure?
-        <input type = "text" placeholder="reason" name = "reason">
-        {%if user.is_authenticated%}
-        <input type = "hidden" name = "user" value = "{{user.username}}">
-        {%else%}
-        <input type = "hidden" name = "user" value = "Anonymous">
-        
-        {%endif%}
-        <input type = "submit" value = "Yes" style = "background-color: #b2ab8c; width: 33vw; height: 60px; border: 3px solid black;">
-      </form>
-    </div>
+<!-- Report Panel -->
+<div id = "report" style="display:none;">
+  <div class = "report-content">
+    <button onclick="closeReport()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
+    <form action = "{%url 'savethehawkers:report' stalls.name%}" method = "POST" style = "text-align: left;">
+      {%csrf_token%}
+      Are you sure?
+      <input type = "text" placeholder="reason" name = "reason">
+      {%if user.is_authenticated%}
+      <input type = "hidden" name = "user" value = "{{user.username}}">
+      {%else%}
+      <input type = "hidden" name = "user" value = "Anonymous">
+      
+      {%endif%}
+      <input type = "submit" value = "Yes" style = "background-color: #b2ab8c; width: 33vw; height: 60px; border: 3px solid black;">
+    </form>
   </div>
-
-<button onclick = "openReport()">Report</button>
-<button onclick="openFeedback()">Edit</button>
-
-
-
+</div>
 
 <!-- Stall Information -->
-<div class="listing-example">
-  <h1 style="padding: 0.5rem;">{{stalls.name}} </h1>
-  {%block stalls.image1%}{%if stalls.image1%}
-  <div class="listing-example-img"><img src="{{stalls.image1}}" style="position: relative; height: 100%; width: 100%;"></div>
-  {%else%}
-  <div class="listing-example-img"><img src="{% static 'project/hawk.png'%}" style="position: relative; height: 100%; width: 100%;"></div>
+<header style = "background: maroon; height: 100px; display: flex;">
+  <div  style = "flex: 1; display: flex; flex-direction: column">
+    <h2 style = "color: white; padding: 0px 0px 20px 50px;">{{stalls.name}}</h2>
+    <div style = " margin: 0px 0px 0px 50px;">
+      <button>{{stalls.stalltype}}</button>
+      <button>{% if stalls.district %}{{stalls.district}}{%else%}Add a district{%endif%}</button>
+
+      <span style = "color: white;"> {{numberofcomments}} Review(s)</span>
+    </div>
+    
+  </div>
+  <button class = "righthand" style = "display: flex; margin: 20px 20px 20px 0px; padding: 20px 10px 20px 10px;" onclick="openFeedback()">Edit</button>
+  <button class = "righthand" style = "display: flex; margin: 20px 20px 20px 0px; padding: 20px 10px 20px 10px;" onclick = "openReport()">Report</button>
+  {%if user.is_authenticated%}
+  <form action = "{% url 'savethehawkers:bookmark' stalls.name%}" method = "POST" >
+    {%csrf_token%}
+    <input type = "hidden" name = "username" value = "{{user.username}}">
+    <button type = "submit" style = "display: flex; margin: 20px 20px 20px 0px; padding: 20px 10px 20px 10px;"> Bookmark</button>
+  </form>
   {%endif%}
-  {%endblock%}
-  Tags: <button>{{stalls.stalltype}}</button><button>{% if stalls.district %}{{stalls.district}}{%else%}Add a district{%endif%}</button>
-  
-  <p class="listing-example-info">
-    <span style = "font-size: 2rem; font-weight: bold;">"{{stalls.details}}"</span><br>
-    - Written by {{stalls.contributor}}<br>
+  </div>
+</header>
+<div class = "centreblock" style = "display: flex; flex-direction: row; margin: 10px 10px 10px 10px">
+  <div class = "leftdescription" style = "flex: 1">
+    <div style = "display: flex; flex-direction: row;"> 
+      <div style = "flex: 1; margin-bottom: 30px;">
+        Opening Hours<br>
+        {%if stalls.hours%}
+        {{stalls.hours}}
+        {%else%} Help add information for this stall. {%endif%}
+      </div>
+      <div style = "flex: 1; margin-bottom: 30px;">
+        Contact Now<br>
+        {%if stalls.number == 0%}
+        {{stalls.number}}
+        {%else%} Help add information for this stall. {%endif%}
+      </div>
+      <div style = "flex: 1; margin-bottom: 30px;">
+        Find<br>
+        {{stalls.address}}
+      </div>
+    </div>
     <hr>
+    <div>
+      "{{stalls.details}}"<br>
+      - Written by {{stalls.contributor}}<br>
+      
+  </div>
+    <br>
     <br>
     <div style = "width: 400px; background-color: bisque;">
       <span style = "font-weight: bold; color: brown">Details</span><br>
-      Address: {{stalls.address}} <br>
-      Hours: {{stalls.hours}} <br>
       Recommendation: {{stalls.reco}} <br>
       Price Range: {{stalls.pricerange}}<br>
-    </div>
-    <br>
-    <div style = "width: 400px; background-color: bisque;">
-      <span style = "font-weight: bold; color: brown">Presence</span><br>
       Number: {{stalls.number}} <br>
       Is it on online delivery platforms: {%if stalls.fooddelivery%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
       Do they have phone delivery: {%if stalls.phonedelivery%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
       Do they need freelance deliverers: {%if stalls.freelance%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
-    </div>
-    <br>
-    <div style = "width: 400px; background-color: bisque;">
-      <span style = "font-weight: bold; color: brown">Judgement</span><br>
       Is it Halal: {{stalls.halal}} <br>
       Stall type: {{stalls.stalltype}} <br>
       Deals: {{stalls.deals}} <br>
       Awards: {{stalls.awards}} <br>
-    </div>     
-    <br>
       Recent Orders: {%for item in items%}{{item}}{%empty%}None. Add a comment and help foodies know which item is the best!{%endfor%}
       {%for rec in recommend%}{{rec}}{%endfor%}<br>
-      <a class="fa fa-facebook" href = "{{stalls.facebook}}" style = "background-color: blue; color: white; width: 30px; height: 30px; padding: 10px; box-sizing: border-box;"></a><br>
-      <a class="fa fa-twitter" href = "{{stalls.twitter}}" style = "background-color: blue; color: white; width: 30px; height: 30px; padding: 10px; box-sizing: border-box;"></a>
-  </p>
-  <div id = "mapid" style = "width: 250px;height:300px" ></div>
-  <script type="text/javascript">
-    var lat = "{{stalls.latitude}}";
-    var long = "{{stalls.longtitude}}";
-    var name = "{{stalls.name}}";
-    var address = "{{stalls.address}}";
-    var mymap = L.map('mapid').setView([lat, long], 13);
+    </div>
+    <hr>
+  </div>
+  <div class = "rightimage">
+    {%block stalls.image1%}{%if stalls.image1%}
+    <img style = "max-width: 100%; height: auto;" src = "{{stalls.image1}}" width = 500px >
+    {%else%}
+    <img style = "max-width: 100%; height: auto;" src="{% static 'project/hawk.png'%}" width = 500px >
+    {%endif%}
+    {%endblock%}
+    <div id = "mapid" style = "width: 500px;height:300px" ></div>
+    <script type="text/javascript">
+      var lat = "{{stalls.latitude}}";
+      var long = "{{stalls.longtitude}}";
+      var name = "{{stalls.name}}";
+      var address = "{{stalls.address}}";
+      var mymap = L.map('mapid').setView([lat, long], 13);
 
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoibmVvemhpeHVhbiIsImEiOiJja3I2Z2UyeXoyc3U4MnZxdTIyM21sdjZlIn0.9-6d54z8bMHK5oaDpNWtyQ'
-    }).addTo(mymap);
-    
-    var marker = L.marker([lat, long]).addTo(mymap);
-    marker.bindPopup(`<b>${name}</b><br>${address}`).openPopup();
+      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+      accessToken: 'pk.eyJ1IjoibmVvemhpeHVhbiIsImEiOiJja3I2Z2UyeXoyc3U4MnZxdTIyM21sdjZlIn0.9-6d54z8bMHK5oaDpNWtyQ'
+      }).addTo(mymap);
+      
+      var marker = L.marker([lat, long]).addTo(mymap);
+      marker.bindPopup(`<b>${name}</b><br>${address}`).openPopup();
 
-</script>
-</div>
-
-
+    </script>
+    </div>
+  </div>
+<!-- Comments Form -->
 <form style = "margin-left: 15px;" action = "{% url 'savethehawkers:comment' stalls.name %}" method = "POST" enctype="multipart/form-data">
   {%csrf_token%}
   <h2 class = "m-3"> Comments </h2>
@@ -206,8 +229,9 @@ window.onclick = function(event) {
 
 </form>
 {{message}}
+
+<!-- Comments Display -->
 <div style = "margin-left: 15px">
-  
   <h2>Comments ({{numberofstalls}} comments)</h2>
   {%for comment in comments%}
   {%if forloop.revcounter <= 5%}
@@ -220,7 +244,7 @@ window.onclick = function(event) {
   {%endfor%}
 </div>
   
-  
+<!-- Footer -->
 <footer>
   <a href="#">GitHub</a>
 </footer>
