@@ -1,462 +1,809 @@
 {% extends "project/layout.html" %}
 {% load static %}
 {% block body %}
-{{number}}
-{% if no %}
-<div>
-    <div class="type-wrap">Help disadvantaged hawkers
-      <span id="typed" style="white-space:pre;" class="typed"></span>
-    </div>
-    <script>
-        $('document').ready(function(){
-            var typed = new Typed('#typed',{
-                strings: ["build their database.", "edit information.", "advertise."],
-                typeSpeed: 100,
-                startDelay: 0,
-                backSpeed: 60,
-                backDelay: 2000,
-                loop: true,
-                cursorChar: "|",
-                contentType: 'html'
-            })
-        });
-    </script>
-    <div class = "wrapper">
-        <div class="map">
-            <iframe src="https://www.google.com/maps/d/embed?mid=1XcpTiJpt_O-Rw6Wu8qrtCm_Ek9VUgIDF" scrolling="no" frameborder="0"
-            style="position: relative; height: 100%; width: 100%;" ></iframe>
-        </div>
-        <div class="map" style = " box-sizing: border-box;">
-            <h4>Feature Stall</h4>
-            {%block haw.image%}{%if haw.image%}
-            <img src="{{haw.image.url}}" style="position: relative; height: 80%; width: 80%;">
-            {%else%}
-            <img src="{% static 'project/hawk.png'%}" style="position: relative;left:10%; height: 80%; width: 80%;">
-            {%endif%}{%endblock%}<br>
-            <a style = "font-weight: bold;"href = "{%url 'savethehawkers:info' haw.name %}">{{haw.name}}</a><br>
-            Address: {{haw.address}}<br>
-            
-        </div>
-    </div>
+
+<div class="py-2 bg-gray-100 text-gray-900 min-h-screen">
+
     
-    <div class="wrapper">
-        <div class="filter-form">
-            <h2>Filter Nearby Stalls</h2>
+
+    <main>
+    {%if no%}
+      <div id="hero" class="pt-5 lg:flex items-center">
+        <div class="px-5 sm:px-10 md:px-10 md:flex lg:block lg:w-1/2 lg:max-w-3xl lg:mr-8 lg:px-20">
+          <div class="md:w-1/2 md:mr-10 lg:w-full lg:mr-0">
+            <h1 class="text-3xl xl:text-4xl font-black md:leading-none xl:leading-tight">
+                <!-- Typed.JS -->
+                <div class="type-wrap">Help disadvantaged hawkers
+                    <span id="typed" style="white-space:pre;" class="typed"></span>
+                  </div>
+                  <script>
+                      $('document').ready(function(){
+                          var typed = new Typed('#typed',{
+                              strings: ["build a database.", "edit information.", "advertise."],
+                              typeSpeed: 100,
+                              startDelay: 0,
+                              backSpeed: 60,
+                              backDelay: 2000,
+                              loop: true,
+                              cursorChar: "|",
+                              contentType: 'html'
+                          })
+                      });
+                  </script>
+            </h1>
+            <p class="mt-4 xl:mt-2">
+              Search through Singapore's largest database of disadvantaged hawker stalls, seen in hawker.help.
+            </p>
+          </div>
+
+          <div class="flex-1">
+            <form action="{% url 'savethehawkers:index' %}" method = "POST">
+            {%csrf_token%}
+            <div class="relative mt-4 md:mt-0 lg:mt-4">
+              <div class="pl-4 pr-4 h-full absolute bottom-0 left-0 flex items-center">
+                <svg class="text-gray-700 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+              </div>
+              
+              <input type="text" name="postalcode" class="w-full border bg-gray-100 px-4 py-4 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12" placeholder="Postal Code (e.g 398614)">
+              
+            </div>
+            <div class="relative mt-4">
+              <div class="pl-4 pr-4 h-full absolute bottom-0 left-0 flex items-center">
+                <svg class="text-gray-700 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" /></svg>
+              </div>
+              <input type="text" name = "search" class="w-full border bg-gray-100 px-4 py-4 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12" placeholder="Recommendations - Wanton Mee">
+            
+            </div>
             <div>
-                <form action="{% url 'savethehawkers:index' %}" method = "POST">
-                    {%csrf_token%}
-                    <label for="postalcode">Postal Code:</label><br>
-                    <input type="text" id="postalcode" name="postalcode" placeholder="Postal Code"><br>
-                    <label for="stalltype">Stall Type:</label> <br>
-                    <select name="stalltype" id="stalltype" >
-                        <option disabled selected value="None"> Stall Type </option>
-                        <option value="Chinese">Chinese</option>
-                        <option value="Malay">Malay</option>
-                        <option value="Indian">Indian</option>
-                        <option value="Western">Western</option>
-                        <option value="Dessert">Dessert</option>
-                        <option value="Drinks">Drinks</option>
-                        <option value="Snacks">Snacks</option>
-                        <option value="Vegetarian">Vegetarian</option>
-                        <option value="Others">Others</option>
-                    </select><br>
-                    <label for = "search"> Recommendations: </label><br>
-                    <input id = "search" name = "search" type = "text" placeholder="Search...">
-                    <dt>{{message}}</dt>
-                    <input type="submit" value="Submit">
-                    <br>
-                </form>
-                <h2>Find By Name</h2>
-                <form action="{% url 'savethehawkers:name' %}" method = "POST">
-                    {%csrf_token%}
-                    <label for = "name"> Name: </label><br>
-                    <input id = "name" name = "name" type = "text" placeholder="Search...">
-                    <dt>{{message2}}</dt>
-                    <input type="submit" value="Submit">
-                    <br>
-                </form>
+              <button type = "submit" class="transition-all duration-300 mt-5 w-full border border-transparent rounded font-semibold tracking-wide text-sm px-5 py-4 focus:outline-none focus:shadow-outline bg-indigo-500 text-gray-100 hover:bg-indigo-600 hover:text-gray-200">Search Stalls</button>
             </div>
+        </form>
+          </div>
         </div>
-        <div class="recent-listing">
-            <h2 >Latest Listings</h2>
-            {%for hist in history%}
-            <div class="listing-item">
-                <h3> <a href="{% url 'savethehawkers:info' hist.name %}">{{hist.name}}</a></h3>
-                <p>Recommended by: <span style = "font-weight: bolder;">{{hist.contributor}}</span></p>
-                <p>{{hist.address}}</p>
-                <p><span style = "font-weight: bolder;">2</span> comments</p>
-            </div>
-            {%empty%}
-            Be the first to help a hawker.
-            {%endfor%}
+        <div class="mt-6 w-full flex-1 lg:mt-0">
+          <div></div>
+          <img class="" src="{% static 'project/hawker.jpg' %}" />
         </div>
-        <div class="recent-listing" >
-            <h2>Latest Comments</h2>
-            {%for comment in comments%}
-            {%if forloop.revcounter <= 5%}
-            <div class="listing-item">
-                <h3>{{comment.comment}}</h3>
-                <p><img src="{{comment.image.url}}" width= "100" height= "100"></span></p>
-                <p><span style = "font-weight: bolder;">Order:</span> {{comment.ordered}}</p>
-                <p><span style = "font-weight: bolder;">Stall:</span><a href = "{%url 'savethehawkers:info' comment.stallname %}"> {{comment.stallname}}</a></p>
-                <p><span style = "font-weight: bolder;">Written by:</span> {{comment.contributor}}</p>
+      </div>
+
+      <!-- <div class="p-5 sm:px-10 md:px-20" id="companies">
+        <div class="max-w-screen-xl mx-auto">
+          <img class="mx-auto" src="https://storage.googleapis.com/devitary-image-host.appspot.com/15846471026680582071-Strip-Payment-Logos.png">
+        </div>
+      </div> -->
+
+      <div class="px-5 sm:px-10 md:px-20 lg:px-10 xl:px-20 py-8 bg-indigo-100" id="features">
+        <div class="max-w-screen-xl mx-auto">
+          <h3 class="leading-none font-black text-3xl">
+            Latest Listings
+          </h3>
+
+          <div class="flex flex-col items-center flex-wrap lg:flex-row lg:items-stretch lg:flex-no-wrap lg:justify-between">
+            <div class="w-full max-w-sm mt-6 lg:mt-8 bg-gray-100 rounded shadow-lg p-12 lg:p-8 lg:mx-4 xl:p-12">
+              <div class="p-4 inline-block bg-indigo-200 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-egg-fried" viewBox="0 0 16 16">
+                  <path d="M8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                  <path d="M13.997 5.17a5 5 0 0 0-8.101-4.09A5 5 0 0 0 1.28 9.342a5 5 0 0 0 8.336 5.109 3.5 3.5 0 0 0 5.201-4.065 3.001 3.001 0 0 0-.822-5.216zm-1-.034a1 1 0 0 0 .668.977 2.001 2.001 0 0 1 .547 3.478 1 1 0 0 0-.341 1.113 2.5 2.5 0 0 1-3.715 2.905 1 1 0 0 0-1.262.152 4 4 0 0 1-6.67-4.087 1 1 0 0 0-.2-1 4 4 0 0 1 3.693-6.61 1 1 0 0 0 .8-.2 4 4 0 0 1 6.48 3.273z"/>
+                </svg>
+              </div>
+              <div class="mt-4 font-extrabold text-2xl tracking-wide">
+                {%for hist in history%}
+                {%if forloop.counter == 1%}
+                <a href = "{% url 'savethehawkers:info' hist.name %}">{{hist.name}}</a>
+
+                {%endif%}
+                {%empty%}
+                Be the first to help a hawker.
+                {%endfor%}
+              </div>
+              <div class="text-sm">
+                {%for hist in history%}
+                {%if forloop.counter == 1%}
+                Recommended by:{{hist.contributor}}
+                {{hist.address}}
+                {%endif%}{%empty%}
+                {%endfor%}
+              </div>
             </div>
-            {%endif%}
-            {%empty%}
-            Be the first to help a hawker advertise.
-            {%endfor%}
-    </div>
-</div>
-</div>
-<footer>
-    <a href="{% url 'savethehawkers:creations'%}">{{numberoflistings}}/1000 listings - help us reach our goal!</a>
-  </footer>
-<footer>
-    <a href="#">GitHub</a>
-</footer>
 
-<!-- <div id = "below" style = "bottom: 0; position: fixed; width: 100%; height: 50px; background-color: cadetblue;display: flex; padding: 10px;" id = "footer ">
-    <div style = "flex: 1; text-align: center; text-decoration: none;">
-        <a href = "{% url 'savethehawkers:creations' %}">Create An Account</a>
-    </div>
-    <div style = "flex: 1; flex-grow: 2; text-align: center; text-decoration: none;">
-        Promote the hawkers
-    </div>
-    <div style = "flex: 1; flex-grow: 2; text-align: center;">
-        Earn points
-    </div>
-    <div style = "flex: 1; align-self: flex-end;">
-        <button  onclick = closeFooter()>
-            x
-        </button>
-    </div>
+            <div class="w-full max-w-sm mt-8 bg-gray-100 rounded shadow-lg p-12 lg:p-8 lg:mx-4 xl:p-12">
+              <div class="p-4 inline-block bg-green-200 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shop" viewBox="0 0 16 16">
+                  <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z"/>
+                </svg>
+              </div>
+              <div class="mt-4 font-extrabold text-2xl tracking-wide">
+                {%for hist in history%}
+                {%if forloop.counter == 2%}
+                <a href = "{% url 'savethehawkers:info' hist.name %}">{{hist.name}}</a>
 
-</div> -->
+                {%endif%}
+                {%empty%}
+                Be the first to help a hawker.
+                {%endfor%}
+              </div>
+              <div class="text-sm">
+                {%for hist in history%}
+                {%if forloop.counter == 2%}
+                Recommended by:{{hist.contributor}}
+                {{hist.address}}
+                {%endif%}{%empty%}
+                {%endfor%}
+              </div>
+            </div>
 
-<script>
-function closeFooter()
-{
-    document.getElementById("below").style.display = 'none'
-}
-</script>
+            <div class="w-full max-w-sm mt-8 bg-gray-100 rounded shadow-lg p-12 lg:p-8 lg:mx-4 xl:p-12">
+              <div class="p-4 inline-block bg-red-200 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+                  <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+                </svg>
+              </div>
+              <div class="mt-4 font-extrabold text-2xl tracking-wide">
+                {%for hist in history%}
+                {%if forloop.counter == 3%}
+                <a href = "{% url 'savethehawkers:info' hist.name %}">{{hist.name}}</a>
+
+                {%endif%}
+                {%empty%}
+                Be the first to help a hawker.
+                {%endfor%}
+              </div>
+              <div class="text-sm">
+                {%for hist in history%}
+                {%if forloop.counter == 3%}
+                Recommended by:{{hist.contributor}}
+                {{hist.address}}
+                {%if hist.address == None%}
+                Be the first to help a hawker.
+                {%endif%}
+                {%endif%}{%empty%}
+                {%endfor%}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+<!-- REVIEWS -->
+      <div class="px-5 sm:px-10 md:px-20 lg:px-10 xl:px-20 py-8 bg-gray-100" id="cards">
+        <div class="max-w-screen-xl mx-auto">
+          <h3 class="leading-none font-black text-3xl">Recent Reviews</h3>
+
+          <div class="lg:flex justify-between lg:mt-8">
+            <div class="lg:mx-2 flex flex-col items-center">
+              <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
+                <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
+                  {%for comment in comments%}
+                  {%if forloop.counter == 1%}
+                  <div class="text-lg font-bold text-gray-700 leading-tight"><a href = "{%url 'savethehawkers:info' comment.stallname %}"> {{comment.stallname}}</a></div>
+                  <div>
+                    <div class="flex justify-between mt-6 text-xs font-bold">
+                      <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+                          <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                        <span class="ml-1 text-gray-500">{{comment.ordered}}</span>
+                      </div>
+
+                      <div class="flex items-start ml-4">
+                        
+                        <svg class="text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                          <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span class="ml-1 text-gray-500">{{comment.address}}</span>
+                      </div>
+                    </div>
+                    <div class="text-center flex flex-row justify-between flex-wrap justify-between items-center text-xs font-bold" style = "padding-top: 20px;">
+                      
+                      {{comment.comment}}
+                      <img src="{{comment.image.url}}" style = "margin: 10px 0px 0px 40px;max-width: 100%; height: 200px; width: 200px; object-fit: cover;">
+                    </div>
+                    <div class="mt-12 flex items-center">
+                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("data:image/png;base64,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");'></div>
+                      <div class="ml-5">
+                        <div class="font-bold text-gray-800">
+                          {{comment.contributor}}
+                        </div>
+                        <div class="text-xs text-gray-500">Datetime Field</div>
+                      </div>
+                    </div>
+                  </div>
+                  {%endif%}
+                  {%endfor%}
+                </div>
+              </div>
+            </div>
+
+            <div class="lg:mx-2 flex flex-col items-center">
+              <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
+                <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
+                  {%for comment in comments%}
+                  {%if forloop.counter == 3 and comment.ordered is not None%}
+                  <div class="text-lg font-bold text-gray-700 leading-tight"><a href = "{%url 'savethehawkers:info' comment.stallname %}"> {{comment.stallname}}</a></div>
+                  <div>
+                    <div class="flex justify-between mt-6 text-xs font-bold">
+                      <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+                          <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                        <span class="ml-1 text-gray-500">{{comment.ordered}}</span>
+                      </div>
+
+                      <div class="flex items-start ml-4">
+                        
+                        <svg class="text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                          <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span class="ml-1 text-gray-500">{{comment.address}}</span>
+                      </div>
+                    </div>
+                    <div class="text-center flex flex-row justify-between flex-wrap justify-between items-center text-xs font-bold" style = "padding-top: 20px;">
+                      
+                      {{comment.comment}}
+                      <img src="{{comment.image.url}}" style = "margin: 10px 0px 0px 40px;max-width: 100%; height: 200px; width: 200px; object-fit: cover;">
+                    </div>
+                    <div class="mt-12 flex items-center">
+                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("data:image/png;base64,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");'></div>
+                      <div class="ml-5">
+                        <div class="font-bold text-gray-800">
+                          {{comment.contributor}}
+                        </div>
+                        <div class="text-xs text-gray-500">Datetime Field</div>
+                      </div>
+                    </div>
+                  </div>
+                  {%else%}
+                  <div class="flex justify-between mt-6 text-xs font-bold">
+                    <div class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+                        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+                      </svg>
+                      <span class="ml-1 text-gray-500">-</span>
+                    </div>
+
+                    <div class="flex items-start ml-4">
+                      
+                      <svg class="text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                      <span class="ml-1 text-gray-500">-</span>
+                    </div>
+                  </div>
+                  <div class="text-center flex flex-row justify-between flex-wrap justify-between items-center text-xs font-bold" style = "padding-top: 20px;">
+                    
+                    -
+                    
+                  </div>
+                  <div class="mt-12 flex items-center">
+                    <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("data:image/png;base64,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");'></div>
+                    <div class="ml-5">
+                      <div class="font-bold text-gray-800">
+                        -
+                      </div>
+                      <div class="text-xs text-gray-500">Datetime Field</div>
+                    </div>
+                  </div>
+                </div>
+                  {%endif%}
+                  {%endfor%}
+                </div>
+              </div>
+            
+            <div class="lg:mx-2 flex flex-col items-center">
+              <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
+                <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
+                  {%for comment in comments%}
+                  {%if forloop.counter == 3 and comment.ordered is not None%}
+                  <div class="text-lg font-bold text-gray-700 leading-tight"><a href = "{%url 'savethehawkers:info' comment.stallname %}"> {{comment.stallname}}</a></div>
+                  <div>
+                    <div class="flex justify-between mt-6 text-xs font-bold">
+                      <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+                          <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+                        </svg>
+                        <span class="ml-1 text-gray-500">{{comment.ordered}}</span>
+                      </div>
+
+                      <div class="flex items-start ml-4">
+                        
+                        <svg class="text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                          <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <span class="ml-1 text-gray-500">{{comment.address}}</span>
+                      </div>
+                    </div>
+                    <div class="text-center flex flex-row justify-between flex-wrap justify-between items-center text-xs font-bold" style = "padding-top: 20px;">
+                      
+                      {{comment.comment}}
+                      <img src="{{comment.image.url}}" style = "margin: 10px 0px 0px 40px;max-width: 100%; height: 200px; width: 200px; object-fit: cover;">
+                    </div>
+                    <div class="mt-12 flex items-center">
+                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("data:image/png;base64,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");'></div>
+                      <div class="ml-5">
+                        <div class="font-bold text-gray-800">
+                          {{comment.contributor}}
+                        </div>
+                        <div class="text-xs text-gray-500">Datetime Field</div>
+                      </div>
+                    </div>
+                  </div>
+                  {%else%}
+                  <div class="flex justify-between mt-6 text-xs font-bold">
+                    <div class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-basket" viewBox="0 0 16 16">
+                        <path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/>
+                      </svg>
+                      <span class="ml-1 text-gray-500">-</span>
+                    </div>
+
+                    <div class="flex items-start ml-4">
+                      
+                      <svg class="text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                      </svg>
+                      <span class="ml-1 text-gray-500">-</span>
+                    </div>
+                  </div>
+                  <div class="text-center flex flex-row justify-between flex-wrap justify-between items-center text-xs font-bold" style = "padding-top: 20px;">
+                    
+                    -
+                    
+                  </div>
+                  <div class="mt-12 flex items-center">
+                    <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("data:image/png;base64,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");'></div>
+                    <div class="ml-5">
+                      <div class="font-bold text-gray-800">
+                        -
+                      </div>
+                      <div class="text-xs text-gray-500">Datetime Field</div>
+                    </div>
+                  </div>
+                </div>
+                  {%endif%}
+                  {%endfor%}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- Users -->
+      <div class="px-5 sm:px-10 md:px-20 lg:px-10 xl:px-20 py-8 bg-indigo-100" id="cards">
+        <div class="max-w-screen-xl mx-auto">
+          <h3 class="leading-none font-black text-3xl">Users</h3>
+    
+          <div class="lg:flex justify-between lg:mt-8">
+            <div class="lg:mx-2 flex flex-col items-center">
+              <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
+                <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
+                    <div class="mt-12 flex items-center">
+                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80");'></div>
+                      <div class="ml-5">
+                        <div class="font-bold text-gray-800">
+                          Sasha Sloan
+                        </div>
+                        <div class="text-xs text-gray-500">3000 points</div>
+                      </div>
+                    </div>
+                  
+                </div>
+              </div>
+            </div>
+    
+            <div class="lg:mx-2 flex flex-col items-center">
+              <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
+                <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
+                    <div class="mt-12 flex items-center">
+                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80");'></div>
+                      <div class="ml-5">
+                        <div class="font-bold text-gray-800">
+                          Sasha Sloan
+                        </div>
+                        <div class="text-xs text-gray-500">3000 points</div>
+                      </div>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+    
+            <div class="lg:mx-2 flex flex-col items-center">
+              <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
+                <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
+                    <div class="mt-12 flex items-center">
+                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80");'></div>
+                      <div class="ml-5">
+                        <div class="font-bold text-gray-800">
+                          Sasha Sloan
+                        </div>
+                        <div class="text-xs text-gray-500">3000 points</div>
+                      </div>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="px-5 sm:px-10 md:px-20 lg:px-10 xl:px-20 py-8 bg-indigo-100" id="blog-posts">
+        <div class="max-w-screen-xl mx-auto">
+          <div class="xl:flex">
+            <div>
+              <h3 class="leading-none font-black text-3xl">Popular Posts</h3>
+              <div class="flex flex-col items-center lg:flex-row lg:items-stretch lg:justify-around">
+                <a href="https://owaiskhan.me" class="flex w-full max-w-sm mt-6 lg:mt-8 xl:mr-8">
+                  <div class="transition-all duration-300 cursor-pointer w-full shadow-lg hover:shadow-xl rounded-lg bg-gray-100 relative">
+                    <div class="w-full h-48 bg-cover rounded-t-lg" style='background-image:
+                    url("https://images.unsplash.com/3/doctype-hi-res.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80");'></div>
+                    <div class="p-6">
+                      <div class="text-lg font-bold">Tips for creating an amazing design system</div>
+                      <div class="mt-2 text-gray-900 text-sm">
+                        Learn how to create a new design system that is beautiful and efficient for creating your UI
+                        components.
+                      </div>
+                    </div>
+                  </div>
+                </a>
+
+                <a href="https://timerse.com" class="flex w-full max-w-sm mt-6 lg:mt-8 xl:mr-8">
+                  <div class="transition-all duration-300 cursor-pointer w-full shadow-lg hover:shadow-xl rounded-lg bg-gray-100 relative">
+                    <div class="w-full h-48 bg-cover rounded-t-lg" style='background-image:
+                    url("https://images.unsplash.com/photo-1572044162444-ad60f128bdea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=768&q=80");'></div>
+                    <div class="p-6">
+                      <div class="text-lg font-bold">Using a drawing tablet to create beautiful icons</div>
+                      <div class="mt-2 text-gray-900 text-sm">
+                        Good Icons are hard to come by. This article guides you on how to create beautiful sketched
+                        icons using a drawing pad.
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            <div class="mt-12 xl:mt-0 xl:ml-8">
+              <h3 class="leading-none font-black text-3xl">Recent Posts</h3>
+              <div class="flex flex-col items-center lg:flex-row lg:items-stretch lg:justify-around xl:flex-col">
+                <a href="https://owaiskhan.me" class="flex w-full max-w-sm mt-6 lg:mt-8">
+                  <div class="transition-all duration-300 cursor-pointer w-full shadow-lg hover:shadow-xl rounded-lg
+                  bg-gray-100 relative xl:flex xl:flex-row-reverse xl:items-center xl:px-6 xl:py-8">
+                    <div class="w-full h-48 bg-cover rounded-t-lg xl:w-32 xl:h-20 xl:rounded-lg xl:ml-2" style='background-image:
+                    url("https://images.unsplash.com/photo-1452830978618-d6feae7d0ffa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=512&q=80");'></div>
+                    <div class="p-6 xl:p-0">
+                      <div class="text-lg font-bold">How to work effectively with freelancers</div>
+                      <div class="mt-2 text-gray-900 text-sm xl:hidden">
+                        Hiring a freelancer for your new project can be challenging if you've never done before. Learn
+                        some tips that will allow you to have a better experience working with freelancers
+                      </div>
+                    </div>
+                  </div>
+                </a>
+
+                <a href="https://owaiskhan.me" class="flex w-full max-w-sm mt-6 lg:mt-8">
+                  <div class="transition-all duration-300 cursor-pointer w-full shadow-lg hover:shadow-xl rounded-lg
+                  bg-gray-100 relative xl:flex xl:flex-row-reverse xl:items-center xl:px-6 xl:py-8">
+                    <div class="w-full h-48 bg-cover rounded-t-lg xl:w-32 xl:h-20 xl:rounded-lg xl:ml-2" style='background-image:
+                    url("https://images.unsplash.com/photo-1581287053822-fd7bf4f4bfec?ixlib=rb-1.2.1&auto=format&fit=crop&w=512&q=80");'></div>
+                    <div class="p-6 xl:p-0">
+                      <div class="text-lg font-bold">How to create smooth React Native animations</div>
+                      <div class="mt-2 text-gray-900 text-sm xl:hidden">
+                        Animations play a vital role in user experience. This article describes how you can create
+                        butter smooth 60 FPS animations easily.
+                      </div>
+                    </div>
+                  </div>
+                </a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </main>
+
+    <footer class="px-5 sm:px-10 md:px-20 py-8">
+      <div class="flex flex-col items-center lg:flex-row-reverse justify-between">
+        <div class="">
+          <a class="mx-4 text-sm font-bold text-indigo-600 hover:text-indigo-800" href="#">Home</a>
+          <a class="mx-4 text-sm font-bold text-indigo-600 hover:text-indigo-800" href="#">About Us</a>
+          <a class="mx-4 text-sm font-bold text-indigo-600 hover:text-indigo-800" href="#">Careers</a>
+          <!-- <a href="#">About Us</a> -->
+          <!-- <a href="#">Careers</a> -->
+        </div>
+        <div class="mt-4">
+          <img src="https://storage.googleapis.com/devitary-image-host.appspot.com/15846435184459982716-LogoMakr_7POjrN.png" class="w-32">
+        </div>
+        <div class="mt-4 text-xs font-bold text-gray-500">
+          &copy; 2020 TEMPLATANA | MIT License 
+        </div>
+      </div>
+    </footer>
+  </div>
 {%endif%}
-<!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
-
 {%if not no%}
 <div>
-    <form action="{% url 'savethehawkers:index' %}" method = "POST">
-        {%csrf_token%}
-
-        <label for="postalcode">Postal Code:</label><br>
-        <input type="text" id="postalcode" name="postalcode" placeholder="Postal Code"><br>
-
-
-        <label for="stalltype">Stall Type:</label> <br>
-        <select name="stalltype" id="stalltype" >
-            <option disabled selected value="None"> Stall Type </option>
-            <option value="Chinese">Chinese</option>
-            <option value="Malay">Malay</option>
-            <option value="Indian">Indian</option>
-            <option value="Western">Western</option>
-            <option value="Dessert">Dessert</option>
-            <option value="Drinks">Drinks</option>
-            <option value="Snacks">Snacks</option>
-            <option value="Vegetarian">Vegetarian</option>
-            <option value="Others">Others</option>
-        </select><br>
-
-        
-        <label for = "search"> Recommendations: </label><br>
-        <input id = "search" name = "search" type = "text" placeholder="Search...">
-        <dt>{{message}}</dt>
-        <input type="submit" value="Submit">
-        <br>
-    </form>
-   
+  <form action="{% url 'savethehawkers:index' %}" method = "POST">
+    {%csrf_token%}
+    <div class="relative mt-4 md:mt-0 lg:mt-4">
+      <div class="pl-4 pr-4 h-full absolute bottom-0 left-0 flex items-center">
+        <svg class="text-gray-700 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </div>
+      
+      <input type="text" name="postalcode" class="w-full border bg-gray-100 px-4 py-4 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12" placeholder="Postal Code (e.g 398614)">
+      
+    </div>
+    <div class="relative mt-4">
+      <div class="pl-4 pr-4 h-full absolute bottom-0 left-0 flex items-center">
+        <svg class="text-gray-700 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" /></svg>
+      </div>
+      <input type="text" name = "search" class="w-full border bg-gray-100 px-4 py-4 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12" placeholder="Recommendations - Wanton Mee">
+    
+    </div>
+    <div>
+      <button type = "submit" class="transition-all duration-300 mt-5 w-full border border-transparent rounded font-semibold tracking-wide text-sm px-5 py-4 focus:outline-none focus:shadow-outline bg-indigo-500 text-gray-100 hover:bg-indigo-600 hover:text-gray-200">Search Stalls</button>
+    </div>
+</form>
+ 
 </div>
 
 <div class="filter-results" >
-    <div class="filter-results-listing">
-        {% for name in names %} {% if forloop.counter == 1 %}
-        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
-        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+  <div class="filter-results-listing">
+      {% for name in names %} {% if forloop.counter == 1 %}
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
-        <div class="listing-map">
-        {% for lat,long,latitude,longtitude in latandlong %} {% if forloop.counter == 1 %}
-        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-        {%endif%}{%empty%}No results.{%endfor%}</div>
+      <div class="listing-map">
+      {% for lat,long,latitude,longtitude in latandlong %} {% if forloop.counter == 1 %}
+      <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+      {%endif%}{%empty%}No results.{%endfor%}</div>
 
-        <p>Distance: 
-        {% for number in numbers %} {% if forloop.counter == 1 %}
-        {{number}} metres away.
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p>Distance: 
+      {% for number in numbers %} {% if forloop.counter == 1 %}
+      {{number}} metres away.
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-address">
-        {% for address in addresses %}{% if forloop.counter == 1 %}
-        Address: {{address}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-address">
+      {% for address in addresses %}{% if forloop.counter == 1 %}
+      Address: {{address}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-opening-hours">
-        {% for hour in hours %} {% if forloop.counter == 1 %}
-        Opening Hours:{{hour}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-opening-hours">
+      {% for hour in hours %} {% if forloop.counter == 1 %}
+      Opening Hours:{{hour}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-recommendation">
-        {% for rec in recos %} {% if forloop.counter == 1 %}
-        Recommendation:{{rec}}
-        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
-    </div>
-    <div class="filter-results-listing">
-        {% for name in names %} {% if forloop.counter == 2 %}
-        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
-        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+      <p class="listing-recommendation">
+      {% for rec in recos %} {% if forloop.counter == 1 %}
+      Recommendation:{{rec}}
+      {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+  </div>
+  <div class="filter-results-listing">
+      {% for name in names %} {% if forloop.counter == 2 %}
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
-        <div class="listing-map">
-        {% for lat,long,latitude,longtitude in latandlong2 %} {% if forloop.counter == 2 %}
-        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-        {%endif%}{%empty%}No results.{%endfor%}</div>
+      <div class="listing-map">
+      {% for lat,long,latitude,longtitude in latandlong2 %} {% if forloop.counter == 2 %}
+      <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+      {%endif%}{%empty%}No results.{%endfor%}</div>
 
-        <p>Distance: 
-        {% for number in numbers %} {% if forloop.counter == 2 %}
-        {{number}} metres away.
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p>Distance: 
+      {% for number in numbers %} {% if forloop.counter == 2 %}
+      {{number}} metres away.
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-address">
-        {% for address in addresses %}{% if forloop.counter == 2 %}
-        Address: {{address}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-address">
+      {% for address in addresses %}{% if forloop.counter == 2 %}
+      Address: {{address}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-opening-hours">
-        {% for hour in hours %} {% if forloop.counter == 2 %}
-        Opening Hours:{{hour}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-opening-hours">
+      {% for hour in hours %} {% if forloop.counter == 2 %}
+      Opening Hours:{{hour}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-recommendation">
-        {% for rec in recos %} {% if forloop.counter == 2 %}
-        Recommendation:{{rec}}
-        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
-    </div>
-    <div class="filter-results-listing">
-        {% for name in names %} {% if forloop.counter == 3 %}
-        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
-        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+      <p class="listing-recommendation">
+      {% for rec in recos %} {% if forloop.counter == 2 %}
+      Recommendation:{{rec}}
+      {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+  </div>
+  <div class="filter-results-listing">
+      {% for name in names %} {% if forloop.counter == 3 %}
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
-        <div class="listing-map">
-        {% for lat,long,latitude,longtitude in latandlong3 %} {% if forloop.counter == 3 %}
-        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-        {%endif%}{%empty%}No results.{%endfor%}</div>
+      <div class="listing-map">
+      {% for lat,long,latitude,longtitude in latandlong3 %} {% if forloop.counter == 3 %}
+      <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+      {%endif%}{%empty%}No results.{%endfor%}</div>
 
-        <p>Distance: 
-        {% for number in numbers %} {% if forloop.counter == 3 %}
-        {{number}} metres away.
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p>Distance: 
+      {% for number in numbers %} {% if forloop.counter == 3 %}
+      {{number}} metres away.
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-address">
-        {% for address in addresses %}{% if forloop.counter == 3 %}
-        Address: {{address}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-address">
+      {% for address in addresses %}{% if forloop.counter == 3 %}
+      Address: {{address}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-opening-hours">
-        {% for hour in hours %} {% if forloop.counter == 3 %}
-        Opening Hours:{{hour}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-opening-hours">
+      {% for hour in hours %} {% if forloop.counter == 3 %}
+      Opening Hours:{{hour}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-recommendation">
-        {% for rec in recos %} {% if forloop.counter == 3 %}
-        Recommendation:{{rec}}
-        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
-    </div>
-    <div class="filter-results-listing">
-        {% for name in names %} {% if forloop.counter == 4 %}
-        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
-        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+      <p class="listing-recommendation">
+      {% for rec in recos %} {% if forloop.counter == 3 %}
+      Recommendation:{{rec}}
+      {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+  </div>
+  <div class="filter-results-listing">
+      {% for name in names %} {% if forloop.counter == 4 %}
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
-        <div class="listing-map">
-        {% for lat,long,latitude,longtitude in latandlong4 %} {% if forloop.counter == 4 %}
-        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-        {%endif%}{%empty%}No results.{%endfor%}</div>
+      <div class="listing-map">
+      {% for lat,long,latitude,longtitude in latandlong4 %} {% if forloop.counter == 4 %}
+      <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+      {%endif%}{%empty%}No results.{%endfor%}</div>
 
-        <p>Distance: 
-        {% for number in numbers %} {% if forloop.counter == 4 %}
-        {{number}} metres away.
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p>Distance: 
+      {% for number in numbers %} {% if forloop.counter == 4 %}
+      {{number}} metres away.
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-address">
-        {% for address in addresses %}{% if forloop.counter == 4 %}
-        Address: {{address}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-address">
+      {% for address in addresses %}{% if forloop.counter == 4 %}
+      Address: {{address}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-opening-hours">
-        {% for hour in hours %} {% if forloop.counter == 4 %}
-        Opening Hours:{{hour}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-opening-hours">
+      {% for hour in hours %} {% if forloop.counter == 4 %}
+      Opening Hours:{{hour}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-recommendation">
-        {% for rec in recos %} {% if forloop.counter == 4 %}
-        Recommendation:{{rec}}
-        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
-    </div>
-    <div class="filter-results-listing">
-        {% for name in names %} {% if forloop.counter == 5 %}
-        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
-        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+      <p class="listing-recommendation">
+      {% for rec in recos %} {% if forloop.counter == 4 %}
+      Recommendation:{{rec}}
+      {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+  </div>
+  <div class="filter-results-listing">
+      {% for name in names %} {% if forloop.counter == 5 %}
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
-        <div class="listing-map">
-        {% for lat,long,latitude,longtitude in latandlong5 %} {% if forloop.counter == 5 %}
-        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-        {%endif%}{%empty%}No results.{%endfor%}</div>
+      <div class="listing-map">
+      {% for lat,long,latitude,longtitude in latandlong5 %} {% if forloop.counter == 5 %}
+      <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+      {%endif%}{%empty%}No results.{%endfor%}</div>
 
-        <p>Distance: 
-        {% for number in numbers %} {% if forloop.counter == 5 %}
-        {{number}} metres away.
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p>Distance: 
+      {% for number in numbers %} {% if forloop.counter == 5 %}
+      {{number}} metres away.
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-address">
-        {% for address in addresses %}{% if forloop.counter == 5 %}
-        Address: {{address}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-address">
+      {% for address in addresses %}{% if forloop.counter == 5 %}
+      Address: {{address}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-opening-hours">
-        {% for hour in hours %} {% if forloop.counter == 5 %}
-        Opening Hours:{{hour}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-opening-hours">
+      {% for hour in hours %} {% if forloop.counter == 5 %}
+      Opening Hours:{{hour}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-recommendation">
-        {% for rec in recos %} {% if forloop.counter == 5 %}
-        Recommendation:{{rec}}
-        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
-    </div>
-    <div class="filter-results-listing">
-        {% for name in names %} {% if forloop.counter == 6 %}
-        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
-        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+      <p class="listing-recommendation">
+      {% for rec in recos %} {% if forloop.counter == 5 %}
+      Recommendation:{{rec}}
+      {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+  </div>
+  <div class="filter-results-listing">
+      {% for name in names %} {% if forloop.counter == 6 %}
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
-        <div class="listing-map">
-        {% for lat,long,latitude,longtitude in latandlong6 %} {% if forloop.counter == 6 %}
-        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
-        {%endif%}{%empty%}No results.{%endfor%}</div>
+      <div class="listing-map">
+      {% for lat,long,latitude,longtitude in latandlong6 %} {% if forloop.counter == 6 %}
+      <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+      {%endif%}{%empty%}No results.{%endfor%}</div>
 
-        <p>Distance: 
-        {% for number in numbers %} {% if forloop.counter == 6 %}
-        {{number}} metres away.
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p>Distance: 
+      {% for number in numbers %} {% if forloop.counter == 6 %}
+      {{number}} metres away.
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-address">
-        {% for address in addresses %}{% if forloop.counter == 6 %}
-        Address: {{address}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-address">
+      {% for address in addresses %}{% if forloop.counter == 6 %}
+      Address: {{address}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-opening-hours">
-        {% for hour in hours %} {% if forloop.counter == 6 %}
-        Opening Hours:{{hour}}
-        {%endif%}{%empty%}No results.{%endfor%}</p>
+      <p class="listing-opening-hours">
+      {% for hour in hours %} {% if forloop.counter == 6 %}
+      Opening Hours:{{hour}}
+      {%endif%}{%empty%}No results.{%endfor%}</p>
 
-        <p class="listing-recommendation">
-        {% for rec in recos %} {% if forloop.counter == 6 %}
-        Recommendation:{{rec}}
-        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
-    </div>
-    <div class="filter-results-listing">
-        <dt>Leaflet.JS</dt>
-        <div id = "mapid" style = "width: 250px;height:300px" ></div>
-    </div>
+      <p class="listing-recommendation">
+      {% for rec in recos %} {% if forloop.counter == 6 %}
+      Recommendation:{{rec}}
+      {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+  </div>
+  <div class="filter-results-listing">
+      <dt>Leaflet.JS</dt>
+      <div id = "mapid" style = "width: 250px;height:300px" ></div>
+  </div>
 </div>
 
 
 <script type="text/javascript">
-    var latorigin = "{{latorigin}}";
-    var longorigin = "{{longorigin}}";
-    var postalcode = "{{postalcode}}";
-    var mymap = L.map('mapid').setView([latorigin, longorigin], 13);
-    var latitudes = JSON.parse("{{latitudes}}");
-    var longtitudes = JSON.parse("{{longtitudes}}");
-    var names = {{namesjson|safe}};
-    console.log(names)
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoibmVvemhpeHVhbiIsImEiOiJja3I2Z2UyeXoyc3U4MnZxdTIyM21sdjZlIn0.9-6d54z8bMHK5oaDpNWtyQ'
-    }).addTo(mymap);
-    
-    var marker = L.marker([latorigin, longorigin]).addTo(mymap);
-    marker.bindPopup(`<b>Your location.</b><br>${postalcode}`).openPopup();
+  var latorigin = "{{latorigin}}";
+  var longorigin = "{{longorigin}}";
+  var postalcode = "{{postalcode}}";
+  var mymap = L.map('mapid').setView([latorigin, longorigin], 13);
+  var latitudes = JSON.parse("{{latitudes}}");
+  var longtitudes = JSON.parse("{{longtitudes}}");
+  var names = {{namesjson|safe}};
+  console.log(names)
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  maxZoom: 18,
+  id: 'mapbox/streets-v11',
+  tileSize: 512,
+  zoomOffset: -1,
+  accessToken: 'pk.eyJ1IjoibmVvemhpeHVhbiIsImEiOiJja3I2Z2UyeXoyc3U4MnZxdTIyM21sdjZlIn0.9-6d54z8bMHK5oaDpNWtyQ'
+  }).addTo(mymap);
+  
+  var marker = L.marker([latorigin, longorigin]).addTo(mymap);
+  marker.bindPopup(`<b>Your location.</b><br>${postalcode}`).openPopup();
 
-    var shop1 = L.marker([latitudes[0], longtitudes[0]]).addTo(mymap);
-    shop1.bindPopup(`${names[0]}`).openPopup();
-    var shop2 = L.marker([latitudes[1], longtitudes[1]]).addTo(mymap);
-    shop2.bindPopup(`${names[1]}`).openPopup();
-    var shop3 = L.marker([latitudes[2], longtitudes[2]]).addTo(mymap);
-    shop3.bindPopup(`${names[2]}`).openPopup();
-    var shop4 = L.marker([latitudes[3], longtitudes[3]]).addTo(mymap);
-    shop4.bindPopup(`${names[3]}`).openPopup();
-    var shop5 = L.marker([latitudes[4], longtitudes[4]]).addTo(mymap);
-    shop5.bindPopup(`${names[4]}`).openPopup();
-    var shop6 = L.marker([latitudes[5], longtitudes[5]]).addTo(mymap);
-    shop6.bindPopup(`${names[5]}`).openPopup();
+  var shop1 = L.marker([latitudes[0], longtitudes[0]]).addTo(mymap);
+  shop1.bindPopup(`${names[0]}`).openPopup();
+  var shop2 = L.marker([latitudes[1], longtitudes[1]]).addTo(mymap);
+  shop2.bindPopup(`${names[1]}`).openPopup();
+  var shop3 = L.marker([latitudes[2], longtitudes[2]]).addTo(mymap);
+  shop3.bindPopup(`${names[2]}`).openPopup();
+  var shop4 = L.marker([latitudes[3], longtitudes[3]]).addTo(mymap);
+  shop4.bindPopup(`${names[3]}`).openPopup();
+  var shop5 = L.marker([latitudes[4], longtitudes[4]]).addTo(mymap);
+  shop5.bindPopup(`${names[4]}`).openPopup();
+  var shop6 = L.marker([latitudes[5], longtitudes[5]]).addTo(mymap);
+  shop6.bindPopup(`${names[5]}`).openPopup();
 
-    var popup = L.popup();
-    
+  var popup = L.popup();
+  
 
-    // function onMapClick(e) {
-    //     popup
-    //         .setLatLng(e.latlng)
-    //         .setContent(e.latlng.toString())
-    //         .openOn(mymap);
-    // }
+  // function onMapClick(e) {
+  //     popup
+  //         .setLatLng(e.latlng)
+  //         .setContent(e.latlng.toString())
+  //         .openOn(mymap);
+  // }
 
-    // mymap.on('click', onMapClick);
+  // mymap.on('click', onMapClick);
 </script>
 <form action = "{%url 'savethehawkers:nextindex' pagenumber%} " method = "POST" >
-    {%csrf_token%}
-    <input type = "hidden" name = "postalcode" value = "{{postalcode}}">
-    <input type = "hidden" name = "pagenumber" value = "{{pagenumber}}">
-    <input type = "hidden" name = "stalltype" value = "{{stalltype}}">
-    <input type = "hidden" name = "reco" value = "{{reco}}">
-    <input type = "submit" value = "Next" style = "width: 100%; background-color: gray; color: whitesmoke; font-size: 20px">
+  {%csrf_token%}
+  <input type = "hidden" name = "postalcode" value = "{{postalcode}}">
+  <input type = "hidden" name = "pagenumber" value = "{{pagenumber}}">
+  <input type = "hidden" name = "stalltype" value = "{{stalltype}}">
+  <input type = "hidden" name = "reco" value = "{{reco}}">
+  <input type = "submit" value = "Next" style = "width: 100%; background-color: gray; color: whitesmoke; font-size: 20px">
 </form>
 {%endif%}
-
-<!-- <script>
-    const KEY = "AIzaSyCxd02Tz4IIVnhDlmUQiaBJE34qAuE9p-0";
-    const LAT = 1.3886188998528823;
-      const LNG = 103.91027116828485;
-    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${LAT},${LNG}&key=${KEY}`;
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          let parts = data.results[0].address_components;
-          document.body.insertAdjacentHTML(
-            "beforeend",
-            `<p>Formatted: ${data.results[0].formatted_address}</p>`
-          );
-          parts.forEach(part => {
-            if (part.types.includes("country")) {
-              //we found "country" inside the data.results[0].address_components[x].types array
-              document.body.insertAdjacentHTML(
-                "beforeend",
-                `<p>COUNTRY: ${part.long_name}</p>`
-              );
-            }
-            if (part.types.includes("administrative_area_level_1")) {
-              document.body.insertAdjacentHTML(
-                "beforeend",
-                `<p>PROVINCE: ${part.long_name}</p>`
-              );
-            }
-            if (part.types.includes("administrative_area_level_3")) {
-              document.body.insertAdjacentHTML(
-                "beforeend",
-                `<p>LEVEL 3: ${part.long_name}</p>`
-              );
-            }
-          });
-        })
-        .catch(err => console.warn(err.message));
-    </script> -->
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 {% endblock %}

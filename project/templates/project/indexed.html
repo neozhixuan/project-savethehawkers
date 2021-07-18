@@ -1,0 +1,592 @@
+{% if no %}
+<div>
+    <div class="type-wrap">Help disadvantaged hawkers
+      <span id="typed" style="white-space:pre;" class="typed"></span>
+    </div>
+    <script>
+        $('document').ready(function(){
+            var typed = new Typed('#typed',{
+                strings: ["build their database.", "edit information.", "advertise."],
+                typeSpeed: 100,
+                startDelay: 0,
+                backSpeed: 60,
+                backDelay: 2000,
+                loop: true,
+                cursorChar: "|",
+                contentType: 'html'
+            })
+        });
+    </script>
+    <div class = "wrapper">
+        <div class="map">
+            <iframe src="https://www.google.com/maps/d/embed?mid=1XcpTiJpt_O-Rw6Wu8qrtCm_Ek9VUgIDF" scrolling="no" frameborder="0"
+            style="position: relative; height: 100%; width: 100%;" ></iframe>
+        </div>
+        <div class="map" style = " box-sizing: border-box;">
+            <h4>Feature Stall</h4>
+            {%block haw.image%}{%if haw.image%}
+            <img src="{{haw.image.url}}" style="position: relative; height: 80%; width: 80%;">
+            {%else%}
+            <img src="{% static 'project/hawk.png'%}" style="position: relative;left:10%; height: 80%; width: 80%;">
+            {%endif%}{%endblock%}<br>
+            <a style = "font-weight: bold;"href = "{%url 'savethehawkers:info' haw.name %}">{{haw.name}}</a><br>
+            Address: {{haw.address}}<br>
+            
+        </div>
+    </div>
+    
+    <div class="wrapper">
+        <div class="filter-form">
+            <h2>Filter Nearby Stalls</h2>
+            <div>
+                <form action="{% url 'savethehawkers:index' %}" method = "POST">
+                    {%csrf_token%}
+                    <label for="postalcode">Postal Code:</label><br>
+                    <input type="text" id="postalcode" name="postalcode" placeholder="Postal Code"><br>
+                    <label for="stalltype">Stall Type:</label> <br>
+                    <select name="stalltype" id="stalltype" >
+                        <option disabled selected value="None"> Stall Type </option>
+                        <option value="Chinese">Chinese</option>
+                        <option value="Malay">Malay</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Western">Western</option>
+                        <option value="Dessert">Dessert</option>
+                        <option value="Drinks">Drinks</option>
+                        <option value="Snacks">Snacks</option>
+                        <option value="Vegetarian">Vegetarian</option>
+                        <option value="Others">Others</option>
+                    </select><br>
+                    <label for = "search"> Recommendations: </label><br>
+                    <input id = "search" name = "search" type = "text" placeholder="Search...">
+                    <dt>{{message}}</dt>
+                    <input type="submit" value="Submit">
+                    <br>
+                </form>
+                <h2>Find By Name</h2>
+                <form action="{% url 'savethehawkers:name' %}" method = "POST">
+                    {%csrf_token%}
+                    <label for = "name"> Name: </label><br>
+                    <input id = "name" name = "name" type = "text" placeholder="Search...">
+                    <dt>{{message2}}</dt>
+                    <input type="submit" value="Submit">
+                    <br>
+                </form>
+            </div>
+        </div>
+        <div class="recent-listing">
+            <h2 >Latest Listings</h2>
+            {%for hist in history%}
+            <div class="listing-item">
+                <h3> <a href="{% url 'savethehawkers:info' hist.name %}">{{hist.name}}</a></h3>
+                <p>Recommended by: <span style = "font-weight: bolder;">{{hist.contributor}}</span></p>
+                <p>{{hist.address}}</p>
+                <p><span style = "font-weight: bolder;">2</span> comments</p>
+            </div>
+            {%empty%}
+            Be the first to help a hawker.
+            {%endfor%}
+        </div>
+        <div class="recent-listing" >
+            <h2>Latest Comments</h2>
+            {%for comment in comments%}
+            {%if forloop.revcounter <= 5%}
+            <div class="listing-item">
+                <h3>{{comment.comment}}</h3>
+                <p><img src="{{comment.image.url}}" width= "100" height= "100"></span></p>
+                <p><span style = "font-weight: bolder;">Order:</span> {{comment.ordered}}</p>
+                <p><span style = "font-weight: bolder;">Stall:</span><a href = "{%url 'savethehawkers:info' comment.stallname %}"> {{comment.stallname}}</a></p>
+                <p><span style = "font-weight: bolder;">Written by:</span> {{comment.contributor}}</p>
+            </div>
+            {%endif%}
+            {%empty%}
+            Be the first to help a hawker advertise.
+            {%endfor%}
+    </div>
+</div>
+</div>
+<footer>
+    <a href="{% url 'savethehawkers:creations'%}">{{numberoflistings}}/1000 listings - help us reach our goal!</a>
+  </footer>
+<footer>
+    <a href="#">GitHub</a>
+</footer>
+
+<!-- <div id = "below" style = "bottom: 0; position: fixed; width: 100%; height: 50px; background-color: cadetblue;display: flex; padding: 10px;" id = "footer ">
+    <div style = "flex: 1; text-align: center; text-decoration: none;">
+        <a href = "{% url 'savethehawkers:creations' %}">Create An Account</a>
+    </div>
+    <div style = "flex: 1; flex-grow: 2; text-align: center; text-decoration: none;">
+        Promote the hawkers
+    </div>
+    <div style = "flex: 1; flex-grow: 2; text-align: center;">
+        Earn points
+    </div>
+    <div style = "flex: 1; align-self: flex-end;">
+        <button  onclick = closeFooter()>
+            x
+        </button>
+    </div>
+
+</div> -->
+
+<script>
+function closeFooter()
+{
+    document.getElementById("below").style.display = 'none'
+}
+</script>
+{%endif%}
+<!-- aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa -->
+
+{%if not no%}
+<div>
+    <form action="{% url 'savethehawkers:index' %}" method = "POST">
+        {%csrf_token%}
+
+        <label for="postalcode">Postal Code:</label><br>
+        <input type="text" id="postalcode" name="postalcode" placeholder="Postal Code"><br>
+
+
+        <label for="stalltype">Stall Type:</label> <br>
+        <select name="stalltype" id="stalltype" >
+            <option disabled selected value="None"> Stall Type </option>
+            <option value="Chinese">Chinese</option>
+            <option value="Malay">Malay</option>
+            <option value="Indian">Indian</option>
+            <option value="Western">Western</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Drinks">Drinks</option>
+            <option value="Snacks">Snacks</option>
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Others">Others</option>
+        </select><br>
+
+        
+        <label for = "search"> Recommendations: </label><br>
+        <input id = "search" name = "search" type = "text" placeholder="Search...">
+        <dt>{{message}}</dt>
+        <input type="submit" value="Submit">
+        <br>
+    </form>
+   
+</div>
+
+<div class="filter-results" >
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 1 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong %} {% if forloop.counter == 1 %}
+        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 1 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 1 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 1 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 1 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+    </div>
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 2 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong2 %} {% if forloop.counter == 2 %}
+        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 2 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 2 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 2 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 2 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+    </div>
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 3 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong3 %} {% if forloop.counter == 3 %}
+        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 3 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 3 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 3 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 3 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+    </div>
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 4 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong4 %} {% if forloop.counter == 4 %}
+        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 4 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 4 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 4 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 4 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+    </div>
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 5 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong5 %} {% if forloop.counter == 5 %}
+        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 5 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 5 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 5 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 5 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+    </div>
+    <div class="filter-results-listing">
+        {% for name in names %} {% if forloop.counter == 6 %}
+        <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+        {%endif%}{%empty%}<th>No results.</th>{%endfor%}
+
+        <div class="listing-map">
+        {% for lat,long,latitude,longtitude in latandlong6 %} {% if forloop.counter == 6 %}
+        <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
+        {%endif%}{%empty%}No results.{%endfor%}</div>
+
+        <p>Distance: 
+        {% for number in numbers %} {% if forloop.counter == 6 %}
+        {{number}} metres away.
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-address">
+        {% for address in addresses %}{% if forloop.counter == 6 %}
+        Address: {{address}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-opening-hours">
+        {% for hour in hours %} {% if forloop.counter == 6 %}
+        Opening Hours:{{hour}}
+        {%endif%}{%empty%}No results.{%endfor%}</p>
+
+        <p class="listing-recommendation">
+        {% for rec in recos %} {% if forloop.counter == 6 %}
+        Recommendation:{{rec}}
+        {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
+    </div>
+    <div class="filter-results-listing">
+        <dt>Leaflet.JS</dt>
+        <div id = "mapid" style = "width: 250px;height:300px" ></div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    var latorigin = "{{latorigin}}";
+    var longorigin = "{{longorigin}}";
+    var postalcode = "{{postalcode}}";
+    var mymap = L.map('mapid').setView([latorigin, longorigin], 13);
+    var latitudes = JSON.parse("{{latitudes}}");
+    var longtitudes = JSON.parse("{{longtitudes}}");
+    var names = {{namesjson|safe}};
+    console.log(names)
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoibmVvemhpeHVhbiIsImEiOiJja3I2Z2UyeXoyc3U4MnZxdTIyM21sdjZlIn0.9-6d54z8bMHK5oaDpNWtyQ'
+    }).addTo(mymap);
+    
+    var marker = L.marker([latorigin, longorigin]).addTo(mymap);
+    marker.bindPopup(`<b>Your location.</b><br>${postalcode}`).openPopup();
+
+    var shop1 = L.marker([latitudes[0], longtitudes[0]]).addTo(mymap);
+    shop1.bindPopup(`${names[0]}`).openPopup();
+    var shop2 = L.marker([latitudes[1], longtitudes[1]]).addTo(mymap);
+    shop2.bindPopup(`${names[1]}`).openPopup();
+    var shop3 = L.marker([latitudes[2], longtitudes[2]]).addTo(mymap);
+    shop3.bindPopup(`${names[2]}`).openPopup();
+    var shop4 = L.marker([latitudes[3], longtitudes[3]]).addTo(mymap);
+    shop4.bindPopup(`${names[3]}`).openPopup();
+    var shop5 = L.marker([latitudes[4], longtitudes[4]]).addTo(mymap);
+    shop5.bindPopup(`${names[4]}`).openPopup();
+    var shop6 = L.marker([latitudes[5], longtitudes[5]]).addTo(mymap);
+    shop6.bindPopup(`${names[5]}`).openPopup();
+
+    var popup = L.popup();
+    
+
+    // function onMapClick(e) {
+    //     popup
+    //         .setLatLng(e.latlng)
+    //         .setContent(e.latlng.toString())
+    //         .openOn(mymap);
+    // }
+
+    // mymap.on('click', onMapClick);
+</script>
+<form action = "{%url 'savethehawkers:nextindex' pagenumber%} " method = "POST" >
+    {%csrf_token%}
+    <input type = "hidden" name = "postalcode" value = "{{postalcode}}">
+    <input type = "hidden" name = "pagenumber" value = "{{pagenumber}}">
+    <input type = "hidden" name = "stalltype" value = "{{stalltype}}">
+    <input type = "hidden" name = "reco" value = "{{reco}}">
+    <input type = "submit" value = "Next" style = "width: 100%; background-color: gray; color: whitesmoke; font-size: 20px">
+</form>
+{%endif%}
+
+<!-- <script>
+    const KEY = "AIzaSyCxd02Tz4IIVnhDlmUQiaBJE34qAuE9p-0";
+    const LAT = 1.3886188998528823;
+      const LNG = 103.91027116828485;
+    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${LAT},${LNG}&key=${KEY}`;
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          let parts = data.results[0].address_components;
+          document.body.insertAdjacentHTML(
+            "beforeend",
+            `<p>Formatted: ${data.results[0].formatted_address}</p>`
+          );
+          parts.forEach(part => {
+            if (part.types.includes("country")) {
+              //we found "country" inside the data.results[0].address_components[x].types array
+              document.body.insertAdjacentHTML(
+                "beforeend",
+                `<p>COUNTRY: ${part.long_name}</p>`
+              );
+            }
+            if (part.types.includes("administrative_area_level_1")) {
+              document.body.insertAdjacentHTML(
+                "beforeend",
+                `<p>PROVINCE: ${part.long_name}</p>`
+              );
+            }
+            if (part.types.includes("administrative_area_level_3")) {
+              document.body.insertAdjacentHTML(
+                "beforeend",
+                `<p>LEVEL 3: ${part.long_name}</p>`
+              );
+            }
+          });
+        })
+        .catch(err => console.warn(err.message));
+    </script> -->
+<!--ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ-->
+<div class="px-5 sm:px-10 md:px-20 lg:px-10 xl:px-20 py-8 bg-gray-100" id="cards">
+    <div class="max-w-screen-xl mx-auto">
+      <h3 class="leading-none font-black text-3xl">Recent Reviews</h3>
+
+      <div class="lg:flex justify-between lg:mt-8">
+        <div class="lg:mx-2 flex flex-col items-center">
+          <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
+            <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
+              <div class="text-lg font-bold text-gray-700 leading-tight">Senior Designer - Figma</div>
+              <div>
+                <div class="flex justify-between mt-6 text-xs font-bold">
+                  <div class="flex items-start">
+                    <svg class="text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span class="ml-1 text-gray-500">New York City</span>
+                  </div>
+
+                  <div class="flex items-start ml-4">
+                    <svg class="text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect xmlns="http://www.w3.org/2000/svg" x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                      <path xmlns="http://www.w3.org/2000/svg" d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                    <span class="ml-1 text-gray-500">Google (3 Years)</span>
+                  </div>
+                </div>
+                <div class="text-center flex flex-row justify-between flex-wrap justify-between items-center text-xs font-bold">
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-green-200 text-green-600">Full Time</span>
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-indigo-200 text-indigo-600">Remote</span>
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-blue-200 text-blue-600">4 Years Exp</span>
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-purple-200 text-purple-600">$30/Hr</span>
+                </div>
+                <div class="mt-12 flex items-center">
+                  <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80");'></div>
+                  <div class="ml-5">
+                    <div class="font-bold text-gray-800">
+                      Sasha Sloan
+                    </div>
+                    <div class="text-xs text-gray-500">Hired 3 Hours ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:mx-2 flex flex-col items-center">
+          <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
+            <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
+              <div class="text-lg font-bold text-gray-700 leading-tight">Design Leader- InVision</div>
+              <div>
+                <div class="flex justify-between mt-6 text-xs font-bold">
+                  <div class="flex items-start">
+                    <svg class="text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span class="ml-1 text-gray-500">Palo Alto</span>
+                  </div>
+
+                  <div class="flex items-start ml-4">
+                    <svg class="text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect xmlns="http://www.w3.org/2000/svg" x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                      <path xmlns="http://www.w3.org/2000/svg" d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                    <span class="ml-1 text-gray-500">Amazon (8 Years)</span>
+                  </div>
+                </div>
+                <div class="text-center flex flex-row justify-between flex-wrap justify-between items-center text-xs font-bold">
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-yellow-200 text-yellow-600">Part Time</span>
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-indigo-200 text-indigo-600">Remote</span>
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-blue-200 text-blue-600">14 Years Exp</span>
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-purple-200 text-purple-600">$45/Hr</span>
+                </div>
+                <div class="mt-12 flex items-center">
+                  <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt=""
+                                                                                        style='background-image: url("https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80");'></div>
+                  <div class="ml-4">
+                    <div class="font-bold text-gray-800">
+                      Nathan Lan
+                    </div>
+                    <div class="text-xs text-gray-500">Hired 9 Hours ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="lg:mx-2 flex flex-col items-center">
+          <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
+            <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
+              <div class="text-lg font-bold text-gray-700 leading-tight">Junior Designer - Figma</div>
+              <div>
+                <div class="flex justify-between mt-6 text-xs font-bold">
+                  <div class="flex items-start">
+                    <svg class="text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                      <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span class="ml-1 text-gray-500">San Francisco</span>
+                  </div>
+
+                  <div class="flex items-start ml-4">
+                    <svg class="text-gray-400 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect xmlns="http://www.w3.org/2000/svg" x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                      <path xmlns="http://www.w3.org/2000/svg" d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                    </svg>
+                    <span class="ml-1 text-gray-500">AirBnB (1 Years)</span>
+                  </div>
+                </div>
+                <div class="text-center flex flex-row justify-between flex-wrap justify-between items-center text-xs font-bold">
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-yellow-200 text-yellow-600">Part Time</span>
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-indigo-200 text-indigo-600">Remote</span>
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-blue-200 text-blue-600">2 Years Exp</span>
+                  <span class="w-5/12 mt-6 mx-1 p-1 rounded bg-purple-200 text-purple-600">$20/Hr</span>
+                </div>
+                <div class="mt-12 flex items-center">
+                  <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt=""
+                                                                                        style='background-image:
+                                                                                        url("https://images.unsplash.com/photo-1541647376583-8934aaf3448a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&h=256&q=80");'></div>
+                  <div class="ml-4">
+                    <div class="font-bold text-gray-800">
+                      Jeremy Daer
+                    </div>
+                    <div class="text-xs text-gray-500">Hired 2 Days ago</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
