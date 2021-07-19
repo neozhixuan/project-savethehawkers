@@ -1,24 +1,35 @@
 {% extends "project/layout.html" %}
 
 {% block body %}
-    <div class="login">
-        <form action="{% url 'savethehawkers:login' %}" method="post">
-            {% csrf_token %}
-            <h2>Login</h2>
-            <label for="username"><b>Username</b></label>
-            <input type="text" placeholder="Username" name="username" required>
-            <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="Password" name="password" required>
-            <input type="submit" value="Login">
-            <h4 style = "color:red">{% if message %}{{ message }}{% endif %}</h4>
-            Don't have an account? <a style = "color: brown" href="{% url 'savethehawkers:register' %}">Register here.</a>
-        </form>
-
-    </div>
     
-
-    <footer>
-        <a href="#">GitHub</a>
-    </footer>
+<div class="wrapper2">
+    <div class="sct brand"><h3>YOUR LOGO</h3></div>
+    <div class="sct login">
+            <form action = "{% url 'savethehawkers:login'%}" method = "POST">
+            {%csrf_token%}
+            <h3>Member Login</h3>
+            <input type="text" name="username" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <div class="forgot-remember">
+                    <label class="control control-checkbox">
+                            Remember me
+                                <input type="checkbox" />
+                            <div class="control_indicator"></div>
+                        </label>
+                <div class="forgot">
+                        <a href="#">Forgot Password?</a>
+                </div> 
+            </div>
+            <input type="submit" value="Submit">
+            
+            <p class="text-center">Sign up with<br><i class="fa fa-hand-o-down" aria-hidden="true"></i></p>
+            <div class="social-sign">
+                <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
+            </div>
+        </form>
+    </div> <!--end login-->
+</div> <!--end wrapper-->
     
 {% endblock %}

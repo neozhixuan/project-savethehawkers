@@ -1,0 +1,142 @@
+<header style = "background: maroon; height: 100px; display: flex;">
+    <div  style = "flex: 1; display: flex; flex-direction: column">
+      <h2 style = "color: white; padding: 0px 0px 20px 50px;">{{stalls.name}}</h2>
+      <div style = " margin: 0px 0px 0px 50px;">
+        <button>{{stalls.stalltype}}</button>
+        <button>{% if stalls.district %}{{stalls.district}}{%else%}Add a district{%endif%}</button>
+  
+        <span style = "color: white;">{{numberofcomments}} Review(s)</span>
+      </div>
+      
+    </div>
+    <button class = "righthand" style = "display: flex; margin: 20px 20px 20px 0px; padding: 20px 10px 20px 10px;" onclick="openFeedback()">Edit</button>
+    <button class = "righthand" style = "display: flex; margin: 20px 20px 20px 0px; padding: 20px 10px 20px 10px;" onclick = "openReport()">Report</button>
+    {%if user.is_authenticated%}
+    <form action = "{% url 'savethehawkers:bookmark' stalls.name%}" method = "POST" >
+      {%csrf_token%}
+      <input type = "hidden" name = "username" value = "{{user.username}}">
+      <button type = "submit" style = "display: flex; margin: 20px 20px 20px 0px; padding: 20px 10px 20px 10px;"> Bookmark</button>
+    </form>
+    {%endif%}
+    </div>
+  </header>
+  <div class = "centreblock" style = "display: flex; flex-direction: row; margin: 10px 10px 10px 10px">
+    <div class = "leftdescription" style = "flex: 1">
+      <div style = "display: flex; flex-direction: row;"> 
+        <div style = "flex: 1; margin-bottom: 30px;">
+          Opening Hours<br>
+          {%if stalls.hours%}
+          {{stalls.hours}}
+          {%else%} Help add information for this stall. {%endif%}
+        </div>
+        <div style = "flex: 1; margin-bottom: 30px;">
+          Contact Now<br>
+          {%if stalls.number == 0%}
+          {{stalls.number}}
+          {%else%} Help add information for this stall. {%endif%}
+        </div>
+        <div style = "flex: 1; margin-bottom: 30px;">
+          Find<br>
+          {{stalls.address}}
+        </div>
+      </div>
+      <hr>
+      <div>
+        "{{stalls.details}}"<br>
+        - Written by {{stalls.contributor}}<br>
+        
+    </div>
+      <br>
+      <br>
+      <div style = "width: 400px; background-color: bisque;">
+        <span style = "font-weight: bold; color: brown">Details</span><br>
+        Recommendation: {{stalls.reco}} <br>
+        Price Range: {{stalls.pricerange}}<br>
+        Number: {{stalls.number}} <br>
+        Is it on online delivery platforms: {%if stalls.fooddelivery%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
+        Do they have phone delivery: {%if stalls.phonedelivery%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
+        Do they need freelance deliverers: {%if stalls.freelance%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
+        Is it Halal: {{stalls.halal}} <br>
+        Stall type: {{stalls.stalltype}} <br>
+        Deals: {{stalls.deals}} <br>
+        Awards: {{stalls.awards}} <br>
+        Recent Orders: {%for item in items%}{{item}}{%empty%}None. Add a comment and help foodies know which item is the best!{%endfor%}
+        {%for rec in recommend%}{{rec}}{%endfor%}<br>
+      </div>
+      <hr>
+    </div>
+    <div class = "rightimage">
+      {%block stalls.image1%}{%if stalls.image1%}
+      <img style = "max-width: 100%; height: auto;" src = "{{stalls.image1}}" width = 500px >
+      {%else%}
+      <img style = "max-width: 100%; height: auto;" src="{% static 'project/hawk.png'%}" width = 500px >
+      {%endif%}
+      {%endblock%}
+      <div id = "mapid" style = "width: 500px;height:300px" ></div>
+      <script type="text/javascript">
+        var lat = "{{stalls.latitude}}";
+        var long = "{{stalls.longtitude}}";
+        var name = "{{stalls.name}}";
+        var address = "{{stalls.address}}";
+        var mymap = L.map('mapid').setView([lat, long], 13);
+  
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoibmVvemhpeHVhbiIsImEiOiJja3I2Z2UyeXoyc3U4MnZxdTIyM21sdjZlIn0.9-6d54z8bMHK5oaDpNWtyQ'
+        }).addTo(mymap);
+        
+        var marker = L.marker([lat, long]).addTo(mymap);
+        marker.bindPopup(`<b>${name}</b><br>${address}`).openPopup();
+  
+      </script>
+      </div>
+    </div>
+  <!-- Comments Form -->
+  <form style = "margin-left: 15px;" action = "{% url 'savethehawkers:comment' stalls.name %}" method = "POST" enctype="multipart/form-data">
+    {%csrf_token%}
+    <h2 class = "m-3"> Comments </h2>
+    <div class = "form-group m-3">
+      <textarea required type = "text" name = "description" class = "form-control" placeholder = "Comment" minlength="50" maxlength = "1000"></textarea>
+    </div>
+    <div class = "form-group m-3">
+      <input style = "outline: none; resize: none; overflow: auto;" cols = '30' rows = '6' required type = "text" name = "ordered" class = "form-control" placeholder = "What did you order?"></textarea>
+    </div>
+    Do you recommend this to others?<input type = "checkbox" name = "recommend" class = "form-control"><br>
+    
+    <div class = "form-group m-3">
+      Image:<input required type = "file" name = "foodimage" class = "form-control-file">
+    </div>
+    
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <div class="g-recaptcha" data-sitekey="6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW"></div>
+    <!-- 6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW -->
+    <!-- 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI -->
+    
+    <input type = "submit" value = "Submit" class = "m-3 btn btn-primary">
+    <input type = "hidden" value = "{{user.username}}" name = "contributor">
+  
+  </form>
+  {{message}}
+  
+  <!-- Comments Display -->
+  <div style = "margin-left: 15px">
+    <h2>Comments ({{numberofstalls}} comments)</h2>
+    {%for comment in comments%}
+    {%if forloop.revcounter <= 5%}
+    <p>{{comment.comment}}</p>
+    <p><img src="{{comment.image.url}}" width= "100" height= "100"></p>
+    <p>{{comment.ordered}}</p>
+    {%endif%}
+    {%empty%}
+    Be the first to promote the hawker's stall!
+    {%endfor%}
+  </div>
+    
+  <!-- Footer -->
+  <footer>
+    <a href="#">GitHub</a>
+  </footer>

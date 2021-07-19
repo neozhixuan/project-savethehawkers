@@ -23,6 +23,19 @@ window.onclick = function(event) {
   }
 }
 </script>
+
+
+
+
+<!-- Reports -->
+{%if report%}
+<button  class="accordion">This stall was reported {{count}} times - exercise judgement of the information.</button>
+<div class="panel">
+  {%for rep in report%}
+  <p>{{rep.user}} reported this for {{rep.reason}}.</p>
+  {%endfor%}
+</div>
+{%endif%}
 <script>
   var acc = document.getElementsByClassName("accordion");
   var i;
@@ -39,19 +52,6 @@ window.onclick = function(event) {
     });
   }
 </script>
-
-
-
-<!-- Reports -->
-{%if report%}
-<button class="accordion">This stall was reported {{count}} times - exercise judgement of the information.</button>
-<div class="panel">
-  {%for rep in report%}
-  <p>{{rep.user}} reported this for {{rep.reason}}.</p>
-  {%endfor%}
-</div>
-{%endif%}
-
 
 
 <!-- Edit Panel -->
@@ -106,147 +106,145 @@ window.onclick = function(event) {
 </div>
 
 <!-- Stall Information -->
-<header style = "background: maroon; height: 100px; display: flex;">
-  <div  style = "flex: 1; display: flex; flex-direction: column">
-    <h2 style = "color: white; padding: 0px 0px 20px 50px;">{{stalls.name}}</h2>
-    <div style = " margin: 0px 0px 0px 50px;">
-      <button>{{stalls.stalltype}}</button>
-      <button>{% if stalls.district %}{{stalls.district}}{%else%}Add a district{%endif%}</button>
+<div class="genel">
+<div class="icerik">
+  <div class="sol">
+    <!-- Buttons -->
+<div class="alacaklı" style = "list-style-type: none; margin-bottom: 10px">
 
-      <span style = "color: white;"> {{numberofcomments}} Review(s)</span>
-    </div>
-    
-  </div>
-  <button class = "righthand" style = "display: flex; margin: 20px 20px 20px 0px; padding: 20px 10px 20px 10px;" onclick="openFeedback()">Edit</button>
-  <button class = "righthand" style = "display: flex; margin: 20px 20px 20px 0px; padding: 20px 10px 20px 10px;" onclick = "openReport()">Report</button>
-  {%if user.is_authenticated%}
-  <form action = "{% url 'savethehawkers:bookmark' stalls.name%}" method = "POST" >
+  <form action = "{% url 'savethehawkers:bookmark' stalls.name%}" method = "POST" style = "display: inline-block;margin-right: 10px;">
     {%csrf_token%}
     <input type = "hidden" name = "username" value = "{{user.username}}">
-    <button type = "submit" style = "display: flex; margin: 20px 20px 20px 0px; padding: 20px 10px 20px 10px;"> Bookmark</button>
+    <button style = " padding:10px 15px;
+    width:auto;
+        background: rgb(249, 48, 66);
+    color:#fff;
+    transition:.5s all;
+    border-radius:10px;
+    cursor:pointer;" type = "submit">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bookmark-check-fill" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5zm8.854-9.646a.5.5 0 0 0-.708-.708L7.5 7.793 6.354 6.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+    </svg>Bookmark</button>
   </form>
-  {%endif%}
+  <button style = "margin-right: 10px; display: inline-block; padding:10px 15px;
+  width:auto;
+    background: rgb(249, 48, 66);
+  color:#fff;
+  transition:.5s all;
+  border-radius:10px;
+  cursor:pointer;" onclick = "openFeedback()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+</svg> Edit </button>
+  <button style = "margin-right: 10px; display: inline-block; padding:10px 15px;
+  width:auto;
+    background: rgb(249, 48, 66);
+  color:#fff;
+  transition:.5s all;
+  border-radius:10px;
+  cursor:pointer;" onclick = "openReport()"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flag-fill" viewBox="0 0 16 16">
+  <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001"/>
+</svg> Report </button>
   </div>
-</header>
-<div class = "centreblock" style = "display: flex; flex-direction: row; margin: 10px 10px 10px 10px">
-  <div class = "leftdescription" style = "flex: 1">
-    <div style = "display: flex; flex-direction: row;"> 
-      <div style = "flex: 1; margin-bottom: 30px;">
-        Opening Hours<br>
-        {%if stalls.hours%}
-        {{stalls.hours}}
-        {%else%} Help add information for this stall. {%endif%}
-      </div>
-      <div style = "flex: 1; margin-bottom: 30px;">
-        Contact Now<br>
-        {%if stalls.number == 0%}
-        {{stalls.number}}
-        {%else%} Help add information for this stall. {%endif%}
-      </div>
-      <div style = "flex: 1; margin-bottom: 30px;">
-        Find<br>
-        {{stalls.address}}
-      </div>
+  <!---->
+    <h1 class="text-3xl xl:text-4xl font-black md:leading-none xl:leading-tight">{{stalls.name}}</h1>
+    <h3>{{stalls.stalltype}} // {% if stalls.district %}{{stalls.district}} Region {%else%}Add a district{%endif%}</h3>
+    <h3 style = "color: black">Opening Hours: {%if stalls.hours is not None and stalls.hours != "-"%}
+      {{stalls.hours}}
+      {%else%} Help add information for this stall. {%endif%}</h3>
+    <h5 >"{{stalls.details}}"<br>
+      - Written by {{stalls.contributor}}<br></h5>
+    <div class="para"></div>
+    <div class="alacaklı"></div>
+    <!-- Comments Form -->
+    <form style = "background-color: beige" action = "{% url 'savethehawkers:comment' stalls.name %}" method = "POST" enctype="multipart/form-data">
+      <ul class="flex-outer">
+        <li>
+          <label for="first-name">What did you order?</label>
+          <input type="text" name = "ordered" id="first-name" placeholder="E.g Bak Kut Teh">
+        </li>
+        <li>
+          <p>Do you recommend it to others?</p>
+          <ul class="flex-inner">
+            <li>
+              <input name = "recommend" type="checkbox" id="twenty-to-twentynine">
+              <label for="twenty-to-twentynine" >Yes/No</label>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <label for="message">Message</label>
+          <textarea id="message" rows="6" rows="10" placeholder="Enter your message here"></textarea>
+        </li>
+        
+        <li>
+          <label for="imagee" id="imagee-label">Image *</label><br>
+          <em>This is a required field</em>
+          <input required id = "imagee" required type = "file" name = "foodimage" class = "form-control-file">
+        </li>
+        <li>
+          <script src='https://www.google.com/recaptcha/api.js'></script>
+          <div class="g-recaptcha" data-sitekey="6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW"></div>
+          <!-- 6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW -->
+          <!-- 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI -->
+        </li>
+        <input type = "hidden" value = "{{user.username}}" name = "contributor">
+        <li>
+          <button type="submit">Submit</button>
+        </li>
+      </ul>
+    </form>
+    
+  
+  
+  <!-- Comments Display -->
+  <div style = "margin-left: 15px;">
+    <h2>Comments ({{numberofstalls}} comments)</h2>
+    {%for comment in comments%}
+    {%if forloop.revcounter <= 5%}
+    <p>{{comment.comment}}</p>
+    <p><img src="{{comment.image.url}}" width= "100" height= "100"></p>
+    <p>{{comment.ordered}}</p>
+    {%endif%}
+    {%empty%}
+    Be the first to promote the hawker's stall!
+    {%endfor%}
+  </div>
+  </div>
+
+  <!-- Image -->
+  <div class="sag">
+     <div class="onz">
+    <div class="tool-tip">Recommendation: {{stalls.reco}}</div>
     </div>
-    <hr>
-    <div>
-      "{{stalls.details}}"<br>
-      - Written by {{stalls.contributor}}<br>
-      
-  </div>
-    <br>
-    <br>
-    <div style = "width: 400px; background-color: bisque;">
-      <span style = "font-weight: bold; color: brown">Details</span><br>
-      Recommendation: {{stalls.reco}} <br>
-      Price Range: {{stalls.pricerange}}<br>
-      Number: {{stalls.number}} <br>
-      Is it on online delivery platforms: {%if stalls.fooddelivery%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
-      Do they have phone delivery: {%if stalls.phonedelivery%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
-      Do they need freelance deliverers: {%if stalls.freelance%}<p style = "color: green">Yes</p>{%else%}<p style = "color: red">No</p>{%endif%} <br>
-      Is it Halal: {{stalls.halal}} <br>
-      Stall type: {{stalls.stalltype}} <br>
-      Deals: {{stalls.deals}} <br>
-      Awards: {{stalls.awards}} <br>
-      Recent Orders: {%for item in items%}{{item}}{%empty%}None. Add a comment and help foodies know which item is the best!{%endfor%}
-      {%for rec in recommend%}{{rec}}{%endfor%}<br>
-    </div>
-    <hr>
-  </div>
-  <div class = "rightimage">
     {%block stalls.image1%}{%if stalls.image1%}
-    <img style = "max-width: 100%; height: auto;" src = "{{stalls.image1}}" width = 500px >
+    <img src = "{{stalls.image1}}">
     {%else%}
-    <img style = "max-width: 100%; height: auto;" src="{% static 'project/hawk.png'%}" width = 500px >
+    <img src="{% static 'project/hawk.png'%}">
     {%endif%}
     {%endblock%}
-    <div id = "mapid" style = "width: 500px;height:300px" ></div>
-    <script type="text/javascript">
-      var lat = "{{stalls.latitude}}";
-      var long = "{{stalls.longtitude}}";
-      var name = "{{stalls.name}}";
-      var address = "{{stalls.address}}";
-      var mymap = L.map('mapid').setView([lat, long], 13);
-
-      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 18,
-      id: 'mapbox/streets-v11',
-      tileSize: 512,
-      zoomOffset: -1,
-      accessToken: 'pk.eyJ1IjoibmVvemhpeHVhbiIsImEiOiJja3I2Z2UyeXoyc3U4MnZxdTIyM21sdjZlIn0.9-6d54z8bMHK5oaDpNWtyQ'
-      }).addTo(mymap);
-      
-      var marker = L.marker([lat, long]).addTo(mymap);
-      marker.bindPopup(`<b>${name}</b><br>${address}`).openPopup();
-
-    </script>
-    </div>
-  </div>
-<!-- Comments Form -->
-<form style = "margin-left: 15px;" action = "{% url 'savethehawkers:comment' stalls.name %}" method = "POST" enctype="multipart/form-data">
-  {%csrf_token%}
-  <h2 class = "m-3"> Comments </h2>
-  <div class = "form-group m-3">
-    <textarea required type = "text" name = "description" class = "form-control" placeholder = "Comment" minlength="50" maxlength = "1000"></textarea>
-  </div>
-  <div class = "form-group m-3">
-    <input style = "outline: none; resize: none; overflow: auto;" cols = '30' rows = '6' required type = "text" name = "ordered" class = "form-control" placeholder = "What did you order?"></textarea>
-  </div>
-  Do you recommend this to others?<input type = "checkbox" name = "recommend" class = "form-control"><br>
+    <div id = "mapid" style = "width: 100%;height:300px;" ></div>
+      <script type="text/javascript">
+        var lat = "{{stalls.latitude}}";
+        var long = "{{stalls.longtitude}}";
+        var name = "{{stalls.name}}";
+        var address = "{{stalls.address}}";
+        var mymap = L.map('mapid').setView([lat, long], 13);
   
-  <div class = "form-group m-3">
-    Image:<input required type = "file" name = "foodimage" class = "form-control-file">
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoibmVvemhpeHVhbiIsImEiOiJja3I2Z2UyeXoyc3U4MnZxdTIyM21sdjZlIn0.9-6d54z8bMHK5oaDpNWtyQ'
+        }).addTo(mymap);
+        
+        var marker = L.marker([lat, long]).addTo(mymap);
+        marker.bindPopup(`<b>${name}</b><br>${address}`).openPopup();
+  
+      </script>
   </div>
-  
-  <script src='https://www.google.com/recaptcha/api.js'></script>
-  <div class="g-recaptcha" data-sitekey="6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW"></div>
-  <!-- 6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW -->
-  <!-- 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI -->
-  
-  <input type = "submit" value = "Submit" class = "m-3 btn btn-primary">
-  <input type = "hidden" value = "{{user.username}}" name = "contributor">
-
-</form>
-{{message}}
-
-<!-- Comments Display -->
-<div style = "margin-left: 15px">
-  <h2>Comments ({{numberofstalls}} comments)</h2>
-  {%for comment in comments%}
-  {%if forloop.revcounter <= 5%}
-  <p>{{comment.comment}}</p>
-  <p><img src="{{comment.image.url}}" width= "100" height= "100"></p>
-  <p>{{comment.ordered}}</p>
-  {%endif%}
-  {%empty%}
-  Be the first to promote the hawker's stall!
-  {%endfor%}
 </div>
-  
-<!-- Footer -->
-<footer>
-  <a href="#">GitHub</a>
-</footer>
-
+</div>
 {% endblock %}
