@@ -110,7 +110,7 @@ window.onclick = function(event) {
 <div class="icerik">
   <div class="sol">
     <!-- Buttons -->
-<div class="alacaklı" style = "list-style-type: none; margin-bottom: 10px">
+<div class="alacaklı first" style = "list-style-type: none; margin-bottom: 10px">
 
   <form action = "{% url 'savethehawkers:bookmark' stalls.name%}" method = "POST" style = "display: inline-block;margin-right: 10px;">
     {%csrf_token%}
@@ -145,19 +145,87 @@ window.onclick = function(event) {
   cursor:pointer;" onclick = "openReport()"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flag-fill" viewBox="0 0 16 16">
   <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001"/>
 </svg> Report </button>
+<button style = "margin-right: 10px; display: inline-block; padding:10px 15px;
+  width:auto;
+    background: rgb(249, 48, 66);
+  color:#fff;
+  transition:.5s all;
+  border-radius:10px;
+  cursor:pointer;"> Organise Group Buy (WIP) </button>
   </div>
   <!---->
     <h1 class="text-3xl xl:text-4xl font-black md:leading-none xl:leading-tight">{{stalls.name}}</h1>
-    <h3>{{stalls.stalltype}} // {% if stalls.district %}{{stalls.district}} Region {%else%}Add a district{%endif%}</h3>
-    <h3 style = "color: black">Opening Hours: {%if stalls.hours is not None and stalls.hours != "-"%}
-      {{stalls.hours}}
-      {%else%} Help add information for this stall. {%endif%}</h3>
-    <h5 >"{{stalls.details}}"<br>
-      - Written by {{stalls.contributor}}<br></h5>
+    <h1 class="text-l xl:text-xl font-black md:leading-none xl:leading-tight" style = "color:rgb(66, 65, 65)">{{stalls.address}}</h1>
+    <h3 >{{stalls.stalltype}} // {% if stalls.district %}{{stalls.district}} Region {%else%}Add a district{%endif%}</h3>
+    <h5 class="text-m xl:text-l font-black md:leading-none xl:leading-tight">"{{stalls.details}}"<br></h5>
+      <span class="text-s xl:text-m font-black md:leading-none xl:leading-tight">- Written by {{stalls.contributor}}</span>
+      <div class = "stallinformation bg-gray-200 second" style = "display: flex; padding: 15px; border-radius: 10px; box-shadow: 5px 5px #b3b2b2; margin-bottom: 20px; margin-top: 10px">
+        <div style = "flex: 1; display: flex; flex-direction: column; ">
+          <div style = "font-weight: bold;">Opening Hours</div>
+          <div style = "color: rgb(66, 65, 65)">{%if stalls.hours != "None" and stalls.hours != "-"%}
+            {{stalls.hours}}{%else%} Help add information for this stall. {%endif%}</div>
+        </div>
+        <div style = "flex: 1; display: flex; flex-direction: column">
+          <div style = "font-weight: bold;">Contact Number</div>
+          <div style = "color: rgb(66, 65, 65)">{%if stalls.number != None and stalls.number != 0%}
+            {{stalls.number}}{%else%} Help add information for this stall. {%endif%}</div>
+        </div>
+        <div style = "flex: 1; display: flex; flex-direction: column">
+          <div style = "font-weight: bold;">Recommendation</div>
+          <div style = "color: rgb(66, 65, 65)">{%if stalls.reco is not None and stalls.reco != "-"%}
+            {{stalls.reco}}{%else%} Help add information for this stall. {%endif%}</div>
+        </div>
+      </div>
+      <div class = "stallinformation bg-indigo-100 third" style = "display: flex; padding: 15px; border-radius: 10px; box-shadow: 5px 5px #b3b2b2; margin-bottom: 20px;">
+        <div style = "flex: 1; display: flex; flex-direction: column">
+          <div style = "font-weight: bold;">Is on food delivery services?</div>
+          <div style = "color: rgb(66, 65, 65)">{%if stalls.fooddelivery is True%}
+            Yes{%else%} No {%endif%}</div>
+        </div>
+        <div style = "flex: 1; display: flex; flex-direction: column">
+          <div style = "font-weight: bold;">Can call for delivery?</div>
+          <div style = "color: rgb(66, 65, 65)">{%if stalls.phonedelivery is True%}
+            Yes{%else%} No {%endif%}</div>
+        </div>
+        <div style = "flex: 1; display: flex; flex-direction: column">
+          <div style = "font-weight: bold;">Needs freelance deliverers?</div>
+          <div style = "color: rgb(66, 65, 65)">{%if stalls.freelance is True%}
+            Yes{%else%} No {%endif%}</div>
+        </div>
+      </div>
+      <div class = "stallinformation bg-gray-200 fourth" style = "display: flex; padding: 15px; border-radius: 10px; box-shadow: 5px 5px #b3b2b2; margin-bottom: 20px;">
+        <div style = "flex: 1; display: flex; flex-direction: column">
+          <div style = "font-weight: bold;">Price Range</div>
+          <div style = "color: rgb(66, 65, 65)">{% if stalls.pricerange != None and stalls.pricerange != "None" %}
+            {{stalls.pricerange}}{%else%} Help add information for this stall. {%endif%}</div>
+        </div>
+
+      </div>
+      <div class = "stallinformation bg-indigo-100 fourth" style = "display: flex; padding: 15px; border-radius: 10px; box-shadow: 5px 5px #b3b2b2; margin-bottom: 20px;">
+        <div style = "flex: 1; display: flex; flex-direction: column">
+          <div style = "font-weight: bold;">Deals</div>
+          <div style = "color: rgb(66, 65, 65)">{%if stalls.deals is not None and stalls.deals != "None"%}
+            {{stalls.deals}}{%else%} Help add information for this stall. {%endif%}</div>
+        </div>
+
+      </div>
+      <div class = "stallinformation bg-gray-200 fourth" style = "display: flex; padding: 15px; border-radius: 10px; box-shadow: 5px 5px #b3b2b2; margin-bottom: 20px;">
+        <div style = "flex: 1; display: flex; flex-direction: column">
+          <div style = "font-weight: bold;">Awards</div>
+          <div style = "color: rgb(66, 65, 65)">{%if stalls.awards is not None and stalls.awards != "None"%}
+            {{stalls.awards}}{%else%} Help add information for this stall. {%endif%}</div>
+        </div>
+
+      </div>
+      
     <div class="para"></div>
     <div class="alacaklı"></div>
     <!-- Comments Form -->
-    <form style = "background-color: beige" action = "{% url 'savethehawkers:comment' stalls.name %}" method = "POST" enctype="multipart/form-data">
+    <h1 class="revealreview load-hidden text-2xl xl:text-3xl font-black md:leading-none xl:leading-tight">Comments</h1>
+    <button class="accordion">Add a comment...</button>
+    <div class="panel">
+      <form style = "background-color: beige" action = "{% url 'savethehawkers:comment' stalls.name %}" method = "POST" enctype="multipart/form-data">
+      {%csrf_token%}
       <ul class="flex-outer">
         <li>
           <label for="first-name">What did you order?</label>
@@ -193,23 +261,79 @@ window.onclick = function(event) {
           <button type="submit">Submit</button>
         </li>
       </ul>
-    </form>
-    
-  
-  
+      </form>
+    </div>
+    <script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+      
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+          } else {
+            panel.style.display = "block";
+          }
+        });
+      }
+    </script>
   <!-- Comments Display -->
-  <div style = "margin-left: 15px;">
-    <h2>Comments ({{numberofstalls}} comments)</h2>
-    {%for comment in comments%}
-    {%if forloop.revcounter <= 5%}
-    <p>{{comment.comment}}</p>
-    <p><img src="{{comment.image.url}}" width= "100" height= "100"></p>
-    <p>{{comment.ordered}}</p>
-    {%endif%}
-    {%empty%}
-    Be the first to promote the hawker's stall!
-    {%endfor%}
-  </div>
+
+            <div class="bg-white shadow-xl rounded-lg overflow-hidden md:flex">
+                
+           
+                {%for comment in comments%}
+              
+                  <div class = "bg-cover bg-bottom h-56 md:h-auto md:w-56">
+                    {%if forloop.revcounter <= 5%}
+                  <img src = "{{comment.image.url}}" style = "height: 300px; width: 100px; object-fit: cover;">
+                  </div>
+                <div>
+                    <div class="p-4 md:p-5">
+                        <p class="font-bold text-xl md:text-2xl">{{comment.ordered}}</p>
+                        <p class="text-gray-700 md:text-lg">{{comment.comment}}</p>
+                    </div>
+                    <div class="p-4 md:p-5 bg-gray-100">
+                        <div class="sm:flex sm:justify-between sm:items-center">
+                            <div>
+                                <div class="text-lg text-gray-700"><span class="text-gray-900 font-bold">$XX</span> per serving</div>
+                                <div class="flex items-center">
+                                    
+                                </div>
+                            </div>
+                            <button class="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-lg rounded-lg shadow-md">Like</button>
+                        </div>
+                        <div class="mt-3 text-gray-600 text-sm md:text-base">The review was given by {{comment.contributor}}</div>
+                    </div>
+                </div>
+                {%endif%}
+                {%empty%}
+                <div class="bg-cover bg-bottom h-56 md:h-auto md:w-56" style="opacity: 0.6; background-image: url(https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/156880.jpg)">
+                  
+                </div>
+                <div>
+                    <div class="p-4 md:p-5">
+                        <p class="font-bold text-xl md:text-2xl">Leave a review.</p>
+                        <p class="text-gray-700 md:text-lg">Let people know how the food is!</p>
+                    </div>
+                    <div class="p-4 md:p-5 bg-gray-100">
+                        <div class="sm:flex sm:justify-between sm:items-center">
+                            <div>
+                                <div class="text-lg text-gray-700"><span class="text-gray-900 font-bold">$XX</span> per serving</div>
+                                <div class="flex items-center">
+                                    
+                                </div>
+                            </div>
+                            <button class="mt-3 sm:mt-0 py-2 px-5 md:py-3 md:px-6 bg-indigo-700 hover:bg-indigo-600 font-bold text-white md:text-lg rounded-lg shadow-md">Like</button>
+                        </div>
+                        <div class="mt-3 text-gray-600 text-sm md:text-base">The review was given by XXXXX</div>
+                    </div>
+                </div>
+                {%endfor%}
+
+              </div>
   </div>
 
   <!-- Image -->
@@ -246,5 +370,14 @@ window.onclick = function(event) {
       </script>
   </div>
 </div>
-</div>
+
+
+<script>
+  window.sr = ScrollReveal({ reset: false, viewFactor: 0.5});
+  sr.reveal('.first', {duration: 500});
+  sr.reveal('.second', {delay: 500, duration: 500});
+  sr.reveal('.third', {delay: 750, duration: 500});
+  sr.reveal('.fourth', {delay: 1000, duration: 500});
+  ScrollReveal().reveal('.revealreview');
+</script>
 {% endblock %}
