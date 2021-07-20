@@ -15422,3 +15422,22 @@ Traceback (most recent call last):
   File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\telegram\utils\request.py", line 279, in _request_wrapper
     raise BadRequest(message)
 telegram.error.BadRequest: Can't parse entities: unsupported start tag "br" at byte offset 51
+2021-07-20 18:13:43,098 [WARNING] django.request: Not Found: /history
+2021-07-20 18:15:07,118 [ERROR] django.request: Internal Server Error: /Huan Xi Canton Cuisine/info
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 783, in info
+    numberofcomments = len(stall.comments.all())
+AttributeError: 'NoneType' object has no attribute 'comments'
+2021-07-20 19:46:44,988 [ERROR] django.request: Internal Server Error: /groupbuy
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 939, in groupbuy
+    latorigin = float(parse_json['results'][0]['LATITUDE'])
+IndexError: list index out of range

@@ -104,7 +104,7 @@
               <div class="text-sm">
                 {%for hist in history%}
                 {%if forloop.counter == 1%}
-                Recommended by:{{hist.contributor}}
+                <span style = "font-weight: bolder;">Recommended by:</span> {{hist.contributor}}<hr>
                 {{hist.address}}
                 {%endif%}{%empty%}
                 {%endfor%}
@@ -130,7 +130,7 @@
               <div class="text-sm">
                 {%for hist in history%}
                 {%if forloop.counter == 2%}
-                Recommended by:{{hist.contributor}}
+                <span style = "font-weight: bolder;">Recommended by:</span> {{hist.contributor}}<hr>
                 {{hist.address}}
                 {%endif%}{%empty%}
                 {%endfor%}
@@ -156,7 +156,7 @@
               <div class="text-sm">
                 {%for hist in history%}
                 {%if forloop.counter == 3%}
-                Recommended by:{{hist.contributor}}
+                <span style = "font-weight: bolder;">Recommended by:</span> {{hist.contributor}}<hr>
                 {{hist.address}}
                 {%if hist.address == None%}
                 Be the first to help a hawker.
