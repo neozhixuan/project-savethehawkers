@@ -924,6 +924,40 @@ def report(request, name):
         hawk.report.add(f)
         return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
     
+def groupbuy(request):
+    if request.method == "POST":
+        destination = request.POST['postaldestination']
+        areacollect = request.POST['area']
+        contactinfo = request.POST['contact']
+        additionalinfo = request.POST['text']
+        postal = request.POST['postal']
+        stallname = request.POST['stallname']
+        address = f"https://developers.onemap.sg/commonapi/search?searchVal={postal}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+        response = requests.get(address)
+        data = response.text
+        parse_json = json.loads(data)
+        latorigin = float(parse_json['results'][0]['LATITUDE'])
+        longorigin = float(parse_json['results'][0]['LONGITUDE'])
+        info = f"https://developers.onemap.sg/commonapi/search?searchVal={destination}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
+        response = requests.get(info)
+        data = response.text
+        parse_json = json.loads(data)
+        lat2 = float(parse_json['results'][0]['LATITUDE'])
+        long2 = float(parse_json['results'][0]['LONGITUDE'])
+
+        f = Groupbuy(destination = destination, areacollect = areacollect, contactinfo = contactinfo, additionalinfo = additionalinfo, latorigin = latorigin, longorigin = longorigin, lat2=lat2, long2=long2)
+        f.save()
+        telegram_settings = settings.TELEGRAM
+        bot = telegram.Bot(token=telegram_settings['bot_token'])
+        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"<b> A user has started a group buy! </b>  <a>From:</a> {stallname} <a>Details:</a> {additionalinfo} <a>Collect at:</a>{areacollect} <a> Contact Method: </a> {contactinfo} @savethehawkers", parse_mode=telegram.ParseMode.HTML)        
+        return render(request, "project/groupbuy.html", {
+            "groupbuys": Groupbuy.objects.all()
+        })
+    return render(request, "project/groupbuy.html", {
+            "groupbuys": Groupbuy.objects.all()
+        })
+
+
 def userprofile(request, name):
     hawk = HawkerStall.objects.filter(contributor = name)
     report = Report.objects.filter(user = name)
@@ -1001,7 +1035,7 @@ def creations(request):
             longtitude = float(parse_json['results'][0]['LONGITUDE'])
             address3 = parse_json['results'][0]['ADDRESS']
 
-            h = HawkerStall(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor, image1 = image1)
+            h = HawkerStall(postalcode= postalcode, latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor, image1 = image1)
             i = History(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor)
             h.save()
             i.save()

@@ -20,6 +20,6 @@ urlpatterns = [
     path("<str:name>/profile", views.userprofile, name="users"),
     path("community", views.community, name="community"),
     path("bookmark/<str:name>", views.bookmark, name="bookmark"),
-
+    path("groupbuy", views.groupbuy, name="groupbuy"),
     path("name", views.name, name="name"),
 ]

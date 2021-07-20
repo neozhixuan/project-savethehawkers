@@ -106,3 +106,16 @@ class Point(models.Model):
     points = models.IntegerField(blank = True, null = True)
     def __str__ (self):
         return f"{self.user}: {self.points} points"
+
+class Groupbuy(models.Model):
+    destination = models.IntegerField(blank = True, null = True)
+    areacollect = models.CharField(blank = True, null=True, max_length = 100)
+    contactinfo = models.CharField(blank = True, null=True, max_length = 100)
+    additionalinfo = models.CharField(blank = True, null=True, max_length = 10000)
+    latorigin = models.FloatField(null = True, blank = True)
+    longorigin = models.FloatField(null = True, blank = True)
+    lat2 = models.FloatField(null = True, blank = True)
+    long2 = models.FloatField(null = True, blank = True)
+
+    def __str__ (self):
+        return f"{self.additionalinfo}"

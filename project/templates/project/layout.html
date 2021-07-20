@@ -57,19 +57,39 @@
                   hover:text-gray-600 md:mr-8 text-lg md:text-sm font-bold tracking-wide my-4 md:my-0">
                     Home
                   </a>
-                  <a href="{% url 'savethehawkers:login' %}" class="transition-all duration-100 ease-in-out pb-1 border-b-2 text-indigo-500 border-transparent hover:border-indigo-300
-                  hover:text-indigo-600 md:mr-8 text-lg md:text-sm font-bold tracking-wide my-4 md:my-0">
-                    Login
-                  </a>
                   <a href="{% url 'savethehawkers:community' %}" class="transition-all duration-100 ease-in-out pb-1 border-b-2 text-indigo-500 border-transparent hover:border-indigo-300
                   hover:text-indigo-600 md:mr-8 text-lg md:text-sm font-bold tracking-wide my-4 md:my-0">
                     Community
                   </a>
-                  <button class="border border-transparent rounded font-semibold tracking-wide text-lg md:text-sm px-5 py-3 md:py-2
+                  <a href="{% url 'savethehawkers:groupbuy' %}" class="transition-all duration-100 ease-in-out pb-1 border-b-2 text-indigo-500 border-transparent hover:border-indigo-300
+                  hover:text-indigo-600 md:mr-8 text-lg md:text-sm font-bold tracking-wide my-4 md:my-0">
+                    Group Buys
+                  </a>
+                  <a href="{% url 'savethehawkers:creations' %}" class="transition-all duration-100 ease-in-out pb-1 border-b-2 text-indigo-500 border-transparent hover:border-indigo-300
+                  hover:text-indigo-600 md:mr-8 text-lg md:text-sm font-bold tracking-wide my-4 md:my-0">
+                    Create Entry
+                  </a>
+                  {% if user.is_authenticated %}
+                  <a href="{% url 'savethehawkers:logout' %}" class="transition-all duration-100 ease-in-out pb-1 border-b-2 text-indigo-500 border-transparent hover:border-indigo-300
+                  hover:text-indigo-600 md:mr-8 text-lg md:text-sm font-bold tracking-wide my-4 md:my-0">
+                    Logout
+                  </a>
+                  <a href="{% url 'savethehawkers:users' user.username %}" style = "color: maroon; font-weight: bolder;" class="transition-all duration-100 ease-in-out pb-1 border-b-2 text-indigo-500 border-transparent hover:border-indigo-300
+                  hover:text-indigo-600 md:mr-8 text-lg md:text-sm font-bold tracking-wide my-4 md:my-0">
+                    {{user.username}}
+                  </a>
+                  {% else %}
+                  <a href="{% url 'savethehawkers:login' %}" class="transition-all duration-100 ease-in-out pb-1 border-b-2 text-indigo-500 border-transparent hover:border-indigo-300
+                  hover:text-indigo-600 md:mr-8 text-lg md:text-sm font-bold tracking-wide my-4 md:my-0">
+                    Login/Sign Up
+                  </a>
+                  <!-- <button class="border border-transparent rounded font-semibold tracking-wide text-lg md:text-sm px-5 py-3 md:py-2
                   focus:outline-none focus:shadow-outline bg-indigo-600 text-gray-100 hover:bg-indigo-800
                   hover:text-gray-200 transition-all duration-300 ease-in-out my-4 md:my-0 w-full md:w-auto">
                     Sign Up
-                  </button>
+                  </button> -->
+                  {% endif %}
+                  
                 
                 </div>
               </div>

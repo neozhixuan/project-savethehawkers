@@ -86,6 +86,8 @@ window.onclick = function(event) {
   </div>
 </div>
 
+
+
 <!-- Report Panel -->
 <div id = "report" style="display:none;">
   <div class = "report-content">
@@ -145,13 +147,7 @@ window.onclick = function(event) {
   cursor:pointer;" onclick = "openReport()"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flag-fill" viewBox="0 0 16 16">
   <path d="M14.778.085A.5.5 0 0 1 15 .5V8a.5.5 0 0 1-.314.464L14.5 8l.186.464-.003.001-.006.003-.023.009a12.435 12.435 0 0 1-.397.15c-.264.095-.631.223-1.047.35-.816.252-1.879.523-2.71.523-.847 0-1.548-.28-2.158-.525l-.028-.01C7.68 8.71 7.14 8.5 6.5 8.5c-.7 0-1.638.23-2.437.477A19.626 19.626 0 0 0 3 9.342V15.5a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 1 0v.282c.226-.079.496-.17.79-.26C4.606.272 5.67 0 6.5 0c.84 0 1.524.277 2.121.519l.043.018C9.286.788 9.828 1 10.5 1c.7 0 1.638-.23 2.437-.477a19.587 19.587 0 0 0 1.349-.476l.019-.007.004-.002h.001"/>
 </svg> Report </button>
-<button style = "margin-right: 10px; display: inline-block; padding:10px 15px;
-  width:auto;
-    background: rgb(249, 48, 66);
-  color:#fff;
-  transition:.5s all;
-  border-radius:10px;
-  cursor:pointer;"> Organise Group Buy (WIP) </button>
+
   </div>
   <!---->
     <h1 class="text-3xl xl:text-4xl font-black md:leading-none xl:leading-tight">{{stalls.name}}</h1>
@@ -217,7 +213,57 @@ window.onclick = function(event) {
         </div>
 
       </div>
-      
+      <button class = "accordion2" style = "margin-right: 10px; display: inline-block; padding:10px 15px;
+  width:auto;
+    background: rgb(249, 48, 66);
+  color:#fff;
+  transition:.5s all;
+  border-radius:10px;
+  cursor:pointer;" > Organise Group Buy (WIP)</button>
+  <div class="panel">
+    <form style = "background-color: beige" action = "{% url 'savethehawkers:groupbuy' %}" method = "POST">
+      {%csrf_token%}
+      <ul class="flex-outer">
+        <li>
+          <label for="first-name">Postal Code of Destination</label>
+          <input type="number" name = "postaldestination" id="first-name" placeholder="e.g 791441 (this is where your group buy will be delivered to)">
+        </li>
+        <li>
+          <label for="a-name">Where can you collect the group buy?</label>
+          <input type="text" name = "area" id="a-name" placeholder="e.g Void Deck">
+        </li>
+        <li>
+          <label for="b-name">How will people contact you?</label>
+          <input type="text" name = "contact" id="b-name" placeholder="e.g Telegram contact @XXXXXX">
+        </li>
+        <li>
+          <label for="message">Additional Information</label>
+          <textarea id="message" rows="6" rows="10" name = "text" placeholder="Enter your message here"></textarea>
+        </li>
+        <input type = "hidden" value = "{{stalls.postalcode}}" name = "postal">
+        <input type = "hidden" value = "{{stalls.name}}" name = "stallname">
+        <li>
+          <input type="submit">
+        </li>
+      </ul>
+      </form>
+  </div>
+  <script>
+    var acc = document.getElementsByClassName("accordion2");
+    var i;
+    
+    for (i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+          panel.style.display = "none";
+        } else {
+          panel.style.display = "block";
+        }
+      });
+    }
+  </script>
     <div class="para"></div>
     <div class="alacaklı"></div>
     <!-- Comments Form -->
@@ -242,7 +288,7 @@ window.onclick = function(event) {
         </li>
         <li>
           <label for="message">Message</label>
-          <textarea id="message" rows="6" rows="10" placeholder="Enter your message here"></textarea>
+          <textarea id="message" rows="6" rows="10" name = "description" placeholder="Enter your message here"></textarea>
         </li>
         
         <li>
@@ -375,9 +421,9 @@ window.onclick = function(event) {
 <script>
   window.sr = ScrollReveal({ reset: false, viewFactor: 0.5});
   sr.reveal('.first', {duration: 500});
-  sr.reveal('.second', {delay: 500, duration: 500});
-  sr.reveal('.third', {delay: 750, duration: 500});
-  sr.reveal('.fourth', {delay: 1000, duration: 500});
+  sr.reveal('.second', { duration: 500});
+  sr.reveal('.third', { duration: 500});
+  sr.reveal('.fourth', {duration: 500});
   ScrollReveal().reveal('.revealreview');
 </script>
 {% endblock %}
