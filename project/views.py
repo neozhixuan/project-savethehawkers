@@ -30,7 +30,7 @@ from random import randrange
 # NoReverseMatch: path does not exist - name you put is diff from "name" in urls
 class CreateForm(forms.Form):
     postalcode = forms.IntegerField(label = "postalcode")
-    image1 = forms.URLField(label = "image1", max_length = 200)
+    image1 = forms.CharField(label = "image1", max_length = 200)
     name = forms.CharField(label = "name", max_length = 200)
     hours = forms.CharField(label = "hours", max_length = 300)
     reco = forms.CharField(label = "reco", max_length = 100)
