@@ -32,7 +32,7 @@
                   </script>
             </h1>
             <p class="mt-4 xl:mt-2">
-              Search through Singapore's largest database of disadvantaged hawker stalls, seen in hawker.help.
+              Search through Singapore's largest database of disadvantaged hawker stalls, seen in <a href = "https://hawker.help/">hawker.help.</a>
             </p>
           </div>
 
@@ -58,6 +58,25 @@
               </div>
               <input type="text" name = "search" class="w-full border bg-gray-100 px-4 py-4 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12" placeholder="     Recommendations - Wanton Mee">
             
+            </div>
+            <div class="relative mt-4">
+              <div class="pl-4 pr-4 h-full absolute bottom-0 left-0 flex items-center">
+                <svg class="text-gray-700 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" /></svg>
+              </div>
+              <select name="stalltype" class="w-full border bg-gray-100 px-4 py-4 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12">
+                <option disabled selected value="None"> Stall Type </option>
+                <option value="Chinese">Chinese</option>
+                <option value="Malay">Malay</option>
+                <option value="Indian">Indian</option>
+                <option value="Western">Western</option>
+                <option value="Dessert">Dessert</option>
+                <option value="Drinks">Drinks</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Others">Others</option>
+            </select>            
             </div>
             <div>
               <button type = "submit" class="transition-all duration-300 mt-5 w-full border border-transparent rounded font-semibold tracking-wide text-sm px-5 py-4 focus:outline-none focus:shadow-outline bg-indigo-500 text-gray-100 hover:bg-indigo-600 hover:text-gray-200">Search Stalls</button>
@@ -370,7 +389,7 @@
           </div>
         </div>
       </div>
-      <div class="px-5 sm:px-10 md:px-20 lg:px-10 xl:px-20 py-8 bg-indigo-100" id="blog-posts">
+      <!-- <div class="px-5 sm:px-10 md:px-20 lg:px-10 xl:px-20 py-8 bg-indigo-100" id="blog-posts">
         <div class="max-w-screen-xl mx-auto">
           <div class="xl:flex">
             <div>
@@ -443,7 +462,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
 
     </main>
@@ -453,15 +472,15 @@
         <div class="">
           <a class="mx-4 text-sm font-bold text-indigo-600 hover:text-indigo-800" href="#">Home</a>
           <a class="mx-4 text-sm font-bold text-indigo-600 hover:text-indigo-800" href="#">About Us</a>
-          <a class="mx-4 text-sm font-bold text-indigo-600 hover:text-indigo-800" href="#">Careers</a>
+          <a class="mx-4 text-sm font-bold text-indigo-600 hover:text-indigo-800" href="#">GitHub</a>
           <!-- <a href="#">About Us</a> -->
           <!-- <a href="#">Careers</a> -->
         </div>
         <div class="mt-4">
-          <img src="https://storage.googleapis.com/devitary-image-host.appspot.com/15846435184459982716-LogoMakr_7POjrN.png" class="w-32">
+          <img src="{% static 'project/logo.png' %}" class="w-32">
         </div>
         <div class="mt-4 text-xs font-bold text-gray-500">
-          &copy; 2020 TEMPLATANA | MIT License 
+          &copy; SaveTheHawkers   
         </div>
       </div>
     </footer>

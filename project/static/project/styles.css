@@ -1303,7 +1303,7 @@ input:hover {
     outline: none;
 }
 
-input[type="text"],
+.usernameee,
 input[type="email"],
 input[type="number"],
 input[type="password"]

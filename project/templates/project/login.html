@@ -8,7 +8,7 @@
             <form action = "{% url 'savethehawkers:login'%}" method = "POST">
             {%csrf_token%}
             <h3>Member Login</h3>
-            <input type="text" name="username" placeholder="Username">
+            <input type="text" name="username" placeholder="Username" class = "usernameee">
             <input type="password" name="password" placeholder="Password">
             <div class="forgot-remember">
                     <label class="control control-checkbox">

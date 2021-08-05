@@ -15441,3 +15441,5 @@ Traceback (most recent call last):
   File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 939, in groupbuy
     latorigin = float(parse_json['results'][0]['LATITUDE'])
 IndexError: list index out of range
+2021-07-25 17:45:11,409 [WARNING] django.request: Not Found: /favicon.ico
+2021-08-05 19:32:28,321 [WARNING] django.request: Not Found: /favicon.ico
