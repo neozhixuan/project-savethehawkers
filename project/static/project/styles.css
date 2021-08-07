@@ -154,7 +154,7 @@ input[type=submit]:hover {
   min-height: 100vh;
   max-width: 100vw;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(2, 1fr);
 
 }
 
@@ -1305,7 +1305,6 @@ input:hover {
 
 .usernameee,
 input[type="email"],
-input[type="number"],
 input[type="password"]
  {
     display: block;
@@ -1527,6 +1526,36 @@ form > h3 {
 }
 
 
+/* class area */
+.card-content {
+  display: table;
+  padding:15px;
+}
+.card-info {
+  padding: 20px;
+  background-color: #FFC9B5;
+  display: table-cell;
+  line-height: 1.363em;
+  vertical-align: middle;
+  word-break: break-all;
+}
+
+.card-icon {
+  font-size: 3.2em;
+  color: white;
+  text-align: center;
+  width: 20%;
+  background-color: #EB5E55 !important;
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px; 
+}
+
+.text-area {
+  color: #EB5E55;
+  font-size: 1em;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
 
 
 

@@ -6,11 +6,7 @@
       <img src="{% static 'project/avatar.png' %}" width="200" alt="Profile Image">
     </div>
     <div class="profile-nav-info">
-      {%if user.is_authenticated%}
-      <h3 class="user-name">{{user.username}}</h3>
-      {%else%}
       <h3 class="user-name">{{name}}</h3>
-      {%endif%}
       <div class="address">
         <p id="state" class="state">XX,</p>
         <span id="country" class="country">Singapore.</span>

@@ -1,8 +1,63 @@
 {% extends "project/layout.html" %}
 
 {% block body %}
-{%for groupbuy in groupbuys%}
-Destination: {{groupbuy.destination}} // Area: {{groupbuy.areacollect}} // Contact: {{groupbuy.contactinfo}} // Info: {{groupbuy.additionalinfo}} <br>
-<iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{groupbuy.latorigin}}!2d{{groupbuy.longorigin}}!4m3!3m2!1d{{groupbuy.lat2}}!2d{{groupbuy.long2}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe>
-{%endfor%}
+<h1 style = "text-align: center;">Neighbourhood Group Buys</h1>
+<p style = "text-align: center;"><b>powered by</b> the community </p>
+<div class="card-content">
+  <div class="card-icon card-info">
+    {%for groupbuy in groupbuys%}
+    {%if forloop.counter == 1%}
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{groupbuy.latorigin}}!2d{{groupbuy.longorigin}}!4m3!3m2!1d{{groupbuy.lat2}}!2d{{groupbuy.long2}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg"  style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe>
+    {%endif%}
+    {%endfor%}
+  </div>
+  <div class="text-area card-info">
+    {%for groupbuy in groupbuys%}
+    {%if forloop.counter == 1%}
+
+    Destination: {{groupbuy.destination}} <br> Area: {{groupbuy.areacollect}} <br> Contact: {{groupbuy.contactinfo}} <br> Info: {{groupbuy.additionalinfo}} <br>
+    {%endif%}
+    {%endfor%}
+  </div>
+</div>
+
+<div class="card-content">
+    <div class="card-icon card-info">
+      {%for groupbuy in groupbuys%}
+      {%if forloop.counter == 2%}
+  
+      <iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{groupbuy.latorigin}}!2d{{groupbuy.longorigin}}!4m3!3m2!1d{{groupbuy.lat2}}!2d{{groupbuy.long2}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg"  style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe>
+      {%endif%}
+      {%endfor%}
+    </div>
+    <div class="text-area card-info">
+      {%for groupbuy in groupbuys%}
+      {%if forloop.counter == 2%}
+  
+      Destination: {{groupbuy.destination}} <br> Area: {{groupbuy.areacollect}} <br> Contact: {{groupbuy.contactinfo}} <br> Info: {{groupbuy.additionalinfo}} <br>
+      {%endif%}
+      {%endfor%}
+    </div>
+  </div>
+
+  <div class="card-content">
+    <div class="card-icon card-info">
+      {%for groupbuy in groupbuys%}
+      {%if forloop.counter == 3%}
+  
+      <iframe src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{groupbuy.latorigin}}!2d{{groupbuy.longorigin}}!4m3!3m2!1d{{groupbuy.lat2}}!2d{{groupbuy.long2}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg"  style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe>
+      {%endif%}
+      {%endfor%}
+    </div>
+    <div class="text-area card-info">
+      {%for groupbuy in groupbuys%}
+      {%if forloop.counter == 3%}
+  
+      Destination: {{groupbuy.destination}} <br> Area: {{groupbuy.areacollect}} <br> Contact: {{groupbuy.contactinfo}} <br> Info: {{groupbuy.additionalinfo}} <br>
+      {%endif%}
+      {%endfor%}
+    </div>
+  </div>
+
 {% endblock %}

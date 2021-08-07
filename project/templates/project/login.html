@@ -1,9 +1,9 @@
 {% extends "project/layout.html" %}
-
+{%load static%}
 {% block body %}
     
 <div class="wrapper2">
-    <div class="sct brand"><h3>YOUR LOGO</h3></div>
+    <div class="sct brand"><img src="{% static 'project/logo.png' %}" class="w-48" style = "width: auto; height: 70px;"></div>
     <div class="sct login">
             <form action = "{% url 'savethehawkers:login'%}" method = "POST">
             {%csrf_token%}
@@ -22,12 +22,13 @@
             </div>
             <input type="submit" value="Submit">
             
-            <p class="text-center">Sign up with<br><i class="fa fa-hand-o-down" aria-hidden="true"></i></p>
-            <div class="social-sign">
+            <p class="text-center">Sign up here<br><i class="fa fa-hand-o-down" aria-hidden="true"></i></p>
+            <a href = "{%url 'savethehawkers:register'%}" style = 'text-align: center;'>Register</a>
+            <!-- <div class="social-sign">
                 <a href="#"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
                 <a href="#"><i class="fa fa-linkedin-square" aria-hidden="true"></i></a>
-            </div>
+            </div> -->
         </form>
     </div> <!--end login-->
 </div> <!--end wrapper-->

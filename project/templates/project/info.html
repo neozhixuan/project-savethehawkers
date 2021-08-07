@@ -55,7 +55,7 @@ window.onclick = function(event) {
 
 
 <!-- Edit Panel -->
-<div id = "modal" style="display:none;">
+<div id = "modal" style="display:none; z-index: 10000;">
   <div id = "modal-content">
     <button onclick="closeFeedback()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
     <form action = "{% url 'savethehawkers:editing' stalls.name %}" method = "POST" style = "text-align: left;" enctype="multipart/form-data">
@@ -89,8 +89,8 @@ window.onclick = function(event) {
 
 
 <!-- Report Panel -->
-<div id = "report" style="display:none;">
-  <div class = "report-content">
+<div id = "report" style="display:none; z-index: 10000;">
+  <div id = "report-content">
     <button onclick="closeReport()" class="w3-bar-item w3-button w3-small" style = "margin: 0; padding: 0;">Close &times;</button>
     <form action = "{%url 'savethehawkers:report' stalls.name%}" method = "POST" style = "text-align: left;">
       {%csrf_token%}

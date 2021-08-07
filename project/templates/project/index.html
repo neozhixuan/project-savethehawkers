@@ -112,7 +112,7 @@
               </div>
               <div class="mt-4 font-extrabold text-2xl tracking-wide">
                 {%for hist in history%}
-                {%if forloop.counter == 1%}
+                {%if forloop.revcounter == 1%}
                 <a href = "{% url 'savethehawkers:info' hist.name %}">{{hist.name}}</a>
 
                 {%endif%}
@@ -122,7 +122,7 @@
               </div>
               <div class="text-sm">
                 {%for hist in history%}
-                {%if forloop.counter == 1%}
+                {%if forloop.revcounter == 1%}
                 <span style = "font-weight: bolder;">Recommended by:</span> {{hist.contributor}}<hr>
                 {{hist.address}}
                 {%endif%}{%empty%}
@@ -138,7 +138,7 @@
               </div>
               <div class="mt-4 font-extrabold text-2xl tracking-wide">
                 {%for hist in history%}
-                {%if forloop.counter == 2%}
+                {%if forloop.revcounter == 2%}
                 <a href = "{% url 'savethehawkers:info' hist.name %}">{{hist.name}}</a>
 
                 {%endif%}
@@ -148,7 +148,7 @@
               </div>
               <div class="text-sm">
                 {%for hist in history%}
-                {%if forloop.counter == 2%}
+                {%if forloop.revcounter == 2%}
                 <span style = "font-weight: bolder;">Recommended by:</span> {{hist.contributor}}<hr>
                 {{hist.address}}
                 {%endif%}{%empty%}
@@ -164,7 +164,7 @@
               </div>
               <div class="mt-4 font-extrabold text-2xl tracking-wide">
                 {%for hist in history%}
-                {%if forloop.counter == 3%}
+                {%if forloop.revcounter == 3%}
                 <a href = "{% url 'savethehawkers:info' hist.name %}">{{hist.name}}</a>
 
                 {%endif%}
@@ -174,7 +174,7 @@
               </div>
               <div class="text-sm">
                 {%for hist in history%}
-                {%if forloop.counter == 3%}
+                {%if forloop.revcounter == 3%}
                 <span style = "font-weight: bolder;">Recommended by:</span> {{hist.contributor}}<hr>
                 {{hist.address}}
                 {%if hist.address == None%}
@@ -197,7 +197,7 @@
               <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
                 <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
                   {%for comment in comments%}
-                  {%if forloop.counter == 1%}
+                  {%if forloop.revcounter == 1%}
                   <div class="text-lg font-bold text-gray-700 leading-tight"><a href = "{%url 'savethehawkers:info' comment.stallname %}"> {{comment.stallname}}</a></div>
                   <div>
                     <div class="flex justify-between mt-6 text-xs font-bold">
@@ -242,7 +242,7 @@
               <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
                 <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
                   {%for comment in comments%}
-                  {%if forloop.counter == 2%}
+                  {%if forloop.revcounter == 2%}
                   <div class="text-lg font-bold text-gray-700 leading-tight"><a href = "{%url 'savethehawkers:info' comment.stallname %}"> {{comment.stallname}}</a></div>
                   <div>
                     <div class="flex justify-between mt-6 text-xs font-bold">
@@ -287,7 +287,7 @@
               <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
                 <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
                   {%for comment in comments%}
-                  {%if forloop.counter == 3%}
+                  {%if forloop.revcounter == 3%}
                   <div class="text-lg font-bold text-gray-700 leading-tight"><a href = "{%url 'savethehawkers:info' comment.stallname %}"> {{comment.stallname}}</a></div>
                   <div>
                     <div class="flex justify-between mt-6 text-xs font-bold">
@@ -340,10 +340,10 @@
               <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
                 <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
                     <div class="mt-12 flex items-center">
-                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80");'></div>
+                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("data:image/png;base64,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");'></div>
                       <div class="ml-5">
                         <div class="font-bold text-gray-800">
-                          Sasha Sloan
+                          XX
                         </div>
                         <div class="text-xs text-gray-500">3000 points</div>
                       </div>
@@ -357,10 +357,10 @@
               <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
                 <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
                     <div class="mt-12 flex items-center">
-                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80");'></div>
+                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("data:image/png;base64,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");'></div>
                       <div class="ml-5">
                         <div class="font-bold text-gray-800">
-                          Sasha Sloan
+                          XX
                         </div>
                         <div class="text-xs text-gray-500">3000 points</div>
                       </div>
@@ -374,10 +374,10 @@
               <div class="flex-1 flex w-full max-w-sm pt-16 lg:pt-0">
                 <div class="w-full p-8 sm:p-12 lg:px-8 xl:px-12 shadow-lg rounded bg-gray-100 relative">
                     <div class="mt-12 flex items-center">
-                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=256&q=80");'></div>
+                      <div class="w-16 h-16 bg-cover rounded-full border-2 border-gray-700" alt="" style='background-image: url("data:image/png;base64,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");'></div>
                       <div class="ml-5">
                         <div class="font-bold text-gray-800">
-                          Sasha Sloan
+                          XX
                         </div>
                         <div class="text-xs text-gray-500">3000 points</div>
                       </div>
@@ -487,8 +487,8 @@
   </div>
 {%endif%}
 {%if not no%}
-<div>
-  <form action="{% url 'savethehawkers:index' %}" method = "POST">
+<div style = "padding-left: 100px; padding-right: 100px; padding-top: 20px; padding-bottom: 20px;" class = "bg-indigo-100">
+  <form action="{% url 'savethehawkers:index' %}" method = "POST" >
     {%csrf_token%}
     <div class="relative mt-4 md:mt-0 lg:mt-4">
       <div class="pl-4 pr-4 h-full absolute bottom-0 left-0 flex items-center">
@@ -510,6 +510,25 @@
       <input type="text" name = "search" class="w-full border bg-gray-100 px-4 py-4 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12" placeholder="Recommendations - Wanton Mee">
     
     </div>
+    <div class="relative mt-4">
+      <div class="pl-4 pr-4 h-full absolute bottom-0 left-0 flex items-center">
+        <svg class="text-gray-700 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" /></svg>
+      </div>
+      <select name="stalltype" class="w-full border bg-gray-100 px-4 py-4 text-sm tracking-wide focus:outline-none focus:shadow-outline rounded pl-12">
+        <option disabled selected value="None"> Stall Type </option>
+        <option value="Chinese">Chinese</option>
+        <option value="Malay">Malay</option>
+        <option value="Indian">Indian</option>
+        <option value="Western">Western</option>
+        <option value="Dessert">Dessert</option>
+        <option value="Drinks">Drinks</option>
+        <option value="Snacks">Snacks</option>
+        <option value="Vegetarian">Vegetarian</option>
+        <option value="Others">Others</option>
+    </select>            
+    </div>
     <div>
       <button type = "submit" class="transition-all duration-300 mt-5 w-full border border-transparent rounded font-semibold tracking-wide text-sm px-5 py-4 focus:outline-none focus:shadow-outline bg-indigo-500 text-gray-100 hover:bg-indigo-600 hover:text-gray-200">Search Stalls</button>
     </div>
@@ -517,10 +536,11 @@
  
 </div>
 
-<div class="filter-results" >
+<div style = "display: flex;" class = "bg-gray-200 listingz">
+<div class="filter-results" style = "flex: 1;">
   <div class="filter-results-listing">
       {% for name in names %} {% if forloop.counter == 1 %}
-      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}" style = "font-style:italic; font-weight: bolder; color: darkslategray">{{name}}</a></h3>
       {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
       <div class="listing-map">
@@ -528,29 +548,29 @@
       <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
       {%endif%}{%empty%}No results.{%endfor%}</div>
 
-      <p>Distance: 
+      <p><span style = "color: midnightblue; font-weight: bold;">Distance:</span> 
       {% for number in numbers %} {% if forloop.counter == 1 %}
       {{number}} metres away.
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-address">
       {% for address in addresses %}{% if forloop.counter == 1 %}
-      Address: {{address}}
+      <span style = "color: midnightblue; font-weight: bold;">Address:</span> {{address}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-opening-hours">
       {% for hour in hours %} {% if forloop.counter == 1 %}
-      Opening Hours:{{hour}}
+      <span style = "color: midnightblue; font-weight: bold;">Opening Hours:</span>{{hour}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-recommendation">
       {% for rec in recos %} {% if forloop.counter == 1 %}
-      Recommendation:{{rec}}
+      <span style = "color: midnightblue; font-weight: bold;">Recommendation:</span>{{rec}}
       {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
   </div>
   <div class="filter-results-listing">
       {% for name in names %} {% if forloop.counter == 2 %}
-      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}" style = "font-style:italic; font-weight: bolder; color: darkslategray">{{name}}</a></h3>
       {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
       <div class="listing-map">
@@ -558,29 +578,29 @@
       <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
       {%endif%}{%empty%}No results.{%endfor%}</div>
 
-      <p>Distance: 
+      <p><span style = "color: midnightblue; font-weight: bold;">Distance:</span> 
       {% for number in numbers %} {% if forloop.counter == 2 %}
       {{number}} metres away.
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-address">
       {% for address in addresses %}{% if forloop.counter == 2 %}
-      Address: {{address}}
+      <span style = "color: midnightblue; font-weight: bold;">Address:</span> {{address}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-opening-hours">
       {% for hour in hours %} {% if forloop.counter == 2 %}
-      Opening Hours:{{hour}}
+      <span style = "color: midnightblue; font-weight: bold;">Opening Hours:</span>{{hour}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-recommendation">
       {% for rec in recos %} {% if forloop.counter == 2 %}
-      Recommendation:{{rec}}
+      <span style = "color: midnightblue; font-weight: bold;">Recommendation:</span>{{rec}}
       {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
   </div>
   <div class="filter-results-listing">
       {% for name in names %} {% if forloop.counter == 3 %}
-      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}" style = "font-style:italic; font-weight: bolder; color: darkslategray">{{name}}</a></h3>
       {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
       <div class="listing-map">
@@ -588,29 +608,29 @@
       <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
       {%endif%}{%empty%}No results.{%endfor%}</div>
 
-      <p>Distance: 
+      <p><span style = "color: midnightblue; font-weight: bold;">Distance:</span> 
       {% for number in numbers %} {% if forloop.counter == 3 %}
       {{number}} metres away.
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-address">
       {% for address in addresses %}{% if forloop.counter == 3 %}
-      Address: {{address}}
+      <span style = "color: midnightblue; font-weight: bold;">Address:</span> {{address}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-opening-hours">
       {% for hour in hours %} {% if forloop.counter == 3 %}
-      Opening Hours:{{hour}}
+      <span style = "color: midnightblue; font-weight: bold;">Opening Hours:</span>{{hour}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-recommendation">
       {% for rec in recos %} {% if forloop.counter == 3 %}
-      Recommendation:{{rec}}
+      <span style = "color: midnightblue; font-weight: bold;">Recommendation:</span>{{rec}}
       {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
   </div>
   <div class="filter-results-listing">
       {% for name in names %} {% if forloop.counter == 4 %}
-      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}" style = "font-style:italic; font-weight: bolder; color: darkslategray">{{name}}</a></h3>
       {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
       <div class="listing-map">
@@ -618,29 +638,29 @@
       <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
       {%endif%}{%empty%}No results.{%endfor%}</div>
 
-      <p>Distance: 
+      <p><span style = "color: midnightblue; font-weight: bold;">Distance:</span> 
       {% for number in numbers %} {% if forloop.counter == 4 %}
       {{number}} metres away.
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-address">
       {% for address in addresses %}{% if forloop.counter == 4 %}
-      Address: {{address}}
+      <span style = "color: midnightblue; font-weight: bold;">Address:</span> {{address}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-opening-hours">
       {% for hour in hours %} {% if forloop.counter == 4 %}
-      Opening Hours:{{hour}}
+      <span style = "color: midnightblue; font-weight: bold;">Opening Hours:</span>{{hour}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-recommendation">
       {% for rec in recos %} {% if forloop.counter == 4 %}
-      Recommendation:{{rec}}
+      <span style = "color: midnightblue; font-weight: bold;">Recommendation:</span>{{rec}}
       {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
   </div>
   <div class="filter-results-listing">
       {% for name in names %} {% if forloop.counter == 5 %}
-      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}" style = "font-style:italic; font-weight: bolder; color: darkslategray">{{name}}</a></h3>
       {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
       <div class="listing-map">
@@ -648,29 +668,29 @@
       <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
       {%endif%}{%empty%}No results.{%endfor%}</div>
 
-      <p>Distance: 
+      <p><span style = "color: midnightblue; font-weight: bold;">Distance:</span>  
       {% for number in numbers %} {% if forloop.counter == 5 %}
       {{number}} metres away.
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-address">
       {% for address in addresses %}{% if forloop.counter == 5 %}
-      Address: {{address}}
+      <span style = "color: midnightblue; font-weight: bold;">Address:</span> {{address}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-opening-hours">
       {% for hour in hours %} {% if forloop.counter == 5 %}
-      Opening Hours:{{hour}}
+      <span style = "color: midnightblue; font-weight: bold;">Opening Hours:</span>{{hour}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-recommendation">
       {% for rec in recos %} {% if forloop.counter == 5 %}
-      Recommendation:{{rec}}
+      <span style = "color: midnightblue; font-weight: bold;">Recommendation:</span>{{rec}}
       {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
   </div>
   <div class="filter-results-listing">
       {% for name in names %} {% if forloop.counter == 6 %}
-      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}">{{name}}</a></h3>
+      <h3 class="listing-stall"><a href = "{%url 'savethehawkers:info' name%}" style = "font-style:italic; font-weight: bolder; color: darkslategray">{{name}}</a></h3>
       {%endif%}{%empty%}<th>No results.</th>{%endfor%}
 
       <div class="listing-map">
@@ -678,30 +698,32 @@
       <td><iframe style="position: relative; height: 100%; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m20!1m8!1m3!1d3988.6465974837542!2d103.90673351475411!3d1.388622348987243!3m2!1i1024!2i768!4f13.1!4m9!3e6!4m3!3m2!1d{{lat}}!2d{{long}}!4m3!3m2!1d{{latitude}}!2d{{longtitude}}!5e0!3m2!1sen!2ssg!4v1622359275905!5m2!1sen!2ssg" width="240" height="180" style="border:0;" allowfullscreen="" loading="lazy" id = "map"></iframe></td>
       {%endif%}{%empty%}No results.{%endfor%}</div>
 
-      <p>Distance: 
+      <p><span style = "color: midnightblue; font-weight: bold;">Distance:</span>  
       {% for number in numbers %} {% if forloop.counter == 6 %}
       {{number}} metres away.
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-address">
       {% for address in addresses %}{% if forloop.counter == 6 %}
-      Address: {{address}}
+      <span style = "color: midnightblue; font-weight: bold;">Address:</span>  {{address}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-opening-hours">
       {% for hour in hours %} {% if forloop.counter == 6 %}
-      Opening Hours:{{hour}}
+      <span style = "color: midnightblue; font-weight: bold;">Opening Hours:</span>{{hour}}
       {%endif%}{%empty%}No results.{%endfor%}</p>
 
       <p class="listing-recommendation">
       {% for rec in recos %} {% if forloop.counter == 6 %}
-      Recommendation:{{rec}}
+      <span style = "color: midnightblue; font-weight: bold;">Recommendation:</span>{{rec}}
       {%endif%}{%empty%}<td>No results.</td>{%endfor%}</p>
   </div>
-  <div class="filter-results-listing">
-      <dt>Leaflet.JS</dt>
-      <div id = "mapid" style = "width: 250px;height:300px" ></div>
-  </div>
+</div>
+
+
+<div id = "mapid2" style = "flex: 1; width: 50vw; margin: 20px; border-radius: 10px;">
+</div>
+
 </div>
 
 
@@ -709,7 +731,7 @@
   var latorigin = "{{latorigin}}";
   var longorigin = "{{longorigin}}";
   var postalcode = "{{postalcode}}";
-  var mymap = L.map('mapid').setView([latorigin, longorigin], 13);
+  var mymap = L.map('mapid2').setView([latorigin, longorigin], 13);
   var latitudes = JSON.parse("{{latitudes}}");
   var longtitudes = JSON.parse("{{longtitudes}}");
   var names = {{namesjson|safe}};
@@ -723,7 +745,16 @@
   accessToken: 'pk.eyJ1IjoibmVvemhpeHVhbiIsImEiOiJja3I2Z2UyeXoyc3U4MnZxdTIyM21sdjZlIn0.9-6d54z8bMHK5oaDpNWtyQ'
   }).addTo(mymap);
   
-  var marker = L.marker([latorigin, longorigin]).addTo(mymap);
+  var greenIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+  var marker = L.marker([latorigin, longorigin], {icon:greenIcon})
+  marker.addTo(mymap);
   marker.bindPopup(`<b>Your location.</b><br>${postalcode}`).openPopup();
 
   var shop1 = L.marker([latitudes[0], longtitudes[0]]).addTo(mymap);
