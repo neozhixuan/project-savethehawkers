@@ -828,7 +828,7 @@ def comment(request, name):
         if result['success']:
             f.save()
             message = 'success'
-            if request.user.is_authenticated():
+            if request.user.is_authenticated:
                 point = Point.objects.get(user = contributor)
                 point.points = point.points + 5
                 point.save()
