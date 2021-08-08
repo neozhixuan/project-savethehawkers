@@ -301,7 +301,11 @@ window.onclick = function(event) {
           <!-- 6Lf9VYgbAAAAAEO-UUSnaFYLN9Sa_tJaVYkjDTrW -->
           <!-- 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI -->
         </li>
+        {%if user.is_authenticated %}
         <input type = "hidden" value = "{{user.username}}" name = "contributor">
+        {%else%}
+        <input type = "hidden" value = "Anonymous" name = "contributor">
+        {%endif%}
         <br>
         <li>
           <button type="submit" style = "background-color:lightgreen; border-radius: 5px; padding: 5px">Submit</button>
