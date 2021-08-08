@@ -221,7 +221,7 @@ window.onclick = function(event) {
   border-radius:10px;
   cursor:pointer;" > Organise Group Buy (WIP)</button>
   <div class="panel">
-    <form style = "background-color: beige" action = "{% url 'savethehawkers:groupbuy' %}" method = "POST">
+    <form style = "background-color: lightgray" action = "{% url 'savethehawkers:groupbuy' %}" method = "POST">
       {%csrf_token%}
       <ul class="flex-outer">
         <li>
@@ -270,29 +270,28 @@ window.onclick = function(event) {
     <h1 class="revealreview load-hidden text-2xl xl:text-3xl font-black md:leading-none xl:leading-tight">Comments</h1>
     <button class="accordion">Add a comment...</button>
     <div class="panel">
-      <form style = "background-color: beige" action = "{% url 'savethehawkers:comment' stalls.name %}" method = "POST" enctype="multipart/form-data">
+      <form style = "background-color: lightgray" action = "{% url 'savethehawkers:comment' stalls.name %}" method = "POST" enctype="multipart/form-data">
       {%csrf_token%}
       <ul class="flex-outer">
         <li>
-          <label for="first-name">What did you order?</label>
+          <label for="first-name"><b>What did you order?</b></label>
           <input type="text" name = "ordered" id="first-name" placeholder="E.g Bak Kut Teh">
         </li>
         <li>
-          <p>Do you recommend it to others?</p>
+          <p><b>Do you recommend it to others?</b></p>
           <ul class="flex-inner">
             <li>
               <input name = "recommend" type="checkbox" id="twenty-to-twentynine">
-              <label for="twenty-to-twentynine" >Yes/No</label>
             </li>
           </ul>
         </li>
         <li>
-          <label for="message">Message</label>
+          <label for="message"><b>Message</b></label>
           <textarea id="message" rows="6" rows="10" name = "description" placeholder="Enter your message here"></textarea>
         </li>
         
         <li>
-          <label for="imagee" id="imagee-label">Image *</label><br>
+          <label for="imagee" id="imagee-label"><b>Image *</b></label><br>
           <em>This is a required field</em>
           <input required id = "imagee" required type = "file" name = "foodimage" class = "form-control-file">
         </li>
@@ -303,8 +302,9 @@ window.onclick = function(event) {
           <!-- 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI -->
         </li>
         <input type = "hidden" value = "{{user.username}}" name = "contributor">
+        <br>
         <li>
-          <button type="submit">Submit</button>
+          <button type="submit" style = "background-color:lightgreen; border-radius: 5px; padding: 5px">Submit</button>
         </li>
       </ul>
       </form>

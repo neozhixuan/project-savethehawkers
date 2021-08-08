@@ -137,7 +137,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 TELEGRAM = {
-    'bot_token': '1703032999:AAEodHK8JgdY877bZ5RkleAMKxb9TccC628',
+    'bot_token': '1703032999:AAFiZLLaJ31JnyVsxWH9qOz8rcrSU5f2Fck',
     'channel_name': 'SaveTheHawkers',
 }
 

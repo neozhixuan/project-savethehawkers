@@ -58,7 +58,7 @@ def distance(origin, destination):
 
 def index(request):
     if request.method == "POST":
-        history = History.objects.filter(id__in=[1,2,3,4,5,6])
+        history = History.objects.all()
         pagenumber = 1
         postalcode = request.POST["postalcode"]
         number = randrange(1,368)
@@ -228,7 +228,7 @@ def index(request):
         })
     
     comments = Comments.objects.all()
-    history = History.objects.filter(id__in=[1,2,3,4,5,6])
+    history = History.objects.all()
     number = randrange(1,368)
     haw = HawkerStall.objects.filter(pk=number).first()
     hawk = HawkerStall.objects.all()
@@ -944,12 +944,14 @@ def groupbuy(request):
         parse_json = json.loads(data)
         lat2 = float(parse_json['results'][0]['LATITUDE'])
         long2 = float(parse_json['results'][0]['LONGITUDE'])
-
-        f = Groupbuy(destination = destination, areacollect = areacollect, contactinfo = contactinfo, additionalinfo = additionalinfo, latorigin = latorigin, longorigin = longorigin, lat2=lat2, long2=long2)
+        blkno = parse_json['results'][0]['BLK_NO']
+        address = parse_json['results'][0]['ROAD_NAME']
+        website = "https://www.instagram.com/savethehawkers"
+        f = Groupbuy(stallname = stallname, destination = destination, areacollect = areacollect, contactinfo = contactinfo, additionalinfo = additionalinfo, latorigin = latorigin, longorigin = longorigin, lat2=lat2, long2=long2)
         f.save()
         telegram_settings = settings.TELEGRAM
         bot = telegram.Bot(token=telegram_settings['bot_token'])
-        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"<b> A user has started a group buy! </b>  <a>From:</a> {stallname} <a>Details:</a> {additionalinfo} <a>Collect at:</a>{areacollect} <a> Contact Method: </a> {contactinfo} @savethehawkers", parse_mode=telegram.ParseMode.HTML)        
+        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"<b>A user has started a group buy!</b>\n\n<b>From:   </b><a href = 'http://savethehawkers.herokuapp.com/{stallname}/info'>{stallname}</a>\n<b>To:   </b><i>{blkno} {address}</i>\n<b>Details:   </b><i>{additionalinfo}</i> \n<b>Collect at:   </b><i>{areacollect}</i> \n<b>Contact Method:   </b> <i>{contactinfo}</i>\n\n<a href = 'https://www.instagram.com/savethehawkers'>savethehawkers</a>", parse_mode=telegram.ParseMode.HTML)        
         return render(request, "project/groupbuy.html", {
             "groupbuys": Groupbuy.objects.all()
         })
@@ -1013,6 +1015,11 @@ def creations(request):
             details = form.cleaned_data["details"]
             contributor = request.POST["contributor"]
             stalltype = request.POST["stalltype"]
+            number = request.POST["number"]
+            if request.POST.get('halal'):
+                halal = True
+            else:
+                halal = False
             try:
                 address2 = f"https://developers.onemap.sg/commonapi/search?searchVal={postalcode}&returnGeom=Y&getAddrDetails=Y&pageNum=1"
                 response = requests.get(address2)
@@ -1036,7 +1043,7 @@ def creations(request):
             address3 = parse_json['results'][0]['ADDRESS']
 
             h = HawkerStall(postalcode= postalcode, latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor, image1 = image1)
-            i = History(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor)
+            i = History(halal = halal, number = number, latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor)
             h.save()
             i.save()
             return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))

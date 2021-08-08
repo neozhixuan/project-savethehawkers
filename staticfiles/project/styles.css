@@ -266,7 +266,7 @@ footer {
 }
 
 .panel {
-  padding: 0 18px;
+  padding: 0 ;
   display: none;
   background-color: #ccc;
   overflow: hidden;
@@ -1195,9 +1195,6 @@ font-size:30px;
     {
       display: none;
     }
-    .listingz{
-      flex-wrap: wrap;
-    }
 }
 .sepetim
 {
@@ -1308,7 +1305,6 @@ input:hover {
 
 .usernameee,
 input[type="email"],
-input[type="number"],
 input[type="password"]
  {
     display: block;

@@ -26,6 +26,8 @@
     </select>
     Hours: {{form3.hours}}
     Detail: {{form3.details}}
+    Number: <input type = "number" name = "number">
+    Halal: <input type = "checkbox" name = "halal">
     Contributor: You :)
     {%if user.is_authenticated%}
     <input type = "hidden" name = "contributor" value = "{{ user.username }}">

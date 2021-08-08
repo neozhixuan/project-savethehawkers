@@ -16,7 +16,7 @@
     {%for groupbuy in groupbuys%}
     {%if forloop.counter == 1%}
 
-    Destination: {{groupbuy.destination}} <br> Area: {{groupbuy.areacollect}} <br> Contact: {{groupbuy.contactinfo}} <br> Info: {{groupbuy.additionalinfo}} <br>
+    From: <a href = "{%url 'savethehawkers:info' groupbuy.stallname%}">{{groupbuy.stallname}}</a> <br> To:  {{groupbuy.destination}} <br> Area: {{groupbuy.areacollect}} <br> Contact: {{groupbuy.contactinfo}} <br> Info: {{groupbuy.additionalinfo}} <br>
     {%endif%}
     {%endfor%}
   </div>
@@ -35,7 +35,7 @@
       {%for groupbuy in groupbuys%}
       {%if forloop.counter == 2%}
   
-      Destination: {{groupbuy.destination}} <br> Area: {{groupbuy.areacollect}} <br> Contact: {{groupbuy.contactinfo}} <br> Info: {{groupbuy.additionalinfo}} <br>
+      From: <a href = "{%url 'savethehawkers:info' groupbuy.stallname%}">{{groupbuy.stallname}}</a> <br> To: {{groupbuy.destination}} <br> Area: {{groupbuy.areacollect}} <br> Contact: {{groupbuy.contactinfo}} <br> Info: {{groupbuy.additionalinfo}} <br>
       {%endif%}
       {%endfor%}
     </div>
@@ -54,7 +54,7 @@
       {%for groupbuy in groupbuys%}
       {%if forloop.counter == 3%}
   
-      Destination: {{groupbuy.destination}} <br> Area: {{groupbuy.areacollect}} <br> Contact: {{groupbuy.contactinfo}} <br> Info: {{groupbuy.additionalinfo}} <br>
+      From: <a href = "{%url 'savethehawkers:info' groupbuy.stallname%}">{{groupbuy.stallname}}</a> <br> To:  {{groupbuy.destination}} <br> Area: {{groupbuy.areacollect}} <br> Contact: {{groupbuy.contactinfo}} <br> Info: {{groupbuy.additionalinfo}} <br>
       {%endif%}
       {%endfor%}
     </div>

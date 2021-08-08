@@ -108,6 +108,7 @@ class Point(models.Model):
         return f"{self.user}: {self.points} points"
 
 class Groupbuy(models.Model):
+    stallname = areacollect = models.CharField(blank = True, null=True, max_length = 100)
     destination = models.IntegerField(blank = True, null = True)
     areacollect = models.CharField(blank = True, null=True, max_length = 100)
     contactinfo = models.CharField(blank = True, null=True, max_length = 100)
