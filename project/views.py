@@ -951,7 +951,8 @@ def groupbuy(request):
         f.save()
         telegram_settings = settings.TELEGRAM
         bot = telegram.Bot(token=telegram_settings['bot_token'])
-        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"<b>A user has started a group buy!</b>\n\n<b>From:   </b><a href = 'http://savethehawkers.herokuapp.com/{stallname}/info'>{stallname}</a>\n<b>To:   </b><i>{blkno} {address}</i>\n<b>Details:   </b><i>{additionalinfo}</i> \n<b>Collect at:   </b><i>{areacollect}</i> \n<b>Contact Method:   </b> <i>{contactinfo}</i>\n\n<a href = 'https://www.instagram.com/savethehawkers'>savethehawkers</a>", parse_mode=telegram.ParseMode.HTML)        
+        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"<b>A user has started a group buy!</b>\n\n<b>From:   </b><a href = 'http://savethehawkers.herokuapp.com/{stallname}/info'>{stallname}</a>\n<b>To:   </b><i>{blkno} {address}</i>\n<b>Details:   </b><i>{additionalinfo}</i> \n<b>Collect at:   </b><i>{areacollect}</i> \n<b>Contact Method:   </b> <i>{contactinfo}</i>\n\n<a href = 'https://www.instagram.com/savethehawkers'>savethehawkers</a>", parse_mode=telegram.ParseMode.HTML)
+                
         return render(request, "project/groupbuy.html", {
             "groupbuys": Groupbuy.objects.all()
         })
