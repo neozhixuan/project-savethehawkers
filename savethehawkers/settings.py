@@ -25,7 +25,7 @@ GOOGLE_RECAPTCHA_SECRET_KEY = '6Lf9VYgbAAAAAPTJxw7AsG5x-_PHEoc_PZ6DctMC'
 SECRET_KEY = '6ps8j!crjgrxt34cqbqn7x&b3y%(fny8k8nh21+qa)%ws3fh!q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'savethehawkers.herokuapp.com']
 

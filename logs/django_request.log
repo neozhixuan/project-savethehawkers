@@ -15783,3 +15783,25 @@ Traceback (most recent call last):
   File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\backends\sqlite3\base.py", line 423, in execute
     return Database.Cursor.execute(self, query, params)
 django.db.utils.OperationalError: no such column: project_groupbuy.stallname
+2021-08-08 15:01:30,793 [ERROR] django.request: Internal Server Error: /creations
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 1048, in creations
+    i = History(halal = halal, number = number, latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 503, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: History() got an unexpected keyword argument 'halal'
+2021-08-08 15:01:47,094 [ERROR] django.request: Internal Server Error: /creations
+Traceback (most recent call last):
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\exception.py", line 47, in inner
+    response = get_response(request)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\core\handlers\base.py", line 181, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Zhixuan\Documents\GitHub\savethehawkers\project\views.py", line 1048, in creations
+    i = History(halal = halal, number = number, latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor)
+  File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 503, in __init__
+    raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
+TypeError: History() got an unexpected keyword argument 'halal'

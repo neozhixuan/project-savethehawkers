@@ -1044,8 +1044,8 @@ def creations(request):
             longtitude = float(parse_json['results'][0]['LONGITUDE'])
             address3 = parse_json['results'][0]['ADDRESS']
 
-            h = HawkerStall(postalcode= postalcode, latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor, image1 = image1)
-            i = History(halal = halal, number = number, latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor)
+            h = HawkerStall(halal = halal, number = number,postalcode= postalcode, latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor, image1 = image1)
+            i = History(latitude= latitude, longtitude= longtitude, name= name, stalltype = stalltype, address = address3, hours = hours, reco = reco, details = details, contributor = contributor)
             h.save()
             i.save()
             return HttpResponseRedirect(reverse("savethehawkers:info", args=(name,)))
