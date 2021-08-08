@@ -828,9 +828,10 @@ def comment(request, name):
         if result['success']:
             f.save()
             message = 'success'
-            point = Point.objects.get(user = contributor)
-            point.points = point.points + 5
-            point.save()
+            if request.user.is_authenticated():
+                point = Point.objects.get(user = contributor)
+                point.points = point.points + 5
+                point.save()
         else:
             message = 'Invalid reCAPTCHA. Please try again.'
             return render(request, "project/info.html",{
