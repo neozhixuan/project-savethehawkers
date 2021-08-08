@@ -843,7 +843,7 @@ def comment(request, name):
         hawk.comments.add(f)
         telegram_settings = settings.TELEGRAM
         bot = telegram.Bot(token=telegram_settings['bot_token'])
-        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"Food Review! /n/n Description: {description}/n Stall:{name}/n Address: {hawk.address}", parse_mode=telegram.ParseMode.HTML)
+        bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"<b>Food Review!</b>\n\n<b>Description:</b> {description}\n<b>Stall:</b>{name}\n<b>Address:</b> {hawk.address}", parse_mode=telegram.ParseMode.HTML)
         bot.send_message(chat_id="@%s" % telegram_settings['channel_name'], text=f"http://savethehawkers.herokuapp.com/images/{foodimage}")
         
         return render(request, "project/info.html",{
