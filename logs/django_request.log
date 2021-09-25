@@ -15805,3 +15805,4 @@ Traceback (most recent call last):
   File "C:\Users\Zhixuan\AppData\Local\Programs\Python\Python39\lib\site-packages\django\db\models\base.py", line 503, in __init__
     raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
 TypeError: History() got an unexpected keyword argument 'halal'
+2021-09-13 16:12:46,715 [WARNING] django.request: Not Found: /favicon.ico
