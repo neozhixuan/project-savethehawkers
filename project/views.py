@@ -158,6 +158,7 @@ def index(request):
         hours = [0] * len(hawk)
         details = [0] * len(hawk)
         contributors = [0] * len(hawk)
+        #hi
         # this will start from the numbers 4, then to 1, then to 6....
         if hawk == HawkerStall.objects.all():
             for i in new_list:
