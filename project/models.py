@@ -20,11 +20,11 @@ class Zipcode(models.Model):
 class Comments(models.Model):
     comment = models.CharField(blank = True, max_length = 500)
     image = models.ImageField(null = True, blank = True)
-    ordered = models.CharField(blank = True, null=True, max_length = 100)
-    stallname = models.CharField(blank = True, null=True, max_length = 100)
+    ordered = models.CharField(blank = True, null=True, max_length = 1000)
+    stallname = models.CharField(blank = True, null=True, max_length = 1000)
     recommend = models.BooleanField(blank = True, null = True)
-    address = models.CharField(blank = True, null=True, max_length = 100)
-    contributor = models.CharField(blank = True, null = True,  max_length = 100)
+    address = models.CharField(blank = True, null=True, max_length = 1000)
+    contributor = models.CharField(blank = True, null = True,  max_length = 1000)
     def __str__ (self):
         return f"{self.comment}"
 
@@ -32,20 +32,20 @@ class Menu(models.Model):
     image = models.ImageField(null = True, blank = True)
 
 class Report(models.Model):
-    user = models.CharField(blank = True, null=True, max_length = 100)
-    reason = models.CharField(blank = True, null=True, max_length = 100)
-    stallname = models.CharField(blank = True, null=True, max_length = 100)
+    user = models.CharField(blank = True, null=True, max_length = 1000)
+    reason = models.CharField(blank = True, null=True, max_length = 1000)
+    stallname = models.CharField(blank = True, null=True, max_length = 1000)
     def __str__ (self):
         return f"{self.reason}"
 
 class Email (models.Model):
-    email = models.CharField(blank = True, max_length = 100)
+    email = models.CharField(blank = True, max_length = 1000)
     datetime = models.DateTimeField(auto_now=False, auto_now_add=False)
     def __str__ (self):
         return f"{self.email}, {self.datetime}"
 
 class District (models.Model):
-    email = models.CharField(blank = True, max_length = 100)
+    email = models.CharField(blank = True, max_length = 1000)
     def __str__ (self):
         return f"{self.email}"
 
@@ -57,9 +57,9 @@ class HawkerStall(models.Model):
     postalcode = models.IntegerField(blank = True, null = True)
     address = models.CharField(blank = True, null = True,  max_length = 200)
     hours = models.CharField(blank = True, null=True, max_length = 300)
-    reco = models.CharField(blank = True, null = True, max_length = 100)
+    reco = models.CharField(blank = True, null = True, max_length = 1000)
     details = models.CharField(blank = True, null = True,  max_length = 10000)
-    contributor = models.CharField(blank = True, null = True,  max_length = 100)
+    contributor = models.CharField(blank = True, null = True,  max_length = 1000)
     image1 = models.CharField(blank = True, null = True,  max_length = 2000)
     image2 = models.CharField(blank = True, null = True,  max_length = 2000)
     image3 = models.CharField(blank = True, null = True,  max_length = 2000)
@@ -72,12 +72,12 @@ class HawkerStall(models.Model):
     phonedelivery = models.BooleanField(blank = True, null = True)
     freelance = models.BooleanField(blank = True, null = True)
     halal = models.BooleanField(blank = True, null = True)
-    deals = models.CharField(blank = True, null=True, max_length = 100)
+    deals = models.CharField(blank = True, null=True, max_length = 1000)
     menu = models.ManyToManyField(Menu, blank = True, null = True)
     awards = models.CharField(blank = True, null=True, max_length = 500)
-    pricerange = models.CharField(blank = True, null=True, max_length = 100)
-    facebook = models.CharField(blank = True, null=True, max_length = 100)
-    twitter = models.CharField(blank = True, null=True, max_length = 100)
+    pricerange = models.CharField(blank = True, null=True, max_length = 1000)
+    facebook = models.CharField(blank = True, null=True, max_length = 1000)
+    twitter = models.CharField(blank = True, null=True, max_length = 1000)
     report = models.ManyToManyField(Report, blank = True, null = True)
     email = models.ManyToManyField(Email, blank = True, null = True )
     bookmarks = models.ManyToManyField(User, blank = True, null = True )
@@ -94,15 +94,15 @@ class History(models.Model):
     stalltype = models.CharField(blank = True, max_length = 50)
     address = models.CharField(blank = True, max_length = 200)
     hours = models.CharField(blank = True, null=True, max_length = 300)
-    reco = models.CharField(blank = True, max_length = 100)
-    details = models.CharField(blank = True, max_length = 1000)
-    contributor = models.CharField(blank = True, max_length = 100)
+    reco = models.CharField(blank = True, max_length = 1000)
+    details = models.CharField(blank = True, max_length = 10000)
+    contributor = models.CharField(blank = True, max_length = 1000)
 
     def __str__ (self):
         return f"{self.address}, {self.name}, {self.reco}"
 
 class Point(models.Model):
-    user = models.CharField(blank = True, null=True, max_length = 100)
+    user = models.CharField(blank = True, null=True, max_length = 1000)
     points = models.IntegerField(blank = True, null = True)
     def __str__ (self):
         return f"{self.user}: {self.points} points"
@@ -110,8 +110,8 @@ class Point(models.Model):
 class Groupbuy(models.Model):
     stallname = areacollect = models.CharField(blank = True, null=True, max_length = 100)
     destination = models.IntegerField(blank = True, null = True)
-    areacollect = models.CharField(blank = True, null=True, max_length = 100)
-    contactinfo = models.CharField(blank = True, null=True, max_length = 100)
+    areacollect = models.CharField(blank = True, null=True, max_length = 1000)
+    contactinfo = models.CharField(blank = True, null=True, max_length = 1000)
     additionalinfo = models.CharField(blank = True, null=True, max_length = 10000)
     latorigin = models.FloatField(null = True, blank = True)
     longorigin = models.FloatField(null = True, blank = True)
