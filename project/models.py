@@ -6,11 +6,11 @@ class User(AbstractUser):
     pass
 
 class Zipcode(models.Model):
-    postal = models.IntegerField(null = True)
-    latitude = models.FloatField(null = True)
-    longtitude = models.FloatField(null = True)
+    postal = models.IntegerField(null = True, max_length = 255)
+    latitude = models.FloatField(null = True, max_length = 255)
+    longtitude = models.FloatField(null = True, max_length = 255)
     searchval = models.CharField(max_length = 200)
-    blk_no = models.CharField(null=True, max_length = 10)
+    blk_no = models.CharField(null=True, max_length = 255)
     road_name = models.CharField(max_length = 200)
     building = models.CharField(max_length = 200)
     address = models.CharField(max_length = 200)
@@ -53,8 +53,8 @@ class HawkerStall(models.Model):
     latitude = models.FloatField(null = True)
     longtitude = models.FloatField(null = True)
     name = models.CharField(blank = True, null = True,  max_length = 200)
-    stalltype = models.CharField(blank = True, null = True,  max_length = 50)
-    postalcode = models.IntegerField(blank = True, null = True)
+    stalltype = models.CharField(blank = True, null = True,  max_length = 255)
+    postalcode = models.IntegerField(blank = True, null = True, max_length = 255)
     address = models.CharField(blank = True, null = True,  max_length = 200)
     hours = models.CharField(blank = True, null=True, max_length = 300)
     reco = models.CharField(blank = True, null = True, max_length = 1000)
@@ -67,7 +67,7 @@ class HawkerStall(models.Model):
     image5 = models.CharField(blank = True, null = True,  max_length = 2000)
     comments = models.ManyToManyField(Comments, blank = True, null = True)
     message = models.CharField(blank = True, null=True, max_length = 300)
-    number = models.IntegerField(blank = True, null = True)
+    number = models.IntegerField(blank = True, null = True, max_length = 255)
     fooddelivery = models.BooleanField(blank = True, null = True)
     phonedelivery = models.BooleanField(blank = True, null = True)
     freelance = models.BooleanField(blank = True, null = True)
@@ -88,10 +88,10 @@ class HawkerStall(models.Model):
 
 
 class History(models.Model):
-    latitude = models.FloatField(null = True)
-    longtitude = models.FloatField(null = True)
+    latitude = models.FloatField(null = True, max_length = 255)
+    longtitude = models.FloatField(null = True, max_length = 255)
     name = models.CharField(blank = True, max_length = 200)
-    stalltype = models.CharField(blank = True, max_length = 50)
+    stalltype = models.CharField(blank = True, max_length = 255)
     address = models.CharField(blank = True, max_length = 200)
     hours = models.CharField(blank = True, null=True, max_length = 300)
     reco = models.CharField(blank = True, max_length = 1000)
@@ -103,20 +103,20 @@ class History(models.Model):
 
 class Point(models.Model):
     user = models.CharField(blank = True, null=True, max_length = 1000)
-    points = models.IntegerField(blank = True, null = True)
+    points = models.IntegerField(blank = True, null = True, max_length = 255)
     def __str__ (self):
         return f"{self.user}: {self.points} points"
 
 class Groupbuy(models.Model):
     stallname = areacollect = models.CharField(blank = True, null=True, max_length = 100)
-    destination = models.IntegerField(blank = True, null = True)
+    destination = models.IntegerField(blank = True, null = True, max_length = 255)
     areacollect = models.CharField(blank = True, null=True, max_length = 1000)
     contactinfo = models.CharField(blank = True, null=True, max_length = 1000)
     additionalinfo = models.CharField(blank = True, null=True, max_length = 10000)
-    latorigin = models.FloatField(null = True, blank = True)
-    longorigin = models.FloatField(null = True, blank = True)
-    lat2 = models.FloatField(null = True, blank = True)
-    long2 = models.FloatField(null = True, blank = True)
+    latorigin = models.FloatField(null = True, blank = True, max_length = 255)
+    longorigin = models.FloatField(null = True, blank = True, max_length = 255)
+    lat2 = models.FloatField(null = True, blank = True, max_length = 255)
+    long2 = models.FloatField(null = True, blank = True, max_length = 255)
 
     def __str__ (self):
         return f"{self.additionalinfo}"
