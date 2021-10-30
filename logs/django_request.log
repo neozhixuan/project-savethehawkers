@@ -15806,3 +15806,4 @@ Traceback (most recent call last):
     raise TypeError("%s() got an unexpected keyword argument '%s'" % (cls.__name__, kwarg))
 TypeError: History() got an unexpected keyword argument 'halal'
 2021-09-13 16:12:46,715 [WARNING] django.request: Not Found: /favicon.ico
+2021-10-30 15:34:15,583 [WARNING] django.request: Not Found: /favicon.ico
