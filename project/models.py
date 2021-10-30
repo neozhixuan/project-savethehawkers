@@ -57,7 +57,7 @@ class HawkerStall(models.Model):
     postalcode = models.IntegerField(blank = True, null = True, max_length = 255)
     address = models.CharField(blank = True, null = True,  max_length = 200)
     hours = models.CharField(blank = True, null=True, max_length = 300)
-    reco = models.CharField(blank = True, null = True, max_length = 1000)
+    reco = models.TextField(blank = True, null = True, max_length = 1000)
     details = models.CharField(blank = True, null = True,  max_length = 10000)
     contributor = models.CharField(blank = True, null = True,  max_length = 1000)
     image1 = models.CharField(blank = True, null = True,  max_length = 2000)
