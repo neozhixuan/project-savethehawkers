@@ -12,6 +12,7 @@ I learned so much from this project, and I think it was a good experience.
 http://savethehawkers.herokuapp.com/
 
 2. Local Environment
+
 pip install -r requirements.txt
 
 python manage.py makemigrations
