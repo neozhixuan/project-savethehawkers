@@ -7,6 +7,9 @@ This was a passion project built by myself during the COVID-19 pandemic. With th
 
 I learned so much from this project, and I think it was a good experience.
 
+## Apologies
+The main code is very inefficient because I didn't know how to abstract code, so you can see functions that are repeated end on end...
+
 ## Running the code
 1. Production Environment
 http://savethehawkers.herokuapp.com/
