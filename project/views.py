@@ -123,10 +123,10 @@ def index(request):
         except KeyError:
             if not reco:
                 hawk = HawkerStall.objects.all()
-                stalltypes = 'Sup bitch'
+                stalltypes = 'x'
             else:
                 hawk = HawkerStall.objects.filter(reco__contains = reco)
-                stalltypes = 'Sup bitch'
+                stalltypes = 'x'
             
         
 
@@ -268,9 +268,9 @@ def nextindex(request, pagenumber):
         stalltypes = request.POST['stalltype']
         reco = request.POST['reco']
         # Calculate and sort distances to hawker stalls
-        if stalltypes == 'Sup bitch' and not reco:
+        if stalltypes == 'x' and not reco:
             hawk = HawkerStall.objects.all()
-        elif stalltypes == 'Sup bitch' and reco:
+        elif stalltypes == 'x' and reco:
             hawk = HawkerStall.objects.filter(reco__contains = reco)
         elif reco:
             hawk = HawkerStall.objects.filter(stalltype = stalltypes, reco__contains = reco)
